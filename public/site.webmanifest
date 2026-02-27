@@ -1,0 +1,16 @@
+{
+  "name": "SkillAI.hk",
+  "short_name": "SkillAI",
+  "description": "全球首創 AI 技能認證平台",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A1929",
+  "theme_color": "#00D9FF",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "256x256",
+      "type": "image/x-icon"
+    }
+  ]
+}

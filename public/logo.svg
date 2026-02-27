@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <!-- Pixel block icon - Minecraft inspired but original -->
+  <g>
+    <!-- Main block shape -->
+    <rect x="2" y="8" width="8" height="8" rx="1" fill="#4169E1"/>
+    <rect x="12" y="8" width="8" height="8" rx="1" fill="#5B83F5"/>
+    <rect x="7" y="0" width="8" height="8" rx="1" fill="#3358C8"/>
+    <rect x="2" y="18" width="8" height="8" rx="1" fill="#5B83F5"/>
+    <rect x="12" y="18" width="8" height="8" rx="1" fill="#4169E1"/>
+    <rect x="22" y="13" width="8" height="8" rx="1" fill="#4169E1" opacity="0.7"/>
+    <rect x="7" y="28" width="8" height="8" rx="1" fill="#4169E1" opacity="0.5"/>
+    <!-- Brain/circuit lines -->
+    <rect x="17" y="3" width="8" height="4" rx="1" fill="#FF6B35"/>
+    <rect x="22" y="23" width="6" height="4" rx="1" fill="#FF6B35" opacity="0.7"/>
+  </g>
+  <!-- Text -->
+  <text x="38" y="28" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#1A1A2E" letter-spacing="-0.5">
+    <tspan>Skill</tspan><tspan fill="#4169E1">AI</tspan>
+  </text>
+</svg>

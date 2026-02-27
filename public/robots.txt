@@ -1,0 +1,30 @@
+# Robots.txt for SkillAI.hk
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://skillai.hk/sitemap.xml
+Sitemap: https://skillai.hk/sitemap-courses.xml
+
+# Crawl-delay
+Crawl-delay: 0
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow admin and API routes (if any)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+
+# Allow CSS and JS for proper rendering
+Allow: /_next/static/
+Allow: /public/

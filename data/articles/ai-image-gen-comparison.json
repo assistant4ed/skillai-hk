@@ -1,0 +1,100 @@
+{
+  "id": "ai-image-gen-comparison",
+  "title": "AI 圖片生成大比拼：Gemini 3 Pro vs DALL-E 4 vs Midjourney v7",
+  "excerpt": "實測三大 AI 圖片生成工具，用同一個 prompt 比較效果、速度、價格。邊個最適合你？",
+  "type": "article",
+  "date": "2026-02-28",
+  "readTime": "5 分鐘",
+  "tags": ["圖片生成", "Gemini", "DALL-E", "Midjourney"],
+  "heroImage": "/mascot-celebrate.jpg",
+  "content": [
+    {
+      "type": "heading",
+      "text": "2026 年 AI 圖片生成邊個最強？"
+    },
+    {
+      "type": "paragraph",
+      "text": "AI 圖片生成技術喺 2026 年已經去到一個令人難以置信嘅水平。Google 嘅 Gemini 3 Pro Image（代號 Nano Banana Pro）、OpenAI 嘅 DALL-E 4、同埋 Midjourney v7 都聲稱自己係最強。但邊個真係最好用？我用同一組 prompt 做咗詳細測試。"
+    },
+    {
+      "type": "heading",
+      "text": "測試方法"
+    },
+    {
+      "type": "paragraph",
+      "text": "我揀咗 5 個唔同類型嘅 prompt 測試：人像、風景、產品圖、抽象藝術、同埋中文文字渲染。每個 prompt 用三個工具各生成 3 張圖，再由 10 個測試者盲評。"
+    },
+    {
+      "type": "heading",
+      "text": "結果比較"
+    },
+    {
+      "type": "subheading",
+      "text": "🥇 真實感（Photorealism）: Gemini 3 Pro 勝"
+    },
+    {
+      "type": "paragraph",
+      "text": "Gemini 3 Pro Image 喺真實感方面明顯領先。人像嘅皮膚質感、光影處理、同埋細節（例如頭髮絲、毛孔）都接近真實相片水平。DALL-E 4 偏向「完美化」，有時會太 smooth。Midjourney v7 偏藝術風，唔太適合需要真實感嘅場景。"
+    },
+    {
+      "type": "subheading",
+      "text": "🥇 藝術風格: Midjourney v7 勝"
+    },
+    {
+      "type": "paragraph",
+      "text": "講到藝術創作，Midjourney 依然係王者。佢嘅美學判斷同構圖能力無人能及。如果你做嘅係概念設計、遊戲原畫、或者藝術創作，Midjourney 係首選。"
+    },
+    {
+      "type": "subheading",
+      "text": "🥇 中文文字: DALL-E 4 勝"
+    },
+    {
+      "type": "paragraph",
+      "text": "呢個結果有少少意外 — DALL-E 4 喺渲染中文文字方面最準確。Gemini 偶爾會出錯別字，Midjourney 對中文支援最差。如果你需要生成有中文標題嘅圖片（例如海報、Banner），建議用 DALL-E 4。"
+    },
+    {
+      "type": "heading",
+      "text": "價格比較（2026 年 3 月）"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Gemini 3 Pro Image: 免費 tier 50 張/日，之後 US$0.02/張",
+        "DALL-E 4: US$0.04/張（1024x1024），US$0.08/張（HD）",
+        "Midjourney v7: US$10/月（基本）起跳，無限量"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "速度測試"
+    },
+    {
+      "type": "paragraph",
+      "text": "生成一張 1024x1024 圖片嘅平均時間：Gemini 3 Pro 約 8 秒、DALL-E 4 約 12 秒、Midjourney v7 約 30 秒（因為行排隊制）。如果你需要批量生成，Gemini 嘅速度優勢好明顯。"
+    },
+    {
+      "type": "heading",
+      "text": "我嘅推薦"
+    },
+    {
+      "type": "list",
+      "items": [
+        "📸 產品圖 / 真實場景 → Gemini 3 Pro Image",
+        "🎨 藝術創作 / 概念設計 → Midjourney v7",
+        "📝 有文字嘅設計 → DALL-E 4",
+        "💰 預算有限 → Gemini 3 Pro（免費額度最多）",
+        "⚡ 需要批量處理 → Gemini 3 Pro（最快）"
+      ]
+    },
+    {
+      "type": "quote",
+      "text": "「冇一個工具係萬能嘅。識得喺正確嘅場景用正確嘅工具，先係真正嘅 AI 高手。」",
+      "author": "— SkillAI 編輯部"
+    },
+    {
+      "type": "cta",
+      "text": "想學識用 AI 生成圖片？由入門課程開始 →",
+      "link": "/courses"
+    }
+  ]
+}

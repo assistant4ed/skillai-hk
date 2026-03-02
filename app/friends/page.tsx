@@ -19,6 +19,7 @@ interface Post {
   image?: string;
   tags: string[];
   auto?: boolean;
+  hasArticle?: boolean;
 }
 
 /* ── Curated Posts (always shown) ── */
@@ -137,19 +138,34 @@ function PostCard({ post, index }: { post: Post; index: number }) {
           <span>{post.date}</span>
           <span style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
             {post.readTime && <span>⏱ {post.readTime}</span>}
-            {post.sourceUrl && <span style={{ color: '#3B82F6' }}>↗ 閱讀原文</span>}
+            {(post.hasArticle || !post.auto) ? (
+              <span style={{ color: '#4169E1' }}>📖 閱讀全文</span>
+            ) : post.sourceUrl ? (
+              <span style={{ color: '#3B82F6' }}>↗ 閱讀原文</span>
+            ) : null}
           </span>
         </div>
       </div>
     </article>
   );
 
+  // All posts with article pages link internally, otherwise to source
+  const hasArticlePage = !post.auto || post.hasArticle;
+  const linkHref = hasArticlePage ? `/friends/${post.id}` : post.sourceUrl;
+  const isExternal = !hasArticlePage && !!post.sourceUrl;
+
   return (
     <R d={index * 0.08}>
-      {post.sourceUrl ? (
-        <a href={post.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
-          {cardContent}
-        </a>
+      {linkHref ? (
+        isExternal ? (
+          <a href={linkHref} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
+            {cardContent}
+          </a>
+        ) : (
+          <Link href={linkHref} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
+            {cardContent}
+          </Link>
+        )
       ) : cardContent}
     </R>
   );

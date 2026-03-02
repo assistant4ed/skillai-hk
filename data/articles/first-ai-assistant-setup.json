@@ -1,0 +1,137 @@
+{
+  "id": "first-ai-assistant-setup",
+  "title": "15 分鐘搭建你嘅第一個 AI 助手",
+  "excerpt": "用 OpenClaw 從零開始，15 分鐘內擁有一個 24/7 在線嘅 AI 助手。完整教學。",
+  "type": "video",
+  "date": "2026-02-20",
+  "readTime": "15 分鐘",
+  "tags": ["教學", "OpenClaw", "入門"],
+  "heroImage": "/mascot-hero.jpg",
+  "content": [
+    {
+      "type": "heading",
+      "text": "你都可以有自己嘅 AI 助手"
+    },
+    {
+      "type": "paragraph",
+      "text": "唔使識寫 code、唔使高配電腦、唔使每月畀幾千蚊。用 OpenClaw，15 分鐘就可以搭建一個屬於你自己嘅 AI 助手 — 佢可以幫你搜索資料、管理日程、寫文件、甚至控制你嘅智能家居。"
+    },
+    {
+      "type": "video",
+      "platform": "youtube",
+      "videoId": "dQw4w9WgXcQ",
+      "caption": "完整教學影片（15 分鐘）"
+    },
+    {
+      "type": "heading",
+      "text": "準備工作（2 分鐘）"
+    },
+    {
+      "type": "list",
+      "items": [
+        "一部電腦（Mac / Windows / Linux 都得）",
+        "安裝 Node.js（去 nodejs.org 下載安裝）",
+        "一個 AI API key（建議用 OpenRouter，一次登入用到所有模型）"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Step 1：安裝 OpenClaw（3 分鐘）"
+    },
+    {
+      "type": "paragraph",
+      "text": "打開 Terminal（Mac 嘅話按 Cmd+Space 搜索 Terminal），貼上以下命令："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "npm install -g openclaw\nopenclaw init"
+    },
+    {
+      "type": "paragraph",
+      "text": "init 過程會問你幾個問題：名字、AI 供應商、API key。照住填就得。完成後你會見到一個 ~/.openclaw 資料夾，呢個就係你 AI 助手嘅「大腦」。"
+    },
+    {
+      "type": "heading",
+      "text": "Step 2：連接通訊工具（5 分鐘）"
+    },
+    {
+      "type": "paragraph",
+      "text": "OpenClaw 可以連接 WhatsApp、Telegram、Discord 等通訊工具。最簡單嘅係連 WhatsApp — 你只需要用手機掃一個 QR code。"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "openclaw channels login --channel whatsapp"
+    },
+    {
+      "type": "paragraph",
+      "text": "掃完 QR code 之後，你就可以直接喺 WhatsApp 同你嘅 AI 助手對話。佢會 24/7 在線，就算你瞓覺佢都可以幫你做嘢。"
+    },
+    {
+      "type": "heading",
+      "text": "Step 3：設定技能（5 分鐘）"
+    },
+    {
+      "type": "paragraph",
+      "text": "AI 助手嘅能力取決於你裝咗咩 skill。以下係幾個推薦嘅入門 skill："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 天氣查詢\nclawhub install weather\n\n# 網絡搜索\nclawhub install web-search\n\n# AI 圖片生成\nclawhub install nano-banana-pro"
+    },
+    {
+      "type": "list",
+      "items": [
+        "🌤 weather：問「今日天氣點？」就會答你",
+        "🔍 web-search：可以幫你 Google 任何嘢",
+        "🎨 nano-banana-pro：叫佢「畫一隻貓」就會生成圖片",
+        "📝 summarize：畀佢一條 YouTube link 就幫你做摘要"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "搞掂！你嘅 AI 助手已經 Ready"
+    },
+    {
+      "type": "paragraph",
+      "text": "而家打開 WhatsApp，同你嘅 AI 助手講聲 Hello。試下問佢「今日天氣點？」或者「幫我搜索最新 iPhone 評測」。佢會記住你嘅喜好，越用越聰明。"
+    },
+    {
+      "type": "heading",
+      "text": "進階玩法"
+    },
+    {
+      "type": "list",
+      "items": [
+        "設定定時任務：每朝 9 點報天氣同新聞",
+        "連接 Google Calendar：AI 幫你管理日程",
+        "多 Agent 協作：一個 Agent 寫文、一個 Agent review",
+        "自定義 Skill：用 JavaScript/Python 寫自己嘅插件"
+      ]
+    },
+    {
+      "type": "quote",
+      "text": "「我而家每日慳咗最少 2 個鐘。Email、日程、資料搜索全部畀 AI 做。最正嘅係佢 24 小時 on call，我瞓覺佢繼續幫我做 research。」",
+      "author": "— 一位 SkillAI 學員"
+    },
+    {
+      "type": "heading",
+      "text": "遇到問題？"
+    },
+    {
+      "type": "list",
+      "items": [
+        "OpenClaw 文檔：docs.openclaw.ai",
+        "Discord 社群：discord.com/invite/clawd",
+        "常見問題：大部分問題重啟就搞掂 → openclaw gateway restart"
+      ]
+    },
+    {
+      "type": "cta",
+      "text": "想學更多？報名 AI 入門課程 →",
+      "link": "/courses"
+    }
+  ]
+}

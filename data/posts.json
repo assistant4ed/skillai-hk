@@ -11,7 +11,8 @@
         "2026"
       ],
       "sourceUrl": "https://www.news.cn/20260128/3b2f11906fd74ca397fef9996c805a60/c.html",
-      "auto": true
+      "auto": true,
+      "hasArticle": true
     },
     {
       "id": "news-0d1a2bcc8e71",
@@ -24,7 +25,8 @@
         "2026"
       ],
       "sourceUrl": "https://www.news.cn/tech/20260120/5c20c6f7ba864526b6e674acaea53e25/c.html",
-      "auto": true
+      "auto": true,
+      "hasArticle": true
     },
     {
       "id": "news-0084358b90ef",
@@ -37,7 +39,8 @@
         "2026"
       ],
       "sourceUrl": "https://www.bbc.com/zhongwen/topics/cpydz218gddt/trad",
-      "auto": true
+      "auto": true,
+      "hasArticle": true
     },
     {
       "id": "tool-2e180fbe6c20",
@@ -65,7 +68,8 @@
         "教學"
       ],
       "sourceUrl": "https://www.kdnuggets.com/how-to-become-an-ai-engineer-in-2026-a-self-study-roadmap",
-      "auto": true
+      "auto": true,
+      "hasArticle": true
     },
     {
       "id": "tip-068582a34d70",
@@ -79,7 +83,8 @@
         "實用技巧"
       ],
       "sourceUrl": "https://www.lakera.ai/blog/prompt-engineering-guide",
-      "auto": true
+      "auto": true,
+      "hasArticle": true
     },
     {
       "id": "video-ed248de314cc",
@@ -92,7 +97,8 @@
         "教學"
       ],
       "sourceUrl": "https://www.youtube.com/watch?v=R7GZjRMsrzM",
-      "auto": true
+      "auto": true,
+      "hasArticle": true
     }
   ],
   "lastUpdated": "2026-03-02T19:38:24.589313",

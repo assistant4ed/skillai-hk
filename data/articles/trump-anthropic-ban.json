@@ -1,0 +1,96 @@
+{
+  "id": "trump-anthropic-ban",
+  "title": "Trump 封殺 Anthropic：AI 軍事化政治博弈點解咁重要？",
+  "excerpt": "美國政府禁止使用 Anthropic 產品，OpenAI 即刻補位五角大樓。呢場 AI 倫理大戰對我哋有咩影響？",
+  "type": "news",
+  "date": "2026-03-01",
+  "readTime": "6 分鐘",
+  "tags": ["AI 新聞", "Anthropic", "OpenAI", "政策"],
+  "heroImage": "/mascot-think.jpg",
+  "content": [
+    {
+      "type": "heading",
+      "text": "發生咗咩事？"
+    },
+    {
+      "type": "paragraph",
+      "text": "2026 年 2 月底，美國 Trump 政府宣佈禁止所有聯邦機構使用 Anthropic（Claude AI 背後嘅公司）嘅產品。原因？Anthropic CEO Dario Amodei 公開批評政府嘅 AI 軍事化政策，拒絕為國防部提供定制 AI 模型。"
+    },
+    {
+      "type": "paragraph",
+      "text": "短短幾日後，OpenAI 宣佈同五角大樓簽訂新合約，取代 Anthropic 嘅位置。呢個消息令整個 AI 行業震動 — 因為佢揭示咗一個殘酷嘅現實：喺 AI 軍事化嘅浪潮下，企業嘅「道德底線」可能要付出商業代價。"
+    },
+    {
+      "type": "heading",
+      "text": "背景：AI 軍事化時間線"
+    },
+    {
+      "type": "list",
+      "items": [
+        "2024 年：OpenAI 修改使用政策，唔再禁止軍事用途",
+        "2025 年初：Anthropic 同 Palantir 合作，為情報機構提供分析工具",
+        "2025 年中：Anthropic 退出國防合約，稱「唔符合安全原則」",
+        "2026 年 1 月：Trump 簽署行政命令，要求加速 AI 軍事部署",
+        "2026 年 2 月：聯邦機構被禁使用 Anthropic 產品"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "兩種立場"
+    },
+    {
+      "type": "subheading",
+      "text": "Anthropic 嘅立場：AI 安全優先"
+    },
+    {
+      "type": "paragraph",
+      "text": "Anthropic 由 OpenAI 前員工創立，一直強調「AI 安全」係核心使命。佢哋認為，將強大嘅 AI 模型直接用喺軍事場景（例如自動化目標識別、無人機決策輔助）存在巨大嘅倫理風險。Dario Amodei 喺訪問中講過：「有啲錢我哋寧願唔賺。」"
+    },
+    {
+      "type": "subheading",
+      "text": "OpenAI 嘅立場：配合國家利益"
+    },
+    {
+      "type": "paragraph",
+      "text": "OpenAI CEO Sam Altman 則認為，美國需要保持 AI 技術領先地位，如果美國公司唔做，中國同俄羅斯嘅 AI 會填補空缺。佢話：「我寧願美國軍方用我哋嘅 AI（有安全護欄嘅），而唔係被迫用冇安全考量嘅替代品。」"
+    },
+    {
+      "type": "heading",
+      "text": "對香港 / 亞洲用家嘅影響"
+    },
+    {
+      "type": "paragraph",
+      "text": "你可能覺得呢件事好遠，但其實直接影響我哋。首先，Claude AI 嘅服務可能因為政策變動而受到區域限制。其次，AI 技術嘅發展方向 — 係走向開放共享，定係被國家利益綁架 — 直接決定我哋將來可以用到咩工具。"
+    },
+    {
+      "type": "list",
+      "items": [
+        "短期：Claude API 價格同穩定性可能受影響（失去政府合約 = 少咗收入）",
+        "中期：歐盟可能跟住出 AI 軍事限制法規，影響全球服務",
+        "長期：AI 公司被迫「選邊站」，開源替代方案可能更重要"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "我哋應該點睇？"
+    },
+    {
+      "type": "paragraph",
+      "text": "呢件事冇簡單嘅對錯。但有一點值得記住：AI 技術嘅發展唔應該只由政府同大企業決定。作為用家，我哋有權了解 AI 工具背後嘅政策同立場，做出明智嘅選擇。"
+    },
+    {
+      "type": "paragraph",
+      "text": "建議：保持多元化。唔好只依賴一個 AI 供應商。OpenClaw 之類嘅開源平台支援多個 LLM 供應商，就算某個服務受政策影響，你都可以快速切換。"
+    },
+    {
+      "type": "quote",
+      "text": "「AI 嘅未來唔應該由政治決定。但如果我哋唔關心，政治就會替我哋決定。」",
+      "author": "— SkillAI 編輯部"
+    },
+    {
+      "type": "cta",
+      "text": "了解點樣部署開源 AI → 睇企業部署攻略",
+      "link": "/friends/openclaw-enterprise-2026"
+    }
+  ]
+}

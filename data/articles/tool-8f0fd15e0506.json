@@ -11,7 +11,7 @@
   ],
   "sourceUrl": "https://www.kdnuggets.com/how-to-become-an-ai-engineer-in-2026-a-self-study-roadmap",
   "auto": true,
-  "heroImage": "/mascot-hero.jpg",
+  "heroImage": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
   "content": [
     {
       "type": "heading",
@@ -27,7 +27,7 @@
     },
     {
       "type": "paragraph",
-      "text": "首先，我哋要了解吓點解 AI 工程師咁吸引。根據 Indeed 嘅數據，AI 工程師嘅平均年薪可以去到 $140,000 美金以上，而且需求仲不斷增加。AI 應用遍及醫療、金融、零售等各行各業，企業都急需 AI 人才嚟推動創新同增長。但同時，AI 領域嘅知識更新速度非常快，你需要不斷學習新嘅技術同工具，先可以保持競爭力。"
+      "text": "首先，我哋要了解吓點解 AI 工程師咁吸引。根據 Indeed 嘅數據，AI 工程師嘅平均年薪可以去到 $140,000 美金以上，而且需求仲不斷增加。"
     },
     {
       "type": "paragraph",
@@ -59,101 +59,6 @@
     {
       "type": "paragraph",
       "text": "除咗上面嘅學習路線圖，以下呢啲技能都係成為頂尖 AI 工程師嘅關鍵："
-    },
-    {
-      "type": "list",
-      "items": [
-        "**數據處理能力**：AI 嘅核心係數據，你需要有能力清洗、轉換、分析大量嘅數據。熟悉 SQL、Pandas 等工具，可以幫你高效處理數據。",
-        "**模型評估能力**：訓練完模型之後，你需要評估模型嘅性能。了解各種評估指標，例如準確率、召回率、F1 值等，可以幫你選擇最佳嘅模型。",
-        "**模型部署能力**：將訓練好嘅模型部署到實際應用入面，係 AI 工程師嘅重要任務。你需要熟悉 Docker、Kubernetes 等容器化技術，可以幫你快速部署模型。",
-        "**溝通能力**：AI 工程師需要同產品經理、設計師、其他工程師合作。清晰嘅溝通能力可以確保團隊合作順利。",
-        "**解決問題能力**：AI 項目經常會遇到各種挑戰，你需要有能力獨立分析問題，提出解決方案。"
-      ]
-    },
-    {
-      "type": "subheading",
-      "text": "常用工具：AI 工程師嘅利器"
-    },
-    {
-      "type": "paragraph",
-      "text": "以下係 AI 工程師常用嘅工具："
-    },
-    {
-      "type": "list",
-      "items": [
-        "**編程語言**：Python",
-        "**數據處理庫**：NumPy、Pandas",
-        "**機器學習庫**：Scikit-learn",
-        "**深度學習框架**：TensorFlow、PyTorch",
-        "**雲平台**：AWS、Google Cloud、Azure",
-        "**版本控制**：Git",
-        "**容器化技術**：Docker、Kubernetes"
-      ]
-    },
-    {
-      "type": "subheading",
-      "text": "實戰項目：展現你嘅 AI 實力"
-    },
-    {
-      "type": "paragraph",
-      "text": "實戰項目係證明你 AI 實力嘅最好方法。以下係一啲建議嘅項目："
-    },
-    {
-      "type": "list",
-      "items": [
-        "**圖像識別**：用 CNN 訓練一個圖像識別模型，可以識別貓、狗、汽車等。",
-        "**自然語言處理**：用 RNN 訓練一個文本分類模型，可以判斷文章嘅情感傾向。",
-        "**推薦系統**：用協同過濾算法構建一個推薦系統，可以根據用戶嘅歷史行為推薦商品。",
-        "**時間序列預測**：用 ARIMA 模型預測股票價格、天氣變化等。",
-        "**異常檢測**：用 Isolation Forest 算法檢測信用卡詐騙、網絡攻擊等。"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": "你可以將你嘅項目發佈到 GitHub 上面，方便其他人參考同學習。同時，呢啲項目亦可以成為你嘅作品集，喺求職嘅時候展示你嘅實力。"
-    },
-    {
-      "type": "code",
-      "language": "python",
-      "code": "# 簡單嘅線性回歸例子 (使用 Scikit-learn)\nimport numpy as np\nfrom sklearn.linear_model import LinearRegression\n\n# 創建數據\nx = np.array([1, 2, 3, 4, 5]).reshape((-1, 1))\ny = np.array([2, 4, 5, 4, 5])\n\n# 創建模型\nmodel = LinearRegression()\n\n# 訓練模型\nmodel.fit(x, y)\n\n# 預測\nr_sq = model.score(x, y)\nprint(f\"係數 of determination: {r_sq}\")\nprint(f\"截距: {model.intercept_}\")\nprint(f\"斜率: {model.coef_}\")\n\nnew_x = np.array([6]).reshape((-1, 1))\npredicted_y = model.predict(new_x)\nprint(f\"預測值 for x=6: {predicted_y}\")"
-    },
-    {
-      "type": "subheading",
-      "text": "持續學習：AI 領域嘅生存之道"
-    },
-    {
-      "type": "paragraph",
-      "text": "AI 領域變化迅速，唯有不斷學習先可以保持競爭力。以下係一啲建議："
-    },
-    {
-      "type": "list",
-      "items": [
-        "**關注 AI 領域嘅博客、論文、新聞**：例如 KDnuggets、Towards Data Science、ArXiv 等。",
-        "**參加 AI 相關嘅研討會、工作坊**：例如 NeurIPS、ICML、CVPR 等。",
-        "**同其他 AI 工程師交流**：參加線上社群、線下活動，互相學習，共同進步。",
-        "**考取相關認證**：例如 TensorFlow Developer Certificate、AWS Certified Machine Learning – Specialty 等。"
-      ]
-    },
-    {
-      "type": "quote",
-      "text": "The only way to do great work is to love what you do.",
-      "author": "Steve Jobs"
-    },
-    {
-      "type": "paragraph",
-      "text": "記住，對 AI 充滿熱情，先可以喺呢個領域取得成功！"
-    },
-    {
-      "type": "subheading",
-      "text": "SkillAI.hk 助你一臂之力"
-    },
-    {
-      "type": "paragraph",
-      "text": "SkillAI.hk 致力於提供優質嘅 AI 教育資源，幫助更多人投身 AI 領域。我哋提供各種 AI 課程、工作坊、實戰項目，由淺入深，幫你打好基礎，提升技能。無論你係初學者定係有經驗嘅工程師，都可以在 SkillAI.hk 找到適合你嘅課程。"
-    },
-    {
-      "type": "paragraph",
-      "text": "我哋嘅課程由經驗豐富嘅 AI 專家授課，結合理論知識同實際應用，幫你快速掌握 AI 嘅核心技術。我哋亦提供完善嘅學習支援，解答你嘅疑問，幫助你克服學習過程中嘅困難。"
     },
     {
       "type": "cta",

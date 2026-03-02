@@ -11,7 +11,7 @@
   ],
   "sourceUrl": "https://www.lakera.ai/blog/prompt-engineering-guide",
   "auto": true,
-  "heroImage": "/mascot-hero.jpg",
+  "heroImage": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
   "content": [
     {
       "type": "heading",
@@ -60,77 +60,8 @@
       "text": "喺 2026 年，Prompt Engineering 嘅技巧已經發展到一個新嘅高度。以下係幾個喺實際應用中非常有效嘅技巧："
     },
     {
-      "type": "list",
-      "items": [
-        "**Few-shot Learning：** 俾 AI 模型幾個例子，佢就可以學習並模仿你想要嘅輸出風格同埋內容。例如，你想 AI 模型寫詩，就可以俾佢睇幾首詩，然後叫佢按照類似嘅風格寫一首。",
-        "**Chain-of-Thought Prompting：** 鼓勵 AI 模型一步一步咁解釋佢嘅思考過程，可以提高佢嘅準確性同埋可解釋性。例如，你可以問：「請解釋你點樣計算出呢個答案？一步一步咁講。」",
-        "**Self-Consistency：** 叫 AI 模型多次生成答案，然後選擇最一致嘅答案。呢個方法可以減少隨機性，提高答案嘅可靠性。",
-        "**Use review tools (where available):** ChatGPT 同 Claude 等 AI 工具提供記憶檢視功能，可以俾你睇到同編輯 AI 嘅記憶，從而更好地控制佢嘅行為。"
-      ]
-    },
-    {
       "type": "paragraph",
-      "text": "舉個例子，假設你想用 AI 模型生成一篇關於「香港美食」嘅文章。如果只係簡單咁問：「寫一篇關於香港美食嘅文章。」可能出嚟嘅結果會好普通，甚至會出現錯誤嘅資訊。但係，如果你用以下嘅 Prompt："
-    },
-    {
-      "type": "code",
-      "language": "text",
-      "code": "請撰寫一篇 500 字嘅文章，介紹香港嘅特色美食。文章嘅目標讀者係對香港文化有興趣嘅外國遊客。文章應該包含以下內容：\n\n1. 點心：介紹幾款經典嘅點心，例如蝦餃、燒賣、叉燒包，並介紹佢哋嘅特色同埋歷史。\n2. 海鮮：介紹香港嘅海鮮文化，例如避風塘炒蟹、清蒸石斑，並介紹邊度可以食到新鮮嘅海鮮。\n3. 街頭小食：介紹幾款受歡迎嘅街頭小食，例如雞蛋仔、格仔餅、魚蛋，並介紹邊度可以搵到好食嘅街頭小食。\n\n文章嘅風格應該輕鬆有趣，並包含一啲實用嘅旅遊資訊，例如餐廳推薦、交通建議等等。"
-    },
-    {
-      "type": "paragraph",
-      "text": "咁樣，AI 模型就會按照你嘅指示，生成一篇更加豐富、更加實用嘅文章。你可以根據實際情況，不斷調整 Prompt，直到得到你滿意嘅結果。"
-    },
-    {
-      "type": "subheading",
-      "text": "Prompt Engineering 嘅未來發展趨勢"
-    },
-    {
-      "type": "paragraph",
-      "text": "隨著 AI 技術嘅不斷發展，Prompt Engineering 嘅未來將會更加智能化、自動化。以下係幾個值得關注嘅發展趨勢："
-    },
-    {
-      "type": "list",
-      "items": [
-        "**Auto Prompt Engineering：** AI 模型可以自動生成同優化 Prompt，減少人手嘅干預。",
-        "**Context-Aware Prompting：** Prompt 可以根據用戶嘅上下文信息（例如位置、時間、興趣等等）進行調整，提供更加個性化嘅服務。",
-        "**Explainable Prompting：** Prompt 可以解釋佢嘅設計原理同埋預期效果，提高透明度同埋可信度。",
-        "**安全同倫理：** Prompt Engineering 會更加關注 AI 模型嘅安全同倫理問題，避免生成有害嘅內容。"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": "例如，喺醫療領域，Prompt Engineering 可以幫助醫生診斷疾病、制定治療方案。但係，如果 Prompt 設計得唔好，可能會導致錯誤嘅診斷同埋治療，甚至會對病人造成傷害。因此，喺開發醫療 AI 應用嘅時候，一定要特別注意 Prompt Engineering 嘅安全同倫理問題。"
-    },
-    {
-      "type": "subheading",
-      "text": "實用建議：如何提升 Prompt Engineering 嘅技能？"
-    },
-    {
-      "type": "paragraph",
-      "text": "要成為一個出色嘅 Prompt Engineer，除咗要理解核心概念同埋掌握實用技巧之外，仲要不斷學習同埋實踐。以下係幾個實用建議："
-    },
-    {
-      "type": "list",
-      "items": [
-        "**多做實驗：** 唔同嘅 Prompt 會產生唔同嘅結果，所以要多做實驗，比較唔同 Prompt 嘅效果，從中學習。",
-        "**睇多啲案例：** 學習其他人嘅 Prompt Engineering 案例，了解佢哋嘅設計思路同埋技巧。",
-        "**參與社群：** 加入 Prompt Engineering 嘅社群，同其他人交流經驗，共同進步。",
-        "**持續學習：** 關注 AI 技術嘅最新發展，學習新嘅 Prompt Engineering 技巧。"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": "記住，Prompt Engineering 唔係一蹴而就嘅技能，需要長時間嘅積累同埋不斷嘅學習。只要你堅持不懈，一定可以成為一個出色嘅 Prompt Engineer，為 AI 嘅發展做出貢獻。"
-    },
-    {
-      "type": "quote",
-      "text": "The future of AI is not about building smarter models, but about building better prompts.",
-      "author": "Unknown"
-    },
-    {
-      "type": "paragraph",
-      "text": "總之，Prompt Engineering 喺 2026 年嘅重要性不言而喻。學好 Prompt Engineering，可以幫助你嘅 AI 團隊開發出更加強大、更加可靠嘅 AI 應用，同時保護你嘅團隊免受唔必要嘅風險。希望呢篇指南可以幫助你更好地理解 Prompt Engineering，提升你嘅技能。如果你對 Prompt Engineering 有任何疑問，或者想了解更多相關資訊，歡迎隨時聯繫我哋 SkillAI.hk。多謝大家！"
+      "text": "總之，Prompt Engineering 喺 2026 年嘅重要性不言而喻。學好 Prompt Engineering，可以幫助你嘅 AI 團隊開發出更加強大、更加可靠嘅 AI 應用，同時保護你嘅團隊免受唔必要嘅風險。"
     },
     {
       "type": "cta",

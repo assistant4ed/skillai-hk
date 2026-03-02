@@ -10,7 +10,7 @@
   ],
   "sourceUrl": "https://www.youtube.com/watch?v=R7GZjRMsrzM",
   "auto": true,
-  "heroImage": "/mascot-hero.jpg",
+  "heroImage": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
   "content": [
     {
       "type": "heading",
@@ -18,7 +18,7 @@
     },
     {
       "type": "paragraph",
-      "text": "喂，大家好！今次我哋會深入探討 Higgsfield AI，一個可以將你啲靜態圖片變成專業級 AI 影片嘅神奇工具。無論你係 AI 初學者定係想提升影片製作技能嘅專業人士，呢個教學都啱曬你。我哋會由零開始，一步一步教你點樣用 Higgsfield AI，保證你學完之後可以輕鬆製作出令人驚艷嘅 AI 影片。"
+      "text": "喂，大家好！今次我哋會深入探討 Higgsfield AI，一個可以將你啲靜態圖片變成專業級 AI 影片嘅神奇工具。"
     },
     {
       "type": "subheading",
@@ -26,7 +26,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Higgsfield AI 係一個基於人工智能嘅影片生成平台，佢嘅強項就係可以將你嘅圖片、文字，甚至係簡單嘅指令，變成高質量嘅影片。相比起傳統嘅影片製作方法，Higgsfield AI 唔單止快好多，而且成本都低好多。你可以想像一下，以前要請攝影師、剪接師，仲要租場地，而家只需要上傳一張圖片，就可以搞掂曬！"
+      "text": "Higgsfield AI 係一個基於人工智能嘅影片生成平台，佢嘅強項就係可以將你嘅圖片、文字，甚至係簡單嘅指令，變成高質量嘅影片。相比起傳統嘅影片製作方法，Higgsfield AI 唔單止快好多，而且成本都低好多。"
     },
     {
       "type": "paragraph",
@@ -47,7 +47,7 @@
     },
     {
       "type": "paragraph",
-      "text": "首先，我哋要註冊一個 Higgsfield AI 帳戶。去 Higgsfield AI 嘅官方網站（https://higgsfield.ai/blog/AI-Video-Generator-How-to-Create-on-Higgsfiel），然後點擊「Sign Up」。你可以用你嘅 Google 帳戶或者電郵地址註冊。註冊完成之後，就可以開始使用 Higgsfield AI 嘅各種功能啦。"
+      "text": "首先，我哋要註冊一個 Higgsfield AI 帳戶。去 Higgsfield AI 嘅官方網站（https://higgsfield."
     },
     {
       "type": "subheading",
@@ -56,100 +56,6 @@
     {
       "type": "paragraph",
       "text": "好啦，我哋正式開始製作 AI 影片！以下係一個簡單嘅步驟教學："
-    },
-    {
-      "type": "list",
-      "items": [
-        "<b>選擇影片類型：</b> Higgsfield AI 提供多種影片類型，例如產品宣傳片、社交媒體短片、教學影片等等。根據你嘅需求選擇適合嘅類型。",
-        "<b>上傳圖片：</b> 將你想用嘅圖片上傳到 Higgsfield AI。你可以上傳多張圖片，Higgsfield AI 會自動將佢哋組合成一段影片。",
-        "<b>添加文字：</b> 喺影片中添加文字，例如標題、字幕、描述等等。你可以自定義文字嘅字體、大小、顏色同位置。",
-        "<b>選擇音樂：</b> 為你嘅影片選擇背景音樂。Higgsfield AI 提供咗好多免費音樂，你也可以上傳自己嘅音樂。",
-        "<b>調整參數：</b> Higgsfield AI 允許你調整影片嘅各種參數，例如轉場效果、動畫效果、濾鏡等等。你可以根據自己嘅喜好調整。",
-        "<b>生成影片：</b> 所有設定完成之後，就可以生成影片啦！Higgsfield AI 會自動將你嘅圖片、文字同音樂組合成一段專業級嘅影片。"
-      ]
-    },
-    {
-      "type": "subheading",
-      "text": "實戰演練：製作一個產品宣傳片"
-    },
-    {
-      "type": "paragraph",
-      "text": "為咗等大家更了解 Higgsfield AI 嘅用法，我哋嚟做一個實戰演練。假設我哋要為一個新推出嘅智能手錶製作一個宣傳片。以下係我哋嘅步驟："
-    },
-    {
-      "type": "list",
-      "items": [
-        "<b>準備圖片：</b> 準備幾張智能手錶嘅高清圖片，包括手錶嘅外觀、功能、使用場景等等。",
-        "<b>上傳圖片：</b> 將圖片上傳到 Higgsfield AI。",
-        "<b>添加文字：</b> 喺影片中添加文字，例如「全新智能手錶，功能強大，時尚外觀」、「健康監測，運動追蹤，智能提醒」等等。",
-        "<b>選擇音樂：</b> 選擇一首輕快、充滿活力嘅背景音樂。",
-        "<b>調整參數：</b> 調整轉場效果，令影片更加流暢。添加動畫效果，例如讓手錶嘅圖片旋轉、放大等等。",
-        "<b>生成影片：</b> 生成影片，然後預覽效果。如果覺得唔滿意，可以繼續調整參數。"
-      ]
-    },
-    {
-      "type": "paragraph",
-      "text": "通過呢個實戰演練，你可以睇到 Higgsfield AI 嘅強大功能。只需要幾個簡單嘅步驟，就可以製作出一個專業級嘅產品宣傳片。"
-    },
-    {
-      "type": "subheading",
-      "text": "進階技巧：提升影片質量嘅秘訣"
-    },
-    {
-      "type": "paragraph",
-      "text": "想製作出更高質量嘅 AI 影片？以下係幾個進階技巧："
-    },
-    {
-      "type": "list",
-      "items": [
-        "<b>使用高質量圖片：</b> 圖片嘅質量直接影響影片嘅質量。盡量使用高清、清晰嘅圖片。",
-        "<b>善用文字：</b> 文字可以幫助你更好地表達影片嘅主題。但係唔好添加太多文字，以免影響觀感。",
-        "<b>選擇合適嘅音樂：</b> 音樂可以營造氣氛，提升影片嘅感染力。選擇同影片主題相符嘅音樂。",
-        "<b>調整參數：</b> 唔同嘅參數會產生唔同嘅效果。多多嘗試，找到最適合你嘅設定。",
-        "<b>多參考其他影片：</b> 參考其他優秀嘅影片，學習佢哋嘅製作技巧。"
-      ]
-    },
-    {
-      "type": "subheading",
-      "text": "Higgsfield AI 嘅應用場景"
-    },
-    {
-      "type": "paragraph",
-      "text": "Higgsfield AI 嘅應用場景非常廣泛，以下係幾個常見嘅例子："
-    },
-    {
-      "type": "list",
-      "items": [
-        "<b>產品宣傳：</b> 製作產品宣傳片，吸引更多客戶。",
-        "<b>社交媒體營銷：</b> 製作社交媒體短片，提升品牌知名度。",
-        "<b>教育培訓：</b> 製作教學影片，幫助學生更好地學習。",
-        "<b>個人創作：</b> 製作個人影片，分享生活點滴。"
-      ]
-    },
-    {
-      "type": "subheading",
-      "text": "數據分析：Higgsfield AI 嘅優勢"
-    },
-    {
-      "type": "paragraph",
-      "text": "根據市場調查，使用 Higgsfield AI 製作影片嘅平均時間比傳統方法縮短 70%，成本降低 50%。此外，Higgsfield AI 製作嘅影片嘅點擊率比傳統影片高 20%。呢啲數據都表明 Higgsfield AI 係一個非常有效嘅影片製作工具。"
-    },
-    {
-      "type": "subheading",
-      "text": "常見問題解答 (FAQ)"
-    },
-    {
-      "type": "list",
-      "items": [
-        "<b>Higgsfield AI 係咪免費嘅？</b> Higgsfield AI 提供免費試用版本，但係如果想使用更多功能，就需要購買付費版本。",
-        "<b>Higgsfield AI 支援咩嘢格式嘅圖片？</b> Higgsfield AI 支援 JPG、PNG、GIF 等常見嘅圖片格式。",
-        "<b>Higgsfield AI 生成嘅影片嘅分辨率係幾多？</b> Higgsfield AI 生成嘅影片嘅分辨率可以根據你嘅需求選擇，最高可以達到 4K。",
-        "<b>我可唔可以將 Higgsfield AI 生成嘅影片用於商業用途？</b> 可以。只要你購買咗付費版本，就可以將 Higgsfield AI 生成嘅影片用於商業用途。"
-      ]
-    },
-    {
-      "type": "subheading",
-      "text": "總結：擁抱 AI 影片製作嘅未來"
     },
     {
       "type": "paragraph",

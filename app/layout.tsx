@@ -6,40 +6,108 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SkillAI.hk — AI 技能培訓平台',
-  description: '系統化 AI 技能培訓：從入門到架構師。2,800+ 學員完成課程，92% 推薦率。提供 Prompt Engineering、AI Agent 開發、OpenClaw 等實戰課程。',
-  authors: [{ name: 'SkillAI.hk' }],
+  metadataBase: new URL('https://skillai.hk'),
+  title: {
+    default: 'SkillAI.hk — 香港 AI 技能培訓平台 | AI課程 · Prompt教學 · Agent開發',
+    template: '%s | SkillAI.hk',
+  },
+  description: '香港首個系統化 AI 技能培訓平台。提供 Prompt Engineering、AI Agent 開發、ChatGPT/Claude 實戰課程。零基礎到架構師完整學習路徑，2,800+ 學員完成，92% 推薦率。',
+  authors: [{ name: 'SkillAI.hk', url: 'https://skillai.hk' }],
   manifest: '/site.webmanifest',
-  keywords: ['AI 課程', 'AI 培訓', 'Prompt Engineering', 'AI Agent', 'OpenClaw 課程', 'LangChain', 'ChatGPT 教學', '香港 AI 培訓', 'SkillAI'],
+  keywords: [
+    'AI課程', 'AI培訓', '香港AI課程', 'AI教學',
+    'Prompt Engineering', 'Prompt Engineering 教學', 'Prompt技巧',
+    'AI Agent', 'AI Agent 開發', 'OpenClaw',
+    'ChatGPT 教學', 'Claude 教學', 'Gemini 教學',
+    'LangChain', 'AI 圖片生成', 'AI 工具',
+    '人工智能課程', '機器學習入門',
+    'SkillAI', 'skillai.hk',
+    '香港 AI 培訓', 'Hong Kong AI training',
+  ],
   creator: 'SkillAI.hk',
-  publisher: 'SkillAI.hk',
-  robots: 'index, follow',
+  publisher: 'DeFiner Tech Ltd',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://skillai.hk',
+    languages: {
+      'zh-HK': 'https://skillai.hk',
+      'zh-TW': 'https://skillai.hk',
+      'en': 'https://skillai.hk',
+    },
+  },
   openGraph: {
-    title: 'SkillAI.hk — AI 技能培訓平台',
-    description: '系統化 AI 技能培訓，2,800+ 學員信賴。從零基礎到架構師的完整學習路徑。',
+    title: 'SkillAI.hk — 香港 AI 技能培訓平台',
+    description: '系統化 AI 技能培訓，2,800+ 學員信賴。Prompt Engineering · AI Agent · ChatGPT/Claude 實戰課程。',
     url: 'https://skillai.hk',
     siteName: 'SkillAI.hk',
     locale: 'zh_HK',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'SkillAI.hk AI 技能培訓平台' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SkillAI.hk — AI 技能培訓平台',
-    description: '系統化 AI 技能培訓，2,800+ 學員信賴',
+    title: 'SkillAI.hk — 香港 AI 技能培訓平台',
+    description: '系統化 AI 技能培訓。Prompt Engineering · AI Agent · ChatGPT/Claude 實戰。',
+    images: ['/og-image.png'],
   },
   icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
+  verification: {
+    google: 'pending-verification-code',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-HK">
       <head>
+        <link rel="canonical" href="https://skillai.hk" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'EducationalOrganization',
           name: 'SkillAI.hk',
-          description: 'AI 技能培訓平台',
+          description: '香港首個系統化 AI 技能培訓平台',
           url: 'https://skillai.hk',
+          logo: 'https://skillai.hk/logo.svg',
+          sameAs: [],
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Hong Kong',
+            addressCountry: 'HK',
+          },
+          areaServed: {
+            '@type': 'GeoCircle',
+            geoMidpoint: { '@type': 'GeoCoordinates', latitude: 22.3193, longitude: 114.1694 },
+          },
+          hasOfferingCatalog: {
+            '@type': 'OfferingCatalog',
+            name: 'AI 課程',
+            itemListElement: [
+              { '@type': 'Course', name: 'AI 入門：零基礎開始', description: '適合完全冇 AI 經驗嘅人', provider: { '@type': 'Organization', name: 'SkillAI.hk' } },
+              { '@type': 'Course', name: 'Prompt Engineering 實戰', description: '掌握同 AI 溝通嘅核心技巧', provider: { '@type': 'Organization', name: 'SkillAI.hk' } },
+              { '@type': 'Course', name: 'AI Agent 開發', description: '用 OpenClaw 建立自動化 AI Agent', provider: { '@type': 'Organization', name: 'SkillAI.hk' } },
+            ],
+          },
+        })}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'SkillAI.hk',
+          url: 'https://skillai.hk',
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: 'https://skillai.hk/friends?q={search_term_string}',
+            'query-input': 'required name=search_term_string',
+          },
         })}} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

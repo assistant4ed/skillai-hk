@@ -25,7 +25,7 @@ interface Post {
 /* ── All Articles ── */
 const curatedPosts: Post[] = [
   { id: 'ai-tools-daily-work', title: '2026 年必裝嘅 20 個 AI 工具：工作效率即刻翻倍', excerpt: '由寫 email 到整 PPT、由數據分析到客服自動化，覆蓋你日常工作嘅每個場景。', type: 'article', date: '2026-03-02', readTime: '6 分鐘', tags: ['AI 工具', '生產力', '2026 推薦'] },
-  { id: 'chatgpt-vs-claude-vs-gemini', title: 'ChatGPT vs Claude vs Gemini：2026 年邊個 AI 最適合你？', excerpt: '三大 AI 助手詳細比較。唔同場景用邊個最好？', type: 'article', date: '2026-03-01', readTime: '5 分鐘', tags: ['AI 比較', 'ChatGPT', 'Claude', 'Gemini'] },
+  { id: 'chatgpt-vs-claude-vs-gemini', title: '我每日用晒 ChatGPT、Claude、Gemini。講真，大部分人都揀錯咗。', excerpt: '用咗 300 日，花咗 US$600+。呢個係我嘅真實結論。', type: 'article', date: '2026-03-01', readTime: '5 分鐘', tags: ['AI 比較', 'ChatGPT', 'Claude', 'Gemini'] },
   { id: 'openclaw-enterprise-2026', title: '企業點用 OpenClaw 建立 AI 團隊？2026 完整攻略', excerpt: '三種企業部署方案分析，由 10 人團隊到 100+ 人都適用。', type: 'article', date: '2026-03-01', readTime: '8 分鐘', tags: ['OpenClaw', '企業 AI', '2026'] },
   { id: 'trump-anthropic-ban', title: 'Trump 封殺 Anthropic：AI 軍事化政治博弈點解咁重要？', excerpt: '美國政府禁止使用 Anthropic 產品，OpenAI 即刻補位。對我哋有咩影響？', type: 'news', date: '2026-03-01', tags: ['AI 新聞', 'Anthropic', 'OpenAI', '政策'] },
   { id: 'ai-image-gen-comparison', title: 'AI 圖片生成大比拼：Gemini 3 Pro vs DALL-E 4 vs Midjourney v7', excerpt: '實測三大工具，比較效果、速度、價格。', type: 'article', date: '2026-02-28', readTime: '5 分鐘', tags: ['圖片生成', 'Gemini', 'DALL-E', 'Midjourney'] },

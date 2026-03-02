@@ -1,6 +1,6 @@
 "use client";
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Logo from '../../components/Logo';
 
@@ -15,12 +15,14 @@ interface Post {
   date: string;
   readTime?: string;
   videoUrl?: string;
+  sourceUrl?: string;
   image?: string;
   tags: string[];
+  auto?: boolean;
 }
 
-/* ── Sample Posts (replace with CMS/MDX later) ── */
-const posts: Post[] = [
+/* ── Curated Posts (always shown) ── */
+const curatedPosts: Post[] = [
   {
     id: 'openclaw-enterprise-2026',
     title: '企業點用 OpenClaw 建立 AI 團隊？2026 完整攻略',
@@ -59,7 +61,7 @@ const posts: Post[] = [
   {
     id: 'first-ai-assistant-setup',
     title: '15 分鐘搭建你嘅第一個 AI 助手',
-    excerpt: '用 OpenClaw 從零開始，15 分鐘內擁有一個 24/7 在線嘅 AI 個人助手。完整教學影片。',
+    excerpt: '用 OpenClaw 從零開始，15 分鐘內擁有一個 24/7 在線嘅 AI 助手。完整教學影片。',
     type: 'video',
     date: '2026-02-20',
     readTime: '15 分鐘',
@@ -91,66 +93,98 @@ function R({ children, d = 0 }: { children: React.ReactNode; d?: number }) {
 /* ── Post Card ── */
 function PostCard({ post, index }: { post: Post; index: number }) {
   const tc = typeConfig[post.type];
-  return (
-    <R d={index * 0.08}>
-      <article style={{
-        background: '#fff',
-        borderRadius: 16,
-        overflow: 'hidden',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)',
-        transition: 'transform 0.2s, box-shadow 0.2s',
-        cursor: 'pointer',
-      }}
-      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.08)'; }}
-      onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)'; }}
-      >
-        {/* Type Badge */}
-        <div style={{ padding: '20px 20px 0' }}>
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: 6,
-            padding: '4px 12px', borderRadius: 20, fontSize: 13, fontWeight: 600,
-            background: tc.bg, color: tc.color,
-          }}>
-            {tc.emoji} {tc.label}
+  const cardContent = (
+    <article style={{
+      background: '#fff',
+      borderRadius: 16,
+      overflow: 'hidden',
+      boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)',
+      transition: 'transform 0.2s, box-shadow 0.2s',
+      cursor: 'pointer',
+      height: '100%',
+    }}
+    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.08)'; }}
+    onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)'; }}
+    >
+      <div style={{ padding: '20px 20px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <span style={{
+          display: 'inline-flex', alignItems: 'center', gap: 6,
+          padding: '4px 12px', borderRadius: 20, fontSize: 13, fontWeight: 600,
+          background: tc.bg, color: tc.color,
+        }}>
+          {tc.emoji} {tc.label}
+        </span>
+        {post.auto && <span style={{ fontSize: 10, color: '#bbb' }}>🤖 自動更新</span>}
+      </div>
+      <div style={{ padding: '12px 20px 20px' }}>
+        <h3 style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.4, marginBottom: 8, color: '#111' }}>
+          {post.title}
+        </h3>
+        <p style={{ fontSize: 14, color: '#666', lineHeight: 1.6, marginBottom: 12 }}>
+          {post.excerpt}
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
+          {post.tags.map(tag => (
+            <span key={tag} style={{
+              padding: '2px 8px', borderRadius: 6, fontSize: 12,
+              background: '#F3F4F6', color: '#6B7280',
+            }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13, color: '#999' }}>
+          <span>{post.date}</span>
+          <span style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            {post.readTime && <span>⏱ {post.readTime}</span>}
+            {post.sourceUrl && <span style={{ color: '#3B82F6' }}>↗ 閱讀原文</span>}
           </span>
         </div>
+      </div>
+    </article>
+  );
 
-        {/* Content */}
-        <div style={{ padding: '12px 20px 20px' }}>
-          <h3 style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.4, marginBottom: 8, color: '#111' }}>
-            {post.title}
-          </h3>
-          <p style={{ fontSize: 14, color: '#666', lineHeight: 1.6, marginBottom: 12 }}>
-            {post.excerpt}
-          </p>
-
-          {/* Tags */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
-            {post.tags.map(tag => (
-              <span key={tag} style={{
-                padding: '2px 8px', borderRadius: 6, fontSize: 12,
-                background: '#F3F4F6', color: '#6B7280',
-              }}>
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Meta */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13, color: '#999' }}>
-            <span>{post.date}</span>
-            {post.readTime && <span>⏱ {post.readTime}</span>}
-          </div>
-        </div>
-      </article>
+  return (
+    <R d={index * 0.08}>
+      {post.sourceUrl ? (
+        <a href={post.sourceUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
+          {cardContent}
+        </a>
+      ) : cardContent}
     </R>
   );
 }
 
 /* ── Main Page ── */
-export default function AIInsights() {
+export default function Friends() {
   const [filter, setFilter] = useState<PostType | 'all'>('all');
-  const filtered = filter === 'all' ? posts : posts.filter(p => p.type === filter);
+  const [allPosts, setAllPosts] = useState<Post[]>(curatedPosts);
+  const [lastUpdated, setLastUpdated] = useState<string>('');
+
+  // Load dynamic posts from data file (via API route or static import)
+  useEffect(() => {
+    fetch('/api/posts')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data?.posts) {
+          // Merge curated + dynamic, deduplicate
+          const seen = new Set<string>();
+          const merged: Post[] = [];
+          for (const p of [...curatedPosts, ...data.posts]) {
+            if (!seen.has(p.id)) {
+              seen.add(p.id);
+              merged.push(p);
+            }
+          }
+          merged.sort((a, b) => b.date.localeCompare(a.date));
+          setAllPosts(merged);
+          setLastUpdated(data.lastUpdated || '');
+        }
+      })
+      .catch(() => {/* Use curated posts as fallback */});
+  }, []);
+
+  const filtered = filter === 'all' ? allPosts : allPosts.filter(p => p.type === filter);
 
   return (
     <div style={{ minHeight: '100vh', background: '#FAFAFA' }}>
@@ -166,7 +200,7 @@ export default function AIInsights() {
         </Link>
         <nav style={{ display: 'flex', gap: 20, fontSize: 14 }}>
           <Link href="/courses" style={{ color: '#666', textDecoration: 'none' }}>課程</Link>
-          <Link href="/ai-insights" style={{ color: '#111', fontWeight: 600, textDecoration: 'none' }}>AI 動態</Link>
+          <Link href="/friends" style={{ color: '#111', fontWeight: 600, textDecoration: 'none' }}>AI 動態</Link>
         </nav>
       </header>
 
@@ -186,6 +220,11 @@ export default function AIInsights() {
             最新 AI 資訊、實用教學、工具評測。
             <br />幫你跟上 AI 時代，唔會被淘汰。
           </p>
+          {lastUpdated && (
+            <p style={{ fontSize: 12, color: '#bbb', marginTop: 8 }}>
+              🔄 上次更新: {lastUpdated.substring(0, 16).replace('T', ' ')}
+            </p>
+          )}
         </R>
       </section>
 
@@ -198,6 +237,7 @@ export default function AIInsights() {
           const active = filter === t;
           const label = t === 'all' ? '全部' : typeConfig[t].label;
           const emoji = t === 'all' ? '🔥' : typeConfig[t].emoji;
+          const count = t === 'all' ? allPosts.length : allPosts.filter(p => p.type === t).length;
           return (
             <button key={t} onClick={() => setFilter(t)} style={{
               padding: '8px 16px', borderRadius: 20, border: 'none',
@@ -207,7 +247,7 @@ export default function AIInsights() {
               boxShadow: active ? '0 2px 8px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.06)',
               transition: 'all 0.2s',
             }}>
-              {emoji} {label}
+              {emoji} {label} ({count})
             </button>
           );
         })}
@@ -225,6 +265,11 @@ export default function AIInsights() {
         {filtered.map((post, i) => (
           <PostCard key={post.id} post={post} index={i} />
         ))}
+        {filtered.length === 0 && (
+          <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: 40, color: '#999' }}>
+            暫時冇呢個類別嘅內容 🤷‍♂️
+          </div>
+        )}
       </main>
 
       {/* CTA */}

@@ -1,0 +1,52 @@
+{
+  "id": "ai-tools-daily-work",
+  "title": "2026 年必裝嘅 20 個 AI 工具：工作效率即刻翻倍",
+  "excerpt": "由寫 email 到整 PPT、由數據分析到客服自動化，呢 20 個 AI 工具覆蓋你日常工作嘅每個場景。",
+  "type": "article",
+  "date": "2026-03-02",
+  "readTime": "6 分鐘",
+  "tags": ["AI 工具", "生產力", "2026 推薦"],
+  "heroImage": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
+  "content": [
+    {"type": "heading", "text": "點解你需要 AI 工具？"},
+    {"type": "paragraph", "text": "2026 年，唔用 AI 工具嘅打工仔就好似用緊 Nokia 3310 返工。唔係話你唔得，而係人哋已經用緊智能手機跑贏你三條街。"},
+    {"type": "image", "src": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80", "alt": "AI productivity tools", "caption": "AI 工具已經融入日常工作流程"},
+    {"type": "heading", "text": "📝 寫作 & 文案"},
+    {"type": "list", "items": [
+      "Claude 4 — 最強中文寫作 AI，寫 email、報告、proposal 都好自然",
+      "ChatGPT Plus — 最全能，插件生態最豐富",
+      "Jasper — 專為 marketing 文案設計，有品牌聲音功能",
+      "Copy.ai — 快速生成社交媒體 post、廣告文案"
+    ]},
+    {"type": "heading", "text": "📊 數據分析"},
+    {"type": "list", "items": [
+      "Julius AI — 上傳 Excel/CSV，用自然語言問問題就出圖表",
+      "Rows.com — AI 加持嘅 spreadsheet，自動分析趨勢",
+      "Databricks AI — 企業級數據分析，支援 SQL + Python"
+    ]},
+    {"type": "heading", "text": "🎨 設計 & 圖片"},
+    {"type": "list", "items": [
+      "Canva AI — 一鍵生成 presentation、poster、social media 圖",
+      "Gemini 3 Pro Image — 最強真實感圖片生成",
+      "Remove.bg — 一秒去背景，免費好用",
+      "Ideogram — 最強文字渲染，整 logo 必備"
+    ]},
+    {"type": "image", "src": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80", "alt": "AI design tools", "caption": ""},
+    {"type": "heading", "text": "🎬 影片 & 音頻"},
+    {"type": "list", "items": [
+      "Descript — 用打字嘅方式剪片，改文字稿就改埋影片",
+      "ElevenLabs — 最自然嘅 AI 配音，支援廣東話",
+      "Runway Gen-3 — 文字生成影片，質素已經好接近專業級"
+    ]},
+    {"type": "heading", "text": "🤖 自動化 & 效率"},
+    {"type": "list", "items": [
+      "Zapier AI — 連接 5,000+ app 自動化工作流程",
+      "OpenClaw — 開源 AI 助手，24/7 幫你處理任務",
+      "Notion AI — 筆記 + 知識管理 + AI 搜索一體化",
+      "Otter.ai — 會議自動錄音、轉文字、生成摘要"
+    ]},
+    {"type": "heading", "text": "新手建議：由邊個開始？"},
+    {"type": "paragraph", "text": "唔使一次過裝晒。揀你最痛嘅 2-3 個場景，先試對應嘅工具。例如成日寫 email → 試 Claude；成日做 PPT → 試 Canva AI。用熟一個再加下一個。"},
+    {"type": "cta", "text": "想學識點用呢啲工具？睇入門課程 →", "link": "/courses"}
+  ]
+}

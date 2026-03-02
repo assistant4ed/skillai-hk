@@ -1,0 +1,45 @@
+{
+  "id": "ai-freelancer-toolkit",
+  "title": "Freelancer 必備 AI 工具包：一個人做到十個人嘅量",
+  "excerpt": "設計、寫文、剪片、報價、客服全部用 AI。Freelancer 嘅 2026 年生存指南。",
+  "type": "article",
+  "date": "2026-02-18",
+  "readTime": "5 分鐘",
+  "tags": ["Freelancer", "自由工作者", "AI 工具"],
+  "heroImage": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
+  "content": [
+    {"type": "heading", "text": "Freelancer 嘅 AI 革命"},
+    {"type": "paragraph", "text": "以前做 freelancer，最大嘅問題係乜都要自己做。而家有 AI，你一個人可以做到以前成個 team 嘅工作量。以下按工作流程推薦工具。"},
+    {"type": "heading", "text": "💼 接單 & 報價"},
+    {"type": "list", "items": [
+      "ChatGPT / Claude — 幫你寫 proposal、估價、同客戶溝通",
+      "Bonsai AI — 自動生成合約 + 追蹤 invoice",
+      "技巧：用 AI 分析客戶嘅 brief，自動估算工時同報價"
+    ]},
+    {"type": "heading", "text": "🎨 設計 & 創作"},
+    {"type": "list", "items": [
+      "Canva AI — 平面設計、logo、social media 圖",
+      "Figma AI — UI/UX 設計，自動 layout suggestions",
+      "Gemini 3 Pro — 生成產品圖、概念圖",
+      "Midjourney v7 — 高端藝術風格插圖"
+    ]},
+    {"type": "image", "src": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80", "alt": "freelancer tools", "caption": ""},
+    {"type": "heading", "text": "✍️ 內容創作"},
+    {"type": "list", "items": [
+      "Claude 4 — 長文、blog、案例分析",
+      "Hemingway Editor — 幫你寫得更簡潔有力",
+      "Grammarly — 英文文法 + 語氣調整",
+      "技巧：先人手寫大綱 → AI 擴寫 → 人手 review，質素最好"
+    ]},
+    {"type": "heading", "text": "📊 管理 & 效率"},
+    {"type": "list", "items": [
+      "Notion AI — Project 管理 + 客戶筆記",
+      "Calendly — 自動約 meeting，減少來回溝通",
+      "Toggl — 記錄工時，計算每個 project 嘅時薪",
+      "Zapier AI — 自動化重複工作（收到 email → 建 task → 通知客戶）"
+    ]},
+    {"type": "heading", "text": "💰 ROI 估算"},
+    {"type": "paragraph", "text": "工具月費約 HK$500-1,000。但慳返嘅時間等於每月多接 2-3 個 project。如果你嘅 day rate 係 HK$2,000，即係每月多賺 HK$4,000-6,000。ROI 超過 400%。"},
+    {"type": "cta", "text": "想建立你嘅 AI 工作流？→", "link": "/courses"}
+  ]
+}

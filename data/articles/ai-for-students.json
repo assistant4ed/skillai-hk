@@ -1,0 +1,47 @@
+{
+  "id": "ai-for-students",
+  "title": "學生必睇：8 個 AI 工具幫你讀書考試事半功倍",
+  "excerpt": "由整筆記到溫書、由寫論文到做 project，呢 8 個 AI 工具係你嘅秘密武器。",
+  "type": "tip",
+  "date": "2026-02-20",
+  "readTime": "4 分鐘",
+  "tags": ["學生", "學習工具", "考試"],
+  "heroImage": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
+  "content": [
+    {"type": "heading", "text": "AI 唔係作弊，係識得用工具"},
+    {"type": "paragraph", "text": "用 AI 唔等於抄功課。聰明嘅學生用 AI 幫自己理解概念、整理筆記、練習題目。以下工具全部合規使用，幫你學得更快更深。"},
+    {"type": "heading", "text": "📚 筆記 & 整理"},
+    {"type": "list", "items": [
+      "Notion AI — 整筆記最強工具，AI 自動整理、搜索、生成摘要",
+      "Otter.ai — 上堂錄音自動轉文字，唔會漏聽重點",
+      "技巧：錄音後叫 AI 按主題分類 + 標記考試重點"
+    ]},
+    {"type": "heading", "text": "🧠 溫書 & 理解"},
+    {"type": "list", "items": [
+      "ChatGPT / Claude — 唔明嘅概念，叫 AI 用簡單例子解釋",
+      "Quizlet AI — 自動生成 flashcards + 測驗題目",
+      "技巧：用「費曼學習法」prompt —「用教小學生嘅方式解釋 quantum mechanics」"
+    ]},
+    {"type": "image", "src": "https://images.unsplash.com/photo-1684487747720-1ba29cda82c8?w=800&q=80", "alt": "AI for students", "caption": ""},
+    {"type": "heading", "text": "✍️ 寫作 & 論文"},
+    {"type": "list", "items": [
+      "Grammarly — 英文語法檢查 + 改善寫作風格",
+      "Elicit — 學術論文搜索 AI，自動摘要 + 找引用",
+      "技巧：唔好叫 AI 幫你寫成篇，而係用佢整大綱 → 自己寫 → 叫 AI review"
+    ]},
+    {"type": "heading", "text": "💡 做 Project & Presentation"},
+    {"type": "list", "items": [
+      "Gamma — AI 自動生成靚 presentation，輸入主題就搞掂",
+      "Beautiful.ai — 專業設計 template + AI 排版",
+      "技巧：先用 Claude 整 project 大綱 → 再用 Gamma 生成 slides"
+    ]},
+    {"type": "heading", "text": "⚠️ 注意事項"},
+    {"type": "list", "items": [
+      "唔好直接 copy AI 嘅答案交功課 — Turnitin 會捉到",
+      "用 AI 理解概念，再用自己嘅話寫出嚟",
+      "引用 AI 生成嘅資料前，check 返原始出處",
+      "有啲學校禁止特定 AI 工具，記得 check 校規"
+    ]},
+    {"type": "cta", "text": "想系統學 AI？由入門課程開始 →", "link": "/courses"}
+  ]
+}

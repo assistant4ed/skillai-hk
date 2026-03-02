@@ -22,53 +22,23 @@ interface Post {
   hasArticle?: boolean;
 }
 
-/* ── Curated Posts (always shown) ── */
+/* ── All Articles ── */
 const curatedPosts: Post[] = [
-  {
-    id: 'openclaw-enterprise-2026',
-    title: '企業點用 OpenClaw 建立 AI 團隊？2026 完整攻略',
-    excerpt: 'OpenClaw 已經唔只係個人助手。Runlayer 推出企業版，支援 SOC 2、HIPAA，加上 ToolGuard 安全層。本文分析三種企業部署方案...',
-    type: 'article',
-    date: '2026-03-01',
-    readTime: '8 分鐘',
-    tags: ['OpenClaw', '企業 AI', '2026'],
-  },
-  {
-    id: 'ai-image-gen-comparison',
-    title: 'AI 圖片生成大比拼：Gemini 3 Pro vs DALL-E 4 vs Midjourney v7',
-    excerpt: '實測三大 AI 圖片生成工具，用同一個 prompt 比較效果、速度、價格。邊個最適合你？',
-    type: 'article',
-    date: '2026-02-28',
-    readTime: '5 分鐘',
-    tags: ['圖片生成', 'Gemini', 'DALL-E', 'Midjourney'],
-  },
-  {
-    id: 'prompt-engineering-tips',
-    title: '5 個即學即用嘅 Prompt 技巧',
-    excerpt: '唔使上堂都可以即刻提升你同 AI 嘅溝通效率。呢 5 個技巧我自己每日都用。',
-    type: 'tip',
-    date: '2026-02-25',
-    readTime: '3 分鐘',
-    tags: ['Prompt Engineering', '實用技巧'],
-  },
-  {
-    id: 'trump-anthropic-ban',
-    title: 'Trump 封殺 Anthropic：AI 軍事化政治博弈點解咁重要？',
-    excerpt: '美國政府禁止使用 Anthropic 產品，OpenAI 即刻補位五角大樓。呢場 AI 倫理大戰對我哋有咩影響？',
-    type: 'news',
-    date: '2026-03-01',
-    tags: ['AI 新聞', 'Anthropic', 'OpenAI', '政策'],
-  },
-  {
-    id: 'first-ai-assistant-setup',
-    title: '15 分鐘搭建你嘅第一個 AI 助手',
-    excerpt: '用 OpenClaw 從零開始，15 分鐘內擁有一個 24/7 在線嘅 AI 助手。完整教學影片。',
-    type: 'video',
-    date: '2026-02-20',
-    readTime: '15 分鐘',
-    videoUrl: '#',
-    tags: ['教學', 'OpenClaw', '入門'],
-  },
+  { id: 'ai-tools-daily-work', title: '2026 年必裝嘅 20 個 AI 工具：工作效率即刻翻倍', excerpt: '由寫 email 到整 PPT、由數據分析到客服自動化，覆蓋你日常工作嘅每個場景。', type: 'article', date: '2026-03-02', readTime: '6 分鐘', tags: ['AI 工具', '生產力', '2026 推薦'] },
+  { id: 'chatgpt-vs-claude-vs-gemini', title: 'ChatGPT vs Claude vs Gemini：2026 年邊個 AI 最適合你？', excerpt: '三大 AI 助手詳細比較。唔同場景用邊個最好？', type: 'article', date: '2026-03-01', readTime: '5 分鐘', tags: ['AI 比較', 'ChatGPT', 'Claude', 'Gemini'] },
+  { id: 'openclaw-enterprise-2026', title: '企業點用 OpenClaw 建立 AI 團隊？2026 完整攻略', excerpt: '三種企業部署方案分析，由 10 人團隊到 100+ 人都適用。', type: 'article', date: '2026-03-01', readTime: '8 分鐘', tags: ['OpenClaw', '企業 AI', '2026'] },
+  { id: 'trump-anthropic-ban', title: 'Trump 封殺 Anthropic：AI 軍事化政治博弈點解咁重要？', excerpt: '美國政府禁止使用 Anthropic 產品，OpenAI 即刻補位。對我哋有咩影響？', type: 'news', date: '2026-03-01', tags: ['AI 新聞', 'Anthropic', 'OpenAI', '政策'] },
+  { id: 'ai-image-gen-comparison', title: 'AI 圖片生成大比拼：Gemini 3 Pro vs DALL-E 4 vs Midjourney v7', excerpt: '實測三大工具，比較效果、速度、價格。', type: 'article', date: '2026-02-28', readTime: '5 分鐘', tags: ['圖片生成', 'Gemini', 'DALL-E', 'Midjourney'] },
+  { id: 'ai-automate-small-business', title: '中小企 AI 自動化指南：5 個即用方案幫你慳人手', excerpt: '唔使請 IT，呢 5 個方案即刻幫你慳時間、減成本。', type: 'article', date: '2026-02-27', readTime: '5 分鐘', tags: ['中小企', '自動化', 'AI 方案'] },
+  { id: 'learn-ai-zero-to-hero', title: '零基礎學 AI 路線圖：30 日從「AI 係咩」到「日日用 AI」', excerpt: '唔識 coding 都可以學。30 日計劃帶你從零到熟練。', type: 'tip', date: '2026-02-26', readTime: '4 分鐘', tags: ['入門', '學習路線', '零基礎'] },
+  { id: 'prompt-engineering-tips', title: '5 個即學即用嘅 Prompt 技巧', excerpt: '即刻提升你同 AI 嘅溝通效率。我自己每日都用。', type: 'tip', date: '2026-02-25', readTime: '3 分鐘', tags: ['Prompt Engineering', '實用技巧'] },
+  { id: 'ai-coding-tools-2026', title: '2026 年 10 大 AI Coding 工具', excerpt: 'AI 改變咗寫 code 嘅方式。呢 10 個工具幫你寫更快、debug 更準。', type: 'article', date: '2026-02-24', readTime: '5 分鐘', tags: ['Coding', 'AI 工具', '開發者'] },
+  { id: 'ai-video-tools', title: 'AI 影片製作工具大全：一個人做出專業級影片', excerpt: '唔使請攝影師、剪接師。呢啲 AI 工具幫你一個人搞掂。', type: 'article', date: '2026-02-22', readTime: '5 分鐘', tags: ['影片製作', 'AI 工具', 'Content Creation'] },
+  { id: 'ai-for-students', title: '學生必睇：8 個 AI 工具幫你讀書考試事半功倍', excerpt: '由整筆記到溫書、寫論文到做 project 嘅秘密武器。', type: 'tip', date: '2026-02-20', readTime: '4 分鐘', tags: ['學生', '學習工具', '考試'] },
+  { id: 'first-ai-assistant-setup', title: '15 分鐘搭建你嘅第一個 AI 助手', excerpt: '用 OpenClaw 從零開始，15 分鐘擁有 24/7 AI 助手。', type: 'video', date: '2026-02-20', readTime: '15 分鐘', tags: ['教學', 'OpenClaw', '入門'] },
+  { id: 'ai-freelancer-toolkit', title: 'Freelancer 必備 AI 工具包：一個人做到十個人嘅量', excerpt: '設計、寫文、剪片、報價、客服全部用 AI。', type: 'article', date: '2026-02-18', readTime: '5 分鐘', tags: ['Freelancer', '自由工作者', 'AI 工具'] },
+  { id: 'ai-data-analysis-no-code', title: '唔識 Code 都可以做數據分析：6 個 No-Code AI 工具', excerpt: '上傳 Excel 就出圖表、問問題就有答案。', type: 'tip', date: '2026-02-16', readTime: '4 分鐘', tags: ['數據分析', 'No-Code', 'Excel'] },
+  { id: 'ai-security-privacy-guide', title: '用 AI 前必讀：私隱安全 10 大注意事項', excerpt: '你畀 AI 嘅資料去咗邊？點樣安全咁用 AI？', type: 'article', date: '2026-02-14', readTime: '4 分鐘', tags: ['私隱', '安全', 'AI 使用指南'] },
 ];
 
 const typeConfig: Record<PostType, { emoji: string; label: string; color: string; bg: string }> = {

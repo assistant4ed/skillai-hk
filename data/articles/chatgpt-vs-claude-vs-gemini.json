@@ -1,0 +1,49 @@
+{
+  "id": "chatgpt-vs-claude-vs-gemini",
+  "title": "ChatGPT vs Claude vs Gemini：2026 年邊個 AI 最適合你？",
+  "excerpt": "三大 AI 助手詳細比較。唔同場景用邊個最好？答案可能同你想嘅唔同。",
+  "type": "article",
+  "date": "2026-03-01",
+  "readTime": "5 分鐘",
+  "tags": ["AI 比較", "ChatGPT", "Claude", "Gemini"],
+  "heroImage": "https://images.unsplash.com/photo-1684487747720-1ba29cda82c8?w=800&q=80",
+  "content": [
+    {"type": "heading", "text": "三大 AI 各有強項"},
+    {"type": "paragraph", "text": "好多人問：「邊個 AI 最好？」答案係 — 冇最好，只有最適合。每個 AI 都有自己嘅強項同弱點。識得喺正確場景用正確工具，先係真正嘅 AI 高手。"},
+    {"type": "image", "src": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80", "alt": "AI comparison", "caption": ""},
+    {"type": "heading", "text": "📝 寫作能力"},
+    {"type": "list", "items": [
+      "🥇 Claude 4 — 中文寫作最自然，唔會有「AI 味」。長文、報告、創意寫作都好強",
+      "🥈 ChatGPT — 英文寫作略勝，但中文偶爾會用大陸用語",
+      "🥉 Gemini — 寫作普通，但勝在可以搜索最新資訊"
+    ]},
+    {"type": "heading", "text": "💻 寫 Code"},
+    {"type": "list", "items": [
+      "🥇 Claude 4 (Opus) — 大型項目、重構、debug 最強",
+      "🥈 ChatGPT (o3) — 數學推理同演算法題目好犀利",
+      "🥉 Gemini 2.0 — 速度最快，適合簡單腳本"
+    ]},
+    {"type": "heading", "text": "🔍 搜索 & 即時資訊"},
+    {"type": "list", "items": [
+      "🥇 Gemini — 直接連接 Google，即時資訊最準確",
+      "🥈 ChatGPT — Browse 功能改善咗好多，但偶爾搜錯嘢",
+      "🥉 Claude — 冇內建搜索，需要配合其他工具"
+    ]},
+    {"type": "heading", "text": "🎨 圖片理解 & 多模態"},
+    {"type": "list", "items": [
+      "🥇 Gemini 2.0 — 圖片、影片、PDF 分析都最強",
+      "🥈 ChatGPT — Vision 能力好，但影片分析較慢",
+      "🥉 Claude — 圖片理解 OK，但唔支援影片"
+    ]},
+    {"type": "heading", "text": "💰 價格比較（2026 年 3 月）"},
+    {"type": "list", "items": [
+      "ChatGPT Plus: US$20/月（包 GPT-4o + o3-mini）",
+      "Claude Pro: US$20/月（包 Opus 4 + Sonnet 4）",
+      "Gemini Advanced: US$20/月（包 2.0 Pro + Flash）",
+      "免費版：三個都有，但限制多"
+    ]},
+    {"type": "heading", "text": "我嘅推薦組合"},
+    {"type": "paragraph", "text": "最抵玩法：付費訂閱一個（揀最常用嘅場景），其餘兩個用免費版。或者用 OpenRouter 按量付費，邊個模型都可以用，用幾多畀幾多。"},
+    {"type": "cta", "text": "想學識分辨邊個場景用邊個 AI？→", "link": "/courses"}
+  ]
+}

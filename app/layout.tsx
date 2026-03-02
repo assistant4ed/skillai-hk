@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   },
   icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
   verification: {
-    google: 'pending-verification-code',
+    google: 'RDvZNXOBZMSpcog3o8Ccss21_TpIZ3vbX0b_bAo4aX4',
   },
 };
 
@@ -74,8 +74,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Google Tag Manager — replace GTM-XXXXXXX with actual ID after setup */}
         <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PLACEHOLDER');` }} />
         {/* Google Analytics 4 — replace G-XXXXXXX with actual ID */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER" />
-        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PLACEHOLDER');` }} />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGXHLSTR86" />
+        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PGXHLSTR86');` }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'EducationalOrganization',

@@ -1,0 +1,111 @@
+{
+  "id": "firecrawl-smart-scraper",
+  "title": "Firecrawl + LLM = 智能爬蟲：5 分鐘提取任何網站數據",
+  "excerpt": "Firecrawl 係下一代網絡爬蟲工具，一個 API 調用就能將任何網站轉成結構化 Markdown，再配合 LLM 做智能提取。支援 JavaScript 渲染、PDF 提取、自動 crawl。GitHub 28K 星星。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "8 分鐘",
+  "tags": ["Firecrawl", "爬蟲", "LLM", "數據提取", "開源"],
+  "heroImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "傳統爬蟲碰到 React/Vue 動態網站就死火，碰到 Cloudflare 就 blocked，碰到 PDF 就直接放棄。Firecrawl 解決晒呢啲問題：佢會處理 JavaScript 渲染、反爬蟲機制、PDF 解析，最後輸出乾淨嘅 Markdown，直接可以餵入 LLM。GitHub 超過 28K 星星。"
+    },
+    {
+      "type": "heading",
+      "text": "Firecrawl 能做咩？"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Scrape：將單個 URL 轉成 Markdown/HTML/JSON，支援 JavaScript 渲染",
+        "Crawl：自動爬取整個網站，遵守 sitemap 同 robots.txt",
+        "Map：快速獲取網站所有 URL 列表，唔需要逐頁爬",
+        "Extract：用 LLM 從網頁提取結構化數據（填 schema 就得）",
+        "支援 PDF、Word、圖片 OCR 提取",
+        "GitHub: mendableai/firecrawl（28K+ 星星）"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "快速開始：API 用法"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝 Python SDK\npip install firecrawl-py\n\n# 或者 Node.js\nnpm install @mendable/firecrawl-js\n\n# 申請免費 API Key\n# https://www.firecrawl.dev （每月 500 次免費）"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from firecrawl import FirecrawlApp\n\napp = FirecrawlApp(api_key='fc-xxxxxxxxxxxxx')\n\n# 基本 Scrape：轉成 Markdown\nresult = app.scrape_url(\n    'https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/03/',\n    formats=['markdown']\n)\nprint(result['markdown'][:1000])\n\n# 帶截圖\nresult = app.scrape_url(\n    'https://example.com',\n    formats=['markdown', 'screenshot']\n)\nprint(result['screenshot'])  # base64 encoded image"
+    },
+    {
+      "type": "heading",
+      "text": "用 LLM 提取結構化數據"
+    },
+    {
+      "type": "paragraph",
+      "text": "Firecrawl 最強大嘅功能係 Extract：你定義一個 JSON schema，佢自動用 LLM 從網頁提取符合格式嘅數據："
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from firecrawl import FirecrawlApp\nfrom pydantic import BaseModel\nfrom typing import List, Optional\n\napp = FirecrawlApp(api_key='fc-xxxxxxxxxxxxx')\n\n# 定義你想提取嘅數據結構\nclass JobListing(BaseModel):\n    title: str\n    company: str\n    location: str\n    salary: Optional[str]\n    requirements: List[str]\n    posted_date: Optional[str]\n\nclass JobListings(BaseModel):\n    jobs: List[JobListing]\n\n# 提取招聘信息\nresult = app.extract(\n    ['https://www.jobsdb.com/hk/search-jobs/ai-engineer/1'],\n    {\n        'prompt': '提取所有職位招聘資訊',\n        'schema': JobListings.model_json_schema()\n    }\n)\n\nfor job in result['data']['jobs']:\n    print(f\"{job['title']} @ {job['company']} - {job.get('salary', '未公開')}\")"
+    },
+    {
+      "type": "heading",
+      "text": "批量爬取整個網站"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from firecrawl import FirecrawlApp\n\napp = FirecrawlApp(api_key='fc-xxxxxxxxxxxxx')\n\n# 爬取整個網站\ncrawl_result = app.crawl_url(\n    'https://docs.anthropic.com',\n    params={\n        'limit': 100,             # 最多爬 100 頁\n        'maxDepth': 3,           # 最深 3 層\n        'allowBackwardLinks': False,\n        'scrapeOptions': {\n            'formats': ['markdown'],\n            'onlyMainContent': True  # 只要主要內容，去掉 nav/footer\n        }\n    }\n)\n\n# 結果係所有頁面嘅 Markdown\nfor page in crawl_result['data']:\n    print(f\"URL: {page['url']}\")\n    print(f\"內容長度: {len(page['markdown'])} 字符\")\n    print(\"---\")"
+    },
+    {
+      "type": "heading",
+      "text": "自建 Firecrawl（完全私有）"
+    },
+    {
+      "type": "paragraph",
+      "text": "如果有私隱要求，可以用 Docker 自建 Firecrawl 服務："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Clone 倉庫\ngit clone https://github.com/mendableai/firecrawl.git\ncd firecrawl\n\n# 設定環境變數\ncp .env.example .env\n# 編輯 .env，設定 OPENAI_API_KEY 或 ANTHROPIC_API_KEY\n\n# 啟動服務\ndocker-compose up -d\n\n# 測試\ncurl -X POST http://localhost:3002/v1/scrape \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"url\": \"https://example.com\", \"formats\": [\"markdown\"]}'"
+    },
+    {
+      "type": "heading",
+      "text": "實際用例：建立 RAG 知識庫"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from firecrawl import FirecrawlApp\nfrom anthropic import Anthropic\n\napp = FirecrawlApp(api_key='fc-xxxxx')\nclaude = Anthropic(api_key='sk-ant-xxxxx')\n\n# Step 1：爬取文檔網站\nresult = app.crawl_url(\n    'https://docs.mycompany.com',\n    params={'limit': 50, 'scrapeOptions': {'formats': ['markdown']}}\n)\n\n# Step 2：將所有頁面合併成知識庫\nknowledge_base = '\\n\\n---\\n\\n'.join(\n    [page['markdown'] for page in result['data']]\n)\n\n# Step 3：問 AI 問題\nresponse = claude.messages.create(\n    model='claude-sonnet-4-6',\n    max_tokens=1024,\n    messages=[{\n        'role': 'user',\n        'content': f'根據以下文檔回答：我哋嘅 API 認證方式係咩？\\n\\n{knowledge_base[:50000]}'\n    }]\n)\nprint(response.content[0].text)"
+    },
+    {
+      "type": "heading",
+      "text": "Node.js 版本"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "import FirecrawlApp from '@mendable/firecrawl-js';\n\nconst app = new FirecrawlApp({ apiKey: 'fc-xxxxx' });\n\n// 爬取並提取\nconst result = await app.extract(\n  ['https://news.ycombinator.com'],\n  {\n    prompt: '提取今日 Hacker News 頭條新聞標題、鏈接、評論數',\n    schema: {\n      type: 'object',\n      properties: {\n        stories: {\n          type: 'array',\n          items: {\n            type: 'object',\n            properties: {\n              title: { type: 'string' },\n              url: { type: 'string' },\n              comments: { type: 'number' }\n            }\n          }\n        }\n      }\n    }\n  }\n);\n\nconsole.log(result.data.stories.slice(0, 5));"
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "Firecrawl 係目前最強嘅 LLM-ready 爬蟲工具。佢唔只係爬蟲，更係一個完整嘅數據提取管線：爬取 → 清洗 → 結構化，每一步都幫你搞掂。如果你有任何「從網站提取數據」嘅需求，Firecrawl 係首選工具。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: mendableai/firecrawl (28K ⭐) →",
+      "link": "https://github.com/mendableai/firecrawl"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "id": "mcp-protocol-guide",
+  "title": "MCP 協議入門：AI Agent 嘅 USB 標準，點樣寫你第一個 MCP Server",
+  "excerpt": "Model Context Protocol（MCP）係 Anthropic 推出嘅開放標準，讓 AI 可以安全連接外部工具同數據源。就好似 USB 一樣，裝一個 MCP server 就能給 Claude 新能力。GitHub 40K 星星。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "10 分鐘",
+  "tags": ["MCP", "Anthropic", "AI Agent", "開源", "協議"],
+  "heroImage": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "想讓 Claude 讀你嘅 Notion 文件？讓 AI 直接操作你嘅資料庫？MCP（Model Context Protocol）係 Anthropic 推出嘅開放標準協議，讓任何 AI 助手可以安全地連接外部工具同數據。就好似 USB 標準：你裝咗 MCP server，AI 就自動識用。GitHub 超過 40K 星星。"
+    },
+    {
+      "type": "heading",
+      "text": "MCP 係咩？點解需要佢？"
+    },
+    {
+      "type": "paragraph",
+      "text": "未有 MCP 之前，每個 AI 工具都要自己寫 integration。有咗 MCP，任何人都可以寫一個標準嘅 MCP server，然後所有支援 MCP 嘅 AI（Claude、GPT、Cursor 等）都可以直接用。"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Tools：讓 AI 執行操作（執行 shell 指令、API 調用、數據庫查詢）",
+        "Resources：讓 AI 讀取數據（文件內容、數據庫結果、API 數據）",
+        "Prompts：預定義嘅 prompt template，AI 可以使用",
+        "Sampling：AI 可以向 MCP server 請求生成文字",
+        "已有 1000+ 官方同社區 MCP servers：GitHub: modelcontextprotocol/servers"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "現有 MCP Servers：直接可用"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝常用 MCP servers\n# Filesystem（讀寫文件）\nnpm install -g @modelcontextprotocol/server-filesystem\n\n# GitHub（操作 repo）\nnpm install -g @modelcontextprotocol/server-github\n\n# PostgreSQL（查數據庫）\nnpm install -g @modelcontextprotocol/server-postgres\n\n# Brave Search（搜索互聯網）\nnpm install -g @modelcontextprotocol/server-brave-search\n\n# Slack（發送消息）\nnpm install -g @modelcontextprotocol/server-slack"
+    },
+    {
+      "type": "paragraph",
+      "text": "安裝後，喺 Claude Desktop 或者 Claude Code 嘅設定文件加入配置："
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "code": "// ~/.claude/claude_desktop_config.json\n{\n  \"mcpServers\": {\n    \"filesystem\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-filesystem\", \"/Users/yourname/Documents\"]\n    },\n    \"github\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-github\"],\n      \"env\": {\n        \"GITHUB_PERSONAL_ACCESS_TOKEN\": \"ghp_xxxxx\"\n      }\n    },\n    \"postgres\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@modelcontextprotocol/server-postgres\",\n               \"postgresql://localhost/mydb\"]\n    }\n  }\n}"
+    },
+    {
+      "type": "heading",
+      "text": "寫你嘅第一個 MCP Server（Python）"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝 MCP Python SDK\npip install mcp"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# weather_mcp.py\nimport asyncio\nfrom mcp.server import Server\nfrom mcp.server.stdio import stdio_server\nfrom mcp import types\nimport httpx\n\n# 建立 MCP server\nserver = Server('weather-server')\n\n@server.list_tools()\nasync def list_tools() -> list[types.Tool]:\n    \"\"\"列出可用工具\"\"\"\n    return [\n        types.Tool(\n            name='get_weather',\n            description='獲取指定城市嘅天氣',\n            inputSchema={\n                'type': 'object',\n                'properties': {\n                    'city': {\n                        'type': 'string',\n                        'description': '城市名稱，例如 Hong Kong'\n                    }\n                },\n                'required': ['city']\n            }\n        )\n    ]\n\n@server.call_tool()\nasync def call_tool(name: str, arguments: dict) -> list[types.TextContent]:\n    \"\"\"執行工具\"\"\"\n    if name == 'get_weather':\n        city = arguments['city']\n        \n        # 調用天氣 API\n        async with httpx.AsyncClient() as client:\n            response = await client.get(\n                f'https://wttr.in/{city}?format=3'\n            )\n        \n        return [\n            types.TextContent(\n                type='text',\n                text=f'{city} 天氣：{response.text}'\n            )\n        ]\n    \n    raise ValueError(f'Unknown tool: {name}')\n\nasync def main():\n    async with stdio_server() as (read_stream, write_stream):\n        await server.run(\n            read_stream,\n            write_stream,\n            server.create_initialization_options()\n        )\n\nif __name__ == '__main__':\n    asyncio.run(main())"
+    },
+    {
+      "type": "heading",
+      "text": "加入 Claude Desktop"
+    },
+    {
+      "type": "code",
+      "language": "json",
+      "code": "// ~/.claude/claude_desktop_config.json\n{\n  \"mcpServers\": {\n    \"weather\": {\n      \"command\": \"python\",\n      \"args\": [\"/path/to/weather_mcp.py\"]\n    }\n  }\n}"
+    },
+    {
+      "type": "paragraph",
+      "text": "重啟 Claude Desktop 後，你就可以問佢「香港今日天氣係咩？」，佢會自動用你嘅 MCP tool 獲取實時天氣。"
+    },
+    {
+      "type": "heading",
+      "text": "進階：帶 Resources 嘅 MCP Server"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from mcp.server import Server\nfrom mcp import types\nimport json\n\nserver = Server('company-knowledge')\n\n@server.list_resources()\nasync def list_resources() -> list[types.Resource]:\n    return [\n        types.Resource(\n            uri='company://handbook',\n            name='公司員工手冊',\n            description='包括假期、福利、行為準則',\n            mimeType='text/plain'\n        ),\n        types.Resource(\n            uri='company://products',\n            name='產品目錄',\n            description='所有產品嘅詳細資訊',\n            mimeType='application/json'\n        )\n    ]\n\n@server.read_resource()\nasync def read_resource(uri: str) -> str:\n    if uri == 'company://handbook':\n        with open('handbook.txt', 'r') as f:\n            return f.read()\n    elif uri == 'company://products':\n        with open('products.json', 'r') as f:\n            return f.read()\n    raise ValueError(f'Unknown resource: {uri}')"
+    },
+    {
+      "type": "heading",
+      "text": "用 TypeScript 寫 MCP Server"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝 TypeScript SDK\nnpm install @modelcontextprotocol/sdk"
+    },
+    {
+      "type": "code",
+      "language": "javascript",
+      "code": "// calculator_server.ts\nimport { Server } from '@modelcontextprotocol/sdk/server/index.js';\nimport { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';\nimport { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';\n\nconst server = new Server(\n  { name: 'calculator', version: '1.0.0' },\n  { capabilities: { tools: {} } }\n);\n\nserver.setRequestHandler(ListToolsRequestSchema, async () => ({\n  tools: [{\n    name: 'calculate',\n    description: '計算數學表達式',\n    inputSchema: {\n      type: 'object',\n      properties: {\n        expression: { type: 'string', description: '數學表達式，例如 2+2*3' }\n      },\n      required: ['expression']\n    }\n  }]\n}));\n\nserver.setRequestHandler(CallToolRequestSchema, async (request) => {\n  if (request.params.name === 'calculate') {\n    const expr = request.params.arguments?.expression as string;\n    const result = eval(expr);  // 實際生產唔建議用 eval\n    return { content: [{ type: 'text', text: `${expr} = ${result}` }] };\n  }\n  throw new Error(`Unknown tool: ${request.params.name}`);\n});\n\nconst transport = new StdioServerTransport();\nawait server.connect(transport);"
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "MCP 係 AI 工具生態系統嘅基礎設施。透過 MCP，你可以讓 AI 連接你嘅數據庫、讀你嘅文件、調用你嘅 API，而唔需要每次都手動複製貼上。如果你係開發者，學識寫 MCP server，你就可以建立任何你需要嘅 AI 超能力。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: modelcontextprotocol/servers (40K ⭐) →",
+      "link": "https://github.com/modelcontextprotocol/servers"
+    }
+  ]
+}

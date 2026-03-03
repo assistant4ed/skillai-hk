@@ -1,0 +1,117 @@
+{
+  "id": "browser-use-automation",
+  "title": "Browser Use：AI 控制瀏覽器自動化，告別重複嘅手動操作",
+  "excerpt": "Browser Use 係一個開源工具，讓 LLM 直接控制瀏覽器執行複雜任務：填表、數據採集、自動化測試。只需要用自然語言描述任務，AI 就會自己點擊、輸入、滾動。GitHub 21K 星星。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "9 分鐘",
+  "tags": ["Browser Use", "瀏覽器自動化", "AI Agent", "Playwright", "開源"],
+  "heroImage": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "每個月都要手動更新一百幾十行 Excel？要從十幾個網站抓數據再整理？每次都要登入幾個系統填相同嘅表格？Browser Use 係一個開源工具，讓 AI 直接幫你做呢啲嘢。你只需要用自然語言告訴佢「去呢個網站，找最新嘅價格，填入 Excel」，剩下嘅 AI 自己搞掂。"
+    },
+    {
+      "type": "heading",
+      "text": "Browser Use 係咩？"
+    },
+    {
+      "type": "list",
+      "items": [
+        "基於 Playwright 嘅 AI 瀏覽器自動化框架",
+        "支援 Claude、GPT-4o、Gemini 等多個 LLM",
+        "可以處理動態 JavaScript 網站（唔係只係靜態 HTML）",
+        "有 Vision 模式：AI 睇截圖決定點擊邊度",
+        "有 DOM 模式：AI 理解頁面結構，更穩定",
+        "GitHub: browser-use/browser-use（21K+ 星星）"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "安裝"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝 browser-use\npip install browser-use\n\n# 安裝 Playwright 瀏覽器\nplaywright install chromium\n\n# 設定 API key\nexport ANTHROPIC_API_KEY=sk-ant-xxxxx"
+    },
+    {
+      "type": "heading",
+      "text": "第一個例子：搜索並提取資訊"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import asyncio\nfrom browser_use import Agent\nfrom langchain_anthropic import ChatAnthropic\n\nasync def main():\n    agent = Agent(\n        task='去 hkjc.com，搵今日嘅賽馬賠率，返回前 5 匹馬嘅名字同賠率',\n        llm=ChatAnthropic(model='claude-sonnet-4-6'),\n    )\n    result = await agent.run()\n    print(result.final_result())\n\nasyncio.run(main())"
+    },
+    {
+      "type": "heading",
+      "text": "進階：多步驟自動化任務"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import asyncio\nfrom browser_use import Agent, Controller\nfrom browser_use.browser.browser import Browser, BrowserConfig\nfrom langchain_anthropic import ChatAnthropic\n\nasync def auto_fill_form():\n    \"\"\"自動填寫網頁表格\"\"\"\n    \n    # 配置瀏覽器（可以選擇有頭或無頭模式）\n    browser = Browser(\n        config=BrowserConfig(\n            headless=False,  # 看到瀏覽器操作\n            chrome_instance_path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'\n        )\n    )\n    \n    agent = Agent(\n        task=\"\"\"\n        1. 去 https://forms.example.com\n        2. 用 test@example.com 登入\n        3. 填寫申請表：\n           - 姓名：張三\n           - 公司：SkillAI HK\n           - 申請類型：企業方案\n           - 備注：需要 50 個用戶授權\n        4. 點擊提交\n        5. 截圖保存確認頁面\n        \"\"\",\n        llm=ChatAnthropic(model='claude-sonnet-4-6'),\n        browser=browser\n    )\n    \n    result = await agent.run(max_steps=20)\n    print('任務完成：', result.final_result())\n    await browser.close()\n\nasyncio.run(auto_fill_form())"
+    },
+    {
+      "type": "heading",
+      "text": "實戰：批量數據採集"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import asyncio\nfrom browser_use import Agent\nfrom langchain_anthropic import ChatAnthropic\nimport json\n\nasync def scrape_job_listings():\n    \"\"\"採集招聘資訊\"\"\"\n    \n    agent = Agent(\n        task=\"\"\"\n        去 LinkedIn 搜索香港 'AI Engineer' 職位。\n        收集前 10 個職位嘅以下資訊：\n        - 職位名稱\n        - 公司名稱\n        - 地點\n        - 發布時間\n        - 薪資範圍（如果有）\n        \n        以 JSON 格式返回結果。\n        \"\"\",\n        llm=ChatAnthropic(model='claude-opus-4-6'),  # 用 Opus 做複雜任務\n    )\n    \n    result = await agent.run(max_steps=30)\n    \n    # 解析結果\n    try:\n        data = json.loads(result.final_result())\n        for job in data:\n            print(f\"{job['title']} @ {job['company']} - {job.get('salary', 'N/A')}\")\n    except:\n        print(result.final_result())\n\nasyncio.run(scrape_job_listings())"
+    },
+    {
+      "type": "heading",
+      "text": "自訂 Actions：擴展 AI 能力"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import asyncio\nfrom browser_use import Agent, Controller\nfrom browser_use.agent.views import ActionResult\nfrom pydantic import BaseModel\nfrom langchain_anthropic import ChatAnthropic\n\ncontroller = Controller()\n\n# 定義自訂 Action\nclass SaveToDatabase(BaseModel):\n    data: str\n    table: str\n\n@controller.action('Save data to database', param_model=SaveToDatabase)\nasync def save_to_db(params: SaveToDatabase):\n    # 實際保存到數據庫\n    print(f'Saving to {params.table}: {params.data[:100]}...')\n    return ActionResult(extracted_content='Data saved successfully')\n\n# 使用自訂 action 嘅 agent\nagent = Agent(\n    task='去 hk01.com，採集今日頭條新聞，保存到 news 表格',\n    llm=ChatAnthropic(model='claude-sonnet-4-6'),\n    controller=controller  # 注入自訂 actions\n)\n\nasyncio.run(agent.run())"
+    },
+    {
+      "type": "heading",
+      "text": "常見使用場景"
+    },
+    {
+      "type": "list",
+      "items": [
+        "政府表格自動填寫：商業登記、稅務申請、牌照續期",
+        "競爭對手監控：定期採集競品價格、功能更新",
+        "社交媒體自動化：定時發帖、回覆留言（需遵守平台 ToS）",
+        "電商庫存監控：當某產品上架或減價時自動通知",
+        "端對端測試：替代 Selenium，用自然語言寫測試腳本"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "注意事項"
+    },
+    {
+      "type": "list",
+      "items": [
+        "遵守網站嘅 robots.txt 同 ToS，唔好用於爬取受保護嘅內容",
+        "加入合理嘅 sleep 延遲，唔好對網站造成過大壓力",
+        "處理個人數據時要遵守 PDPO（香港個人資料條例）",
+        "建議喺沙盒環境測試，唔好直接喺生產環境跑",
+        "複雜任務最好用 claude-opus 或者 claude-sonnet，準確度更高"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "Browser Use 代表了一個新嘅自動化範式：唔需要學 Selenium 或者 XPath，只需要用自然語言描述你想做咩，AI 自己搞定瀏覽器操作。對於香港嘅中小企同 freelancer，呢個工具可以大大減少重複性工作，釋放更多時間做有創造力嘅事。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: browser-use/browser-use (21K ⭐) →",
+      "link": "https://github.com/browser-use/browser-use"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "id": "open-source-models-march-2026",
+  "title": "2026 年 3 月開源模型速覽：Qwen3、GLM-4、Llama 3.2、DeepSeek V3 深度比較",
+  "excerpt": "2026 年開源 LLM 嘅能力已接近甚至超越部分閉源模型。Qwen3、GLM-4、Llama 3.2、DeepSeek V3 各有強項。呢篇全面比較各模型嘅性能、用途、部署方式，幫你選擇最適合嘅開源模型。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "12 分鐘",
+  "tags": ["開源模型", "Qwen3", "DeepSeek", "Llama", "GLM-4", "LLM"],
+  "heroImage": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "2026 年初，開源 LLM 嘅競爭達到歷史性嘅激烈程度。Alibaba 嘅 Qwen3、清華嘅 GLM-4、Meta 嘅 Llama 3.2、DeepSeek 嘅 DeepSeek V3，每一個都係技術突破嘅代表作。更重要係，呢啲模型大部分可以喺本地跑，完全私隱，零 API 成本。呢篇文章幫你搞清楚每個模型嘅特點，點樣選擇，點樣部署。"
+    },
+    {
+      "type": "heading",
+      "text": "一眼睇清楚：模型比較總表"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Qwen3-72B：Alibaba 出品，多語言頂尖（包括中文），推理能力強，MoE 架構效率高",
+        "GLM-4-9B：清華大學出品，中文最強，代碼生成優秀，9B 參數輕量部署",
+        "Llama 3.2-90B：Meta 出品，英文最強，工具調用（Function Calling）成熟度最高",
+        "DeepSeek V3：推理能力媲美 GPT-4o，數學、邏輯、代碼三強，訓練成本驚人低",
+        "Mistral Large 2：歐洲出品，英法雙語頂尖，注重隱私合規，Apache 2.0 授權"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Qwen3：多語言王者"
+    },
+    {
+      "type": "paragraph",
+      "text": "Alibaba 嘅 Qwen3 系列係目前中英文雙語表現最強嘅開源模型系列。Qwen3-72B 喺多個 benchmark 上超越 GPT-4 Turbo，而且採用 MoE（Mixture of Experts）架構，推理效率比同等規模嘅 dense 模型高得多。"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 用 Ollama 跑 Qwen3\nollama pull qwen3:72b\n\n# 輕量版（適合 16GB RAM 電腦）\nollama pull qwen3:14b\nollama pull qwen3:7b\n\n# 測試中文能力\nollama run qwen3:14b \"解釋量子糾纏，要用比喻，讓小學生都能明白\"\n\n# 用 API 調用\ncurl http://localhost:11434/api/generate -d '{\n  \"model\": \"qwen3:14b\",\n  \"prompt\": \"分析香港房地產市場嘅未來走向\",\n  \"stream\": false\n}'"
+    },
+    {
+      "type": "list",
+      "items": [
+        "最強中文能力：繁體、簡體、粵語都處理得好",
+        "數學推理：Qwen3-Math 系列喺 MATH benchmark 超越 GPT-4",
+        "代碼生成：Qwen3-Coder 可以用做本地 Copilot",
+        "多模態：Qwen3-VL 支援圖像理解",
+        "授權：Apache 2.0，商業可用"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "GLM-4：清華嘅秘密武器"
+    },
+    {
+      "type": "paragraph",
+      "text": "GLM-4 係清華大學 KEG 實驗室出品，ChatGLM 系列嘅最新版本。GLM-4-9B 係最受歡迎嘅版本——只有 9B 參數，但性能遠超同等規模模型，特別係中文理解、指令跟隨、代碼生成三個維度。"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# 用 transformers 跑 GLM-4\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\nimport torch\n\n# 下載模型（約 18GB）\nmodel_name = \"THUDM/glm-4-9b-chat\"\ntokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)\nmodel = AutoModelForCausalLM.from_pretrained(\n    model_name,\n    torch_dtype=torch.bfloat16,\n    device_map=\"auto\",\n    trust_remote_code=True\n)\n\n# 對話\nhistory = []\nresponse, history = model.chat(\n    tokenizer,\n    \"用廣東話解釋 RAG 係咩\",\n    history=history\n)\nprint(response)\n\n# Function Calling 示例\ntools = [{\n    \"type\": \"function\",\n    \"function\": {\n        \"name\": \"get_weather\",\n        \"description\": \"獲取指定城市嘅天氣\",\n        \"parameters\": {\n            \"type\": \"object\",\n            \"properties\": {\"city\": {\"type\": \"string\"}},\n            \"required\": [\"city\"]\n        }\n    }\n}]\nresponse, history = model.chat(tokenizer, \"香港今日天氣點？\", history=[], tools=tools)"
+    },
+    {
+      "type": "heading",
+      "text": "Llama 3.2：Meta 嘅英文統治者"
+    },
+    {
+      "type": "paragraph",
+      "text": "Meta 嘅 Llama 3.2 係目前英文任務嘅最強開源模型，特別係工具調用（Function Calling / Tool Use）嘅成熟度最高，非常適合做英文 AI Agent。Llama 3.2-90B 喺多個 English benchmark 超越 GPT-4，而且社區生態最豐富。"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Ollama 安裝 Llama 3.2\nollama pull llama3.2:90b   # 需要 64GB+ RAM\nollama pull llama3.2:11b   # 需要 16GB RAM（推薦）\nollama pull llama3.2:3b    # 需要 8GB RAM（輕量）\n\n# 多模態版本（支援圖片）\nollama pull llama3.2-vision:11b\n\n# 圖片分析示例\nollama run llama3.2-vision:11b\n# 喺 prompt 入面可以貼圖片路徑\n>>> /path/to/image.jpg 呢張圖係咩？"
+    },
+    {
+      "type": "list",
+      "items": [
+        "英文最強：Creative writing、長文理解、複雜推理",
+        "工具調用成熟：Function Calling 格式穩定，適合 Agent 開發",
+        "社區最大：最多第三方微調版本、量化版本、工具整合",
+        "Vision 支援：Llama 3.2-Vision 系列支援圖像理解",
+        "Meta 授權：非商業使用免費，月活 7 億以下可商業使用"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "DeepSeek V3：性價比之王"
+    },
+    {
+      "type": "paragraph",
+      "text": "DeepSeek V3 係 2025 年底最大嘅 AI 界震撼：一個中國創業公司用極低訓練成本（$5.5M）訓練出媲美 GPT-4o 嘅模型。DeepSeek V3 喺數學、代碼、邏輯推理三個領域特別強，而且 API 價格係 OpenAI 嘅十分之一。"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# 用 DeepSeek API（最簡單）\nfrom openai import OpenAI  # DeepSeek 兼容 OpenAI 格式\n\nclient = OpenAI(\n    api_key=\"your-deepseek-api-key\",\n    base_url=\"https://api.deepseek.com\"\n)\n\n# 數學問題\nresponse = client.chat.completions.create(\n    model=\"deepseek-chat\",  # deepseek-chat = DeepSeek V3\n    messages=[\n        {\"role\": \"user\", \"content\": \"解方程：3x² + 7x - 6 = 0\"}\n    ]\n)\nprint(response.choices[0].message.content)\n\n# DeepSeek-R1（推理模型，類似 o1）\nresponse = client.chat.completions.create(\n    model=\"deepseek-reasoner\",  # R1 模型\n    messages=[\n        {\"role\": \"user\", \"content\": \"分析巴以衝突嘅根本原因\"}\n    ]\n)\n# R1 會展示思維鏈（Chain of Thought）"
+    },
+    {
+      "type": "list",
+      "items": [
+        "數學頂尖：MATH 500 benchmark 95.9%，超越 GPT-4o",
+        "代碼生成：Coding benchmark 媲美 Claude 3.5 Sonnet",
+        "API 最便宜：輸入 $0.27/M tokens，係 GPT-4o 嘅 1/10",
+        "本地部署：DeepSeek V3 體積大（685B），建議用 API",
+        "DeepSeek-R1：開源推理模型，思維鏈可見，適合學術研究"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "點樣選擇最適合你嘅模型？"
+    },
+    {
+      "type": "list",
+      "items": [
+        "中文任務優先 → Qwen3-14B 或 GLM-4-9B（本地）、DeepSeek V3（API）",
+        "英文 Agent 開發 → Llama 3.2-11B（本地）或 GPT-4o（API）",
+        "數學/邏輯推理 → DeepSeek V3 / DeepSeek-R1（最強）",
+        "代碼生成 → Qwen3-Coder 或 DeepSeek V3（都係頂尖）",
+        "16GB RAM 筆電 → Qwen3-14B 或 Llama 3.2-11B（量化版）",
+        "需要多模態 → Llama 3.2-Vision 或 Qwen3-VL",
+        "企業私隱合規 → 本地部署 Ollama + 任何開源模型"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "本地部署：一個指令搞定"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝 Ollama（支援 Mac/Windows/Linux）\ncurl -fsSL https://ollama.com/install.sh | sh\n\n# 按你嘅需求選擇模型\nollama pull qwen3:14b       # 中文優先，需要 16GB RAM\nollama pull llama3.2:11b    # 英文優先，需要 16GB RAM\nollama pull glm4:9b         # 中文+代碼，需要 10GB RAM\nollama pull deepseek-r1:14b # 推理+數學，需要 16GB RAM\n\n# 所有模型都用同一個 API 格式\ncurl http://localhost:11434/api/chat -d '{\n  \"model\": \"qwen3:14b\",\n  \"messages\": [{\"role\": \"user\", \"content\": \"你好\"}],\n  \"stream\": false\n}'\n\n# 配合 Open WebUI 有 ChatGPT 式介面\ndocker run -d -p 3000:8080 \\\n  -e OLLAMA_BASE_URL=http://host.docker.internal:11434 \\\n  ghcr.io/open-webui/open-webui:main"
+    },
+    {
+      "type": "heading",
+      "text": "2026 年開源模型展望"
+    },
+    {
+      "type": "paragraph",
+      "text": "開源模型嘅發展速度遠超預期。2024 年初，開源模型仲落後閉源模型一到兩代；到 2026 年初，頂尖開源模型已經可以喺大部分實際工作場景替代 GPT-4。可以預見，2026 年下半年會出現更多能跑喺消費級硬件上嘅高性能模型。對於開發者嚟講，現在係開始探索開源模型嘅最佳時機：成本低、自主可控、社區活躍。"
+    },
+    {
+      "type": "cta",
+      "text": "立即用 Ollama 試跑開源模型 →",
+      "link": "https://ollama.com"
+    }
+  ]
+}

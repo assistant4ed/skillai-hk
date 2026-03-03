@@ -1,0 +1,175 @@
+{
+  "id": "aider-coding-guide",
+  "title": "用 Aider + Claude 零到部署：開源 AI Pair Programmer 完全指南",
+  "excerpt": "Aider 係一個開源 AI pair programmer，直接喺 terminal 入面用，支援 Claude、GPT-4o、Gemini。呢篇教你由安裝到真實寫一個 React app，包括 git 整合、多文件編輯、最佳實踐。GitHub 31K 星星。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "10 分鐘",
+  "tags": ["Aider", "開源", "Coding", "Claude", "AI 開發"],
+  "heroImage": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "如果你成日要喺 ChatGPT 同 code editor 之間切換，貼來貼去，你需要識 Aider。Aider 係一個在 terminal 直接運行嘅 AI pair programmer，佢會自動睇你嘅 codebase、建議改動、然後直接 commit 落去 git。GitHub 超過 31K 個星星，係開源 AI coding 工具入面最成熟嘅選擇之一。"
+    },
+    {
+      "type": "heading",
+      "text": "點解選 Aider？"
+    },
+    {
+      "type": "list",
+      "items": [
+        "完全開源，程式碼喺 GitHub 上公開 (github.com/paul-gauthier/aider)",
+        "支援 Claude 3.7 Sonnet、GPT-4o、Gemini 2.5 Pro 等多個模型",
+        "自動 git commit，每次 AI 改動都有記錄，隨時 rollback",
+        "可以一次過處理多個文件，唔係只係單一文件",
+        "支援 150+ 程式語言，由 Python 到 Rust 都得",
+        "有 /architect 模式，可以做大型重構計劃"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "安裝 Aider"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aider 需要 Python 3.9+。最簡單嘅安裝方式係用 pip 或者 pipx（推薦用 pipx，唔會污染全局環境）："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 推薦：用 pipx 安裝（隔離環境）\npipx install aider-chat\n\n# 或者用 pip\npip install aider-chat\n\n# 驗證安裝\naider --version\n# aider 0.78.0"
+    },
+    {
+      "type": "heading",
+      "text": "配置 API Key"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aider 支援多個 LLM provider。以下係設定 Claude 嘅方法（推薦，coding 能力最強）："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 設定 Claude API Key（Anthropic）\nexport ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxx\n\n# 或者設定 OpenAI\nexport OPENAI_API_KEY=sk-xxxxxxxxxxxxx\n\n# 永久儲存落 .env 或者 shell config\necho 'export ANTHROPIC_API_KEY=sk-ant-xxxxx' >> ~/.bashrc\nsource ~/.bashrc"
+    },
+    {
+      "type": "heading",
+      "text": "第一個 Project：用 Aider 寫 React Todo App"
+    },
+    {
+      "type": "paragraph",
+      "text": "我哋用一個真實例子嚟示範。首先 create 一個新項目："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 建立新 project\nmkdir my-todo-app && cd my-todo-app\ngit init\n\n# 啟動 Aider，用 Claude Sonnet（性價比最高）\naider --model claude-sonnet-4-6\n\n# 或者用最新最強模型\naider --model claude-opus-4-6"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aider 啟動後，你會見到一個 terminal 介面。依家可以直接打指令："
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "# 喺 Aider 入面打：\n> 幫我用 React + TypeScript 建立一個 todo app，有新增、刪除、完成標記功能，用 localStorage 保存數據\n\n# Aider 會：\n# 1. 分析需求\n# 2. 建立所需文件\n# 3. 寫完整代碼\n# 4. 自動 git commit\n\n# 輸出示例：\n# Created src/App.tsx\n# Created src/components/TodoList.tsx\n# Created src/types/todo.ts\n# git commit: feat: add React todo app with localStorage"
+    },
+    {
+      "type": "heading",
+      "text": "關鍵指令清單"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aider 有幾個非常實用嘅 slash 指令，要記住："
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "# 加入文件到 context\n/add src/App.tsx src/utils.ts\n\n# 睇目前 context 入面有咩文件\n/ls\n\n# 移除文件\n/drop src/utils.ts\n\n# 切換到 architect 模式（適合大型重構）\n/architect 幫我重構整個 auth 模組，改用 JWT + refresh token\n\n# 唔想 AI 自動 commit，手動控制\n/git diff\n\n# Undo 上一次 AI 改動\n/undo\n\n# 睇 token 使用量同成本\n/tokens\n\n# 清除 chat history（節省 token）\n/clear"
+    },
+    {
+      "type": "heading",
+      "text": "多文件編輯：真正嘅威力"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aider 最強嘅地方係可以同時處理多個文件。例如你想加一個新 feature："
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "# 加入相關文件\n/add src/api/auth.ts src/middleware/auth.ts src/types/user.ts\n\n# 然後要求修改\n> 喺登入 API 加入 rate limiting，每個 IP 每分鐘最多 5 次嘗試，\n  超過就返回 429 錯誤並 block 15 分鐘\n\n# Aider 會理解文件之間嘅關係，同時修改所有相關文件"
+    },
+    {
+      "type": "heading",
+      "text": ".aider.conf.yml：項目配置"
+    },
+    {
+      "type": "paragraph",
+      "text": "可以喺項目根目錄建立配置文件，避免每次都要打一堆 flags："
+    },
+    {
+      "type": "code",
+      "language": "yaml",
+      "code": "# .aider.conf.yml\nmodel: claude-sonnet-4-6\nauto-commits: true\nauto-test: true\ntest-cmd: npm test\nlint-cmd: npm run lint\ngit: true\nread-only:\n  - package.json\n  - .env"
+    },
+    {
+      "type": "heading",
+      "text": "配合 Claude Code 使用"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aider 同 Claude Code 係互補嘅工具。一般建議嘅工作流程係："
+    },
+    {
+      "type": "list",
+      "items": [
+        "用 Claude Code 做架構設計、複雜邏輯討論（互動性強）",
+        "用 Aider 做具體實作、批量修改、重構（git 整合好）",
+        "Aider --watch 模式：自動監聽文件變化，實時 AI 建議",
+        "用 /architect 處理需要跨越多個模組嘅大型改動"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Watch 模式：實時 AI 代碼審查"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Watch 模式：監聽文件改動，AI 自動建議\naider --watch-files\n\n# 你改完 code 之後，Aider 會自動分析並提供建議\n# 非常適合 code review workflow"
+    },
+    {
+      "type": "heading",
+      "text": "成本控制技巧"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aider 會用到 LLM API，要注意成本。以下係節省 token 嘅技巧："
+    },
+    {
+      "type": "list",
+      "items": [
+        "用 /clear 定期清除 chat history，避免 context 越來越長",
+        "只 /add 真正需要修改嘅文件，唔好一次加太多",
+        "用 claude-haiku-4-5 做簡單任務，sonnet 做中等，opus 做複雜架構",
+        "設定 --map-tokens 限制 repo map 大小",
+        "/tokens 指令可以睇目前對話嘅 token 消耗"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "Aider 係最適合有 git 習慣嘅開發者嘅 AI 工具。佢唔係要取代你嘅思維，而係幫你更快地將想法實現落去代碼。特別係配合 Claude Sonnet/Opus，coding 能力非常強。如果你仲喺 ChatGPT 貼代碼，試一次 Aider，你就唔會返去嗰個方式了。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: paul-gauthier/aider (31K ⭐) →",
+      "link": "https://github.com/paul-gauthier/aider"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "litellm-unified-gateway",
+  "title": "LiteLLM：一個 API 調用 100+ LLM 模型，附 Fallback 同監控",
+  "excerpt": "LiteLLM 係一個開源 LLM API gateway，統一 OpenAI、Anthropic、Google、Cohere 等格式，支援自動 fallback、負載均衡、成本追蹤。配合 Langfuse 做完整監控。GitHub 18K 星星。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "9 分鐘",
+  "tags": ["LiteLLM", "API Gateway", "LLM", "開源", "監控"],
+  "heroImage": "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "你嘅應用程式依賴 Claude，但 Anthropic 突然 API 故障。你嘅代碼寫死咗 OpenAI 格式，切換去 Gemini 要重寫成堆嘢。LiteLLM 解決呢兩個問題：一個統一 API，自動 fallback，任何 LLM 隨時切換。GitHub 超過 18K 星星。"
+    },
+    {
+      "type": "heading",
+      "text": "LiteLLM 係咩？"
+    },
+    {
+      "type": "list",
+      "items": [
+        "統一 100+ LLM 嘅 API 格式（OpenAI 兼容）",
+        "自動 Fallback：Claude 死咗自動切去 GPT-4o",
+        "負載均衡：多個 API key 輪流使用，避免超過 rate limit",
+        "成本追蹤：每次調用嘅 token 用量同費用",
+        "緩存：相同問題唔使再調用 API，直接返回緩存結果",
+        "GitHub: BerriAI/litellm（18K+ 星星）"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "安裝同基本用法"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "pip install litellm"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import litellm\nimport os\n\nos.environ['ANTHROPIC_API_KEY'] = 'sk-ant-xxxxx'\nos.environ['OPENAI_API_KEY'] = 'sk-xxxxx'\nos.environ['GEMINI_API_KEY'] = 'AIzaxxx'\n\n# 用 Claude（同 OpenAI 格式完全一樣！）\nresponse = litellm.completion(\n    model='claude-sonnet-4-6',\n    messages=[{'role': 'user', 'content': '你好'}]\n)\nprint(response.choices[0].message.content)\n\n# 切換去 GPT-4o（只改 model 名！）\nresponse = litellm.completion(\n    model='gpt-4o',\n    messages=[{'role': 'user', 'content': '你好'}]\n)\n\n# 切換去 Gemini\nresponse = litellm.completion(\n    model='gemini/gemini-2.5-pro',\n    messages=[{'role': 'user', 'content': '你好'}]\n)"
+    },
+    {
+      "type": "heading",
+      "text": "設定 Fallback：API 故障自動切換"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import litellm\n\n# 設定 fallback：Claude 失敗就用 GPT-4o，再失敗用 Gemini\nresponse = litellm.completion(\n    model='claude-sonnet-4-6',\n    messages=[{'role': 'user', 'content': '幫我寫一個 hello world'}],\n    fallbacks=['gpt-4o', 'gemini/gemini-2.5-pro'],\n    timeout=30  # 30 秒無回應就觸發 fallback\n)\nprint(response.choices[0].message.content)\nprint(f'實際用咗：{response.model}')  # 睇係用咗邊個模型"
+    },
+    {
+      "type": "heading",
+      "text": "負載均衡：多個 API Key 輪流"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import litellm\n\n# 設定多個 API key，自動輪流使用\nlitellm.api_key = [\n    'sk-ant-key1',\n    'sk-ant-key2', \n    'sk-ant-key3'\n]\n\n# 或者用 router（更強大）\nfrom litellm import Router\n\nrouter = Router(\n    model_list=[\n        {\n            'model_name': 'claude-fast',\n            'litellm_params': {\n                'model': 'claude-sonnet-4-6',\n                'api_key': 'sk-ant-key1',\n                'rpm': 100  # 每分鐘最多 100 次\n            }\n        },\n        {\n            'model_name': 'claude-fast',\n            'litellm_params': {\n                'model': 'claude-sonnet-4-6',\n                'api_key': 'sk-ant-key2',\n                'rpm': 100\n            }\n        },\n        {\n            'model_name': 'claude-fast',\n            'litellm_params': {\n                'model': 'gpt-4o',\n                'api_key': 'sk-openai-key',\n                'rpm': 500\n            }\n        }\n    ],\n    routing_strategy='least-busy'  # 選最空閒嘅\n)\n\nresponse = await router.acompletion(\n    model='claude-fast',\n    messages=[{'role': 'user', 'content': '你好'}]\n)"
+    },
+    {
+      "type": "heading",
+      "text": "部署 LiteLLM Proxy Server"
+    },
+    {
+      "type": "paragraph",
+      "text": "最強大嘅用法係部署成一個 proxy server，所有服務共用一個統一入口："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝 server 版本\npip install 'litellm[proxy]'\n\n# 建立配置文件\ncat > litellm_config.yaml << 'EOF'\nmodel_list:\n  - model_name: claude-sonnet\n    litellm_params:\n      model: claude-sonnet-4-6\n      api_key: os.environ/ANTHROPIC_API_KEY\n  \n  - model_name: gpt-4o\n    litellm_params:\n      model: gpt-4o\n      api_key: os.environ/OPENAI_API_KEY\n\nlitellm_settings:\n  success_callback: [\"langfuse\"]  # 自動發送到 Langfuse 監控\n  failure_callback: [\"langfuse\"]\n  cache: true\n  cache_params:\n    type: redis\n    host: localhost\n    port: 6379\nEOF\n\n# 啟動 proxy\nlitellm --config litellm_config.yaml --port 8000"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# 所有應用都用呢個統一 endpoint\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url='http://localhost:8000',\n    api_key='any-string'  # LiteLLM proxy 自己管理 API key\n)\n\nresponse = client.chat.completions.create(\n    model='claude-sonnet',  # 用配置文件裏嘅名字\n    messages=[{'role': 'user', 'content': '你好'}]\n)\nprint(response.choices[0].message.content)"
+    },
+    {
+      "type": "heading",
+      "text": "配合 Langfuse 做 LLM 監控"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import litellm\nimport os\n\nos.environ['LANGFUSE_PUBLIC_KEY'] = 'pk-lf-xxxxx'\nos.environ['LANGFUSE_SECRET_KEY'] = 'sk-lf-xxxxx'\nos.environ['LANGFUSE_HOST'] = 'https://cloud.langfuse.com'\n\n# 開啟 Langfuse 回調\nlitellm.success_callback = ['langfuse']\nlitellm.failure_callback = ['langfuse']\n\n# 之後所有調用都會自動記錄到 Langfuse\nresponse = litellm.completion(\n    model='claude-sonnet-4-6',\n    messages=[{'role': 'user', 'content': '你好'}],\n    metadata={\n        'langfuse_session_id': 'user_123_session',\n        'langfuse_user_id': 'user_123'\n    }\n)"
+    },
+    {
+      "type": "heading",
+      "text": "成本追蹤"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import litellm\n\nresponse = litellm.completion(\n    model='claude-sonnet-4-6',\n    messages=[{'role': 'user', 'content': '寫一篇 500 字嘅文章'}]\n)\n\n# 睇成本\ncost = litellm.completion_cost(completion_response=response)\nprint(f'今次調用成本：US${cost:.6f}')\nprint(f'輸入 tokens：{response.usage.prompt_tokens}')\nprint(f'輸出 tokens：{response.usage.completion_tokens}')\n\n# 睇所有模型嘅價格\nfrom litellm import model_cost\nfor model_name, costs in list(model_cost.items())[:5]:\n    print(f'{model_name}: input=${costs.get(\"input_cost_per_token\", 0)*1000000:.2f}/1M')"
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "LiteLLM 係每個 LLM 應用開發者都應該知道嘅工具。佢唔係替代 LangChain 或者 CrewAI，而係喺佢哋下面做一個抽象層，讓你嘅代碼唔依賴任何特定嘅 LLM provider。生產環境中，配合 fallback 同監控，大幅提升可靠性。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: BerriAI/litellm (18K ⭐) →",
+      "link": "https://github.com/BerriAI/litellm"
+    }
+  ]
+}

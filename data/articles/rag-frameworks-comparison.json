@@ -1,0 +1,152 @@
+{
+  "id": "rag-frameworks-comparison",
+  "title": "5 個開源 RAG 框架深度比較：LangChain vs LlamaIndex vs Haystack vs Chroma vs Qdrant",
+  "excerpt": "RAG（Retrieval-Augmented Generation）係 2026 年最重要嘅 AI 架構。LangChain、LlamaIndex、Haystack 係 orchestration 框架，Chroma、Qdrant 係 vector database。呢篇深度比較各自優劣，附完整代碼示例。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "13 分鐘",
+  "tags": ["RAG", "LangChain", "LlamaIndex", "Haystack", "Chroma", "Qdrant", "開源"],
+  "heroImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "RAG（Retrieval-Augmented Generation）解決咗 LLM 最大嘅問題：佢唔知你嘅私有數據。將公司文件、產品手冊、客服 FAQ 存入 vector database，讓 AI 可以實時查詢，係 2026 年最實用嘅 AI 應用架構。但係選擇太多，LangChain、LlamaIndex、Haystack 點揀？呢篇教你。"
+    },
+    {
+      "type": "heading",
+      "text": "RAG 架構簡介"
+    },
+    {
+      "type": "paragraph",
+      "text": "RAG 分兩個核心組件：Orchestration Framework（處理流程協調）同 Vector Database（儲存同搜索向量）。你通常需要兩者配合使用。"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Orchestration：LangChain、LlamaIndex、Haystack — 負責 chunking、embedding、retrieval、generation 嘅流程",
+        "Vector DB：Chroma（輕量本地）、Qdrant（生產級）— 負責儲存向量同語義搜索",
+        "Embedding 模型：OpenAI text-embedding-3、Cohere、本地 sentence-transformers",
+        "LLM：Claude、GPT-4o、Llama 3.2 — 根據檢索結果生成答案"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "LangChain：最廣泛，最靈活"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from langchain_anthropic import ChatAnthropic\nfrom langchain_community.document_loaders import PyPDFLoader\nfrom langchain_text_splitters import RecursiveCharacterTextSplitter\nfrom langchain_chroma import Chroma\nfrom langchain_openai import OpenAIEmbeddings\nfrom langchain.chains import RetrievalQA\n\n# 1. 載入文件\nloader = PyPDFLoader('company_handbook.pdf')\ndocs = loader.load()\n\n# 2. 切割文字\nsplitter = RecursiveCharacterTextSplitter(\n    chunk_size=1000,\n    chunk_overlap=200\n)\nchunks = splitter.split_documents(docs)\n\n# 3. 建立 Vector DB\nvectorstore = Chroma.from_documents(\n    documents=chunks,\n    embedding=OpenAIEmbeddings()\n)\n\n# 4. 建立 RAG chain\nllm = ChatAnthropic(model='claude-sonnet-4-6')\nqa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    chain_type='stuff',\n    retriever=vectorstore.as_retriever(search_kwargs={'k': 4})\n)\n\n# 5. 問問題\nresult = qa_chain.invoke({'query': '公司嘅年假政策係咩？'})\nprint(result['result'])"
+    },
+    {
+      "type": "subheading",
+      "text": "LangChain 優缺點"
+    },
+    {
+      "type": "list",
+      "items": [
+        "優點：生態系統最大，支援 200+ integrations，Stack Overflow 資源最多",
+        "優點：LangSmith 監控平台非常成熟，適合生產環境",
+        "缺點：API 版本更新快，舊代碼容易 break",
+        "缺點：abstraction 較多，debug 比較難",
+        "適合：需要快速 prototype，或者已有大量 LangChain 資源嘅團隊"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "LlamaIndex：文檔理解最強"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings\nfrom llama_index.llms.anthropic import Anthropic\nfrom llama_index.embeddings.openai import OpenAIEmbedding\n\n# 設定模型\nSettings.llm = Anthropic(model='claude-sonnet-4-6')\nSettings.embed_model = OpenAIEmbedding(model='text-embedding-3-small')\n\n# 載入整個文件夾\ndocuments = SimpleDirectoryReader('./data/docs').load_data()\n\n# 建立 index\nindex = VectorStoreIndex.from_documents(documents)\n\n# 建立查詢引擎\nquery_engine = index.as_query_engine(\n    similarity_top_k=4,\n    response_mode='compact'  # compact/refine/tree_summarize\n)\n\n# 查詢\nresponse = query_engine.query('我哋嘅 refund policy 係咩？')\nprint(response.response)\n\n# 睇引用嘅來源\nfor node in response.source_nodes:\n    print(f'來源：{node.metadata.get(\"file_name\")}，相關度：{node.score:.3f}')"
+    },
+    {
+      "type": "subheading",
+      "text": "LlamaIndex 優缺點"
+    },
+    {
+      "type": "list",
+      "items": [
+        "優點：文檔理解最佳，支援 PDF/Word/PPT/Excel/HTML 等多種格式",
+        "優點：多種 index 類型：VectorStore、Summary、Knowledge Graph、SQL",
+        "優點：支援 agentic RAG，可以做多步驟推理",
+        "缺點：學習曲線比 LangChain 陡峭",
+        "適合：文檔密集型應用，需要理解複雜文件結構"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Haystack：生產級管線"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from haystack import Pipeline\nfrom haystack.components.retrievers.in_memory import InMemoryBM25Retriever\nfrom haystack.components.generators import OpenAIGenerator\nfrom haystack.components.builders.prompt_builder import PromptBuilder\nfrom haystack.document_stores.in_memory import InMemoryDocumentStore\nfrom haystack.components.embedders import OpenAIDocumentEmbedder\n\n# 建立 document store\ndocument_store = InMemoryDocumentStore()\n\n# 定義 RAG pipeline\nrag_pipeline = Pipeline()\nrag_pipeline.add_component('retriever', InMemoryBM25Retriever(document_store=document_store))\nrag_pipeline.add_component('prompt_builder', PromptBuilder(\n    template=\"\"\"根據以下資料回答問題：\n    {% for doc in documents %}\n    {{ doc.content }}\n    {% endfor %}\n    問題：{{ question }}\n    答案：\"\"\"\n))\nrag_pipeline.add_component('generator', OpenAIGenerator(model='gpt-4o'))\n\n# 連接管線\nrag_pipeline.connect('retriever', 'prompt_builder.documents')\nrag_pipeline.connect('prompt_builder', 'generator')\n\n# 執行\nresult = rag_pipeline.run({\n    'retriever': {'query': '公司假期政策'},\n    'prompt_builder': {'question': '我可以請幾多天年假？'}\n})\nprint(result['generator']['replies'][0])"
+    },
+    {
+      "type": "subheading",
+      "text": "Haystack 優缺點"
+    },
+    {
+      "type": "list",
+      "items": [
+        "優點：Pipeline 設計最清晰，適合構建複雜多步驟工作流",
+        "優點：最適合生產環境，有完善嘅測試同監控支援",
+        "優點：支援 BM25 + Vector 混合搜索",
+        "缺點：比 LangChain/LlamaIndex 社區小，資源少",
+        "適合：需要複雜、可維護嘅生產級 RAG 系統"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Chroma：最易上手嘅 Vector DB"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "import chromadb\nfrom chromadb.utils import embedding_functions\n\n# 本地 SQLite 模式（開發用）\nclient = chromadb.Client()\n\n# 或者持久化模式\nclient = chromadb.PersistentClient(path='./chroma_db')\n\n# 建立 collection\ncollection = client.create_collection(\n    name='company_docs',\n    embedding_function=embedding_functions.OpenAIEmbeddingFunction(\n        api_key='sk-xxxxx',\n        model_name='text-embedding-3-small'\n    )\n)\n\n# 加入文件\ncollection.add(\n    documents=[\n        '年假政策：每年 14 天，可以累積最多 30 天',\n        '病假政策：每月 2 天，需要醫生紙',\n        '在家工作政策：每週最多 3 天'       \n    ],\n    metadatas=[\n        {'category': 'leave', 'source': 'handbook_p12'},\n        {'category': 'leave', 'source': 'handbook_p13'},\n        {'category': 'wfh', 'source': 'handbook_p15'}\n    ],\n    ids=['doc1', 'doc2', 'doc3']\n)\n\n# 語義搜索\nresults = collection.query(\n    query_texts=['我想請假'],\n    n_results=2\n)\nfor doc, meta in zip(results['documents'][0], results['metadatas'][0]):\n    print(f'來源：{meta[\"source\"]}\\n內容：{doc}\\n')"
+    },
+    {
+      "type": "heading",
+      "text": "Qdrant：生產級 Vector DB"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# Docker 啟動 Qdrant\ndocker run -p 6333:6333 -p 6334:6334 \\\n    -v $(pwd)/qdrant_storage:/qdrant/storage \\\n    qdrant/qdrant"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from qdrant_client import QdrantClient\nfrom qdrant_client.models import Distance, VectorParams, PointStruct\nimport openai\n\nclient = QdrantClient(host='localhost', port=6333)\n\n# 建立 collection\nclient.create_collection(\n    collection_name='docs',\n    vectors_config=VectorParams(size=1536, distance=Distance.COSINE)\n)\n\n# 加入向量\ndef get_embedding(text):\n    response = openai.embeddings.create(\n        model='text-embedding-3-small',\n        input=text\n    )\n    return response.data[0].embedding\n\ndocs = ['AI 工具教學', '香港科技政策', 'LLM 最佳實踐']\npoints = [\n    PointStruct(\n        id=i,\n        vector=get_embedding(doc),\n        payload={'text': doc}\n    )\n    for i, doc in enumerate(docs)\n]\nclient.upsert(collection_name='docs', points=points)\n\n# 搜索\nresults = client.search(\n    collection_name='docs',\n    query_vector=get_embedding('人工智能教程'),\n    limit=3\n)\nfor r in results:\n    print(f'Score: {r.score:.3f} | {r.payload[\"text\"]}')"
+    },
+    {
+      "type": "heading",
+      "text": "選擇指南"
+    },
+    {
+      "type": "list",
+      "items": [
+        "初學者 / 快速 prototype → LangChain + Chroma：文檔最多，上手最快",
+        "文檔密集型應用 → LlamaIndex + Qdrant：文檔理解最強，vector DB 性能好",
+        "生產級複雜系統 → Haystack + Qdrant：管線設計清晰，性能穩定",
+        "完全本地 / 私隱要求高 → LlamaIndex + Chroma + Ollama：零外部依賴",
+        "大規模（百萬+ 向量）→ Qdrant 或 Weaviate，唔建議用 Chroma"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "RAG 框架冇所謂最好，只有最適合。如果你係新手，從 LangChain + Chroma 開始；如果你要做生產系統，考慮 LlamaIndex/Haystack + Qdrant。最重要係先搞清楚你嘅需求：文件量、查詢量、私隱要求、技術棧，然後再選工具。"
+    },
+    {
+      "type": "cta",
+      "text": "查看 LlamaIndex 文檔 →",
+      "link": "https://github.com/run-llama/llama_index"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "id": "ai-self-host-stack",
+  "title": "5 個開源工具搭建你的私有 AI 平台：Ollama + Open WebUI + LiteLLM + Langfuse + Qdrant",
+  "excerpt": "一個 Docker Compose 文件，5 個開源工具，搭建完全私有、零成本嘅企業級 AI 平台。包括本地 LLM、ChatGPT 介面、API Gateway、可觀測性監控、向量數據庫，全部數據留喺本地。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "12 分鐘",
+  "tags": ["自建 AI", "開源", "Docker", "Ollama", "私隱", "企業 AI"],
+  "heroImage": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "每個月畀 OpenAI、Anthropic 幾千蚊 API 費用？擔心公司機密上傳到外部伺服器？呢篇教你用 5 個開源工具，一個 Docker Compose 搭建完整嘅私有 AI 平台。完全本地，零月費，所有數據留喺你自己嘅伺服器。"
+    },
+    {
+      "type": "heading",
+      "text": "架構總覽"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Ollama — 本地 LLM 執行引擎，支援 100+ 開源模型",
+        "Open WebUI — ChatGPT 風格嘅 Web 介面，支援多用戶",
+        "LiteLLM — API Gateway，統一管理本地模型同外部 API",
+        "Langfuse — LLM 可觀測性平台，追蹤所有 AI 調用",
+        "Qdrant — 高性能向量數據庫，用於 RAG 同語義搜索"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "環境要求"
+    },
+    {
+      "type": "list",
+      "items": [
+        "CPU 模式：16GB RAM，100GB 磁盤（適合小型模型 7B）",
+        "GPU 模式（推薦）：NVIDIA GPU 8GB+ VRAM，速度提升 10x",
+        "Mac 用戶：M1/M2/M3 Pro 以上，16GB 統一記憶體",
+        "操作系統：Linux、macOS（建議），Windows（需要 WSL2）",
+        "軟件：Docker 24+、Docker Compose v2"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Docker Compose 配置"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 建立項目目錄\nmkdir private-ai-stack && cd private-ai-stack\n\n# 建立數據目錄\nmkdir -p data/{ollama,open-webui,langfuse,qdrant,litellm}"
+    },
+    {
+      "type": "code",
+      "language": "yaml",
+      "code": "# docker-compose.yml\nversion: '3.8'\n\nservices:\n  # 1. Ollama - 本地 LLM 引擎\n  ollama:\n    image: ollama/ollama:latest\n    container_name: ollama\n    ports:\n      - '11434:11434'\n    volumes:\n      - ./data/ollama:/root/.ollama\n    restart: unless-stopped\n    deploy:\n      resources:\n        reservations:\n          devices:\n            - driver: nvidia\n              count: 1\n              capabilities: [gpu]  # 移除呢段如果冇 GPU\n\n  # 2. Open WebUI - ChatGPT 介面\n  open-webui:\n    image: ghcr.io/open-webui/open-webui:main\n    container_name: open-webui\n    ports:\n      - '3000:8080'\n    volumes:\n      - ./data/open-webui:/app/backend/data\n    environment:\n      - OLLAMA_BASE_URL=http://ollama:11434\n      - WEBUI_SECRET_KEY=change-this-secret\n      - LITELLM_BASE_URL=http://litellm:4000\n    depends_on:\n      - ollama\n      - litellm\n    restart: unless-stopped\n\n  # 3. LiteLLM - API Gateway\n  litellm:\n    image: ghcr.io/berriai/litellm:main-latest\n    container_name: litellm\n    ports:\n      - '4000:4000'\n    volumes:\n      - ./litellm_config.yaml:/app/config.yaml\n    environment:\n      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}\n      - OPENAI_API_KEY=${OPENAI_API_KEY}\n      - DATABASE_URL=postgresql://langfuse:langfuse@langfuse-db:5432/litellm\n      - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY}\n      - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY}\n      - LANGFUSE_HOST=http://langfuse-web:3000\n    command: --config /app/config.yaml --port 4000\n    restart: unless-stopped\n\n  # 4. Langfuse - LLM 監控\n  langfuse-web:\n    image: langfuse/langfuse:latest\n    container_name: langfuse-web\n    ports:\n      - '3001:3000'\n    environment:\n      - DATABASE_URL=postgresql://langfuse:langfuse@langfuse-db:5432/langfuse\n      - NEXTAUTH_URL=http://localhost:3001\n      - NEXTAUTH_SECRET=change-this-secret\n      - SALT=change-this-salt\n    depends_on:\n      - langfuse-db\n    restart: unless-stopped\n\n  langfuse-db:\n    image: postgres:16-alpine\n    container_name: langfuse-db\n    environment:\n      - POSTGRES_USER=langfuse\n      - POSTGRES_PASSWORD=langfuse\n      - POSTGRES_DB=langfuse\n    volumes:\n      - ./data/langfuse:/var/lib/postgresql/data\n    restart: unless-stopped\n\n  # 5. Qdrant - 向量數據庫\n  qdrant:\n    image: qdrant/qdrant:latest\n    container_name: qdrant\n    ports:\n      - '6333:6333'\n      - '6334:6334'\n    volumes:\n      - ./data/qdrant:/qdrant/storage\n    restart: unless-stopped"
+    },
+    {
+      "type": "heading",
+      "text": "LiteLLM 配置文件"
+    },
+    {
+      "type": "code",
+      "language": "yaml",
+      "code": "# litellm_config.yaml\nmodel_list:\n  # 本地 Ollama 模型\n  - model_name: qwen2.5-7b\n    litellm_params:\n      model: ollama/qwen2.5:7b\n      api_base: http://ollama:11434\n  \n  - model_name: deepseek-r1\n    litellm_params:\n      model: ollama/deepseek-r1:8b\n      api_base: http://ollama:11434\n  \n  # 外部 API（需要 key）\n  - model_name: claude-sonnet\n    litellm_params:\n      model: claude-sonnet-4-6\n      api_key: os.environ/ANTHROPIC_API_KEY\n\nlitellm_settings:\n  success_callback: [\"langfuse\"]\n  failure_callback: [\"langfuse\"]\n  cache: true\n  cache_params:\n    type: in-memory"
+    },
+    {
+      "type": "heading",
+      "text": "啟動同初始化"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 建立 .env 文件\ncat > .env << 'EOF'\nANTHROPIC_API_KEY=sk-ant-xxxxx\nOPENAI_API_KEY=sk-xxxxx\nLANGFUSE_PUBLIC_KEY=pk-lf-xxxxx\nLANGFUSE_SECRET_KEY=sk-lf-xxxxx\nEOF\n\n# 啟動所有服務\ndocker-compose up -d\n\n# 等待 30 秒讓服務啟動\nsleep 30\n\n# 下載 Qwen2.5 7B 模型\ndocker exec ollama ollama pull qwen2.5:7b\n\n# 下載 DeepSeek R1 8B\ndocker exec ollama ollama pull deepseek-r1:8b\n\n# 確認所有服務運行\ndocker-compose ps"
+    },
+    {
+      "type": "heading",
+      "text": "訪問各服務"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Open WebUI（ChatGPT 介面）→ http://localhost:3000",
+        "LiteLLM API（OpenAI 相容）→ http://localhost:4000",
+        "Langfuse 監控（LLM 觀察）→ http://localhost:3001",
+        "Qdrant Dashboard → http://localhost:6333/dashboard",
+        "Ollama API → http://localhost:11434"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "整合 RAG：將你嘅文件加入知識庫"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from qdrant_client import QdrantClient\nfrom qdrant_client.models import Distance, VectorParams, PointStruct\nfrom openai import OpenAI\nimport uuid\n\n# 連接本地 LiteLLM（當 OpenAI API 用）\nclient = OpenAI(\n    base_url='http://localhost:4000',\n    api_key='anything'\n)\n\nqdrant = QdrantClient(host='localhost', port=6333)\n\n# 建立知識庫\nqdrant.create_collection(\n    collection_name='company_docs',\n    vectors_config=VectorParams(size=1024, distance=Distance.COSINE)\n)\n\ndef add_document(text: str, metadata: dict):\n    # 用本地模型生成 embedding\n    embedding = client.embeddings.create(\n        model='qwen2.5-7b',  # 用本地模型！\n        input=text\n    ).data[0].embedding\n    \n    qdrant.upsert(\n        collection_name='company_docs',\n        points=[PointStruct(\n            id=str(uuid.uuid4()),\n            vector=embedding,\n            payload={'text': text, **metadata}\n        )]\n    )\n\n# 加入公司文件\nadd_document('年假政策：每年 14 天', {'source': 'hr_policy', 'page': 12})\nadd_document('在家工作：每週最多 3 天', {'source': 'hr_policy', 'page': 15})"
+    },
+    {
+      "type": "heading",
+      "text": "成本分析"
+    },
+    {
+      "type": "list",
+      "items": [
+        "初期：二手 PC（i7 + RTX 3060 12GB）約 HK$3,000-5,000",
+        "電費：7B 模型連續跑，每月約 HK$200-400（視用量）",
+        "維護：每月 0-200 元（視乎係咪要 Claude/GPT 外部 fallback）",
+        "對比 OpenAI GPT-4o API：每月用 100 萬 tokens 約 US$10-15（約 HK$80）",
+        "結論：如果用量大，自建一年後回本；如果用量小，用雲端 API 較划算"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "呢個 stack 係 2026 年最實用嘅私有 AI 部署方案。特別適合：處理機密數據嘅公司、想節省 API 費用嘅中型企業、需要完全控制 AI 基礎設施嘅團隊。一旦設定好，維護成本極低，同時提供接近商業雲端服務嘅功能。"
+    },
+    {
+      "type": "cta",
+      "text": "查看 Ollama GitHub (120K ⭐) →",
+      "link": "https://github.com/ollama/ollama"
+    }
+  ]
+}

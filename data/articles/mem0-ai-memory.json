@@ -1,0 +1,157 @@
+{
+  "id": "mem0-ai-memory",
+  "title": "Mem0 — 為 AI Agent 加入長期記憶：告別每次重新介紹自己",
+  "excerpt": "Mem0 係一個開源記憶層，讓 AI Agent 記住用戶偏好、對話歷史、重要事項，跨對話持久保存。28K GitHub 星星，支援 OpenAI、Claude、本地模型，5 分鐘搭建有記憶嘅客服 bot。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "11 分鐘",
+  "tags": ["Mem0", "AI 記憶", "Agent", "開源", "LangChain"],
+  "heroImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "你有冇試過每次同 AI 傾計都要重新介紹自己？「我係做軟件開發嘅」、「我偏好用 Python」、「我唔鍾意太長嘅解釋」—— 每個新對話都要重複一次。Mem0 就係要解決呢個問題。佢係一個開源記憶層，讓 AI Agent 真正「記住」你，跨對話、跨 session 持久保存重要資訊。GitHub 超過 28K 個星星，係目前最成熟嘅 AI 記憶解決方案。"
+    },
+    {
+      "type": "heading",
+      "text": "Mem0 係點解決記憶問題？"
+    },
+    {
+      "type": "paragraph",
+      "text": "傳統 LLM 嘅記憶有兩種局限：context window 有限（最多幾十萬 token），而且唔會跨對話保存。Mem0 用一個智能記憶層解決呢兩個問題，佢會自動提取對話嘅重要資訊，儲存喺向量數據庫，並喺下次對話時相關記憶注入 context。"
+    },
+    {
+      "type": "list",
+      "items": [
+        "自動提取重要資訊：從對話中識別用戶偏好、事實、決定",
+        "語義搜索：根據當前對話，搜尋最相關嘅歷史記憶",
+        "記憶去重：自動合併相似記憶，避免冗餘",
+        "分層記憶：用戶層、Agent 層、Session 層，三種粒度",
+        "支援多種儲存：向量數據庫（Qdrant、Chroma）、Redis、本地"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "安裝 Mem0"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝 Mem0\npip install mem0ai\n\n# 如果要用本地向量數據庫（推薦）\npip install mem0ai qdrant-client\n\n# 或者用雲端版本（更簡單）\npip install mem0ai\n# 然後設定 Mem0 Platform API key"
+    },
+    {
+      "type": "heading",
+      "text": "5 分鐘快速上手"
+    },
+    {
+      "type": "paragraph",
+      "text": "最簡單嘅用法係用 Mem0 嘅雲端平台，唔需要自己管理向量數據庫："
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from mem0 import Memory\nimport os\n\nos.environ[\"OPENAI_API_KEY\"] = \"sk-xxx\"  # 或者用 Anthropic\n\n# 初始化記憶（用本地儲存）\nm = Memory()\n\n# 加入記憶\nresult = m.add(\n    \"我係一個香港嘅 Python 開發者，偏好用繁體中文，不喜歡長篇大論\",\n    user_id=\"user_alice\"\n)\nprint(result)  # {'results': [{'id': 'mem_xxx', 'memory': '用戶係香港 Python 開發者...'}]}\n\n# 搜尋記憶\nrelated_memories = m.search(\n    \"用戶想了解 Python 最佳實踐\",\n    user_id=\"user_alice\"\n)\nprint(related_memories)\n\n# 列出所有記憶\nall_memories = m.get_all(user_id=\"user_alice\")\nfor mem in all_memories['results']:\n    print(f\"- {mem['memory']}\")"
+    },
+    {
+      "type": "heading",
+      "text": "記憶層架構：三個層次"
+    },
+    {
+      "type": "paragraph",
+      "text": "Mem0 將記憶分為三個層次，應對唔同場景："
+    },
+    {
+      "type": "list",
+      "items": [
+        "用戶記憶（User Memory）：跨所有對話保存，記住用戶偏好、背景、習慣",
+        "Agent 記憶（Agent Memory）：特定 Agent 嘅記憶，例如客服 bot 記住處理方式",
+        "Session 記憶（Run Memory）：單次對話嘅上下文，對話結束後可選擇性保留"
+      ]
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# 三種記憶層級示例\nm = Memory()\n\n# 用戶級別記憶（最常用）\nm.add(\"Alice 係設計師，喜歡簡潔嘅 UI\", user_id=\"alice\")\n\n# Agent 級別記憶（同一個 agent 嘅偏好）\nm.add(\"客服 bot 應該先道歉再解決問題\", agent_id=\"customer_service_bot\")\n\n# Session 級別記憶（臨時上下文）\nm.add(\"用戶今次問緊退款問題\", user_id=\"alice\", run_id=\"session_001\")\n\n# 搜尋時可以組合多個層次\nresults = m.search(\n    \"用戶嘅 UI 偏好\",\n    user_id=\"alice\",\n    agent_id=\"customer_service_bot\"\n)"
+    },
+    {
+      "type": "heading",
+      "text": "搭建有記憶嘅客服 Bot"
+    },
+    {
+      "type": "paragraph",
+      "text": "呢係一個完整示例，展示點樣用 Mem0 + Claude 搭建一個有長期記憶嘅客服助手："
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from mem0 import Memory\nfrom anthropic import Anthropic\n\nclient = Anthropic()\nm = Memory()\n\ndef chat_with_memory(user_message: str, user_id: str) -> str:\n    \"\"\"有記憶嘅客服對話\"\"\"\n    \n    # 1. 搜尋相關歷史記憶\n    relevant_memories = m.search(user_message, user_id=user_id)\n    \n    # 2. 格式化記憶注入 prompt\n    memory_context = \"\"\n    if relevant_memories['results']:\n        memory_context = \"\\n\\n關於此用戶嘅已知資訊：\\n\"\n        for mem in relevant_memories['results']:\n            memory_context += f\"- {mem['memory']}\\n\"\n    \n    # 3. 構建完整 prompt\n    system_prompt = f\"\"\"你係一個友善嘅客服助手，用廣東話回答。\n你需要根據用戶記憶提供個性化服務。\n{memory_context}\"\"\"\n    \n    # 4. 調用 Claude\n    response = client.messages.create(\n        model=\"claude-sonnet-4-6\",\n        max_tokens=1024,\n        system=system_prompt,\n        messages=[{\"role\": \"user\", \"content\": user_message}]\n    )\n    assistant_response = response.content[0].text\n    \n    # 5. 自動提取並保存重要記憶\n    m.add(\n        f\"用戶: {user_message}\\n助手: {assistant_response}\",\n        user_id=user_id\n    )\n    \n    return assistant_response\n\n# 測試對話\nprint(chat_with_memory(\"我想了解退貨政策\", \"alice\"))\n# Alice 再次對話，bot 會記住佢係 Alice\nprint(chat_with_memory(\"係嘅，我上次買嘅衫尺碼唔岩\", \"alice\"))\n# Bot 會記住 Alice 有退換貨需求，下次自動提供相關資訊"
+    },
+    {
+      "type": "heading",
+      "text": "配置自訂向量數據庫"
+    },
+    {
+      "type": "paragraph",
+      "text": "生產環境建議用 Qdrant 或者 Chroma 作為向量數據庫，效能更好，支援大規模記憶："
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from mem0 import Memory\n\n# 完整配置示例\nconfig = {\n    \"vector_store\": {\n        \"provider\": \"qdrant\",\n        \"config\": {\n            \"host\": \"localhost\",\n            \"port\": 6333,\n            \"collection_name\": \"customer_memories\",\n            \"embedding_model_dims\": 1536\n        }\n    },\n    \"llm\": {\n        \"provider\": \"anthropic\",\n        \"config\": {\n            \"model\": \"claude-haiku-4-5-20251001\",  # 用 Haiku 節省成本\n            \"temperature\": 0,\n            \"max_tokens\": 2000\n        }\n    },\n    \"embedder\": {\n        \"provider\": \"openai\",\n        \"config\": {\n            \"model\": \"text-embedding-3-small\"\n        }\n    }\n}\n\nm = Memory.from_config(config)\n\n# Docker 啟動 Qdrant\n# docker run -p 6333:6333 qdrant/qdrant"
+    },
+    {
+      "type": "heading",
+      "text": "Mem0 + LangChain 整合"
+    },
+    {
+      "type": "paragraph",
+      "text": "如果你已有 LangChain 嘅 Agent，Mem0 可以無縫整合作為記憶層："
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from langchain_anthropic import ChatAnthropic\nfrom langchain.schema import HumanMessage, SystemMessage\nfrom mem0 import Memory\n\nm = Memory()\nllm = ChatAnthropic(model=\"claude-sonnet-4-6\")\n\ndef langchain_chat_with_memory(query: str, user_id: str):\n    # 獲取相關記憶\n    memories = m.search(query, user_id=user_id)\n    mem_text = \"\\n\".join([f\"- {r['memory']}\" for r in memories['results']])\n    \n    messages = [\n        SystemMessage(content=f\"用戶記憶：\\n{mem_text}\"),\n        HumanMessage(content=query)\n    ]\n    \n    response = llm.invoke(messages)\n    \n    # 儲存記憶\n    m.add(f\"Q: {query}\\nA: {response.content}\", user_id=user_id)\n    return response.content"
+    },
+    {
+      "type": "heading",
+      "text": "記憶管理 API"
+    },
+    {
+      "type": "paragraph",
+      "text": "Mem0 提供完整嘅 CRUD 操作管理記憶："
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# 列出所有記憶\nall_mems = m.get_all(user_id=\"alice\")\n\n# 根據 ID 獲取特定記憶\nspecific = m.get(memory_id=\"mem_abc123\")\n\n# 更新記憶\nm.update(memory_id=\"mem_abc123\", data=\"Alice 現在係高級設計師\")\n\n# 刪除特定記憶\nm.delete(memory_id=\"mem_abc123\")\n\n# 刪除用戶所有記憶（GDPR 合規）\nm.delete_all(user_id=\"alice\")\n\n# 獲取記憶歷史（記憶點樣演變）\nhistory = m.history(memory_id=\"mem_abc123\")"
+    },
+    {
+      "type": "heading",
+      "text": "實用最佳實踐"
+    },
+    {
+      "type": "list",
+      "items": [
+        "用 Haiku 模型做記憶提取，節省 80% 成本（記憶提取唔需要最強嘅模型）",
+        "定期清理過時記憶，避免錯誤資訊影響回答",
+        "user_id 用唯一識別符（例如用戶 UUID），唔好用易猜到嘅值",
+        "生產環境用 Qdrant 或 Weaviate，唔好用內存儲存",
+        "記憶搜索用 top_k=5 就夠，太多反而會增加 noise",
+        "GDPR 合規：實作 delete_all 端點讓用戶刪除自己嘅記憶"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "Mem0 係目前最簡單、最成熟嘅 AI 記憶解決方案。唔需要自己實作複雜嘅向量搜索邏輯，5 分鐘就能讓你嘅 AI Agent 擁有跨對話記憶。特別係做客服 bot、個人助手、學習輔助類應用，Mem0 係不可缺少嘅基礎設施。GitHub 28K 星星，社區活躍，文檔完善，強烈推薦。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: mem0ai/mem0 (28K ⭐) →",
+      "link": "https://github.com/mem0ai/mem0"
+    }
+  ]
+}

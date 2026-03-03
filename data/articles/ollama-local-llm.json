@@ -1,0 +1,147 @@
+{
+  "id": "ollama-local-llm",
+  "title": "Ollama 本地跑 LLM 完全指南：免 API Key、完全私隱",
+  "excerpt": "Ollama 係最易用嘅本地 LLM 執行工具，一個指令下載模型，支援 Llama 3.2、Qwen2.5、Mistral 等 100+ 模型。配合 Open WebUI 即成本地 ChatGPT。GitHub 120K 星星，Mac/Windows/Linux 全支援。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "10 分鐘",
+  "tags": ["Ollama", "本地 LLM", "開源", "私隱", "AI 部署"],
+  "heroImage": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "每次用 ChatGPT 或 Claude，你嘅對話都會上傳到外部伺服器。如果你處理嘅係公司機密、個人資料、或者只係唔想畀人睇，Ollama 係你需要嘅工具。佢可以喺你自己嘅電腦完全本地跑 LLM，零 API 費用，零數據洩露。GitHub 超過 120K 星星。"
+    },
+    {
+      "type": "heading",
+      "text": "Ollama 係咩？點解咁多人用？"
+    },
+    {
+      "type": "list",
+      "items": [
+        "一個指令安裝模型：ollama pull llama3.2，就係咁簡單",
+        "完全離線運行，數據唔離開你嘅電腦",
+        "支援 100+ 開源模型：Llama、Qwen、Mistral、Gemma、Phi、DeepSeek",
+        "提供 REST API，同 OpenAI API 格式相容，現有代碼幾乎零改動可接入",
+        "支援 Mac（M1/M2/M3/M4 全系列）、Windows、Linux",
+        "GitHub: github.com/ollama/ollama（120K+ 星星）"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "安裝 Ollama"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# macOS\nbrew install ollama\n\n# 或者直接下載安裝包\n# https://ollama.com/download\n\n# Linux（一行安裝）\ncurl -fsSL https://ollama.com/install.sh | sh\n\n# Windows：下載 exe 安裝包\n# https://ollama.com/download/windows\n\n# 確認安裝成功\nollama --version"
+    },
+    {
+      "type": "heading",
+      "text": "下載同運行模型"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 下載並運行 Llama 3.2（3B，適合普通電腦）\nollama run llama3.2\n\n# 下載 Qwen2.5 7B（中文能力強）\nollama run qwen2.5:7b\n\n# DeepSeek R1（推理能力強）\nollama run deepseek-r1:8b\n\n# Mistral 7B（速度快、效果好）\nollama run mistral\n\n# 大模型（需要強 GPU，16GB VRAM+）\nollama run llama3.2:70b\n\n# 列出已安裝嘅模型\nollama list\n\n# 移除模型（釋放空間）\nollama rm llama3.2"
+    },
+    {
+      "type": "heading",
+      "text": "模型選擇指南"
+    },
+    {
+      "type": "paragraph",
+      "text": "唔同機器配唔同模型，以下係推薦配置："
+    },
+    {
+      "type": "list",
+      "items": [
+        "M1/M2 MacBook Air（8GB）：llama3.2:3b、phi3:mini、gemma2:2b — 流暢運行",
+        "M2/M3 MacBook Pro（16GB）：qwen2.5:7b、mistral:7b、llama3.2:8b — 表現優秀",
+        "M3/M4 Pro（32GB+）：llama3.1:70b、qwen2.5:32b — 接近 GPT-4 水平",
+        "Windows PC（RTX 3060 12GB）：qwen2.5:7b、deepseek-r1:8b — GPU 加速",
+        "最推薦模型：qwen2.5:7b（中英文最平衡）、deepseek-r1:8b（推理任務）"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "API 用法：同 OpenAI 格式相容"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ollama 啟動後會喺 localhost:11434 開一個 API server。你可以用同 OpenAI 一樣嘅格式呼叫："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 用 curl 測試 API\ncurl http://localhost:11434/api/chat -d '{\n  \"model\": \"qwen2.5:7b\",\n  \"messages\": [\n    {\"role\": \"user\", \"content\": \"你好，請用廣東話介紹下自己\"}\n  ]\n}'"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "# Python 用法（用 openai 庫）\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url='http://localhost:11434/v1',\n    api_key='ollama',  # 任何字串都可以\n)\n\nresponse = client.chat.completions.create(\n    model='qwen2.5:7b',\n    messages=[\n        {'role': 'user', 'content': '幫我寫一個 Python function 計算斐波那契數列'}\n    ]\n)\nprint(response.choices[0].message.content)"
+    },
+    {
+      "type": "heading",
+      "text": "自訂 Modelfile：建立你嘅專屬 AI"
+    },
+    {
+      "type": "paragraph",
+      "text": "Modelfile 係 Ollama 最強大嘅功能之一，可以自訂模型行為、設定 system prompt、調整參數："
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "code": "# 建立 Modelfile\nFROM qwen2.5:7b\n\n# 設定溫度（0=保守，2=創意）\nPARAMETER temperature 0.7\n\n# 設定 context window\nPARAMETER num_ctx 8192\n\n# 設定系統角色\nSYSTEM \"\"\"你係一個專業嘅香港科技公司客服助理，\n用廣東話回答所有問題，語氣專業但親切。\n如果唔確定，請說「我需要幫你轉介同事跟進」。\"\"\""
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 從 Modelfile 建立自訂模型\nollama create hk-customer-service -f Modelfile\n\n# 測試\nollama run hk-customer-service\n\n# > 我的訂單延遲了，怎麼辦？"
+    },
+    {
+      "type": "heading",
+      "text": "配合 Open WebUI：本地 ChatGPT 介面"
+    },
+    {
+      "type": "paragraph",
+      "text": "Open WebUI（前身 Ollama WebUI）係最受歡迎嘅 Ollama 前端，提供同 ChatGPT 一樣嘅介面："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 用 Docker 一鍵安裝 Open WebUI\ndocker run -d \\\n  --name open-webui \\\n  -p 3000:8080 \\\n  -v open-webui:/app/backend/data \\\n  --add-host=host.docker.internal:host-gateway \\\n  -e OLLAMA_BASE_URL=http://host.docker.internal:11434 \\\n  --restart always \\\n  ghcr.io/open-webui/open-webui:main\n\n# 安裝後開瀏覽器去 http://localhost:3000"
+    },
+    {
+      "type": "paragraph",
+      "text": "Open WebUI 有以下功能：對話歷史、RAG（上傳文件問答）、圖片生成整合（配合 DALL-E 或 ComfyUI）、多用戶管理、API key 管理、Markdown 渲染。"
+    },
+    {
+      "type": "heading",
+      "text": "實際應用場景"
+    },
+    {
+      "type": "list",
+      "items": [
+        "公司機密文件分析：上傳合約、報告，問 AI 問題，數據唔離開公司",
+        "醫療/法律諮詢輔助：處理敏感資料，符合 GDPR/PDPO 要求",
+        "離線開發助手：去旅行或者無網絡時仍可用 AI",
+        "教育用途：學校可以部署給學生用，完全控制數據",
+        "企業內部知識庫：配合 RAG，讓 AI 了解公司文件"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ollama 係 2026 年本地 AI 部署嘅首選工具。配合 Open WebUI，你可以喺 10 分鐘內建立一個完全私人、免費、可自訂嘅 AI 助手。如果你有任何私隱顧慮，或者只係想節省 API 費用，Ollama 係必裝工具。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: ollama/ollama (120K ⭐) →",
+      "link": "https://github.com/ollama/ollama"
+    }
+  ]
+}

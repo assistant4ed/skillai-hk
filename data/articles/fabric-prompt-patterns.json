@@ -1,0 +1,150 @@
+{
+  "id": "fabric-prompt-patterns",
+  "title": "Fabric — 200+ 開源 Prompt 模式庫：Daniel Miessler 嘅 AI 瑞士軍刀",
+  "excerpt": "Fabric 係 Daniel Miessler 創建嘅開源 CLI 工具，內建 200+ 精心設計嘅 Prompt Pattern，涵蓋分析、創作、安全、生產力等場景。GitHub 20K 星星，一行指令完成複雜 AI 任務。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "10 分鐘",
+  "tags": ["Fabric", "Prompt Engineering", "CLI", "開源", "AI 生產力"],
+  "heroImage": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Prompt Engineering 係一門學問，而大多數人嘅 prompt 都寫得唔好。Fabric 係 Daniel Miessler（知名安全研究員、AI 思想家）建立嘅解決方案：一個包含 200+ 精心設計 prompt pattern 嘅開源工具庫，讓你唔需要每次從頭想 prompt，直接用已經經過驗證嘅模式。GitHub 超過 20K 個星星，係 prompt engineering 界嘅重要工程。"
+    },
+    {
+      "type": "heading",
+      "text": "Fabric 係咩？"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fabric 唔只係一個 prompt 集合，佢係一個完整嘅 AI 增強框架。核心理念係「Patterns」——每個 Pattern 係一個精心設計嘅 system prompt，針對特定任務優化。你可以通過 CLI 管道（pipe）將任何輸入（文字、YouTube 連結、URL）傳遞給 Pattern，獲得結構化輸出。"
+    },
+    {
+      "type": "heading",
+      "text": "安裝 Fabric"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# macOS / Linux 安裝\ncurl -L https://github.com/danielmiessler/fabric/releases/latest/download/fabric-darwin-arm64 > fabric\nchmod +x fabric\nmv fabric /usr/local/bin/\n\n# 或者用 Go 安裝（需要 Go 1.21+）\ngo install github.com/danielmiessler/fabric@latest\n\n# 初始化設定（設定 API Key）\nfabric --setup\n# 按提示輸入 OpenAI / Anthropic / Ollama 等 API Key\n\n# 驗證安裝\nfabric --list  # 列出所有可用 patterns"
+    },
+    {
+      "type": "heading",
+      "text": "基本用法：管道哲學"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fabric 遵循 Unix 哲學，一切都係 pipe。你可以將任何輸入通過管道傳給 Fabric pattern："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 最基本用法\necho \"你嘅文字\" | fabric --pattern <pattern_name>\n\n# 分析一篇文章\npbpaste | fabric --pattern analyze_claims\n\n# 從 URL 提取內容並總結\nfabric --youtube https://www.youtube.com/watch?v=xxx --pattern summarize\n\n# 用指定模型\necho \"分析此商業模式\" | fabric --pattern analyze_prose --model claude-sonnet-4-6\n\n# 保存輸出到文件\necho \"我嘅文章\" | fabric --pattern improve_writing > improved.md"
+    },
+    {
+      "type": "heading",
+      "text": "最實用 10 個 Pattern"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fabric 有 200+ patterns，以下係最常用、最實用嘅 10 個："
+    },
+    {
+      "type": "list",
+      "items": [
+        "summarize — 將任何內容總結成結構化重點，支援長文、YouTube、播客",
+        "extract_wisdom — 從文章、書籍、演講提取最有價值嘅洞見、金句、行動建議",
+        "analyze_claims — 分析文章嘅論點，找出邏輯謬誤、缺乏證據嘅聲明",
+        "improve_writing — 優化文章嘅清晰度、流暢性、說服力，保持原意",
+        "create_summary — 生成一段式精煉摘要，適合社交媒體分享",
+        "write_essay — 根據想法寫出結構完整嘅論文或長文",
+        "find_logical_fallacies — 識別文章中嘅邏輯謬誤（稻草人、訴諸權威等）",
+        "create_quiz — 根據學習材料生成測驗題目，幫助記憶",
+        "rate_content — 對內容嘅質量、深度、實用性評分",
+        "analyze_tech_impact — 分析技術對社會、工作、文化嘅影響"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "實戰示例：YouTube 播客轉洞見"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 從 YouTube 播客提取智慧（最常用場景）\nfabric --youtube \"https://www.youtube.com/watch?v=xxxxx\" --pattern extract_wisdom\n\n# 輸出格式示例：\n# IDEAS:\n# - AI 不會取代人類，但會取代唔識用 AI 嘅人類\n# - 未來最重要嘅技能係：提問嘅能力\n# ...\n# INSIGHTS:\n# - 技術進步唔係線性，而係指數型\n# ...\n# QUOTES:\n# - \"The best way to predict the future is to create it\"\n# ...\n# HABITS:\n# - 每日花 30 分鐘學習新技術\n# ...\n# RECOMMENDATIONS:\n# - 閱讀《The Singularity Is Near》\n# ..."
+    },
+    {
+      "type": "heading",
+      "text": "分析文章聲明：反假資訊神器"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 複製一篇新聞文章，分析其聲明\npbpaste | fabric --pattern analyze_claims\n\n# 輸出示例：\n# CLAIMS:\n# 1. [STRONG] AI 將在 5 年內超越人類智能\n#    - 支持證據：缺乏，無具體研究引用\n#    - 反對證據：大多數 AI 研究者認為 AGI 時間線更長\n#    - 可信度：低\n# 2. [WEAK] 某公司估值達 1000 億\n#    - 來源：未引用，無法驗證\n# LOGICAL FALLACIES:\n# - 訴諸恐懼：文章使用恐懼性語言推動讀者接受結論\n# OVERALL RATING: 3/10 (低可信度)"
+    },
+    {
+      "type": "heading",
+      "text": "自訂 Pattern：寫你自己嘅模式"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fabric 最強大嘅地方係你可以建立自己嘅 Pattern。只需要喺 ~/.config/fabric/patterns/ 建立一個新目錄："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 建立自訂 pattern 目錄\nmkdir -p ~/.config/fabric/patterns/analyze_hk_news\n\n# 建立 system.md（pattern 嘅核心）\ncat > ~/.config/fabric/patterns/analyze_hk_news/system.md << 'EOF'\n# IDENTITY AND PURPOSE\n你係一個香港新聞分析專家，專門分析香港本地新聞嘅背景、影響、偏見。\n你用繁體中文（香港口語風格）回應。\n\n# STEPS\n1. 識別新聞主題同主要事件\n2. 分析相關政治、經濟、社會背景\n3. 找出潛在偏見或遺漏資訊\n4. 評估對香港普通市民嘅實際影響\n\n# OUTPUT SECTIONS\n## 新聞摘要（3 句話）\n## 背景脈絡\n## 潛在偏見分析\n## 對市民嘅實際影響\n## 延伸閱讀建議\n\n# OUTPUT INSTRUCTIONS\n- 用廣東話書寫，但正式場合用書面語\n- 每個 section 用 bullet points\n- 保持中立、客觀分析\nEOF\n\n# 測試你的自訂 pattern\npbpaste | fabric --pattern analyze_hk_news"
+    },
+    {
+      "type": "heading",
+      "text": "高級用法：鏈式 Pattern"
+    },
+    {
+      "type": "paragraph",
+      "text": "你可以將多個 pattern 串聯，實現複雜嘅 AI 工作流："
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 先總結，再改善寫作\necho \"你嘅長文\" | fabric --pattern summarize | fabric --pattern improve_writing\n\n# 從 YouTube 提取洞見，再寫成 Twitter thread\nfabric --youtube \"URL\" --pattern extract_wisdom | \\\n  fabric --pattern create_twitter_thread\n\n# 分析競爭對手文章，然後寫反駁\npbpaste | fabric --pattern analyze_claims | \\\n  fabric --pattern write_counter_argument\n\n# 建立完整研究報告 workflow\ncat article.txt | \\\n  fabric --pattern extract_wisdom > insights.md && \\\n  fabric --pattern analyze_claims < article.txt > claims.md && \\\n  cat insights.md claims.md | fabric --pattern create_report > report.md"
+    },
+    {
+      "type": "heading",
+      "text": "Fabric Server Mode：本地 AI API"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 啟動 Fabric 作為本地 HTTP API\nfabric --serve\n# Server 在 localhost:8080 運行\n\n# 用 curl 調用\ncurl -X POST http://localhost:8080/chat \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"prompts\": [{\"userMessage\": \"分析呢篇文章...\", \"patternName\": \"extract_wisdom\"}],\n    \"model\": \"claude-sonnet-4-6\"\n  }'\n\n# 可以整合到任何應用程式（網站、Telegram bot、自動化腳本）"
+    },
+    {
+      "type": "heading",
+      "text": "推薦工作流"
+    },
+    {
+      "type": "list",
+      "items": [
+        "每天看新聞：pbpaste | fabric --pattern analyze_claims 快速識別假資訊",
+        "學習新技術：YouTube 教程 → fabric extract_wisdom 提取精華",
+        "寫作優化：草稿完成後 → fabric improve_writing 自動潤色",
+        "會議準備：相關資料 → fabric summarize 快速消化",
+        "創意構思：想法 → fabric write_essay 展開成完整文章",
+        "安全分析：程式碼 → fabric security_review 找漏洞（Daniel 嘅強項）"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fabric 係 prompt engineering 民主化嘅代表作。Daniel Miessler 將多年嘅最佳實踐濃縮成 200+ 個可直接使用嘅 pattern，任何人都可以即刻使用頂級嘅 prompt 設計。如果你每日都要同 AI 互動，Fabric 係必裝工具，佢會徹底改變你使用 AI 嘅方式。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: danielmiessler/fabric (20K ⭐) →",
+      "link": "https://github.com/danielmiessler/fabric"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "id": "crewai-multi-agent",
+  "title": "CrewAI 多 Agent 實戰：自動化研究報告、內容生成、軟件開發",
+  "excerpt": "CrewAI 係最流行嘅多 Agent 框架，讓多個 AI 角色分工合作完成複雜任務。一個指令自動生成完整研究報告、SEO 文章、甚至寫完整應用程式。GitHub 23K 星星，Python 原生，上手極快。",
+  "type": "article",
+  "date": "2026-03-03",
+  "readTime": "11 分鐘",
+  "tags": ["CrewAI", "多 Agent", "AI 自動化", "開源", "Python"],
+  "heroImage": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "一個 AI agent 有極限，但一隊 agent 呢？CrewAI 係一個讓多個 AI 「員工」分工合作嘅框架。你可以定義一個「研究員」、一個「寫手」、一個「編輯」，然後佢哋自動協作，最後交出完整報告。GitHub 超過 23K 星星，係目前最受歡迎嘅多 agent 框架。"
+    },
+    {
+      "type": "heading",
+      "text": "CrewAI 核心概念"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Agent：有角色、目標、背景設定嘅 AI 執行者",
+        "Task：Agent 需要完成嘅具體任務，有預期輸出",
+        "Crew：多個 Agent + 多個 Task 嘅組合，有執行順序",
+        "Tool：Agent 可以使用嘅工具（搜索、計算、API 調用等）",
+        "Process：順序執行（Sequential）或者並行執行（Hierarchical）"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "安裝 CrewAI"
+    },
+    {
+      "type": "code",
+      "language": "bash",
+      "code": "# 安裝 CrewAI 同工具套件\npip install crewai crewai-tools\n\n# 設定 API key（用 Claude 或 OpenAI）\nexport ANTHROPIC_API_KEY=sk-ant-xxxxx\n# 或者\nexport OPENAI_API_KEY=sk-xxxxx\n\n# 確認安裝\npython -c \"import crewai; print(crewai.__version__)\"  # 0.86.0"
+    },
+    {
+      "type": "heading",
+      "text": "場景一：自動化研究報告"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一個例子：建立一個自動撰寫行業研究報告嘅 Crew："
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from crewai import Agent, Task, Crew, Process\nfrom crewai_tools import SerperDevTool, WebsiteSearchTool\n\n# 工具：搜索互聯網\nsearch_tool = SerperDevTool()\n\n# 定義 Agents\nresearcher = Agent(\n    role='行業研究員',\n    goal='收集最新、最準確嘅行業資訊',\n    backstory='你係一個有 10 年經驗嘅科技行業分析師，\\\n               擅長找到可靠數據同洞察',\n    tools=[search_tool],\n    verbose=True,\n    llm='claude-sonnet-4-6'\n)\n\nwriter = Agent(\n    role='報告撰寫員',\n    goal='將研究資料轉化為清晰易讀嘅報告',\n    backstory='你係一個商業報告寫作專家，\\\n               擅長用簡潔語言解釋複雜概念',\n    verbose=True,\n    llm='claude-sonnet-4-6'\n)\n\neditor = Agent(\n    role='首席編輯',\n    goal='確保報告準確、完整、符合專業標準',\n    backstory='你係一個嚴謹嘅編輯，\\\n               確保每個數據都有來源，邏輯清晰',\n    verbose=True,\n    llm='claude-sonnet-4-6'\n)\n\n# 定義 Tasks\nresearch_task = Task(\n    description='研究 2026 年香港 AI 行業現況：\\\n                 市場規模、主要玩家、增長趨勢、挑戰',\n    expected_output='一份包含數據、引用、洞察嘅研究筆記，至少 500 字',\n    agent=researcher\n)\n\nwriting_task = Task(\n    description='根據研究筆記，撰寫一份 800-1000 字嘅行業報告',\n    expected_output='結構清晰嘅報告，包括摘要、現況、趨勢、結論',\n    agent=writer,\n    context=[research_task]  # 依賴研究結果\n)\n\nediting_task = Task(\n    description='審閱報告，確保數據準確，語言專業，格式正確',\n    expected_output='最終版本嘅報告，所有問題已修正',\n    agent=editor,\n    context=[writing_task]\n)\n\n# 建立並運行 Crew\ncrew = Crew(\n    agents=[researcher, writer, editor],\n    tasks=[research_task, writing_task, editing_task],\n    process=Process.sequential,  # 順序執行\n    verbose=True\n)\n\nresult = crew.kickoff()\nprint(result.raw)"
+    },
+    {
+      "type": "heading",
+      "text": "場景二：SEO 內容自動生成"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from crewai import Agent, Task, Crew\nfrom crewai_tools import SerperDevTool\n\n# SEO 關鍵字研究員\nkeyword_agent = Agent(\n    role='SEO 關鍵字專家',\n    goal='找出最有潛力嘅長尾關鍵字',\n    backstory='你熟悉 Google Search Console 同 SEO 最佳實踐',\n    tools=[SerperDevTool()],\n    llm='claude-sonnet-4-6'\n)\n\n# 內容撰寫員\ncontent_agent = Agent(\n    role='SEO 文章作者',\n    goal='寫出排名高、用戶愛讀嘅文章',\n    backstory='你係一個擅長 SEO 內容嘅廣東話作者',\n    llm='claude-sonnet-4-6'\n)\n\n# 任務\nkeyword_task = Task(\n    description='為主題「香港 AI 教育」找出 10 個搜索量高嘅長尾關鍵字',\n    expected_output='關鍵字清單，每個附月搜索量估計',\n    agent=keyword_agent\n)\n\ncontent_task = Task(\n    description='用研究到嘅關鍵字，寫一篇 1200 字嘅 SEO 文章',\n    expected_output='完整文章，包括標題、小標、內文，自然融入關鍵字',\n    agent=content_agent,\n    context=[keyword_task]\n)\n\ncrew = Crew(\n    agents=[keyword_agent, content_agent],\n    tasks=[keyword_task, content_task],\n    verbose=True\n)\n\nresult = crew.kickoff(inputs={'topic': '香港 AI 教育'})\nprint(result.raw)"
+    },
+    {
+      "type": "heading",
+      "text": "場景三：自動化軟件開發"
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from crewai import Agent, Task, Crew\nfrom crewai_tools import CodeInterpreterTool\n\n# 系統架構師\narchitect = Agent(\n    role='系統架構師',\n    goal='設計清晰、可擴展嘅軟件架構',\n    backstory='你有 15 年後端開發經驗，熟悉微服務同 DDD',\n    llm='claude-opus-4-6'  # 用最強模型做架構設計\n)\n\n# 後端開發者\nbackend_dev = Agent(\n    role='後端開發者',\n    goal='按架構圖寫出乾淨、有測試嘅代碼',\n    backstory='你熟悉 FastAPI、SQLAlchemy、pytest',\n    tools=[CodeInterpreterTool()],\n    llm='claude-sonnet-4-6'\n)\n\n# 測試工程師\ntester = Agent(\n    role='QA 工程師',\n    goal='確保代碼質量，覆蓋所有 edge cases',\n    backstory='你寫單元測試和集成測試，要求 80%+ 覆蓋率',\n    tools=[CodeInterpreterTool()],\n    llm='claude-sonnet-4-6'\n)\n\narch_task = Task(\n    description='設計一個 RESTful API 系統：用戶管理 + JWT 認證 + PostgreSQL',\n    expected_output='架構圖、API 設計文檔、數據庫 schema',\n    agent=architect\n)\n\ndev_task = Task(\n    description='按架構文檔，用 FastAPI 實現 API，包括 CRUD 同認證',\n    expected_output='完整可運行嘅代碼，有 requirements.txt',\n    agent=backend_dev,\n    context=[arch_task]\n)\n\ntest_task = Task(\n    description='為實現嘅 API 寫完整測試套件',\n    expected_output='測試代碼，覆蓋主要流程同錯誤情況',\n    agent=tester,\n    context=[dev_task]\n)\n\ncrew = Crew(\n    agents=[architect, backend_dev, tester],\n    tasks=[arch_task, dev_task, test_task],\n    verbose=True\n)\n\nresult = crew.kickoff()\nprint(result.raw)"
+    },
+    {
+      "type": "heading",
+      "text": "Hierarchical Process：更智能嘅協作"
+    },
+    {
+      "type": "paragraph",
+      "text": "除了順序執行，CrewAI 支援 Hierarchical 模式，由一個 Manager Agent 動態分配任務："
+    },
+    {
+      "type": "code",
+      "language": "python",
+      "code": "from crewai import Agent, Task, Crew, Process\n\nmanager = Agent(\n    role='項目經理',\n    goal='協調團隊高效完成任務',\n    backstory='你係一個資深 PM，擅長任務分解同資源調配',\n    llm='claude-opus-4-6'\n)\n\ncrew = Crew(\n    agents=[researcher, writer, editor],\n    tasks=[complex_task],\n    process=Process.hierarchical,\n    manager_agent=manager,  # Manager 自動分配子任務\n    verbose=True\n)"
+    },
+    {
+      "type": "heading",
+      "text": "最佳實踐"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Agent role/backstory 要具體，越詳細效果越好",
+        "Task description 要清晰，expected_output 要明確",
+        "用 context 連結依賴任務，讓後置任務取得前置結果",
+        "複雜推理用 Claude Opus，簡單任務用 Haiku 節省成本",
+        "設定 max_iter=5 避免 agent 無限循環",
+        "用 memory=True 讓 agent 記住之前嘅對話"
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "總結"
+    },
+    {
+      "type": "paragraph",
+      "text": "CrewAI 係目前最易上手嘅多 agent 框架。從研究報告到內容生成，到軟件開發，透過定義清晰嘅 agent 角色同任務，可以將原本需要一個團隊才能完成嘅工作，交由 AI 自動完成。如果你已經熟悉 Python，一下晝就可以搭建你嘅第一個 AI 自動化工作流。"
+    },
+    {
+      "type": "cta",
+      "text": "GitHub: crewAIInc/crewAI (23K ⭐) →",
+      "link": "https://github.com/crewAIInc/crewAI"
+    }
+  ]
+}

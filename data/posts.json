@@ -1,150 +1,213 @@
-[
-  {
-    "title": "5 個開源 RAG 框架深度比較：LangChain vs LlamaIndex vs Haystack vs Chroma vs Qdrant",
-    "date": "2026-03-03",
-    "readTime": "13 分鐘",
-    "tags": [
-      "RAG",
-      "LangChain",
-      "LlamaIndex",
-      "Haystack",
-      "Chroma",
-      "Qdrant",
-      "開源"
-    ]
-  },
-  {
-    "title": "2026 年 3 月開源模型速覽：Qwen3、GLM-4、Llama 3.2、DeepSeek V3 深度比較",
-    "date": "2026-03-03",
-    "readTime": "12 分鐘",
-    "tags": [
-      "開源模型",
-      "Qwen3",
-      "DeepSeek",
-      "Llama",
-      "GLM-4",
-      "LLM"
-    ]
-  },
-  {
-    "title": "Ollama 本地跑 LLM 完全指南：免 API Key、完全私隱",
-    "date": "2026-03-03",
-    "readTime": "10 分鐘",
-    "tags": [
-      "Ollama",
-      "本地 LLM",
-      "開源",
-      "私隱",
-      "AI 部署"
-    ]
-  },
-  {
-    "title": "Mem0 — 為 AI Agent 加入長期記憶：告別每次重新介紹自己",
-    "date": "2026-03-03",
-    "readTime": "11 分鐘",
-    "tags": [
-      "Mem0",
-      "AI 記憶",
-      "Agent",
-      "開源",
-      "LangChain"
-    ]
-  },
-  {
-    "title": "MCP 協議入門：AI Agent 嘅 USB 標準，點樣寫你第一個 MCP Server",
-    "date": "2026-03-03",
-    "readTime": "10 分鐘",
-    "tags": [
-      "MCP",
-      "Anthropic",
-      "AI Agent",
-      "開源",
-      "協議"
-    ]
-  },
-  {
-    "title": "LiteLLM：一個 API 調用 100+ LLM 模型，附 Fallback 同監控",
-    "date": "2026-03-03",
-    "readTime": "9 分鐘",
-    "tags": [
-      "LiteLLM",
-      "API Gateway",
-      "LLM",
-      "開源",
-      "監控"
-    ]
-  },
-  {
-    "title": "Firecrawl + LLM = 智能爬蟲：5 分鐘提取任何網站數據",
-    "date": "2026-03-03",
-    "readTime": "8 分鐘",
-    "tags": [
-      "Firecrawl",
-      "爬蟲",
-      "LLM",
-      "數據提取",
-      "開源"
-    ]
-  },
-  {
-    "title": "Fabric — 200+ 開源 Prompt 模式庫：Daniel Miessler 嘅 AI 瑞士軍刀",
-    "date": "2026-03-03",
-    "readTime": "10 分鐘",
-    "tags": [
-      "Fabric",
-      "Prompt Engineering",
-      "CLI",
-      "開源",
-      "AI 生產力"
-    ]
-  },
-  {
-    "title": "CrewAI 多 Agent 實戰：自動化研究報告、內容生成、軟件開發",
-    "date": "2026-03-03",
-    "readTime": "11 分鐘",
-    "tags": [
-      "CrewAI",
-      "多 Agent",
-      "AI 自動化",
-      "開源",
-      "Python"
-    ]
-  },
-  {
-    "title": "Browser Use：AI 控制瀏覽器自動化，告別重複嘅手動操作",
-    "date": "2026-03-03",
-    "readTime": "9 分鐘",
-    "tags": [
-      "Browser Use",
-      "瀏覽器自動化",
-      "AI Agent",
-      "Playwright",
-      "開源"
-    ]
-  },
-  {
-    "title": "用 Aider + Claude 零到部署：開源 AI Pair Programmer 完全指南",
-    "date": "2026-03-03",
-    "readTime": "10 分鐘",
-    "tags": [
-      "Aider",
-      "開源",
-      "Coding",
-      "Claude",
-      "AI 開發"
-    ]
-  },
-  {
-    "title": "5 個開源工具搭建你的私有 AI 平台：Ollama + Open WebUI + LiteLLM + Langfuse + Qdrant",
-    "date": "2026-03-03",
-    "readTime": "12 分鐘",
-    "tags": [
-      "自建 AI",
-      "開源",
-      "Docker",
-      "Ollama",
-      "私隱",
-      "企業 AI"
-    ]
-  }
-]
+{
+  "posts": [
+    {
+      "id": "rag-frameworks-comparison",
+      "title": "5 個開源 RAG 框架深度比較：LangChain vs LlamaIndex vs Haystack vs Chroma vs Qdrant",
+      "excerpt": "RAG（Retrieval-Augmented Generation）係 2026 年最重要嘅 AI 架構。LangChain、LlamaIndex、Haystack 係 orchestration 框架，Chroma、Qdrant 係 vector database。呢篇深度比較各自優劣，附完整代碼示例。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "13 分鐘",
+      "tags": [
+        "RAG",
+        "LangChain",
+        "LlamaIndex",
+        "Haystack",
+        "Chroma",
+        "Qdrant",
+        "開源"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "open-source-models-march-2026",
+      "title": "2026 年 3 月開源模型速覽：Qwen3、GLM-4、Llama 3.2、DeepSeek V3 深度比較",
+      "excerpt": "2026 年開源 LLM 嘅能力已接近甚至超越部分閉源模型。Qwen3、GLM-4、Llama 3.2、DeepSeek V3 各有強項。呢篇全面比較各模型嘅性能、用途、部署方式，幫你選擇最適合嘅開源模型。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "12 分鐘",
+      "tags": [
+        "開源模型",
+        "Qwen3",
+        "DeepSeek",
+        "Llama",
+        "GLM-4",
+        "LLM"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "ollama-local-llm",
+      "title": "Ollama 本地跑 LLM 完全指南：免 API Key、完全私隱",
+      "excerpt": "Ollama 係最易用嘅本地 LLM 執行工具，一個指令下載模型，支援 Llama 3.2、Qwen2.5、Mistral 等 100+ 模型。配合 Open WebUI 即成本地 ChatGPT。GitHub 120K 星星，Mac/Windows/Linux 全支援。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "10 分鐘",
+      "tags": [
+        "Ollama",
+        "本地 LLM",
+        "開源",
+        "私隱",
+        "AI 部署"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "mem0-ai-memory",
+      "title": "Mem0 — 為 AI Agent 加入長期記憶：告別每次重新介紹自己",
+      "excerpt": "Mem0 係一個開源記憶層，讓 AI Agent 記住用戶偏好、對話歷史、重要事項，跨對話持久保存。28K GitHub 星星，支援 OpenAI、Claude、本地模型，5 分鐘搭建有記憶嘅客服 bot。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "11 分鐘",
+      "tags": [
+        "Mem0",
+        "AI 記憶",
+        "Agent",
+        "開源",
+        "LangChain"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "mcp-protocol-guide",
+      "title": "MCP 協議入門：AI Agent 嘅 USB 標準，點樣寫你第一個 MCP Server",
+      "excerpt": "Model Context Protocol（MCP）係 Anthropic 推出嘅開放標準，讓 AI 可以安全連接外部工具同數據源。就好似 USB 一樣，裝一個 MCP server 就能給 Claude 新能力。GitHub 40K 星星。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "10 分鐘",
+      "tags": [
+        "MCP",
+        "Anthropic",
+        "AI Agent",
+        "開源",
+        "協議"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "litellm-unified-gateway",
+      "title": "LiteLLM：一個 API 調用 100+ LLM 模型，附 Fallback 同監控",
+      "excerpt": "LiteLLM 係一個開源 LLM API gateway，統一 OpenAI、Anthropic、Google、Cohere 等格式，支援自動 fallback、負載均衡、成本追蹤。配合 Langfuse 做完整監控。GitHub 18K 星星。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "9 分鐘",
+      "tags": [
+        "LiteLLM",
+        "API Gateway",
+        "LLM",
+        "開源",
+        "監控"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "firecrawl-smart-scraper",
+      "title": "Firecrawl + LLM = 智能爬蟲：5 分鐘提取任何網站數據",
+      "excerpt": "Firecrawl 係下一代網絡爬蟲工具，一個 API 調用就能將任何網站轉成結構化 Markdown，再配合 LLM 做智能提取。支援 JavaScript 渲染、PDF 提取、自動 crawl。GitHub 28K 星星。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "8 分鐘",
+      "tags": [
+        "Firecrawl",
+        "爬蟲",
+        "LLM",
+        "數據提取",
+        "開源"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "fabric-prompt-patterns",
+      "title": "Fabric — 200+ 開源 Prompt 模式庫：Daniel Miessler 嘅 AI 瑞士軍刀",
+      "excerpt": "Fabric 係 Daniel Miessler 創建嘅開源 CLI 工具，內建 200+ 精心設計嘅 Prompt Pattern，涵蓋分析、創作、安全、生產力等場景。GitHub 20K 星星，一行指令完成複雜 AI 任務。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "10 分鐘",
+      "tags": [
+        "Fabric",
+        "Prompt Engineering",
+        "CLI",
+        "開源",
+        "AI 生產力"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "crewai-multi-agent",
+      "title": "CrewAI 多 Agent 實戰：自動化研究報告、內容生成、軟件開發",
+      "excerpt": "CrewAI 係最流行嘅多 Agent 框架，讓多個 AI 角色分工合作完成複雜任務。一個指令自動生成完整研究報告、SEO 文章、甚至寫完整應用程式。GitHub 23K 星星，Python 原生，上手極快。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "11 分鐘",
+      "tags": [
+        "CrewAI",
+        "多 Agent",
+        "AI 自動化",
+        "開源",
+        "Python"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "browser-use-automation",
+      "title": "Browser Use：AI 控制瀏覽器自動化，告別重複嘅手動操作",
+      "excerpt": "Browser Use 係一個開源工具，讓 LLM 直接控制瀏覽器執行複雜任務：填表、數據採集、自動化測試。只需要用自然語言描述任務，AI 就會自己點擊、輸入、滾動。GitHub 21K 星星。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "9 分鐘",
+      "tags": [
+        "Browser Use",
+        "瀏覽器自動化",
+        "AI Agent",
+        "Playwright",
+        "開源"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "aider-coding-guide",
+      "title": "用 Aider + Claude 零到部署：開源 AI Pair Programmer 完全指南",
+      "excerpt": "Aider 係一個開源 AI pair programmer，直接喺 terminal 入面用，支援 Claude、GPT-4o、Gemini。呢篇教你由安裝到真實寫一個 React app，包括 git 整合、多文件編輯、最佳實踐。GitHub 31K 星星。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "10 分鐘",
+      "tags": [
+        "Aider",
+        "開源",
+        "Coding",
+        "Claude",
+        "AI 開發"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
+      "hasArticle": true
+    },
+    {
+      "id": "ai-self-host-stack",
+      "title": "5 個開源工具搭建你的私有 AI 平台：Ollama + Open WebUI + LiteLLM + Langfuse + Qdrant",
+      "excerpt": "一個 Docker Compose 文件，5 個開源工具，搭建完全私有、零成本嘅企業級 AI 平台。包括本地 LLM、ChatGPT 介面、API Gateway、可觀測性監控、向量數據庫，全部數據留喺本地。",
+      "type": "article",
+      "date": "2026-03-03",
+      "readTime": "12 分鐘",
+      "tags": [
+        "自建 AI",
+        "開源",
+        "Docker",
+        "Ollama",
+        "私隱",
+        "企業 AI"
+      ],
+      "heroImage": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+      "hasArticle": true
+    }
+  ],
+  "lastUpdated": "2026-03-03T02:48:11.950Z"
+}

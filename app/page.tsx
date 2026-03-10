@@ -105,7 +105,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
           <a href="/"><Logo size="md" /></a>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
-            {[['#courses','課程'],['#why','優勢'],['#faq','FAQ'],['#contact','聯絡']].map(([h,l]) => (
+            {[['#resources','資源'],['#courses','課程'],['#why','優勢'],['#faq','FAQ'],['#contact','聯絡']].map(([h,l]) => (
               <a key={h} href={h} className="hover:text-[#4169E1] transition-colors">{l}</a>
             ))}
           </div>
@@ -215,6 +215,225 @@ export default function HomePage() {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </R>
+        </div>
+      </section>
+
+      {/* ═══ RESOURCES ═══ */}
+      <section id="resources" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <R><p className="text-sm font-bold text-[#4169E1] tracking-widest uppercase mb-3 text-center">資源分享</p></R>
+          <R d={0.05}><h2 className="text-3xl md:text-4xl font-black text-center mb-3">必備工具・技能・連結</h2></R>
+          <R d={0.1}><p className="text-gray-400 text-center max-w-xl mx-auto mb-14">精選 AI 開發必備資源，助你快速上手並持續成長。所有連結均可直接點擊使用。</p></R>
+
+          {/* ── Must-Need Tools ── */}
+          <R d={0.12}>
+            <div className="mb-14">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-xl">🛠️</span>
+                <div>
+                  <h3 className="text-xl font-bold text-[#1A1A2E]">Must-Need Tools</h3>
+                  <p className="text-sm text-gray-400">AI 開發必備工具</p>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: '🤖', title: 'Claude', tag: 'AI 助手',
+                    desc: 'Anthropic 最強 AI 助手 — 研究、寫作、編碼和複雜推理的首選工具。',
+                    url: 'https://claude.ai',
+                    color: '#D97706',
+                  },
+                  {
+                    icon: '⌨️', title: 'Claude Code', tag: 'CLI Agent',
+                    desc: 'Anthropic 官方 CLI 工具 — 讓 Claude 直接編輯檔案、執行命令、構建軟體。',
+                    url: 'https://docs.anthropic.com/en/docs/claude-code/overview',
+                    color: '#7C3AED',
+                  },
+                  {
+                    icon: '🦞', title: 'OpenClaw', tag: '🔥 最熱門',
+                    desc: '2026 最熱門 AI 助手框架 — 從日常使用到架構師級部署，一站式開源平台。',
+                    url: 'https://openclaw.com',
+                    color: '#4169E1',
+                  },
+                  {
+                    icon: '💻', title: 'Cursor', tag: 'AI IDE',
+                    desc: 'AI 優先的程式碼編輯器 — 基於 VS Code，深度整合 Claude 和 GPT。',
+                    url: 'https://cursor.com',
+                    color: '#10B981',
+                  },
+                  {
+                    icon: '🧠', title: 'Vercel AI SDK', tag: 'SDK',
+                    desc: 'TypeScript 工具包 — 用 React 和 Next.js 構建 AI 串流介面。',
+                    url: 'https://sdk.vercel.ai',
+                    color: '#EC4899',
+                  },
+                  {
+                    icon: '🔧', title: 'Skills.sh', tag: 'Agent Skills',
+                    desc: 'Vercel 開源 Agent Skills 生態 — 為 AI 編碼代理提供可重用能力。',
+                    url: 'https://skills.sh',
+                    color: '#FF6B35',
+                  },
+                ].map((tool, i) => (
+                  <motion.a key={tool.title} href={tool.url} target="_blank" rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                    className="group bg-white rounded-xl p-5 border border-gray-100 hover:shadow-xl hover:shadow-gray-100/80 transition-all hover:-translate-y-1 block"
+                    style={{ borderTopColor: tool.color, borderTopWidth: '3px' }}>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl mt-0.5">{tool.icon}</span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-bold text-sm group-hover:text-[#4169E1] transition-colors">{tool.title}</h4>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-50 text-gray-500">{tool.tag}</span>
+                          <svg className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#4169E1] transition-colors ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                        </div>
+                        <p className="text-xs text-gray-500 leading-relaxed">{tool.desc}</p>
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </R>
+
+          {/* ── Must-Need Skills ── */}
+          <R d={0.12}>
+            <div className="mb-14">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-xl">📚</span>
+                <div>
+                  <h3 className="text-xl font-bold text-[#1A1A2E]">Must-Need Skills</h3>
+                  <p className="text-sm text-gray-400">AI 開發核心技能</p>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: '🎯', title: 'Prompt Engineering', tag: '核心',
+                    desc: '掌握 AI 提示詞工程 — Chain-of-Thought、Few-shot、系統提示設計。',
+                    url: 'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview',
+                    color: '#4169E1',
+                  },
+                  {
+                    icon: '⚡', title: 'Full-Stack Development', tag: '開發',
+                    desc: 'Next.js、React、TypeScript、Tailwind CSS — 現代 Web 開發全端技術棧。',
+                    url: 'https://nextjs.org/docs',
+                    color: '#10B981',
+                  },
+                  {
+                    icon: '🤖', title: 'AI Agent 開發', tag: 'AI/ML',
+                    desc: '構建 AI 功能 — 串流回應、Function Calling、RAG Pipeline、多代理編排。',
+                    url: 'https://docs.anthropic.com/en/api/getting-started',
+                    color: '#7C3AED',
+                  },
+                  {
+                    icon: '🚀', title: 'DevOps & CI/CD', tag: '部署',
+                    desc: '自動化部署流程、容器化、基礎設施即程式碼、GitHub Actions。',
+                    url: 'https://vercel.com/docs/deployments/overview',
+                    color: '#D97706',
+                  },
+                  {
+                    icon: '🎨', title: 'UI/UX 設計', tag: '設計',
+                    desc: '以用戶為中心的設計、WCAG 2.2 無障礙、響應式佈局和設計系統。',
+                    url: 'https://www.w3.org/WAI/WCAG22/quickref/',
+                    color: '#EC4899',
+                  },
+                  {
+                    icon: '🔌', title: 'API 架構設計', tag: '後端',
+                    desc: 'RESTful API 設計、GraphQL Schema、認證模式與速率限制。',
+                    url: 'https://swagger.io/specification/',
+                    color: '#FF6B35',
+                  },
+                ].map((skill, i) => (
+                  <motion.a key={skill.title} href={skill.url} target="_blank" rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                    className="group bg-white rounded-xl p-5 border border-gray-100 hover:shadow-xl hover:shadow-gray-100/80 transition-all hover:-translate-y-1 block"
+                    style={{ borderTopColor: skill.color, borderTopWidth: '3px' }}>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl mt-0.5">{skill.icon}</span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-bold text-sm group-hover:text-[#4169E1] transition-colors">{skill.title}</h4>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-50 text-gray-500">{skill.tag}</span>
+                          <svg className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#4169E1] transition-colors ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                        </div>
+                        <p className="text-xs text-gray-500 leading-relaxed">{skill.desc}</p>
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </R>
+
+          {/* ── Must-Need Connections ── */}
+          <R d={0.12}>
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-xl">🔗</span>
+                <div>
+                  <h3 className="text-xl font-bold text-[#1A1A2E]">Must-Need Connections</h3>
+                  <p className="text-sm text-gray-400">部署與擴展必備平台</p>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: '▲', title: 'Vercel', tag: '部署',
+                    desc: '零配置部署、擴展和管理 Web 應用 — 前端雲端的最佳選擇。',
+                    url: 'https://vercel.com',
+                    color: '#000000',
+                  },
+                  {
+                    icon: '☁️', title: 'Cloudflare', tag: 'CDN & 安全',
+                    desc: '全球 CDN、DDoS 防護、Workers 邊緣計算和 DNS 管理。',
+                    url: 'https://cloudflare.com',
+                    color: '#F48120',
+                  },
+                  {
+                    icon: '🐙', title: 'GitHub', tag: '版本控制',
+                    desc: '程式碼協作、版本控制、CI/CD with Actions 和開源社群。',
+                    url: 'https://github.com',
+                    color: '#333333',
+                  },
+                  {
+                    icon: '🛡️', title: 'Anthropic', tag: 'AI 平台',
+                    desc: 'Claude 背後的 AI 安全公司 — API 存取、模型文件和研究。',
+                    url: 'https://anthropic.com',
+                    color: '#D97706',
+                  },
+                  {
+                    icon: '⚡', title: 'Supabase', tag: 'BaaS',
+                    desc: '開源 Firebase 替代方案 — Postgres 資料庫、認證、儲存和即時功能。',
+                    url: 'https://supabase.com',
+                    color: '#3ECF8E',
+                  },
+                  {
+                    icon: '📧', title: 'Resend', tag: '電郵 API',
+                    desc: '現代電郵 API — 使用 React Email 模板發送交易型電子郵件。',
+                    url: 'https://resend.com',
+                    color: '#7C3AED',
+                  },
+                ].map((conn, i) => (
+                  <motion.a key={conn.title} href={conn.url} target="_blank" rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                    className="group bg-white rounded-xl p-5 border border-gray-100 hover:shadow-xl hover:shadow-gray-100/80 transition-all hover:-translate-y-1 block"
+                    style={{ borderTopColor: conn.color, borderTopWidth: '3px' }}>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl mt-0.5">{conn.icon}</span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-bold text-sm group-hover:text-[#4169E1] transition-colors">{conn.title}</h4>
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-50 text-gray-500">{conn.tag}</span>
+                          <svg className="w-3.5 h-3.5 text-gray-300 group-hover:text-[#4169E1] transition-colors ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                        </div>
+                        <p className="text-xs text-gray-500 leading-relaxed">{conn.desc}</p>
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </R>
         </div>
@@ -460,7 +679,7 @@ export default function HomePage() {
       {/* ═══ FOOTER ═══ */}
       <footer className="bg-[#0F172A] text-gray-400 py-12">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-10">
+          <div className="grid md:grid-cols-5 gap-8 mb-10">
             <div className="md:col-span-2">
               <Logo size="sm" />
               <p className="text-sm text-gray-500 mt-3 max-w-sm leading-relaxed">
@@ -475,6 +694,16 @@ export default function HomePage() {
                 <li><a href="#detail-gold" className="hover:text-white transition">Gold 架構師班</a></li>
                 <li><a href="#detail-openclaw" className="hover:text-white transition">OpenClaw 課程</a></li>
                 <li><a href="#detail-platinum" className="hover:text-white transition">Platinum 創業班</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-bold text-sm mb-4">資源</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Claude AI ↗</a></li>
+                <li><a href="https://openclaw.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">OpenClaw ↗</a></li>
+                <li><a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Vercel ↗</a></li>
+                <li><a href="https://cloudflare.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">Cloudflare ↗</a></li>
+                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">GitHub ↗</a></li>
               </ul>
             </div>
             <div>

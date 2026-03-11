@@ -165,7 +165,7 @@ function QuizCard({ onComplete }: { onComplete: (result: string) => void }) {
 
       <AnimatePresence mode="wait">
         <motion.div key={step} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.3 }}>
-          <h3 className="text-xl font-black mb-1 text-[#1A1A2E]">{q.question}</h3>
+          <h3 className="text-2xl font-black mb-1 text-[#1A1A2E]">{q.question}</h3>
           <p className="text-sm text-gray-400 mb-6">{q.sub}</p>
 
           <div className="space-y-3">
@@ -174,7 +174,7 @@ function QuizCard({ onComplete }: { onComplete: (result: string) => void }) {
                 onClick={() => handleSelect(opt.points)}
                 className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-gray-100 hover:border-[#4169E1] hover:bg-blue-50/50 transition-all text-left group">
                 <span className="text-2xl">{opt.emoji}</span>
-                <span className="text-sm font-semibold text-gray-700 group-hover:text-[#4169E1] transition-colors">{opt.label}</span>
+                <span className="text-base font-semibold text-gray-700 group-hover:text-[#4169E1] transition-colors">{opt.label}</span>
               </motion.button>
             ))}
           </div>
@@ -208,7 +208,7 @@ function QuizResult({ result, onReset }: { result: string; onReset: () => void }
       {course && (
         <div className="text-left bg-gray-50 rounded-2xl p-5 mb-6">
           <div className="flex items-baseline justify-between mb-3">
-            <span className="text-2xl font-black" style={{ color: r.color }}>{course.price}</span>
+            <span className="text-lg font-bold text-gray-400">即將推出</span>
             <span className="text-sm text-gray-400">{course.weeks}</span>
           </div>
           <ul className="space-y-1.5">
@@ -273,11 +273,11 @@ export default function CoursesPage() {
             <span className="inline-flex items-center gap-2 bg-[#4169E1]/10 text-[#4169E1] px-4 py-1.5 rounded-full text-xs font-bold mb-5 border border-[#4169E1]/20">
               🎓 5 個級別 · 4-16 週 · 零基礎到創業
             </span>
-            <h1 className="text-4xl md:text-5xl font-black mb-4">
+            <h1 className="text-5xl md:text-6xl font-black mb-4">
               AI 技能認證
               <span className="bg-gradient-to-r from-[#4169E1] to-[#7C3AED] bg-clip-text text-transparent"> 課程</span>
             </h1>
-            <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto mb-8">
+            <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-8">
               不確定選哪個？先做 30 秒技能測試，找到最適合你的課程。
             </p>
             <motion.button whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}
@@ -316,7 +316,7 @@ export default function CoursesPage() {
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-black mb-2">所有課程</h2>
+            <h2 className="text-3xl md:text-4xl font-black mb-2">所有課程</h2>
             <p className="text-sm text-gray-400">由 DeFiner Tech Ltd 營運 · 包含終身內容更新和社群支援</p>
           </div>
 
@@ -341,20 +341,20 @@ export default function CoursesPage() {
                       {quizResult === c.id && <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-50 text-green-600 ml-auto">✓ 推薦</span>}
                     </div>
 
-                    <h3 className="text-lg font-bold mb-0.5">{c.title}</h3>
-                    <p className="text-xs text-gray-400 mb-3">{c.tag}</p>
-                    <p className="text-sm text-gray-500 mb-4 leading-relaxed flex-1">{c.desc}</p>
+                    <h3 className="text-xl font-bold mb-0.5">{c.title}</h3>
+                    <p className="text-sm text-gray-400 mb-3">{c.tag}</p>
+                    <p className="text-base text-gray-500 mb-4 leading-relaxed flex-1">{c.desc}</p>
 
                     {/* Price */}
                     <div className="flex items-baseline gap-1.5 mb-4">
-                      <span className="text-2xl font-black" style={{ color: c.color }}>{c.price}</span>
-                      <span className="text-xs text-gray-400">/ {c.weeks}</span>
+                      <span className="text-lg font-bold text-gray-400">即將推出</span>
+                      <span className="text-xs text-gray-300">/ {c.weeks}</span>
                     </div>
 
                     {/* Skills */}
                     <ul className="space-y-1.5 mb-4">
                       {c.skills.map((s, j) => (
-                        <li key={j} className="flex items-center gap-1.5 text-xs text-gray-600">
+                        <li key={j} className="flex items-center gap-1.5 text-sm text-gray-600">
                           <span style={{ color: c.color }}>✓</span>{s}
                         </li>
                       ))}
@@ -362,13 +362,13 @@ export default function CoursesPage() {
 
                     {/* Fit */}
                     <div className="bg-gray-50 rounded-xl p-3 mb-4">
-                      <p className="text-[11px] text-gray-500"><span className="font-bold text-gray-600">適合：</span>{c.fit}</p>
+                      <p className="text-xs text-gray-500"><span className="font-bold text-gray-600">適合：</span>{c.fit}</p>
                     </div>
 
                     {/* Outcomes */}
                     <div className="grid grid-cols-2 gap-1.5 mb-5">
                       {c.outcomes.map((o, j) => (
-                        <div key={j} className="flex items-center gap-1 text-[11px] text-gray-500">
+                        <div key={j} className="flex items-center gap-1 text-xs text-gray-500">
                           <svg className="w-3 h-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>

@@ -84,33 +84,101 @@ function ExtIcon({ className = 'w-3.5 h-3.5' }: { className?: string }) {
    DATA
    ══════════════════════════════════════════════════ */
 
-interface Resource { icon: string; title: string; desc: string; github: string; tag: string; color: string; stars: string }
+interface Resource {
+  icon: string;
+  title: string;
+  desc: string;
+  github: string;
+  tag: string;
+  color: string;
+  stars: string;
+  cat: string;
+}
+
+/* ── Sub-tab definitions ── */
+const TOOL_TABS = ['all', 'AI 助手', 'CLI 工具', '本地模型', 'Prompt 工具'] as const;
+const FRAMEWORK_TABS = ['all', 'LLM 框架', '多 Agent', '結構化輸出', '搜尋爬蟲'] as const;
+const INFRA_TABS = ['all', '全端框架', '向量數據庫', 'AI 監控', '部署工具'] as const;
 
 const TOOLS: Resource[] = [
-  { icon: '🦞', title: 'OpenClaw', tag: '🔥 AI 框架', desc: '開源 AI 助手框架 — WhatsApp / Telegram / Discord 整合，Skill 開發。', github: 'https://github.com/openclaw/openclaw', color: '#4169E1', stars: '12.5k' },
-  { icon: '⌨️', title: 'Claude Code', tag: 'CLI Agent', desc: 'Anthropic 開源 CLI — 讓 AI 直接編輯檔案和構建軟體。', github: 'https://github.com/anthropics/claude-code', color: '#7C3AED', stars: '35k' },
-  { icon: '🦙', title: 'Ollama', tag: '本地 LLM', desc: '一行命令在本地運行 Llama 3、Mistral、Gemma 等模型。', github: 'https://github.com/ollama/ollama', color: '#10B981', stars: '120k' },
-  { icon: '🤖', title: 'Aider', tag: 'AI 結對編程', desc: '終端機 AI 編程助手 — 直接修改本地程式碼。', github: 'https://github.com/aider-ai/aider', color: '#D97706', stars: '30k' },
-  { icon: '🖥️', title: 'Open WebUI', tag: '自建介面', desc: '自架 ChatGPT 風格介面 — 支援多種 AI 模型後端。', github: 'https://github.com/open-webui/open-webui', color: '#EC4899', stars: '80k' },
-  { icon: '🧵', title: 'Fabric', tag: 'Prompt 模式', desc: '經過驗證的 AI Prompt 模式庫 — 數百種現成模式。', github: 'https://github.com/danielmiessler/fabric', color: '#FF6B35', stars: '28k' },
+  // AI 助手
+  { icon: '🦞', title: 'OpenClaw', tag: '🔥 AI 框架', cat: 'AI 助手', desc: '開源 AI 助手框架 — WhatsApp / Telegram / Discord 整合，Skill 開發。', github: 'https://github.com/openclaw/openclaw', color: '#4169E1', stars: '12.5k' },
+  { icon: '🖥️', title: 'Open WebUI', tag: '自建介面', cat: 'AI 助手', desc: '自架 ChatGPT 風格介面 — 支援多種 AI 模型後端。', github: 'https://github.com/open-webui/open-webui', color: '#EC4899', stars: '80k' },
+  { icon: '🗨️', title: 'LibreChat', tag: 'ChatGPT 替代', cat: 'AI 助手', desc: '開源 ChatGPT 替代方案 — 支援多模型、外掛系統、對話分享。', github: 'https://github.com/danny-avila/LibreChat', color: '#6366F1', stars: '20k' },
+  { icon: '⌨️', title: 'TypingMind', tag: 'Chat UI', cat: 'AI 助手', desc: '高級 ChatGPT 前端介面 — 自訂 Prompt、角色扮演、本地儲存。', github: 'https://github.com/nicepkg/gpt-runner', color: '#14B8A6', stars: '5k' },
+  { icon: '💬', title: 'Lobe Chat', tag: '現代 Chat', cat: 'AI 助手', desc: '現代化開源 AI 聊天框架 — 支援外掛、TTS、多模型切換。', github: 'https://github.com/lobehub/lobe-chat', color: '#3B82F6', stars: '50k' },
+  { icon: '📱', title: 'NextChat', tag: '跨平台', cat: 'AI 助手', desc: '跨平台 AI 聊天應用 — 一鍵部署到 Vercel，支援 GPT 和 Gemini。', github: 'https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web', color: '#8B5CF6', stars: '78k' },
+  { icon: '📦', title: 'ChatBox', tag: '桌面 AI', cat: 'AI 助手', desc: '桌面 AI 助手應用 — 支援 Windows / Mac / Linux，多模型切換。', github: 'https://github.com/Bin-Huang/chatbox', color: '#F97316', stars: '25k' },
+  // CLI 工具
+  { icon: '⌨️', title: 'Claude Code', tag: 'CLI Agent', cat: 'CLI 工具', desc: 'Anthropic 開源 CLI — 讓 AI 直接編輯檔案和構建軟體。', github: 'https://github.com/anthropics/claude-code', color: '#7C3AED', stars: '35k' },
+  { icon: '🤖', title: 'Aider', tag: 'AI 結對編程', cat: 'CLI 工具', desc: '終端機 AI 編程助手 — 直接修改本地程式碼。', github: 'https://github.com/aider-ai/aider', color: '#D97706', stars: '30k' },
+  { icon: '🐚', title: 'ShellGPT', tag: 'Shell AI', cat: 'CLI 工具', desc: '終端機 AI 助手 — 用自然語言生成 Shell 命令和程式碼。', github: 'https://github.com/TheR1D/shell_gpt', color: '#059669', stars: '10k' },
+  { icon: '💻', title: 'AI Shell', tag: 'Shell 助手', cat: 'CLI 工具', desc: 'Vercel 出品的終端機 AI — 自然語言轉 Shell 命令，安全確認後執行。', github: 'https://github.com/BuilderIO/ai-shell', color: '#0EA5E9', stars: '4k' },
+  // 本地模型
+  { icon: '🦙', title: 'Ollama', tag: '本地 LLM', cat: '本地模型', desc: '一行命令在本地運行 Llama 3、Mistral、Gemma 等模型。', github: 'https://github.com/ollama/ollama', color: '#10B981', stars: '120k' },
+  { icon: '🏠', title: 'Jan', tag: '本地 Chat', cat: '本地模型', desc: '離線運行 AI 的桌面應用 — 完全私隱，資料留在本地。', github: 'https://github.com/janhq/jan', color: '#6366F1', stars: '25k' },
+  { icon: '🎨', title: 'Msty', tag: '桌面 LLM', cat: '本地模型', desc: '精美桌面 LLM 客戶端 — 支援離線模型和雲端 API。', github: 'https://github.com/nicepkg/gpt-runner', color: '#A855F7', stars: '3k' },
+  { icon: '🤗', title: 'LocalAI', tag: '模型伺服器', cat: '本地模型', desc: '本地 AI 模型伺服器 — 兼容 OpenAI API 格式，支援多種模型。', github: 'https://github.com/mudler/LocalAI', color: '#F59E0B', stars: '28k' },
+  { icon: '🌐', title: 'GPT4All', tag: '本地 GPT', cat: '本地模型', desc: '在消費級硬體上運行 LLM — Nomic AI 開發，支援離線使用。', github: 'https://github.com/nomic-ai/gpt4all', color: '#22C55E', stars: '72k' },
+  { icon: '🔬', title: 'LM Studio', tag: '模型實驗', cat: '本地模型', desc: '本地運行和測試 LLM 的桌面應用 — 圖形介面，一鍵下載模型。', github: 'https://github.com/lmstudio-ai', color: '#0891B2', stars: '2k' },
+  { icon: '🔍', title: 'Khoj', tag: '自建搜尋', cat: '本地模型', desc: '自建 AI 個人助手 — 搜尋你的筆記、文件、對話記錄。', github: 'https://github.com/khoj-ai/khoj', color: '#E11D48', stars: '18k' },
+  // Prompt 工具
+  { icon: '🧵', title: 'Fabric', tag: 'Prompt 模式', cat: 'Prompt 工具', desc: '經過驗證的 AI Prompt 模式庫 — 數百種現成模式。', github: 'https://github.com/danielmiessler/fabric', color: '#FF6B35', stars: '28k' },
+  { icon: '🧪', title: 'Promptfoo', tag: 'Prompt 測試', cat: 'Prompt 工具', desc: '開源 LLM Prompt 測試框架 — 評估、比較、除錯你的 Prompt。', github: 'https://github.com/promptfoo/promptfoo', color: '#DC2626', stars: '5k' },
 ];
 
 const FRAMEWORKS: Resource[] = [
-  { icon: '🔗', title: 'LangChain', tag: 'LLM 框架', desc: 'LLM 應用框架 — Chain、Agent、Tool、Memory 一站式構建。', github: 'https://github.com/langchain-ai/langchain', color: '#10B981', stars: '105k' },
-  { icon: '👥', title: 'CrewAI', tag: '多 Agent', desc: '多代理協作框架 — 定義角色和任務，AI 自動分工。', github: 'https://github.com/crewAIInc/crewAI', color: '#4169E1', stars: '25k' },
-  { icon: '🌐', title: 'LiteLLM', tag: '統一閘道', desc: '一套 API 呼叫 100+ 模型 — OpenAI、Claude、Gemini 通用。', github: 'https://github.com/BerriAI/litellm', color: '#7C3AED', stars: '18k' },
-  { icon: '🧠', title: 'Mem0', tag: 'AI 記憶', desc: 'AI 長期記憶層 — 個人化對話、跨 Session 記憶。', github: 'https://github.com/mem0ai/mem0', color: '#D97706', stars: '15k' },
-  { icon: '🔥', title: 'Firecrawl', tag: 'AI 爬蟲', desc: '專為 LLM 設計的爬蟲 — 自動轉 Markdown 格式。', github: 'https://github.com/mendableai/firecrawl', color: '#FF6B35', stars: '20k' },
-  { icon: '🌍', title: 'Browser Use', tag: '瀏覽器 AI', desc: '讓 AI 自動操作瀏覽器 — 自然語言驅動。', github: 'https://github.com/browser-use/browser-use', color: '#EC4899', stars: '55k' },
+  // LLM 框架
+  { icon: '🔗', title: 'LangChain', tag: 'LLM 框架', cat: 'LLM 框架', desc: 'LLM 應用框架 — Chain、Agent、Tool、Memory 一站式構建。', github: 'https://github.com/langchain-ai/langchain', color: '#10B981', stars: '105k' },
+  { icon: '🦙', title: 'LlamaIndex', tag: '資料框架', cat: 'LLM 框架', desc: 'LLM 資料連接框架 — 索引、查詢、RAG 管道構建首選。', github: 'https://github.com/run-llama/llama_index', color: '#7C3AED', stars: '38k' },
+  { icon: '🌾', title: 'Haystack', tag: 'NLP 管道', cat: 'LLM 框架', desc: '端對端 NLP 框架 — 搜尋、問答、RAG 管道，生產級部署。', github: 'https://github.com/deepset-ai/haystack', color: '#06B6D4', stars: '18k' },
+  { icon: '🧠', title: 'Semantic Kernel', tag: '微軟 AI', cat: 'LLM 框架', desc: '微軟開源 AI 框架 — C# / Python / Java，企業級 AI 整合。', github: 'https://github.com/microsoft/semantic-kernel', color: '#3B82F6', stars: '22k' },
+  { icon: '🌐', title: 'LiteLLM', tag: '統一閘道', cat: 'LLM 框架', desc: '一套 API 呼叫 100+ 模型 — OpenAI、Claude、Gemini 通用。', github: 'https://github.com/BerriAI/litellm', color: '#7C3AED', stars: '18k' },
+  { icon: '📡', title: 'Vercel AI SDK', tag: 'AI 串流', cat: 'LLM 框架', desc: '開源 AI 串流 UI 工具包 — React / Next.js 最佳整合。', github: 'https://github.com/vercel/ai', color: '#4169E1', stars: '12k' },
+  { icon: '🧬', title: 'DSPy', tag: '程式化 Prompt', cat: 'LLM 框架', desc: 'Stanford 出品 — 用程式碼而非手寫 Prompt 來控制 LLM 行為。', github: 'https://github.com/stanfordnlp/dspy', color: '#DC2626', stars: '20k' },
+  { icon: '🍃', title: 'Spring AI', tag: 'Java AI', cat: 'LLM 框架', desc: 'Spring 生態系 AI 框架 — Java 開發者的 AI 應用首選。', github: 'https://github.com/spring-projects/spring-ai', color: '#22C55E', stars: '3.5k' },
+  { icon: '🌟', title: 'Mastra', tag: 'TS 框架', cat: 'LLM 框架', desc: 'TypeScript AI 框架 — Agent、工作流、RAG，全端 AI 開發。', github: 'https://github.com/mastra-ai/mastra', color: '#F59E0B', stars: '8k' },
+  { icon: '🪞', title: 'Mirascope', tag: 'Python AI', cat: 'LLM 框架', desc: '優雅的 Python LLM 函式庫 — 類型安全、簡潔 API 設計。', github: 'https://github.com/mirascope/mirascope', color: '#8B5CF6', stars: '1.5k' },
+  { icon: '📝', title: 'ell', tag: 'Prompt 工程', cat: 'LLM 框架', desc: '輕量 Prompt 工程庫 — 版本控制、追蹤、評估你的 Prompt。', github: 'https://github.com/MadcowD/ell', color: '#0EA5E9', stars: '6k' },
+  // 多 Agent
+  { icon: '👥', title: 'CrewAI', tag: '多 Agent', cat: '多 Agent', desc: '多代理協作框架 — 定義角色和任務，AI 自動分工。', github: 'https://github.com/crewAIInc/crewAI', color: '#4169E1', stars: '25k' },
+  { icon: '🤖', title: 'AutoGen', tag: '多 Agent', cat: '多 Agent', desc: '微軟多代理對話框架 — 多個 AI Agent 自動協作完成任務。', github: 'https://github.com/microsoft/autogen', color: '#059669', stars: '35k' },
+  { icon: '🎭', title: 'MetaGPT', tag: '軟體公司', cat: '多 Agent', desc: '模擬軟體公司的多 Agent 框架 — PM、工程師、設計師角色分工。', github: 'https://github.com/geekan/MetaGPT', color: '#E11D48', stars: '45k' },
+  { icon: '🔮', title: 'Agno', tag: 'Agent 框架', cat: '多 Agent', desc: '輕量多模態 Agent 框架 — 支援記憶、知識庫、團隊協作。', github: 'https://github.com/agno-agi/agno', color: '#D97706', stars: '18k' },
+  // 結構化輸出
+  { icon: '🧠', title: 'Mem0', tag: 'AI 記憶', cat: '結構化輸出', desc: 'AI 長期記憶層 — 個人化對話、跨 Session 記憶。', github: 'https://github.com/mem0ai/mem0', color: '#D97706', stars: '15k' },
+  { icon: '📋', title: 'Instructor', tag: '結構化輸出', cat: '結構化輸出', desc: '從 LLM 提取結構化資料 — Pydantic 模型驗證，支援重試。', github: 'https://github.com/jxnl/instructor', color: '#F97316', stars: '8k' },
+  { icon: '🔒', title: 'Pydantic AI', tag: '類型安全', cat: '結構化輸出', desc: 'Pydantic 團隊出品的 AI Agent 框架 — 類型安全、依賴注入。', github: 'https://github.com/pydantic/pydantic-ai', color: '#14B8A6', stars: '5k' },
+  // 搜尋爬蟲
+  { icon: '🔥', title: 'Firecrawl', tag: 'AI 爬蟲', cat: '搜尋爬蟲', desc: '專為 LLM 設計的爬蟲 — 自動轉 Markdown 格式。', github: 'https://github.com/mendableai/firecrawl', color: '#FF6B35', stars: '20k' },
+  { icon: '🌍', title: 'Browser Use', tag: '瀏覽器 AI', cat: '搜尋爬蟲', desc: '讓 AI 自動操作瀏覽器 — 自然語言驅動。', github: 'https://github.com/browser-use/browser-use', color: '#EC4899', stars: '55k' },
 ];
 
 const INFRA: Resource[] = [
-  { icon: '▲', title: 'Next.js', tag: 'React 框架', desc: 'Vercel 全端框架 — SSR、SSG、App Router。', github: 'https://github.com/vercel/next.js', color: '#000000', stars: '130k' },
-  { icon: '⚡', title: 'Supabase', tag: '開源 BaaS', desc: '開源 Firebase 替代 — Postgres、Auth、Realtime。', github: 'https://github.com/supabase/supabase', color: '#3ECF8E', stars: '78k' },
-  { icon: '🔄', title: 'n8n', tag: '工作流', desc: '開源工作流自動化 — 連接 400+ 服務。', github: 'https://github.com/n8n-io/n8n', color: '#FF6B35', stars: '60k' },
-  { icon: '🎨', title: 'Tailwind CSS', tag: 'CSS 框架', desc: 'Utility-first CSS — 快速構建現代響應式介面。', github: 'https://github.com/tailwindlabs/tailwindcss', color: '#06B6D4', stars: '85k' },
-  { icon: '🧩', title: 'Dify', tag: 'LLM 平台', desc: '開源 LLM 應用平台 — 視覺化構建 AI 工作流。', github: 'https://github.com/langgenius/dify', color: '#7C3AED', stars: '70k' },
-  { icon: '📡', title: 'Vercel AI SDK', tag: 'AI 串流', desc: '開源 AI 串流 UI 工具包 — React/Next.js。', github: 'https://github.com/vercel/ai', color: '#4169E1', stars: '12k' },
+  // 全端框架
+  { icon: '▲', title: 'Next.js', tag: 'React 框架', cat: '全端框架', desc: 'Vercel 全端框架 — SSR、SSG、App Router。', github: 'https://github.com/vercel/next.js', color: '#000000', stars: '130k' },
+  { icon: '⚡', title: 'Supabase', tag: '開源 BaaS', cat: '全端框架', desc: '開源 Firebase 替代 — Postgres、Auth、Realtime。', github: 'https://github.com/supabase/supabase', color: '#3ECF8E', stars: '78k' },
+  { icon: '🎨', title: 'Tailwind CSS', tag: 'CSS 框架', cat: '全端框架', desc: 'Utility-first CSS — 快速構建現代響應式介面。', github: 'https://github.com/tailwindlabs/tailwindcss', color: '#06B6D4', stars: '85k' },
+  { icon: '🔄', title: 'n8n', tag: '工作流', cat: '全端框架', desc: '開源工作流自動化 — 連接 400+ 服務。', github: 'https://github.com/n8n-io/n8n', color: '#FF6B35', stars: '60k' },
+  { icon: '🧩', title: 'Dify', tag: 'LLM 平台', cat: '全端框架', desc: '開源 LLM 應用平台 — 視覺化構建 AI 工作流。', github: 'https://github.com/langgenius/dify', color: '#7C3AED', stars: '70k' },
+  { icon: '💎', title: 'Drizzle ORM', tag: 'TypeScript ORM', cat: '全端框架', desc: '輕量 TypeScript ORM — 類型安全、高效能、零依賴。', github: 'https://github.com/drizzle-team/drizzle-orm', color: '#22C55E', stars: '25k' },
+  { icon: '🔷', title: 'Prisma', tag: 'Node ORM', cat: '全端框架', desc: '次世代 Node.js / TypeScript ORM — 自動遷移、型別生成。', github: 'https://github.com/prisma/prisma', color: '#2D3748', stars: '40k' },
+  // 向量數據庫
+  { icon: '🔷', title: 'Weaviate', tag: '向量 DB', cat: '向量數據庫', desc: '開源向量數據庫 — AI 原生搜尋、分類、生成式回饋。', github: 'https://github.com/weaviate/weaviate', color: '#00A98F', stars: '12k' },
+  { icon: '🚀', title: 'Qdrant', tag: '向量搜尋', cat: '向量數據庫', desc: '高效能向量相似度搜尋引擎 — Rust 開發，速度極快。', github: 'https://github.com/qdrant/qdrant', color: '#DC2626', stars: '22k' },
+  { icon: '🎨', title: 'Chroma', tag: '嵌入 DB', cat: '向量數據庫', desc: 'AI 原生嵌入數據庫 — 簡單易用，Python / JS 原生支援。', github: 'https://github.com/chroma-core/chroma', color: '#F59E0B', stars: '16k' },
+  // AI 監控
+  { icon: '📊', title: 'Langfuse', tag: 'LLM 可觀測', cat: 'AI 監控', desc: '開源 LLM 可觀測性平台 — 追蹤、評估、除錯 AI 應用。', github: 'https://github.com/langfuse/langfuse', color: '#4169E1', stars: '8k' },
+  { icon: '☁️', title: 'Helicone', tag: 'AI 代理', cat: 'AI 監控', desc: '開源 AI 代理閘道 — 監控延遲、成本、用量，一行程式碼整合。', github: 'https://github.com/Helicone/helicone', color: '#6366F1', stars: '3k' },
+  { icon: '🚪', title: 'Portkey', tag: 'AI 閘道', cat: 'AI 監控', desc: 'AI 閘道平台 — 負載均衡、快取、限流、可觀測性。', github: 'https://github.com/Portkey-AI/gateway', color: '#0EA5E9', stars: '6k' },
+  // 部署工具
+  { icon: '🐳', title: 'Docker', tag: '容器化', cat: '部署工具', desc: '容器化平台 — 一致的開發和部署環境，到處運行。', github: 'https://github.com/moby/moby', color: '#2496ED', stars: '70k' },
+  { icon: '🌊', title: 'Coolify', tag: '自建部署', cat: '部署工具', desc: '開源 Vercel / Netlify 替代 — 自建伺服器一鍵部署應用。', github: 'https://github.com/coollabsio/coolify', color: '#7C3AED', stars: '35k' },
+  { icon: '📦', title: 'Minio', tag: '物件儲存', cat: '部署工具', desc: '高效能開源 S3 替代 — 相容 AWS S3 API，自建物件儲存。', github: 'https://github.com/minio/minio', color: '#C72C48', stars: '50k' },
+  { icon: '⚡', title: 'Upstash', tag: '無伺服器', cat: '部署工具', desc: '無伺服器 Redis / Kafka — 按使用量計費，極低延遲。', github: 'https://github.com/upstash', color: '#00E9A3', stars: '2k' },
+  { icon: '🐘', title: 'Neon', tag: '無伺服器 PG', cat: '部署工具', desc: '無伺服器 Postgres — 自動擴展、分支功能、慷慨免費額度。', github: 'https://github.com/neondatabase/neon', color: '#00E5A0', stars: '15k' },
+  { icon: '⚙️', title: 'Modal', tag: 'GPU 雲端', cat: '部署工具', desc: '雲端 GPU 平台 — Python 原生，幾行程式碼部署 AI 模型。', github: 'https://github.com/modal-labs/modal-client', color: '#22D3EE', stars: '1k' },
+  { icon: '🔧', title: 'Traefik', tag: '反向代理', cat: '部署工具', desc: '現代反向代理 — 自動 HTTPS、服務發現、Docker 原生整合。', github: 'https://github.com/traefik/traefik', color: '#24A1C1', stars: '52k' },
 ];
 
 interface RefSite { name: string; url: string; desc: string; tag: string; color: string }
@@ -190,6 +258,29 @@ function SectionHead({ emoji, title, sub }: { emoji: string; title: string; sub:
 }
 
 /* ══════════════════════════════════════════════════
+   SUB-TAB PILLS
+   ══════════════════════════════════════════════════ */
+
+function SubTabs({ tabs, active, onChange }: { tabs: readonly string[]; active: string; onChange: (t: string) => void }) {
+  return (
+    <div className="flex gap-2 mb-6 flex-wrap">
+      {tabs.map((t) => (
+        <button
+          key={t}
+          onClick={() => onChange(t)}
+          className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 border
+            ${active === t
+              ? 'bg-[#4169E1] text-white border-[#4169E1] shadow-md shadow-blue-200/40'
+              : 'bg-white text-gray-500 border-gray-200 hover:border-[#4169E1] hover:text-[#4169E1]'}`}
+        >
+          {t === 'all' ? '全部' : t}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════
    TUTORIAL STEP — beginner-friendly
    ══════════════════════════════════════════════════ */
 
@@ -255,47 +346,129 @@ function OpenClawTutorial() {
       <R><div className="text-center mb-10">
         <span className="text-5xl block mb-3">🦞</span>
         <h2 className="text-2xl md:text-3xl font-black mb-2">OpenClaw 新手入門</h2>
-        <p className="text-gray-400">4 個簡單步驟，10 分鐘內啟動你的 AI 助手</p>
+        <p className="text-gray-400">6 個步驟，15 分鐘內啟動你的 AI 助手</p>
         <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center gap-2 mt-3 text-sm text-[#4169E1] hover:underline font-medium">
           <GHIcon /> 查看原始碼 →
         </a>
       </div></R>
 
-      <Step num={1} title="安裝 OpenClaw" color="#4169E1"
-        desc="只需一行命令即可安裝。你需要先安裝 Node.js（如未安裝，點擊下方連結）。"
-        code="npm install -g openclaw"
+      <Step num={1} title="安裝先決條件" color="#6366F1"
+        desc="OpenClaw 需要 Node.js 18 或以上版本。先檢查你有冇安裝，如果未裝就要先裝好。"
+        code={'# 檢查 Node.js 版本\nnode --version\n# 應該顯示 v18.x.x 或更高\n\n# 如果未安裝，用以下方法：\n# macOS (用 Homebrew)\nbrew install node\n\n# Windows → 直接下載安裝檔\n# Linux (Ubuntu/Debian)\ncurl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -\nsudo apt-get install -y nodejs'}
+        tips={[
+          '建議用 Node.js 20 LTS（最穩定）',
+          '安裝完之後重新開啟終端機',
+          '用 node --version 同 npm --version 確認安裝成功',
+        ]}
         link={{ label: '下載 Node.js', url: 'https://nodejs.org' }}
       />
-      <Step num={2} title="建立你的第一個專案" color="#10B981"
-        desc="用一個命令初始化新專案，OpenClaw 會自動建立所有需要的檔案。"
-        code={'openclaw init my-assistant\ncd my-assistant'}
+      <Step num={2} title="安裝 OpenClaw" color="#4169E1"
+        desc="用 npm 全域安裝 OpenClaw CLI。安裝完之後你可以在任何地方使用 openclaw 命令。"
+        code={'# 全域安裝 OpenClaw\nnpm install -g openclaw\n\n# 確認安裝成功\nopenclaw --version\n\n# 如果遇到權限問題（macOS / Linux）：\nsudo npm install -g openclaw'}
+        tips={[
+          '安裝需要大約 1-2 分鐘',
+          '如果用 pnpm，可以執行 pnpm add -g openclaw',
+          '遇到 EACCES 權限錯誤？嘗試加 sudo 或配置 npm prefix',
+        ]}
+        link={{ label: 'OpenClaw NPM 頁面', url: 'https://www.npmjs.com/package/openclaw' }}
+      />
+      <Step num={3} title="建立新專案" color="#10B981"
+        desc="用 openclaw init 命令初始化新專案，OpenClaw 會自動建立所有需要的檔案和資料夾結構。"
+        code={'# 建立新專案\nopenclaw init my-assistant\n\n# 進入專案資料夾\ncd my-assistant\n\n# 查看專案結構\nls -la\n# 你會見到：\n# ├── config.yaml    ← 主要設定檔\n# ├── skills/        ← 放自訂 Skill 的資料夾\n# ├── prompts/       ← 系統 Prompt 模板\n# └── package.json   ← Node.js 依賴'}
         link={{ label: 'OpenClaw 文件', url: 'https://github.com/openclaw/openclaw#readme' }}
       />
-      <Step num={3} title="設定你的 AI 模型" color="#7C3AED"
-        desc="告訴 OpenClaw 用哪個 AI 模型。你可以使用 Claude、GPT 或免費的本地模型（Ollama）。"
-        code={'# 使用 Claude（推薦）\nopenclaw config set api-key YOUR_KEY\nopenclaw config set model claude-sonnet-4-20250514\n\n# 或使用免費本地模型\nollama pull llama3\nopenclaw config set model ollama/llama3'}
+      <Step num={4} title="設定你的 AI 模型" color="#7C3AED"
+        desc="告訴 OpenClaw 用哪個 AI 模型。你可以使用 Claude（推薦）、GPT 或免費的本地模型（Ollama）。每個選項都有唔同嘅適用場景。"
+        code={'# ─── 選項 A：使用 Claude（推薦，最聰明）───\nopenclaw config set provider anthropic\nopenclaw config set api-key sk-ant-xxxxx\nopenclaw config set model claude-sonnet-4-20250514\n\n# ─── 選項 B：使用 OpenAI GPT ───\nopenclaw config set provider openai\nopenclaw config set api-key sk-xxxxx\nopenclaw config set model gpt-4o\n\n# ─── 選項 C：使用免費本地模型 ───\n# 先安裝 Ollama (https://ollama.com)\nollama pull llama3\nopenclaw config set provider ollama\nopenclaw config set model llama3\nopenclaw config set api-url http://localhost:11434'}
         tips={[
-          '取得 Claude API Key → anthropic.com',
-          '想免費？用 Ollama 跑本地模型',
+          'Claude API Key → console.anthropic.com（需信用卡，按用量收費）',
+          'OpenAI API Key → platform.openai.com',
+          '想完全免費？用 Ollama 跑本地模型，唔需要 API Key',
+          '本地模型適合測試；雲端模型回答質素更高',
+          'API Key 要保密！唔好放入 Git 或分享出去',
         ]}
         link={{ label: '取得 Claude API Key', url: 'https://console.anthropic.com' }}
       />
-      <Step num={4} title="連接通訊平台並啟動" color="#D97706"
-        desc="把 OpenClaw 連到你常用的通訊軟體 — WhatsApp、Telegram 或 Discord。"
-        code={'# 連接 Telegram（最簡單）\nopenclaw connect telegram BOT_TOKEN\n\n# 啟動！\nopenclaw start'}
+      <Step num={5} title="建立你的第一個 Skill" color="#EC4899"
+        desc="Skill 係 OpenClaw 的核心功能 — 你可以自訂 AI 助手的能力。以下示範建立一個簡單的天氣查詢 Skill。"
+        code={'# 建立新 Skill\nopenclaw skill create weather\n\n# 編輯 skills/weather/index.js\nmodule.exports = {\n  name: "weather",\n  description: "查詢指定城市的天氣",\n  parameters: {\n    city: {\n      type: "string",\n      description: "城市名稱",\n      required: true,\n    },\n  },\n  async execute({ city }) {\n    const res = await fetch(\n      `https://wttr.in/${city}?format=j1`\n    );\n    const data = await res.json();\n    const current = data.current_condition[0];\n    return `${city} 目前 ${current.temp_C}°C，${current.weatherDesc[0].value}`;\n  },\n};'}
         tips={[
-          'Telegram 最容易設定 — 搜尋 @BotFather 建立 Bot',
-          'WhatsApp 需要 Business API（適合商業用途）',
+          'Skill 可以呼叫任何 API 或執行本地程式碼',
+          '用 openclaw skill list 查看所有已安裝的 Skill',
+          '用 openclaw skill test weather --city=HongKong 測試',
+          '更多 Skill 範例：翻譯、摘要、資料庫查詢、圖片生成',
+        ]}
+        link={{ label: 'Skill 開發指南', url: 'https://github.com/openclaw/openclaw/blob/main/docs/skills.md' }}
+      />
+      <Step num={6} title="連接通訊平台並部署" color="#D97706"
+        desc="把 OpenClaw 連到你常用的通訊軟體 — Telegram 最易設定，WhatsApp 適合商業用途，Discord 適合團隊。"
+        code={'# ─── Telegram（最簡單，推薦新手）───\n# 1. 在 Telegram 搜尋 @BotFather\n# 2. 發送 /newbot，跟住指示建立 Bot\n# 3. 複製 Bot Token\nopenclaw connect telegram YOUR_BOT_TOKEN\n\n# ─── Discord ───\n# 1. 去 discord.com/developers 建立 Application\n# 2. 複製 Bot Token\nopenclaw connect discord YOUR_DISCORD_TOKEN\n\n# ─── WhatsApp（需要 Business API）───\nopenclaw connect whatsapp --phone=YOUR_PHONE\n\n# 啟動你的 AI 助手！\nopenclaw start\n\n# 在後台運行（生產環境）\nopenclaw start --daemon'}
+        tips={[
+          'Telegram 最容易設定 — 搜尋 @BotFather 建立 Bot，5 分鐘搞掂',
+          'WhatsApp 需要 Meta Business API（適合商業用途）',
           'Discord 適合團隊和社群使用',
+          '用 --daemon 參數可以在後台長期運行',
+          '部署到伺服器建議用 Docker 或 PM2 管理進程',
         ]}
         link={{ label: '建立 Telegram Bot', url: 'https://t.me/BotFather' }}
       />
 
       <R><div className="bg-gradient-to-r from-[#4169E1]/5 to-[#7C3AED]/5 rounded-2xl p-6 border border-blue-100 text-center">
         <p className="text-lg font-bold mb-1">完成！你的 AI 助手已經上線了 🎉</p>
-        <p className="text-sm text-gray-400">下一步：學習建立自定義 Skill → <a href="https://github.com/openclaw/openclaw/blob/main/docs/skills.md" target="_blank" rel="noopener noreferrer" className="text-[#4169E1] hover:underline">Skill 開發指南 →</a></p>
+        <p className="text-sm text-gray-400 mb-4">下一步：探索更多 Skill 和進階功能</p>
+        <div className="flex justify-center gap-3 flex-wrap">
+          <a href="https://github.com/openclaw/openclaw/blob/main/docs/skills.md" target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#4169E1]/10 text-[#4169E1] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#4169E1]/20 transition-colors">
+            Skill 開發指南 <ExtIcon className="w-3.5 h-3.5" />
+          </a>
+          <a href="https://github.com/openclaw/openclaw/discussions" target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#7C3AED]/10 text-[#7C3AED] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#7C3AED]/20 transition-colors">
+            社群討論區 <ExtIcon className="w-3.5 h-3.5" />
+          </a>
+        </div>
       </div></R>
+
+      {/* Common Issues */}
+      <R>
+        <div className="mt-10 bg-white rounded-2xl border border-gray-100 p-6">
+          <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+            <span className="h-7 w-7 rounded-lg bg-[#D97706] text-white text-xs font-bold flex items-center justify-center">!</span>
+            常見問題排解
+          </h3>
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-sm text-[#1A1A2E] mb-1">npm install 權限錯誤 (EACCES)</h4>
+              <p className="text-sm text-gray-500 mb-2">macOS / Linux 用戶常見問題。有兩個解決方法：</p>
+              <pre className="bg-[#0F172A] text-gray-300 rounded-xl p-3 text-xs leading-relaxed overflow-x-auto font-mono border border-gray-800">
+                <code>{'# 方法 1：用 sudo\nsudo npm install -g openclaw\n\n# 方法 2：更改 npm 預設目錄（推薦）\nmkdir ~/.npm-global\nnpm config set prefix \'~/.npm-global\'\n# 然後加入 PATH（加到 ~/.bashrc 或 ~/.zshrc）\nexport PATH=~/.npm-global/bin:$PATH'}</code>
+              </pre>
+            </div>
+            <div>
+              <h4 className="font-semibold text-sm text-[#1A1A2E] mb-1">API Key 無效或過期</h4>
+              <p className="text-sm text-gray-500">確認 API Key 格式正確（Claude 以 sk-ant- 開頭）。去 console.anthropic.com 檢查額度同有效期。</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-sm text-[#1A1A2E] mb-1">Ollama 本地模型連線失敗</h4>
+              <p className="text-sm text-gray-500 mb-2">確認 Ollama 正在運行，並且模型已經下載完成。</p>
+              <pre className="bg-[#0F172A] text-gray-300 rounded-xl p-3 text-xs leading-relaxed overflow-x-auto font-mono border border-gray-800">
+                <code>{'# 確認 Ollama 正在運行\nollama list\n\n# 如果冇模型，先下載\nollama pull llama3\n\n# 測試 Ollama API\ncurl http://localhost:11434/api/tags'}</code>
+              </pre>
+            </div>
+            <div>
+              <h4 className="font-semibold text-sm text-[#1A1A2E] mb-1">Telegram Bot 冇回應</h4>
+              <p className="text-sm text-gray-500">確認 Bot Token 正確，而且 openclaw start 正在運行。用 openclaw logs 查看錯誤訊息。如果仲係唔得，試下重新連接：openclaw connect telegram YOUR_TOKEN --force</p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-sm text-[#1A1A2E] mb-1">Node.js 版本太舊</h4>
+              <p className="text-sm text-gray-500 mb-2">OpenClaw 需要 Node.js 18+。用 nvm 可以輕鬆管理多個版本。</p>
+              <pre className="bg-[#0F172A] text-gray-300 rounded-xl p-3 text-xs leading-relaxed overflow-x-auto font-mono border border-gray-800">
+                <code>{'# 安裝 nvm\ncurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash\n\n# 安裝並使用 Node.js 20\nnvm install 20\nnvm use 20'}</code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </R>
     </div>
   );
 }
@@ -439,12 +612,19 @@ function ImagesTutorial() {
 export default function HomePage() {
   const [tab, setTab] = useState<Tab>('resources');
   const [mounted, setMounted] = useState(false);
+  const [toolsTab, setToolsTab] = useState('all');
+  const [frameworksTab, setFrameworksTab] = useState('all');
+  const [infraTab, setInfraTab] = useState('all');
   const heroRef = useRef(null);
   const tabsRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+
+  const filteredTools = toolsTab === 'all' ? TOOLS : TOOLS.filter((r) => r.cat === toolsTab);
+  const filteredFrameworks = frameworksTab === 'all' ? FRAMEWORKS : FRAMEWORKS.filter((r) => r.cat === frameworksTab);
+  const filteredInfra = infraTab === 'all' ? INFRA : INFRA.filter((r) => r.cat === infraTab);
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -484,7 +664,7 @@ export default function HomePage() {
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 bg-white/80 backdrop-blur text-[#4169E1] px-5 py-2 rounded-full text-xs font-bold mb-6 tracking-wide border border-blue-100 shadow-sm">
               <span className="relative flex h-1.5 w-1.5"><span className="animate-ping absolute h-full w-full rounded-full bg-[#4169E1] opacity-75"/><span className="relative h-1.5 w-1.5 rounded-full bg-[#4169E1]"/></span>
-              18 個開源工具 · 10 大參考網站 · 完整教學
+              60 個開源工具 · 10 大參考網站 · 完整教學
             </motion.div>
 
             <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
@@ -553,24 +733,27 @@ export default function HomePage() {
               {/* Tools */}
               <div className="mb-16">
                 <SectionHead emoji="🛠️" title="Must-Need Tools" sub="AI 開發必備工具 — 全部開源" />
+                <SubTabs tabs={TOOL_TABS} active={toolsTab} onChange={setToolsTab} />
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {TOOLS.map((r, i) => <ResourceCard key={r.title} r={r} i={i} />)}
+                  {filteredTools.map((r, i) => <ResourceCard key={r.title} r={r} i={i} />)}
                 </div>
               </div>
 
               {/* Frameworks */}
               <div className="mb-16">
                 <SectionHead emoji="📚" title="Must-Need Frameworks" sub="AI 應用開發框架與函式庫" />
+                <SubTabs tabs={FRAMEWORK_TABS} active={frameworksTab} onChange={setFrameworksTab} />
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {FRAMEWORKS.map((r, i) => <ResourceCard key={r.title} r={r} i={i} />)}
+                  {filteredFrameworks.map((r, i) => <ResourceCard key={r.title} r={r} i={i} />)}
                 </div>
               </div>
 
               {/* Infrastructure */}
               <div className="mb-16">
                 <SectionHead emoji="🔗" title="Must-Need Infrastructure" sub="部署、自動化和開發基建" />
+                <SubTabs tabs={INFRA_TABS} active={infraTab} onChange={setInfraTab} />
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {INFRA.map((r, i) => <ResourceCard key={r.title} r={r} i={i} />)}
+                  {filteredInfra.map((r, i) => <ResourceCard key={r.title} r={r} i={i} />)}
                 </div>
               </div>
 

@@ -67,436 +67,529 @@ const curatedPosts: Post[] = [
    Resource Data (80+ entries)
 ───────────────────────────────────────────── */
 const RESOURCES: Resource[] = [
-  /* ── BRONZE ── */
+  /* ══════════════════════════════════════════════
+     BRONZE — Prompt 同 AI 基礎
+     (學習 Prompt、API、本地聊天 UI)
+  ══════════════════════════════════════════════ */
   {
-    id: 'chatgpt', title: 'ChatGPT', description: '最流行嘅 AI 聊天助手，免費版夠日常使用，Plus 版解鎖 GPT-4o 同插件。',
-    url: 'https://chat.openai.com', type: 'tool', level: 'bronze', useCase: ['general', 'business', 'education'],
-    tags: ['OpenAI', '聊天', '入門'], free: true, featured: true,
-  },
-  {
-    id: 'claude', title: 'Claude', description: 'Anthropic 出品，長文本處理最強，200K token 上下文，適合分析長文件。',
-    url: 'https://claude.ai', type: 'tool', level: 'bronze', useCase: ['general', 'developer', 'business'],
-    tags: ['Anthropic', '長文本', '分析'], free: true, featured: true,
-  },
-  {
-    id: 'gemini', title: 'Gemini', description: 'Google 嘅 AI，同 Google 生態完美整合，免費用 Gemini 1.5 Pro。',
-    url: 'https://gemini.google.com', type: 'tool', level: 'bronze', useCase: ['general', 'education'],
-    tags: ['Google', '多模態', '免費'], free: true, featured: true,
-  },
-  {
-    id: 'perplexity', title: 'Perplexity AI', description: 'AI 搜尋引擎，即時引用來源，唔會亂生成假資料，研究必備。',
-    url: 'https://perplexity.ai', type: 'tool', level: 'bronze', useCase: ['general', 'education', 'business'],
-    tags: ['搜尋', '引用', '研究'], free: true, featured: true,
-  },
-  {
-    id: 'copilot', title: 'Microsoft Copilot', description: '免費用 GPT-4，深度整合 Office 365，係 Windows 用家嘅最佳選擇。',
-    url: 'https://copilot.microsoft.com', type: 'tool', level: 'bronze', useCase: ['business', 'general'],
-    tags: ['Microsoft', 'Office', 'GPT-4'], free: true,
-  },
-  {
-    id: 'notion-ai', title: 'Notion AI', description: '筆記 + AI 一體，整理資訊最方便，支援自動摘要、翻譯、改寫。',
-    url: 'https://notion.so', type: 'tool', level: 'bronze', useCase: ['business', 'education', 'general'],
-    tags: ['筆記', '生產力', 'AI 寫作'], free: false,
-  },
-  {
-    id: 'canva-ai', title: 'Canva AI', description: '零基礎設計出專業圖片，Magic Studio 一鍵生成圖像、背景、文字。',
-    url: 'https://canva.com', type: 'tool', level: 'bronze', useCase: ['marketing', 'creative', 'business'],
-    tags: ['設計', '圖片生成', '免費'], free: true,
-  },
-  {
-    id: 'removebg', title: 'Remove.bg', description: '一鍵去除圖片背景，秒速完成，免費每月 50 張，設計師必備小工具。',
-    url: 'https://remove.bg', type: 'tool', level: 'bronze', useCase: ['marketing', 'creative'],
-    tags: ['圖片處理', '去背', '設計'], free: true,
-  },
-  {
-    id: 'otter', title: 'Otter.ai', description: '自動轉錄會議錄音，即時生成會議記錄，支援粵語同普通話。',
-    url: 'https://otter.ai', type: 'tool', level: 'bronze', useCase: ['business', 'education'],
-    tags: ['會議記錄', '語音轉文字', '轉錄'], free: true,
-  },
-  {
-    id: 'deepl', title: 'DeepL', description: '最準確嘅 AI 翻譯工具，比 Google Translate 更自然，支援 31 種語言。',
-    url: 'https://deepl.com', type: 'tool', level: 'bronze', useCase: ['general', 'business', 'education'],
-    tags: ['翻譯', '多語言', '準確'], free: true,
-  },
-
-  /* ── SILVER ── */
-  {
-    id: 'prompthero', title: 'PromptHero', description: '最大 Prompt 社群，搜尋最佳 Prompt，涵蓋 Midjourney、Stable Diffusion、ChatGPT。',
-    url: 'https://prompthero.com', type: 'community', level: 'silver', useCase: ['creative', 'general'],
-    tags: ['Prompt 社群', '圖像', '分享'], free: true,
-  },
-  {
-    id: 'flowgpt', title: 'FlowGPT', description: 'Prompt 分享平台，有評分系統，可以按場景搜尋最受歡迎嘅 Prompt。',
-    url: 'https://flowgpt.com', type: 'community', level: 'silver', useCase: ['general', 'business'],
-    tags: ['Prompt 分享', '評分', '社群'], free: true,
-  },
-  {
-    id: 'promptbase', title: 'PromptBase', description: '買賣優質 Prompt 嘅市場，由專業 Prompt 工程師設計，節省開發時間。',
-    url: 'https://promptbase.com', type: 'community', level: 'silver', useCase: ['general', 'business', 'creative'],
-    tags: ['Prompt 市場', '買賣', '專業'], free: false,
-  },
-  {
-    id: 'learn-prompting', title: 'Learn Prompting', description: '免費 Prompt Engineering 完整教學網站，從入門到進階，附大量實例。',
-    url: 'https://learnprompting.org', type: 'course', level: 'silver', useCase: ['education', 'general'],
+    id: 'learn-prompting', title: 'Learn Prompting', description: '免費 Prompt Engineering 完整教學網站，從入門到進階，附大量實例同練習。',
+    url: 'https://learnprompting.org', type: 'course', level: 'bronze', useCase: ['education', 'general'],
     tags: ['教學', '免費', 'Prompt'], free: true, featured: true,
   },
   {
-    id: 'openai-playground', title: 'OpenAI Playground', description: '直接測試唔同 GPT 參數，調整 temperature、top_p，深度理解模型行為。',
-    url: 'https://platform.openai.com/playground', type: 'tool', level: 'silver', useCase: ['developer', 'general'],
-    tags: ['測試', '參數', 'GPT'], free: false,
-  },
-  {
     id: 'anthropic-prompt-library', title: 'Anthropic Prompt Library', description: 'Claude 官方 Prompt 庫，200+ 精心設計嘅 Prompt，可直接複製使用。',
-    url: 'https://docs.anthropic.com/en/prompt-library', type: 'article', level: 'silver', useCase: ['general', 'developer'],
+    url: 'https://docs.anthropic.com/en/prompt-library', type: 'article', level: 'bronze', useCase: ['general', 'developer'],
     tags: ['Claude', '官方', 'Prompt 庫'], free: true,
   },
   {
-    id: 'fabric', title: 'Fabric', description: '200+ 開源 Prompt 模式，CLI 工具一行指令完成複雜 AI 任務，AI 瑞士軍刀。',
-    url: 'https://github.com/danielmiessler/fabric', type: 'github', level: 'silver', useCase: ['developer', 'general'],
-    tags: ['開源', 'CLI', 'Prompt 模式'], free: true, stars: '20K',
-  },
-  {
     id: 'awesome-prompts', title: 'Awesome ChatGPT Prompts', description: '最多人 Star 嘅 Prompt 合集，涵蓋角色扮演、學習、寫作等所有場景。',
-    url: 'https://github.com/f/awesome-chatgpt-prompts', type: 'github', level: 'silver', useCase: ['general', 'education'],
-    tags: ['開源', 'Prompt 合集', '角色扮演'], free: true, stars: '104K', featured: true,
+    url: 'https://github.com/f/awesome-chatgpt-prompts', type: 'github', level: 'bronze', useCase: ['general', 'education'],
+    tags: ['開源', 'Prompt 合集', '角色扮演'], free: true, stars: '115K', featured: true,
   },
   {
-    id: 'langchain-hub', title: 'LangChain Hub', description: '生產級 Prompt 管理平台，版本控制、A/B 測試、協作編輯一應俱全。',
-    url: 'https://smith.langchain.com/hub', type: 'tool', level: 'silver', useCase: ['developer'],
-    tags: ['Prompt 管理', '版本控制', 'LangChain'], free: true,
+    id: 'fabric', title: 'Fabric', description: '200+ 開源 Prompt 模式，CLI 工具一行指令完成複雜 AI 任務，AI 瑞士軍刀。',
+    url: 'https://github.com/danielmiessler/fabric', type: 'github', level: 'bronze', useCase: ['developer', 'general'],
+    tags: ['開源', 'CLI', 'Prompt 模式'], free: true, stars: '28K',
+  },
+  {
+    id: 'promptfoo', title: 'Promptfoo', description: '開源 Prompt 測試同評估工具，CI/CD 整合，比較唔同 Prompt 嘅效果。',
+    url: 'https://github.com/promptfoo/promptfoo', type: 'github', level: 'bronze', useCase: ['developer'],
+    tags: ['Prompt 測試', '評估', 'CI/CD'], free: true, stars: '6K',
+  },
+  {
+    id: 'open-prompt', title: 'Open Prompt', description: '開源 Prompt 管理同分享平台，社群驅動，支援版本管理同協作編輯。',
+    url: 'https://github.com/timqian/openprompt.co', type: 'github', level: 'bronze', useCase: ['general', 'education'],
+    tags: ['開源', 'Prompt 分享', '社群'], free: true, stars: '1.5K',
+  },
+  {
+    id: 'typingmind', title: 'TypingMind', description: '開源 Chat UI，支援多模型切換，自訂 Prompt 同插件，本地部署更私密。',
+    url: 'https://github.com/nicepkg/gpt-runner', type: 'tool', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['Chat UI', '多模型', '自部署'], free: true,
+  },
+  {
+    id: 'jan', title: 'Jan', description: '本地 AI 聊天桌面 App，離線運行 LLM，支援 Llama、Mistral，私隱至上。',
+    url: 'https://github.com/janhq/jan', type: 'github', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['本地 AI', '桌面 App', '離線'], free: true, stars: '25K',
+  },
+  {
+    id: 'msty', title: 'Msty', description: '本地 LLM 桌面客戶端，支援多模型對比、RAG、離線使用，介面精美。',
+    url: 'https://msty.app', type: 'tool', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['本地 LLM', '桌面', '多模型'], free: true,
+  },
+  {
+    id: 'ai-shell', title: 'AI Shell', description: '終端機 AI 助手，自然語言轉 Shell 指令，支援多模型，開發者日常必備。',
+    url: 'https://github.com/BuilderIO/ai-shell', type: 'github', level: 'bronze', useCase: ['developer'],
+    tags: ['CLI', 'Shell', '開發工具'], free: true, stars: '4K',
+  },
+  {
+    id: 'shellgpt', title: 'ShellGPT', description: '命令列 AI 助手，直接喺 Terminal 問問題、生成代碼、執行指令。',
+    url: 'https://github.com/TheR1D/shell_gpt', type: 'github', level: 'bronze', useCase: ['developer'],
+    tags: ['CLI', 'Python', 'Terminal'], free: true, stars: '10K',
+  },
+  {
+    id: 'khoj', title: 'Khoj', description: '自架設 AI 助手，支援 RAG、搜尋、多模型，個人知識庫管理，私隱友好。',
+    url: 'https://github.com/khoj-ai/khoj', type: 'github', level: 'bronze', useCase: ['developer', 'general'],
+    tags: ['自架設', '知識庫', 'RAG'], free: true, stars: '18K',
+  },
+  {
+    id: 'librechat', title: 'LibreChat', description: '開源 ChatGPT 替代，支援多 AI 供應商、插件、多用戶，可自部署。',
+    url: 'https://github.com/danny-avila/LibreChat', type: 'github', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['開源', '自部署', '多模型'], free: true, stars: '20K', featured: true,
+  },
+  {
+    id: 'chatbox', title: 'ChatBox', description: '跨平台 AI 桌面客戶端，支援 OpenAI、Claude、本地模型，介面簡潔。',
+    url: 'https://github.com/Bin-Huang/chatbox', type: 'github', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['桌面 App', '跨平台', '多模型'], free: true, stars: '22K',
+  },
+  {
+    id: 'localai', title: 'LocalAI', description: '本地模型伺服器，相容 OpenAI API，無需 GPU 都可以跑，完全離線。',
+    url: 'https://github.com/mudler/LocalAI', type: 'github', level: 'bronze', useCase: ['developer'],
+    tags: ['本地運行', 'API 相容', '離線'], free: true, stars: '28K',
+  },
+  {
+    id: 'gpt4all', title: 'GPT4All', description: '本地 LLM 生態系統，一鍵安裝，支援多模型，CPU 就跑到，私隱友好。',
+    url: 'https://github.com/nomic-ai/gpt4all', type: 'github', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['本地 LLM', 'CPU', '易用'], free: true, stars: '72K',
+  },
+  {
+    id: 'text-generation-webui', title: 'Text Generation WebUI', description: 'Oobabooga 出品，最強本地 LLM Web 介面，支援所有主流模型格式。',
+    url: 'https://github.com/oobabooga/text-generation-webui', type: 'github', level: 'bronze', useCase: ['developer'],
+    tags: ['Web UI', '本地模型', '進階'], free: true, stars: '42K',
+  },
+  {
+    id: 'lm-studio', title: 'LM Studio', description: '本地 LLM 桌面 App，圖形化介面下載同運行模型，支援 GGUF，極易上手。',
+    url: 'https://lmstudio.ai', type: 'tool', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['本地 LLM', '桌面', 'GGUF'], free: true, featured: true,
+  },
+  {
+    id: 'lobe-chat', title: 'Lobe Chat', description: '開源 Chat 框架，支援多模型、插件、TTS、視覺，可自部署，功能極豐富。',
+    url: 'https://github.com/lobehub/lobe-chat', type: 'github', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['開源', '多模型', '插件'], free: true, stars: '50K',
+  },
+  {
+    id: 'nextchat', title: 'NextChat', description: '一鍵部署 ChatGPT Web UI，支援 Vercel、Docker，多模型切換，跨平台。',
+    url: 'https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web', type: 'github', level: 'bronze', useCase: ['general', 'developer'],
+    tags: ['Web UI', 'Vercel', '一鍵部署'], free: true, stars: '78K',
   },
 
-  /* ── GOLD ── */
+  /* ══════════════════════════════════════════════
+     SILVER — 開發框架
+     (LLM 框架、SDK、結構化輸出)
+  ══════════════════════════════════════════════ */
   {
     id: 'langchain', title: 'LangChain', description: '最成熟嘅 LLM 開發框架，連接模型、工具、記憶體，構建複雜 AI 應用首選。',
-    url: 'https://langchain.com', type: 'tool', level: 'gold', useCase: ['developer'],
-    tags: ['框架', 'RAG', 'Agent'], free: true, featured: true,
+    url: 'https://github.com/langchain-ai/langchain', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['框架', 'RAG', 'Agent'], free: true, featured: true, stars: '98K',
   },
   {
     id: 'llamaindex', title: 'LlamaIndex', description: 'RAG 應用首選框架，輕鬆連接文件、數據庫、API，構建智能搜尋系統。',
-    url: 'https://llamaindex.ai', type: 'tool', level: 'gold', useCase: ['developer'],
-    tags: ['RAG', '向量搜尋', '文件處理'], free: true,
+    url: 'https://github.com/run-llama/llama_index', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['RAG', '向量搜尋', '文件處理'], free: true, stars: '38K',
   },
   {
     id: 'crewai', title: 'CrewAI', description: '多 Agent 協作框架，讓多個 AI 角色分工合作，自動完成研究報告、代碼開發。',
-    url: 'https://crewai.com', type: 'github', level: 'gold', useCase: ['developer', 'business'],
+    url: 'https://github.com/crewAIInc/crewAI', type: 'github', level: 'silver', useCase: ['developer', 'business'],
     tags: ['多 Agent', '自動化', 'Python'], free: true, stars: '23K',
   },
   {
     id: 'autogen', title: 'AutoGen', description: 'Microsoft 出品多 Agent 框架，支援對話式多 Agent 協作，企業信任度高。',
-    url: 'https://microsoft.github.io/autogen', type: 'github', level: 'gold', useCase: ['developer', 'business'],
+    url: 'https://github.com/microsoft/autogen', type: 'github', level: 'silver', useCase: ['developer', 'business'],
     tags: ['Microsoft', '多 Agent', '企業'], free: true, stars: '38K',
   },
   {
     id: 'dify', title: 'Dify', description: '可視化 AI 應用開發平台，拖拉式構建 RAG、Chatbot、Agent，開源可自部署。',
-    url: 'https://dify.ai', type: 'tool', level: 'gold', useCase: ['developer', 'business'],
-    tags: ['可視化', '開源', 'No-Code'], free: true, featured: true,
+    url: 'https://github.com/langgenius/dify', type: 'github', level: 'silver', useCase: ['developer', 'business'],
+    tags: ['可視化', '開源', 'No-Code'], free: true, featured: true, stars: '55K',
   },
   {
     id: 'flowise', title: 'Flowise', description: '拖拉 Node 構建 LLM 流程，零代碼搭建 Agent、RAG 應用，5 分鐘上線。',
-    url: 'https://flowiseai.com', type: 'github', level: 'gold', useCase: ['developer', 'business'],
-    tags: ['No-Code', 'Node', '視覺化'], free: true, stars: '30K',
+    url: 'https://github.com/FlowiseAI/Flowise', type: 'github', level: 'silver', useCase: ['developer', 'business'],
+    tags: ['No-Code', 'Node', '視覺化'], free: true, stars: '32K',
   },
   {
-    id: 'ollama', title: 'Ollama', description: '本地跑 LLM，零配置，一個指令下載 Llama、Qwen、Mistral 等 100+ 模型。',
-    url: 'https://ollama.ai', type: 'github', level: 'gold', useCase: ['developer', 'general'],
-    tags: ['本地 LLM', '私隱', '離線'], free: true, stars: '120K', featured: true,
+    id: 'haystack', title: 'Haystack', description: 'deepset 出品 NLP 框架，專注 RAG 同搜尋，Pipeline 設計模式，生產級穩定。',
+    url: 'https://github.com/deepset-ai/haystack', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['RAG', 'NLP', 'Pipeline'], free: true, stars: '18K',
+  },
+  {
+    id: 'semantic-kernel', title: 'Semantic Kernel', description: 'Microsoft 出品 LLM SDK，支援 C#、Python、Java，企業 .NET 生態首選。',
+    url: 'https://github.com/microsoft/semantic-kernel', type: 'github', level: 'silver', useCase: ['developer', 'business'],
+    tags: ['Microsoft', '.NET', 'SDK'], free: true, stars: '22K',
+  },
+  {
+    id: 'instructor', title: 'Instructor', description: '結構化 LLM 輸出工具，用 Pydantic 定義 Schema，保證 JSON 輸出格式。',
+    url: 'https://github.com/jxnl/instructor', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['結構化輸出', 'Pydantic', 'Schema'], free: true, stars: '8K',
+  },
+  {
+    id: 'mastra', title: 'Mastra', description: 'TypeScript AI 框架，Agent、RAG、Workflow 一站式，前端開發者友好。',
+    url: 'https://github.com/mastra-ai/mastra', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['TypeScript', 'Agent', 'Workflow'], free: true, stars: '8K',
+  },
+  {
+    id: 'pydantic-ai', title: 'Pydantic AI', description: 'Pydantic 團隊出品 AI Agent 框架，類型安全、結構化輸出、依賴注入。',
+    url: 'https://github.com/pydantic/pydantic-ai', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['Pydantic', 'Agent', '類型安全'], free: true, stars: '5K',
+  },
+  {
+    id: 'vercel-ai-sdk', title: 'Vercel AI SDK', description: 'Vercel 出品 AI 開發工具包，Streaming UI、多模型支援，Next.js 完美整合。',
+    url: 'https://github.com/vercel/ai', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['Vercel', 'Next.js', 'Streaming'], free: true, stars: '12K', featured: true,
+  },
+  {
+    id: 'spring-ai', title: 'Spring AI', description: 'Spring 生態嘅 AI 框架，Java 企業開發者首選，支援多模型同向量存儲。',
+    url: 'https://github.com/spring-projects/spring-ai', type: 'github', level: 'silver', useCase: ['developer', 'business'],
+    tags: ['Java', 'Spring', '企業'], free: true, stars: '3K',
   },
   {
     id: 'litellm', title: 'LiteLLM', description: '統一 100+ LLM API，一行代碼切換 OpenAI、Claude、Gemini，支援 fallback。',
-    url: 'https://github.com/BerriAI/litellm', type: 'github', level: 'gold', useCase: ['developer'],
+    url: 'https://github.com/BerriAI/litellm', type: 'github', level: 'silver', useCase: ['developer'],
     tags: ['API Gateway', '多模型', '統一'], free: true, stars: '18K',
   },
   {
-    id: 'langfuse', title: 'Langfuse', description: 'LLM 可觀測性平台，追蹤 Prompt、成本、延遲，開源可自部署，生產必備。',
-    url: 'https://langfuse.com', type: 'tool', level: 'gold', useCase: ['developer'],
-    tags: ['監控', '可觀測性', '開源'], free: true,
-  },
-  {
-    id: 'mem0', title: 'Mem0', description: '為 AI Agent 加入長期記憶，跨對話記住用戶偏好，告別每次重新介紹自己。',
-    url: 'https://mem0.ai', type: 'github', level: 'gold', useCase: ['developer', 'business'],
-    tags: ['記憶體', 'Agent', '持久化'], free: true, stars: '28K',
-  },
-  {
-    id: 'browser-use', title: 'Browser Use', description: 'AI 控制瀏覽器自動化，自然語言描述任務，AI 自動點擊、填表、爬取數據。',
-    url: 'https://github.com/browser-use/browser-use', type: 'github', level: 'gold', useCase: ['developer', 'business'],
-    tags: ['瀏覽器自動化', 'Playwright', 'AI Agent'], free: true, stars: '21K',
-  },
-  {
-    id: 'firecrawl', title: 'Firecrawl', description: 'LLM 友好嘅網頁爬蟲，一個 API 將任何網站轉成結構化 Markdown，支援 JS 渲染。',
-    url: 'https://firecrawl.dev', type: 'github', level: 'gold', useCase: ['developer', 'business'],
-    tags: ['爬蟲', '數據提取', 'Markdown'], free: true, stars: '28K',
-  },
-
-  /* ── PLATINUM ── */
-  {
-    id: 'azure-openai', title: 'Azure OpenAI', description: '企業級 GPT 部署，SOC2 合規，支援私有 VNet，適合有嚴格私隱要求嘅企業。',
-    url: 'https://azure.microsoft.com/ai', type: 'tool', level: 'platinum', useCase: ['business', 'developer'],
-    tags: ['企業', 'SOC2', 'Azure'], free: false,
-  },
-  {
-    id: 'aws-bedrock', title: 'AWS Bedrock', description: 'AWS 多模型 API，一站式存取 Claude、Llama、Titan，企業 AI 首選雲端平台。',
-    url: 'https://aws.amazon.com/bedrock', type: 'tool', level: 'platinum', useCase: ['business', 'developer'],
-    tags: ['AWS', '多模型', '企業'], free: false,
-  },
-  {
-    id: 'vertex-ai', title: 'Google Vertex AI', description: 'Google 企業 AI 平台，Gemini + PaLM + 第三方模型，MLOps 全生命周期管理。',
-    url: 'https://cloud.google.com/vertex-ai', type: 'tool', level: 'platinum', useCase: ['business', 'developer'],
-    tags: ['Google Cloud', 'MLOps', '企業'], free: false,
-  },
-  {
-    id: 'huggingface-enterprise', title: 'Hugging Face Enterprise', description: '私有模型部署，SOC2 認證，Inference Endpoints 一鍵部署任何開源模型。',
-    url: 'https://huggingface.co', type: 'tool', level: 'platinum', useCase: ['developer', 'business'],
-    tags: ['開源模型', '私有部署', 'SOC2'], free: false,
-  },
-  {
-    id: 'wandb', title: 'Weights & Biases', description: 'ML 實驗追蹤業界標準，記錄訓練指標、模型版本、數據集，團隊協作必備。',
-    url: 'https://wandb.ai', type: 'tool', level: 'platinum', useCase: ['developer', 'business'],
-    tags: ['ML 實驗', '追蹤', '協作'], free: false,
-  },
-  {
-    id: 'pinecone', title: 'Pinecone', description: '企業級向量數據庫，全托管，支援十億級向量，低延遲相似度搜尋，易於擴展。',
-    url: 'https://pinecone.io', type: 'tool', level: 'platinum', useCase: ['developer', 'business'],
-    tags: ['向量數據庫', '企業', 'RAG'], free: false,
-  },
-  {
-    id: 'weaviate', title: 'Weaviate', description: '開源向量數據庫，支援多模態搜尋（文字、圖片、音頻），GraphQL API。',
-    url: 'https://weaviate.io', type: 'tool', level: 'platinum', useCase: ['developer', 'business'],
-    tags: ['向量數據庫', '多模態', '開源'], free: true,
-  },
-  {
-    id: 'qdrant', title: 'Qdrant', description: '高性能向量搜尋引擎，Rust 編寫，延遲極低，支援過濾搜尋，開源可自部署。',
-    url: 'https://qdrant.tech', type: 'tool', level: 'platinum', useCase: ['developer'],
-    tags: ['向量搜尋', 'Rust', '高性能'], free: true,
-  },
-  {
-    id: 'supabase', title: 'Supabase', description: '開源 Firebase 替代，內建 pgvector，一站式數據庫 + Auth + Storage + AI。',
-    url: 'https://supabase.com', type: 'tool', level: 'platinum', useCase: ['developer', 'business'],
-    tags: ['PostgreSQL', 'pgvector', '開源'], free: true,
-  },
-  {
-    id: 'pgvector', title: 'pgvector', description: 'PostgreSQL 向量擴展，唔需要獨立向量數據庫，直接喺 Postgres 做向量搜尋。',
-    url: 'https://github.com/pgvector/pgvector', type: 'github', level: 'platinum', useCase: ['developer'],
-    tags: ['PostgreSQL', '向量', '開源'], free: true, stars: '14K',
-  },
-
-  /* ── OPENCLAW ── */
-  {
-    id: 'anthropic-docs', title: 'Anthropic API Docs', description: 'Claude 官方 API 文件，Claude 3.5 Sonnet、Haiku、Opus 使用指南，Tool Use 詳解。',
-    url: 'https://docs.anthropic.com', type: 'article', level: 'openclaw', useCase: ['developer'],
-    tags: ['Claude', 'API', '官方文件'], free: true,
-  },
-  {
-    id: 'openai-docs', title: 'OpenAI API Docs', description: 'GPT-4o、Assistants API、Fine-tuning、Embeddings 完整開發者文件。',
-    url: 'https://platform.openai.com/docs', type: 'article', level: 'openclaw', useCase: ['developer'],
-    tags: ['GPT', 'API', '官方文件'], free: true,
-  },
-  {
-    id: 'huggingface', title: 'Hugging Face', description: '最大開源模型平台，100K+ 模型、Dataset、Space，AI 界嘅 GitHub。',
-    url: 'https://huggingface.co', type: 'community', level: 'openclaw', useCase: ['developer'],
-    tags: ['開源模型', '數據集', 'Transformer'], free: true, featured: true,
-  },
-  {
-    id: 'papers-with-code', title: 'Papers With Code', description: 'AI 最新論文 + 代碼，SOTA 排行榜，了解最前沿技術嘅最佳入口。',
-    url: 'https://paperswithcode.com', type: 'article', level: 'openclaw', useCase: ['developer', 'education'],
-    tags: ['論文', '代碼', 'SOTA'], free: true,
-  },
-  {
-    id: 'arxiv-ai', title: 'Arxiv AI', description: 'AI 最新學術論文預印本，cs.AI、cs.LG、cs.CL 分類，每日更新。',
-    url: 'https://arxiv.org/list/cs.AI/recent', type: 'article', level: 'openclaw', useCase: ['developer', 'education'],
-    tags: ['學術論文', '研究', '預印本'], free: true,
-  },
-  {
-    id: 'mlflow', title: 'MLflow', description: 'ML 生命周期管理平台，實驗追蹤、模型打包、部署，支援所有主流框架。',
-    url: 'https://mlflow.org', type: 'tool', level: 'openclaw', useCase: ['developer'],
-    tags: ['MLOps', '實驗管理', '開源'], free: true,
-  },
-  {
-    id: 'ray', title: 'Ray', description: '分佈式 AI 訓練框架，輕鬆擴展到多機多卡，支援 LLM Fine-tuning、強化學習。',
-    url: 'https://ray.io', type: 'tool', level: 'openclaw', useCase: ['developer'],
-    tags: ['分佈式', '訓練', '擴展'], free: true,
-  },
-  {
     id: 'vllm', title: 'vLLM', description: '高效 LLM 推理框架，PagedAttention 技術，吞吐量比 HuggingFace 高 24 倍。',
-    url: 'https://github.com/vllm-project/vllm', type: 'github', level: 'openclaw', useCase: ['developer'],
+    url: 'https://github.com/vllm-project/vllm', type: 'github', level: 'silver', useCase: ['developer'],
     tags: ['推理優化', '高性能', '開源'], free: true, stars: '40K',
   },
   {
-    id: 'triton', title: 'Triton Inference Server', description: 'NVIDIA 推理服務器，支援 GPU 加速，多模型部署，生產環境 LLM 服務首選。',
-    url: 'https://github.com/triton-inference-server', type: 'github', level: 'openclaw', useCase: ['developer'],
-    tags: ['NVIDIA', '推理', '生產'], free: true,
+    id: 'guidance', title: 'Guidance', description: 'Microsoft 出品，約束生成框架，控制 LLM 輸出格式，正則同文法級別精度。',
+    url: 'https://github.com/guidance-ai/guidance', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['約束生成', '格式控制', 'Microsoft'], free: true, stars: '19K',
   },
   {
-    id: 'modal', title: 'Modal', description: 'AI 模型雲端部署，按用量收費，零運維，Cold Start 極快，適合 Serverless AI。',
-    url: 'https://modal.com', type: 'tool', level: 'openclaw', useCase: ['developer'],
-    tags: ['Serverless', '雲端', '部署'], free: false,
-  },
-
-  /* ── MARKETING use case ── */
-  {
-    id: 'jasper', title: 'Jasper', description: 'AI 行銷文案平台，品牌語調一致，支援 Blog、廣告、社交媒體，行銷團隊首選。',
-    url: 'https://jasper.ai', type: 'tool', level: 'silver', useCase: ['marketing'],
-    tags: ['文案', '行銷', 'SEO'], free: false,
+    id: 'dspy', title: 'DSPy', description: 'Stanford 出品，程式化 Prompt 優化框架，自動搜索最佳 Prompt，超越手動調參。',
+    url: 'https://github.com/stanfordnlp/dspy', type: 'github', level: 'silver', useCase: ['developer', 'education'],
+    tags: ['Prompt 優化', 'Stanford', '自動化'], free: true, stars: '20K',
   },
   {
-    id: 'copy-ai', title: 'Copy.ai', description: 'AI 文案生成工具，90+ 模板覆蓋所有行銷場景，免費版每月 2000 字。',
-    url: 'https://copy.ai', type: 'tool', level: 'silver', useCase: ['marketing', 'business'],
-    tags: ['文案', '模板', '行銷'], free: true,
+    id: 'mirascope', title: 'Mirascope', description: '輕量級 LLM 開發工具，Pythonic API，支援多模型，極簡設計，上手極快。',
+    url: 'https://github.com/Mirascope/mirascope', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['Python', '輕量級', '多模型'], free: true, stars: '1.5K',
   },
   {
-    id: 'midjourney', title: 'Midjourney', description: '最頂級嘅 AI 圖像生成工具，藝術質感最高，設計師、行銷人員必備。',
-    url: 'https://midjourney.com', type: 'tool', level: 'silver', useCase: ['marketing', 'creative'],
-    tags: ['圖像生成', '藝術', '設計'], free: false, featured: true,
+    id: 'agno', title: 'Agno', description: '高效能 Agent 框架，支援多模態、記憶體、工具整合，構建生產級 Agent。',
+    url: 'https://github.com/agno-agi/agno', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['Agent', '高性能', '多模態'], free: true, stars: '18K',
   },
   {
-    id: 'dalle', title: 'DALL-E 3', description: 'OpenAI 嘅圖像生成，整合喺 ChatGPT Plus，文字理解能力最強，指令最準確。',
-    url: 'https://openai.com/dall-e-3', type: 'tool', level: 'silver', useCase: ['marketing', 'creative'],
-    tags: ['圖像生成', 'OpenAI', 'ChatGPT'], free: false,
-  },
-  {
-    id: 'elevenlabs', title: 'ElevenLabs', description: '最自然嘅 AI 語音合成，Clone 任何聲音，支援 30+ 語言，廣告配音必備。',
-    url: 'https://elevenlabs.io', type: 'tool', level: 'silver', useCase: ['marketing', 'creative'],
-    tags: ['語音合成', '配音', '克隆聲音'], free: true,
-  },
-  {
-    id: 'heygen', title: 'HeyGen', description: 'AI 數字人視頻，上傳一張照片就生成說話視頻，多語言配音，行銷爆款工具。',
-    url: 'https://heygen.com', type: 'tool', level: 'silver', useCase: ['marketing', 'creative', 'business'],
-    tags: ['數字人', '視頻', '多語言'], free: false,
-  },
-  {
-    id: 'synthesia', title: 'Synthesia', description: '企業級 AI 視頻製作，160+ AI 演員，支援 120+ 語言，培訓視頻首選。',
-    url: 'https://synthesia.io', type: 'tool', level: 'silver', useCase: ['marketing', 'business', 'education'],
-    tags: ['AI 視頻', '企業', '培訓'], free: false,
-  },
-  {
-    id: 'runway', title: 'Runway', description: 'AI 視頻生成工具，Gen-3 Alpha 支援文字轉視頻、圖片轉視頻，電影級效果。',
-    url: 'https://runwayml.com', type: 'tool', level: 'silver', useCase: ['marketing', 'creative'],
-    tags: ['視頻生成', 'AI 電影', '創意'], free: false,
+    id: 'ell', title: 'ell', description: '輕量級 Prompt 工程庫，版本追蹤同視覺化，將 Prompt 當代碼管理。',
+    url: 'https://github.com/MadcowD/ell', type: 'github', level: 'silver', useCase: ['developer'],
+    tags: ['Prompt 管理', '版本控制', '輕量'], free: true, stars: '6K',
   },
 
-  /* ── DEVELOPER use case ── */
+  /* ══════════════════════════════════════════════
+     GOLD — 基建同 DevOps
+     (部署、監控、向量 DB、數據處理)
+  ══════════════════════════════════════════════ */
   {
-    id: 'github-copilot', title: 'GitHub Copilot', description: 'AI 代碼補全業界標準，支援 100+ 語言，Chat 功能解釋代碼、修復 Bug。',
-    url: 'https://github.com/features/copilot', type: 'tool', level: 'silver', useCase: ['developer'],
-    tags: ['代碼補全', 'GitHub', 'IDE'], free: false, featured: true,
+    id: 'ollama', title: 'Ollama', description: '本地跑 LLM，零配置，一個指令下載 Llama、Qwen、Mistral 等 100+ 模型。',
+    url: 'https://github.com/ollama/ollama', type: 'github', level: 'gold', useCase: ['developer', 'general'],
+    tags: ['本地 LLM', '私隱', '離線'], free: true, stars: '120K', featured: true,
   },
   {
-    id: 'cursor', title: 'Cursor', description: 'AI 原生 IDE，Composer 一次修改多個文件，Codebase 對話，開發者新寵。',
-    url: 'https://cursor.sh', type: 'tool', level: 'silver', useCase: ['developer'],
-    tags: ['AI IDE', 'Composer', 'Claude'], free: false, featured: true,
+    id: 'open-webui', title: 'Open WebUI', description: '自架設 ChatGPT 替代介面，支援 Ollama 同 OpenAI API，功能齊全。',
+    url: 'https://github.com/open-webui/open-webui', type: 'github', level: 'gold', useCase: ['developer', 'general'],
+    tags: ['Web UI', '自部署', 'Ollama'], free: true, stars: '55K', featured: true,
   },
   {
-    id: 'continue-dev', title: 'Continue.dev', description: '開源 AI 代碼助手，VS Code 插件，支援本地模型，保護代碼私隱。',
-    url: 'https://continue.dev', type: 'github', level: 'silver', useCase: ['developer'],
-    tags: ['開源', 'VS Code', '本地模型'], free: true, stars: '20K',
+    id: 'supabase', title: 'Supabase', description: '開源 Firebase 替代，內建 pgvector，一站式數據庫 + Auth + Storage + AI。',
+    url: 'https://github.com/supabase/supabase', type: 'github', level: 'gold', useCase: ['developer', 'business'],
+    tags: ['PostgreSQL', 'pgvector', '開源'], free: true, stars: '75K',
   },
   {
-    id: 'codeium', title: 'Codeium', description: '完全免費嘅 AI 代碼補全，支援 70+ 語言，70+ IDE，速度快，無限制。',
-    url: 'https://codeium.com', type: 'tool', level: 'silver', useCase: ['developer'],
-    tags: ['免費', '代碼補全', '多語言'], free: true,
+    id: 'n8n', title: 'n8n', description: '開源工作流自動化平台，支援 AI Agent 節點，400+ 整合，可自部署。',
+    url: 'https://github.com/n8n-io/n8n', type: 'github', level: 'gold', useCase: ['developer', 'business'],
+    tags: ['自動化', '工作流', '開源'], free: true, stars: '52K',
+  },
+  {
+    id: 'anything-llm', title: 'AnythingLLM', description: '一站式本地 AI 桌面 App，RAG、Agent、多模型，企業私有部署首選。',
+    url: 'https://github.com/Mintplex-Labs/anything-llm', type: 'github', level: 'gold', useCase: ['developer', 'business'],
+    tags: ['RAG', '本地部署', '企業'], free: true, stars: '30K',
+  },
+  {
+    id: 'langfuse', title: 'Langfuse', description: 'LLM 可觀測性平台，追蹤 Prompt、成本、延遲，開源可自部署，生產必備。',
+    url: 'https://github.com/langfuse/langfuse', type: 'github', level: 'gold', useCase: ['developer'],
+    tags: ['監控', '可觀測性', '開源'], free: true, stars: '8K',
+  },
+  {
+    id: 'helicone', title: 'Helicone', description: '開源 LLM 代理，一行代碼加入監控、緩存、速率限制，支援所有主流 API。',
+    url: 'https://github.com/Helicone/helicone', type: 'github', level: 'gold', useCase: ['developer'],
+    tags: ['LLM Proxy', '監控', '緩存'], free: true, stars: '3K',
+  },
+  {
+    id: 'phoenix-arize', title: 'Phoenix (Arize)', description: 'LLM 可觀測性同評估工具，追蹤 Trace、Span，視覺化 RAG Pipeline。',
+    url: 'https://github.com/Arize-ai/phoenix', type: 'github', level: 'gold', useCase: ['developer'],
+    tags: ['Tracing', '評估', 'RAG'], free: true, stars: '4K',
+  },
+  {
+    id: 'portkey', title: 'Portkey', description: '開源 AI Gateway，統一管理多模型 API，支援 fallback、緩存、日誌。',
+    url: 'https://github.com/Portkey-AI/gateway', type: 'github', level: 'gold', useCase: ['developer'],
+    tags: ['AI Gateway', '多模型', '路由'], free: true, stars: '6K',
+  },
+  {
+    id: 'mindsdb', title: 'MindsDB', description: '用 SQL 做 AI，連接數據庫直接訓練同查詢模型，數據工程師最愛。',
+    url: 'https://github.com/mindsdb/mindsdb', type: 'github', level: 'gold', useCase: ['developer', 'business'],
+    tags: ['SQL', 'AI', '數據庫'], free: true, stars: '27K',
+  },
+  {
+    id: 'weaviate', title: 'Weaviate', description: '開源向量數據庫，支援多模態搜尋（文字、圖片、音頻），GraphQL API。',
+    url: 'https://github.com/weaviate/weaviate', type: 'github', level: 'gold', useCase: ['developer', 'business'],
+    tags: ['向量數據庫', '多模態', '開源'], free: true, stars: '12K',
+  },
+  {
+    id: 'qdrant', title: 'Qdrant', description: '高性能向量搜尋引擎，Rust 編寫，延遲極低，支援過濾搜尋，開源可自部署。',
+    url: 'https://github.com/qdrant/qdrant', type: 'github', level: 'gold', useCase: ['developer'],
+    tags: ['向量搜尋', 'Rust', '高性能'], free: true, stars: '22K',
+  },
+  {
+    id: 'chroma', title: 'Chroma', description: '最簡單嘅開源向量數據庫，Python 原生，幾行代碼就跑到，AI 應用原型首選。',
+    url: 'https://github.com/chroma-core/chroma', type: 'github', level: 'gold', useCase: ['developer'],
+    tags: ['向量數據庫', 'Python', '簡單'], free: true, stars: '16K',
+  },
+  {
+    id: 'milvus', title: 'Milvus', description: '雲原生向量數據庫，支援十億級向量，分佈式架構，生產環境大規模部署。',
+    url: 'https://github.com/milvus-io/milvus', type: 'github', level: 'gold', useCase: ['developer', 'business'],
+    tags: ['向量數據庫', '分佈式', '大規模'], free: true, stars: '32K',
+  },
+  {
+    id: 'apache-age', title: 'Apache AGE', description: 'PostgreSQL 圖數據庫擴展，用 SQL 同 Cypher 查詢圖數據，知識圖譜好幫手。',
+    url: 'https://github.com/apache/age', type: 'github', level: 'gold', useCase: ['developer'],
+    tags: ['圖數據庫', 'PostgreSQL', '知識圖譜'], free: true, stars: '3K',
+  },
+  {
+    id: 'modal', title: 'Modal', description: 'AI 模型雲端部署，Serverless GPU，Cold Start 極快，按用量收費，零運維。',
+    url: 'https://modal.com', type: 'tool', level: 'gold', useCase: ['developer'],
+    tags: ['Serverless', 'GPU', '部署'], free: false,
+  },
+  {
+    id: 'replicate', title: 'Replicate', description: '一行 API 跑任何開源模型，支援自訂模型部署，Stable Diffusion 等熱門模型。',
+    url: 'https://replicate.com', type: 'tool', level: 'gold', useCase: ['developer', 'creative'],
+    tags: ['API', '模型部署', '開源模型'], free: false,
+  },
+  {
+    id: 'runpod', title: 'RunPod', description: '平價 GPU 雲端，Serverless 同 Pod 兩種模式，LLM 推理同訓練最抵選擇。',
+    url: 'https://runpod.io', type: 'tool', level: 'gold', useCase: ['developer'],
+    tags: ['GPU 雲端', 'Serverless', '平價'], free: false,
+  },
+  {
+    id: 'docker-model-runner', title: 'Docker Model Runner', description: 'Docker 官方 AI 模型運行器，容器化部署 LLM，同 Docker 生態完美整合。',
+    url: 'https://docs.docker.com/desktop/features/model-runner/', type: 'tool', level: 'gold', useCase: ['developer'],
+    tags: ['Docker', '容器化', '模型部署'], free: true,
+  },
+  {
+    id: 'unstructured', title: 'Unstructured', description: '非結構化數據處理庫，PDF、Word、HTML 轉結構化數據，RAG 前處理必備。',
+    url: 'https://github.com/Unstructured-IO/unstructured', type: 'github', level: 'gold', useCase: ['developer'],
+    tags: ['數據處理', 'PDF', 'RAG'], free: true, stars: '10K',
+  },
+
+  /* ══════════════════════════════════════════════
+     PLATINUM — AI Agent 同自動化
+     (自主 Agent、代碼助手、工具整合)
+  ══════════════════════════════════════════════ */
+  {
+    id: 'browser-use', title: 'Browser Use', description: 'AI 控制瀏覽器自動化，自然語言描述任務，AI 自動點擊、填表、爬取數據。',
+    url: 'https://github.com/browser-use/browser-use', type: 'github', level: 'platinum', useCase: ['developer', 'business'],
+    tags: ['瀏覽器自動化', 'Playwright', 'AI Agent'], free: true, stars: '21K', featured: true,
+  },
+  {
+    id: 'openclaw', title: 'OpenClaw', description: 'SkillAI.hk 自家開源 AI Agent 平台，多 Agent 協作，本地部署，粵語支援。',
+    url: 'https://github.com/openclaw', type: 'github', level: 'platinum', useCase: ['developer', 'business'],
+    tags: ['開源', 'Agent', '粵語'], free: true,
+  },
+  {
+    id: 'autogpt', title: 'AutoGPT', description: '最早嘅自主 AI Agent，自動分解目標、搜尋、執行，開源 Agent 先驅。',
+    url: 'https://github.com/Significant-Gravitas/AutoGPT', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['自主 Agent', '開源', '先驅'], free: true, stars: '170K',
+  },
+  {
+    id: 'babyagi', title: 'BabyAGI', description: '極簡 AI Agent 框架，自動生成同優先排序任務，學習 Agent 概念嘅最佳起點。',
+    url: 'https://github.com/yoheinakajima/babyagi', type: 'github', level: 'platinum', useCase: ['developer', 'education'],
+    tags: ['任務管理', '極簡', '學習'], free: true, stars: '20K',
+  },
+  {
+    id: 'metagpt', title: 'MetaGPT', description: '多 Agent 軟件公司模擬，PM、架構師、工程師角色協作，自動生成完整項目。',
+    url: 'https://github.com/geekan/MetaGPT', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['多 Agent', '軟件開發', '模擬'], free: true, stars: '46K',
+  },
+  {
+    id: 'gpt-pilot', title: 'GPT Pilot', description: 'AI 開發助手，同你一步步寫完整應用，自動調試、測試、部署。',
+    url: 'https://github.com/Pythagora-io/gpt-pilot', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['開發助手', '全棧', '自動化'], free: true, stars: '32K',
+  },
+  {
+    id: 'devika', title: 'Devika', description: '開源 AI 軟件工程師，理解需求、搜尋資料、寫代碼，Devin 嘅開源替代。',
+    url: 'https://github.com/stitionai/devika', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['AI 工程師', '開源', '自主'], free: true, stars: '18K',
+  },
+  {
+    id: 'openhands', title: 'OpenHands (OpenDevin)', description: '開源 AI 軟件工程師平台，自主編寫、測試、調試代碼，社群活躍。',
+    url: 'https://github.com/All-Hands-AI/OpenHands', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['AI 工程師', '開源', '活躍'], free: true, stars: '40K', featured: true,
+  },
+  {
+    id: 'swe-agent', title: 'SWE-Agent', description: 'Princeton 出品，AI 自動修復 GitHub Issues，SWE-bench 測試表現優異。',
+    url: 'https://github.com/princeton-nlp/SWE-agent', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['Bug 修復', 'Princeton', 'GitHub'], free: true, stars: '14K',
   },
   {
     id: 'aider', title: 'Aider', description: 'Terminal 裡嘅 AI Pair Programmer，支援 Claude、GPT-4o，Git 原生整合。',
-    url: 'https://aider.chat', type: 'github', level: 'gold', useCase: ['developer'],
+    url: 'https://github.com/paul-gauthier/aider', type: 'github', level: 'platinum', useCase: ['developer'],
     tags: ['CLI', 'Pair Programmer', 'Git'], free: true, stars: '31K',
   },
   {
-    id: 'cody', title: 'Sourcegraph Cody', description: 'AI 代碼助手，理解整個 Codebase，支援大型企業項目，比 Copilot 更懂上下文。',
-    url: 'https://sourcegraph.com/cody', type: 'tool', level: 'silver', useCase: ['developer', 'business'],
-    tags: ['企業', 'Codebase', '代碼理解'], free: true,
+    id: 'claude-code', title: 'Claude Code', description: 'Anthropic 官方 CLI 代碼助手，直接喺 Terminal 寫代碼、修 Bug、重構。',
+    url: 'https://docs.anthropic.com/en/docs/claude-code', type: 'tool', level: 'platinum', useCase: ['developer'],
+    tags: ['CLI', 'Anthropic', '代碼助手'], free: false, featured: true,
+  },
+  {
+    id: 'cline', title: 'Cline', description: '開源 VS Code AI 助手，自主操作文件同終端，支援多模型，Agent 模式。',
+    url: 'https://github.com/cline/cline', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['VS Code', 'Agent', '開源'], free: true, stars: '18K',
+  },
+  {
+    id: 'continue-dev', title: 'Continue', description: '開源 AI 代碼助手，VS Code 同 JetBrains 插件，支援本地模型，保護代碼私隱。',
+    url: 'https://github.com/continuedev/continue', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['開源', 'IDE 插件', '本地模型'], free: true, stars: '20K',
+  },
+  {
+    id: 'cursor', title: 'Cursor', description: 'AI 原生 IDE（開放核心），Composer 一次修改多個文件，Codebase 對話。',
+    url: 'https://cursor.sh', type: 'tool', level: 'platinum', useCase: ['developer'],
+    tags: ['AI IDE', 'Composer', '開放核心'], free: false, featured: true,
+  },
+  {
+    id: 'windsurf', title: 'Windsurf', description: 'Codeium 出品 AI IDE，Cascade 功能自主完成多步驟任務，免費版功能強大。',
+    url: 'https://windsurf.com', type: 'tool', level: 'platinum', useCase: ['developer'],
+    tags: ['AI IDE', 'Cascade', '免費'], free: true,
+  },
+  {
+    id: 'sweep', title: 'Sweep', description: 'AI 自動處理 GitHub Issues，生成 PR、修 Bug、寫測試，GitHub App 一鍵安裝。',
+    url: 'https://github.com/sweepai/sweep', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['GitHub', 'PR 自動化', 'Bug 修復'], free: true, stars: '7K',
+  },
+  {
+    id: 'composio', title: 'Composio', description: '開源工具整合平台，為 AI Agent 接入 150+ 外部工具同 API，一行代碼搞定。',
+    url: 'https://github.com/ComposioHQ/composio', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['工具整合', 'API', 'Agent'], free: true, stars: '13K',
+  },
+  {
+    id: 'toolhouse', title: 'Toolhouse', description: 'AI Agent 工具雲，預建 100+ 工具（搜尋、發 Email、讀數據庫），API 即用。',
+    url: 'https://toolhouse.ai', type: 'tool', level: 'platinum', useCase: ['developer'],
+    tags: ['工具雲', 'Agent', 'API'], free: true,
+  },
+  {
+    id: 'agentops', title: 'AgentOps', description: '開源 AI Agent 監控平台，追蹤 Agent 行為、成本、錯誤率，生產級可觀測性。',
+    url: 'https://github.com/AgentOps-AI/agentops', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['Agent 監控', '可觀測性', '開源'], free: true, stars: '3K',
+  },
+  {
+    id: 'smith-agent-testing', title: 'Smith (Agent Testing)', description: '開源 Agent 測試框架，模擬環境測試 Agent 行為，確保生產穩定性。',
+    url: 'https://github.com/smithery-ai/cli', type: 'github', level: 'platinum', useCase: ['developer'],
+    tags: ['測試', 'Agent', '品質'], free: true, stars: '1K',
   },
 
-  /* ── BUSINESS use case ── */
+  /* ══════════════════════════════════════════════
+     OPENCLAW — 專業領域
+     (圖像、音頻、視覺、OCR、文件處理)
+  ══════════════════════════════════════════════ */
   {
-    id: 'monday-ai', title: 'Monday.com AI', description: '項目管理 + AI，自動生成任務、摘要會議、預測風險，團隊協作更高效。',
-    url: 'https://monday.com', type: 'tool', level: 'silver', useCase: ['business'],
-    tags: ['項目管理', '自動化', '協作'], free: false,
+    id: 'comfyui', title: 'ComfyUI', description: '節點式 Stable Diffusion 工作流，強大可視化管線，AI 圖像生成進階工具。',
+    url: 'https://github.com/comfyanonymous/ComfyUI', type: 'github', level: 'openclaw', useCase: ['creative', 'developer'],
+    tags: ['圖像生成', '節點式', '工作流'], free: true, stars: '60K', featured: true,
   },
   {
-    id: 'salesforce-einstein', title: 'Salesforce Einstein', description: 'CRM 內建 AI，預測客戶行為、自動生成郵件、銷售預測，企業 CRM 首選。',
-    url: 'https://salesforce.com/einstein', type: 'tool', level: 'platinum', useCase: ['business', 'finance'],
-    tags: ['CRM', '銷售', '預測'], free: false,
+    id: 'stable-diffusion-webui', title: 'Stable Diffusion WebUI', description: 'AUTOMATIC1111 出品，最多人用嘅 SD 介面，擴展生態豐富，社群龐大。',
+    url: 'https://github.com/AUTOMATIC1111/stable-diffusion-webui', type: 'github', level: 'openclaw', useCase: ['creative', 'developer'],
+    tags: ['Stable Diffusion', 'Web UI', '擴展'], free: true, stars: '145K', featured: true,
   },
   {
-    id: 'hubspot-ai', title: 'HubSpot AI', description: 'AI 行銷 + 銷售 + 客服平台，Content Assistant 自動生成 Blog、郵件、廣告。',
-    url: 'https://hubspot.com', type: 'tool', level: 'silver', useCase: ['business', 'marketing'],
-    tags: ['行銷自動化', 'CRM', 'Content'], free: true,
+    id: 'fooocus', title: 'Fooocus', description: '簡化版 SD 介面，專注易用性，自動優化參數，新手友好嘅圖像生成工具。',
+    url: 'https://github.com/lllyasviel/Fooocus', type: 'github', level: 'openclaw', useCase: ['creative'],
+    tags: ['圖像生成', '簡單', '新手友好'], free: true, stars: '42K',
   },
   {
-    id: 'zapier-ai', title: 'Zapier AI', description: 'AI 自動化工作流，連接 7000+ 應用，自然語言描述就能創建複雜自動化。',
-    url: 'https://zapier.com', type: 'tool', level: 'silver', useCase: ['business', 'general'],
-    tags: ['自動化', '工作流', '整合'], free: true,
-  },
-
-  /* ── CREATIVE use case ── */
-  {
-    id: 'adobe-firefly', title: 'Adobe Firefly', description: 'Adobe 官方 AI，訓練數據全部版權合規，商業使用放心，整合 Photoshop。',
-    url: 'https://adobe.com/firefly', type: 'tool', level: 'silver', useCase: ['creative', 'marketing'],
-    tags: ['Adobe', '版權合規', '商業'], free: false,
+    id: 'invokeai', title: 'InvokeAI', description: '專業級 SD 創作工具，Canvas 編輯、ControlNet、LoRA 管理，藝術家最愛。',
+    url: 'https://github.com/invoke-ai/InvokeAI', type: 'github', level: 'openclaw', useCase: ['creative'],
+    tags: ['圖像生成', '專業', 'Canvas'], free: true, stars: '24K',
   },
   {
-    id: 'stable-diffusion', title: 'Stable Diffusion', description: '完全開源嘅圖像生成模型，本地運行、無限生成、無審查，創作自由度最高。',
-    url: 'https://stability.ai', type: 'github', level: 'gold', useCase: ['creative', 'developer'],
-    tags: ['開源', '本地運行', '無限制'], free: true, stars: '38K',
+    id: 'upscayl', title: 'Upscayl', description: '開源 AI 圖片放大工具，桌面 App，支援多種放大模型，本地處理保私隱。',
+    url: 'https://github.com/upscayl/upscayl', type: 'github', level: 'openclaw', useCase: ['creative'],
+    tags: ['圖片放大', '桌面 App', '開源'], free: true, stars: '32K',
   },
   {
-    id: 'suno', title: 'Suno', description: 'AI 音樂生成，輸入歌詞就生成完整歌曲，涵蓋所有曲風，創作門檻歸零。',
-    url: 'https://suno.com', type: 'tool', level: 'bronze', useCase: ['creative'],
-    tags: ['音樂生成', '歌曲', '創作'], free: true, featured: true,
+    id: 'whisper', title: 'Whisper', description: 'OpenAI 開源語音識別模型，支援 99 種語言，準確率極高，本地可跑。',
+    url: 'https://github.com/openai/whisper', type: 'github', level: 'openclaw', useCase: ['developer', 'business'],
+    tags: ['語音識別', '多語言', 'OpenAI'], free: true, stars: '72K', featured: true,
   },
   {
-    id: 'kling', title: 'Kling', description: '快手出品 AI 視頻生成，中國最強視頻 AI，5 秒視頻生成，動作流暢自然。',
-    url: 'https://kling.kuaishou.com', type: 'tool', level: 'silver', useCase: ['creative', 'marketing'],
-    tags: ['視頻生成', '國產', '快手'], free: true,
+    id: 'tts', title: 'Coqui TTS', description: '開源文字轉語音引擎，支援多語言、聲音克隆、自訂訓練，本地運行。',
+    url: 'https://github.com/coqui-ai/TTS', type: 'github', level: 'openclaw', useCase: ['developer', 'creative'],
+    tags: ['TTS', '語音合成', '開源'], free: true, stars: '36K',
   },
   {
-    id: 'pika', title: 'Pika', description: 'AI 視頻生成工具，Text to Video 同 Image to Video，特效豐富，易上手。',
-    url: 'https://pika.art', type: 'tool', level: 'silver', useCase: ['creative', 'marketing'],
-    tags: ['視頻生成', 'Text to Video', '特效'], free: true,
+    id: 'bark', title: 'Bark', description: 'Suno 出品開源語音生成，支援音樂、笑聲、嘆氣等非語音聲音，極度自然。',
+    url: 'https://github.com/suno-ai/bark', type: 'github', level: 'openclaw', useCase: ['creative', 'developer'],
+    tags: ['語音生成', '非語音', '自然'], free: true, stars: '36K',
   },
   {
-    id: 'leonardo', title: 'Leonardo AI', description: 'AI 圖像生成平台，遊戲資產、角色設計、建築效果圖，專業創作者首選。',
-    url: 'https://leonardo.ai', type: 'tool', level: 'silver', useCase: ['creative', 'marketing'],
-    tags: ['圖像生成', '遊戲', '角色設計'], free: true,
-  },
-
-  /* ── EDUCATION use case ── */
-  {
-    id: 'khanmigo', title: 'Khan Academy Khanmigo', description: 'AI 學習助手，蘇格拉底式引導，唔直接給答案，幫助學生真正理解。',
-    url: 'https://khanacademy.org/khan-labs', type: 'tool', level: 'bronze', useCase: ['education'],
-    tags: ['K-12', '蘇格拉底', '免費'], free: true,
+    id: 'audiocraft', title: 'AudioCraft', description: 'Meta 出品開源音頻生成框架，支援音樂（MusicGen）同音效（AudioGen）。',
+    url: 'https://github.com/facebookresearch/audiocraft', type: 'github', level: 'openclaw', useCase: ['creative', 'developer'],
+    tags: ['音樂生成', 'Meta', '音效'], free: true, stars: '22K',
   },
   {
-    id: 'duolingo-max', title: 'Duolingo Max', description: 'AI 語言學習，Roleplay 功能同真實場景練習，Explain My Answer 即時解釋。',
-    url: 'https://duolingo.com', type: 'tool', level: 'bronze', useCase: ['education', 'general'],
-    tags: ['語言學習', '互動', 'GPT-4'], free: false,
+    id: 'demucs', title: 'Demucs', description: 'Meta 出品音頻分離工具，將歌曲分成人聲、鼓、低音、其他，效果業界頂級。',
+    url: 'https://github.com/facebookresearch/demucs', type: 'github', level: 'openclaw', useCase: ['creative'],
+    tags: ['音頻分離', 'Meta', '人聲提取'], free: true, stars: '8K',
   },
   {
-    id: 'coursera-ai', title: 'Coursera AI', description: 'AI 個人化學習路徑，根據你嘅目標推薦課程，支援 AI 同 ML 專業認證。',
-    url: 'https://coursera.org', type: 'course', level: 'bronze', useCase: ['education'],
-    tags: ['認證', '課程', '個人化'], free: false,
+    id: 'roop', title: 'Roop', description: '開源換臉工具，一張照片即可換臉，支援視頻同圖片，本地運行。',
+    url: 'https://github.com/s0md3v/roop', type: 'github', level: 'openclaw', useCase: ['creative'],
+    tags: ['換臉', '開源', '視頻'], free: true, stars: '28K',
   },
   {
-    id: 'socratic', title: 'Socratic by Google', description: 'Google 出品免費學習 App，拍照即解題，涵蓋數學、科學、歷史，學生神器。',
-    url: 'https://socratic.org', type: 'tool', level: 'bronze', useCase: ['education'],
-    tags: ['Google', '免費', '解題'], free: true,
-  },
-
-  /* ── FINANCE use case ── */
-  {
-    id: 'bloomberg-gpt', title: 'Bloomberg GPT', description: 'Bloomberg 訓練嘅金融專用 LLM，理解金融術語、新聞分析、市場情緒。',
-    url: 'https://bloomberg.com/company/press/bloomberggpt-50-billion-parameter-llm-taylor-language-models-finance/', type: 'article', level: 'platinum', useCase: ['finance', 'business'],
-    tags: ['金融 AI', '彭博', '市場分析'], free: false,
+    id: 'segment-anything', title: 'Segment Anything', description: 'Meta SAM 模型，一鍵分割圖片中任何物件，電腦視覺基礎模型。',
+    url: 'https://github.com/facebookresearch/segment-anything', type: 'github', level: 'openclaw', useCase: ['developer', 'creative'],
+    tags: ['圖像分割', 'Meta', '基礎模型'], free: true, stars: '48K',
   },
   {
-    id: 'kensho', title: 'Kensho (S&P Global)', description: 'S&P Global 旗下 AI 金融分析平台，智能財報分析、宏觀經濟預測。',
-    url: 'https://kensho.com', type: 'tool', level: 'platinum', useCase: ['finance', 'business'],
-    tags: ['財報分析', 'S&P', '機構'], free: false,
+    id: 'yolo', title: 'YOLO (Ultralytics)', description: '實時物件偵測模型，速度極快，支援偵測、分割、追蹤，部署簡單。',
+    url: 'https://github.com/ultralytics/ultralytics', type: 'github', level: 'openclaw', useCase: ['developer'],
+    tags: ['物件偵測', '實時', '部署'], free: true, stars: '35K',
   },
   {
-    id: 'alphasense', title: 'AlphaSense', description: '企業級 AI 市場情報平台，分析財報、新聞、研究報告，投資決策利器。',
-    url: 'https://alpha-sense.com', type: 'tool', level: 'platinum', useCase: ['finance', 'business'],
-    tags: ['市場情報', '投資', '財報'], free: false,
+    id: 'tesseract', title: 'Tesseract OCR', description: 'Google 維護嘅開源 OCR 引擎，支援 100+ 語言，最成熟嘅文字識別方案。',
+    url: 'https://github.com/tesseract-ocr/tesseract', type: 'github', level: 'openclaw', useCase: ['developer', 'business'],
+    tags: ['OCR', '文字識別', 'Google'], free: true, stars: '63K',
+  },
+  {
+    id: 'paddleocr', title: 'PaddleOCR', description: '百度出品高精度 OCR，支援中英日韓等 80+ 語言，中文識別效果最佳。',
+    url: 'https://github.com/PaddlePaddle/PaddleOCR', type: 'github', level: 'openclaw', useCase: ['developer', 'business'],
+    tags: ['OCR', '中文', '百度'], free: true, stars: '45K',
+  },
+  {
+    id: 'doctr', title: 'docTR', description: '開源文件文字識別庫，支援 TensorFlow 同 PyTorch，OCR + Layout 分析。',
+    url: 'https://github.com/mindee/doctr', type: 'github', level: 'openclaw', useCase: ['developer'],
+    tags: ['OCR', '文件分析', 'Layout'], free: true, stars: '4K',
+  },
+  {
+    id: 'marker', title: 'Marker', description: '開源 PDF 轉 Markdown 工具，保留格式同結構，RAG 數據前處理神器。',
+    url: 'https://github.com/VikParuchuri/marker', type: 'github', level: 'openclaw', useCase: ['developer'],
+    tags: ['PDF', 'Markdown', 'RAG'], free: true, stars: '18K',
+  },
+  {
+    id: 'mineru', title: 'MinerU', description: '開源文件解析工具，PDF 轉 Markdown/JSON，支援公式、表格、版面分析。',
+    url: 'https://github.com/opendatalab/MinerU', type: 'github', level: 'openclaw', useCase: ['developer'],
+    tags: ['PDF 解析', '表格', '公式'], free: true, stars: '25K',
+  },
+  {
+    id: 'surya', title: 'Surya', description: '開源多語言 OCR 同版面分析，支援 90+ 語言，準確率超越商業方案。',
+    url: 'https://github.com/VikParuchuri/surya', type: 'github', level: 'openclaw', useCase: ['developer'],
+    tags: ['OCR', '多語言', '版面分析'], free: true, stars: '15K',
+  },
+  {
+    id: 'docling', title: 'Docling', description: 'IBM 出品文件轉換工具，PDF/DOCX/HTML 轉結構化數據，企業文件處理。',
+    url: 'https://github.com/DS4SD/docling', type: 'github', level: 'openclaw', useCase: ['developer', 'business'],
+    tags: ['文件轉換', 'IBM', '結構化'], free: true, stars: '15K',
   },
 ];
 
@@ -504,11 +597,11 @@ const RESOURCES: Resource[] = [
    Config
 ───────────────────────────────────────────── */
 const LEVEL_CONFIG: Record<Exclude<LevelKey, 'all'>, { label: string; color: string; bg: string; emoji: string; desc: string }> = {
-  bronze:   { label: 'Bronze',   color: '#92400E', bg: '#FEF3C7', emoji: '🥉', desc: 'AI 入門 — 零基礎即用工具' },
-  silver:   { label: 'Silver',   color: '#374151', bg: '#F3F4F6', emoji: '🥈', desc: 'Prompt Engineering — 進階溝通技巧' },
-  gold:     { label: 'Gold',     color: '#92400E', bg: '#FFFBEB', emoji: '🥇', desc: 'AI Agent 開發 — 構建智能應用' },
-  platinum: { label: 'Platinum', color: '#5B21B6', bg: '#EDE9FE', emoji: '💎', desc: '企業 AI — 生產級部署方案' },
-  openclaw: { label: 'OpenClaw', color: '#1E3A8A', bg: '#DBEAFE', emoji: '🦞', desc: 'AI 架構師 — 前沿技術同底層原理' },
+  bronze:   { label: 'Prompt 基礎',  color: '#92400E', bg: '#FEF3C7', emoji: '🥉', desc: 'Prompt 同 AI 基礎 — 學習 Prompt、API 同本地聊天工具' },
+  silver:   { label: '開發框架',     color: '#374151', bg: '#F3F4F6', emoji: '🥈', desc: '開發框架 — LLM 框架、SDK 同結構化輸出' },
+  gold:     { label: '基建部署',     color: '#92400E', bg: '#FFFBEB', emoji: '🥇', desc: '基建同 DevOps — 部署、監控、向量數據庫同數據處理' },
+  platinum: { label: 'AI Agent',     color: '#5B21B6', bg: '#EDE9FE', emoji: '💎', desc: 'AI Agent 同自動化 — 自主 Agent、代碼助手同工具整合' },
+  openclaw: { label: '專業領域',     color: '#1E3A8A', bg: '#DBEAFE', emoji: '🦞', desc: '專業領域 — 圖像、音頻、視覺、OCR 同文件處理' },
 };
 
 const USE_CASE_CONFIG: Record<Exclude<UseCaseKey, 'general'>, { label: string; emoji: string }> = {
@@ -834,7 +927,7 @@ export default function FriendsPage() {
         </Reveal>
         <Reveal delay={0.1}>
           <p style={{ fontSize: 'clamp(15px, 2.5vw, 19px)', color: '#555', maxWidth: 580, margin: '0 auto 24px', lineHeight: 1.7 }}>
-            80+ 個精選 AI 工具同資源，按課程等級同使用場景整理。
+            100+ 個精選開源 AI 工具同開發者資源，按技術領域同使用場景整理。
             <br />找到最適合你嘅工具，立即開始。
           </p>
         </Reveal>

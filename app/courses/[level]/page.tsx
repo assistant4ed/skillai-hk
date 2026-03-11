@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { use, useRef, useState } from "react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Logo from "../../../components/Logo";
 
 /* ══════════════════════════════════════════════════
@@ -1296,8 +1297,9 @@ interface CourseDetailProps {
 
 export default function CourseDetail({ params }: CourseDetailProps) {
   const { level } = use(params);
-  const course = courseData[level] || courseData.bronze;
-  const color = LEVEL_COLORS[level] || LEVEL_COLORS.bronze;
+  if (!(level in courseData)) notFound();
+  const course = courseData[level];
+  const color = LEVEL_COLORS[level];
 
   /* --- Scroll-based hero parallax --- */
   const heroRef = useRef<HTMLElement>(null);

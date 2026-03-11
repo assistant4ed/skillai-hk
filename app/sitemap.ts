@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   } catch { /* fallback to static only */ }
 
   // Course level pages
-  const courseLevels = ['beginner', 'intermediate', 'advanced', 'architect'];
+  const courseLevels = ['bronze', 'silver', 'gold', 'platinum', 'openclaw'];
   const coursePages: MetadataRoute.Sitemap = courseLevels.map(level => ({
     url: `${baseUrl}/courses/${level}`,
     lastModified: new Date(),

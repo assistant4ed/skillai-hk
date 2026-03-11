@@ -1,0 +1,1349 @@
+{
+  "courses": [
+    {
+      "id": "bronze",
+      "level": "bronze",
+      "title": "AI 新手入門",
+      "titleEn": "AI Fundamentals",
+      "color": "#CD7F32",
+      "price": 1980,
+      "totalStudents": 890,
+      "description": "零基礎學習人工智能，掌握 ChatGPT、Claude 等主流 AI 工具，提升日常工作效率",
+      "duration": "4 週",
+      "totalLessons": 6,
+      "rating": 4.8,
+      "modules": [
+        {
+          "id": "mod-1-b",
+          "week": 1,
+          "title": "AI 基礎概念",
+          "description": "了解 AI、ML、LLM 的基本概念和發展歷史",
+          "lessons": [
+            {
+              "id": "les-1-1-b",
+              "title": "什麼是人工智能？",
+              "type": "video",
+              "duration": "18:30",
+              "videoUrl": "https://www.youtube.com/embed/ad79nYk2keg",
+              "videoId": "ad79nYk2keg",
+              "thumbnail": "https://img.youtube.com/vi/ad79nYk2keg/maxresdefault.jpg",
+              "status": "published",
+              "views": 2341,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "什麼是人工智能？",
+                  "content": "人工智能（AI）是模擬人類智能的計算機系統，能夠學習、推理和解決問題",
+                  "bulletPoints": ["機器學習（ML）", "深度學習（Deep Learning）", "自然語言處理（NLP）"],
+                  "notes": "重點：AI 不等於機器人，AI 是一種技術能力"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "AI 的三大類型",
+                  "content": "根據能力範圍劃分的三個層級",
+                  "bulletPoints": ["弱 AI：專門任務（現在的 ChatGPT、AlphaGo）", "強 AI：通用智能（理論上接近人類）", "超級 AI：超越人類（理論中的未來）"],
+                  "notes": "現在所有商業 AI 都是弱 AI，包括 GPT-4、Claude、Gemini"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "AI 改變哪些行業？",
+                  "content": "AI 正在影響所有行業，香港企業也不例外",
+                  "bulletPoints": ["金融：風控、客服自動化", "醫療：影像診斷、藥物研發", "零售：個性化推薦", "法律：合同審查"],
+                  "notes": "香港案例：HSBC 用 AI 反洗錢，東區醫院用 AI 讀 X 光"
+                }
+              ],
+              "resources": ["https://www.youtube.com/watch?v=ad79nYk2keg"]
+            },
+            {
+              "id": "les-1-2-b",
+              "title": "ChatGPT 實戰入門",
+              "type": "video",
+              "duration": "24:15",
+              "videoUrl": "https://www.youtube.com/embed/JTxsNm9IdYU",
+              "videoId": "JTxsNm9IdYU",
+              "thumbnail": "https://img.youtube.com/vi/JTxsNm9IdYU/maxresdefault.jpg",
+              "status": "published",
+              "views": 1892,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "ChatGPT 是什麼？",
+                  "content": "ChatGPT 是 OpenAI 開發的大型語言模型，透過對話方式輔助工作",
+                  "bulletPoints": ["GPT-4o：最強版本，支援圖片、語音", "免費版：GPT-3.5，適合日常使用", "企業版：ChatGPT Team/Enterprise"],
+                  "notes": "香港用戶建議使用 VPN 穩定連接，或改用 Claude"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "5 個必學使用技巧",
+                  "content": "讓 ChatGPT 更有效的基本方法",
+                  "bulletPoints": ["給角色：『你是一個香港法律顧問』", "給背景：提供上下文資料", "給格式：要求輸出表格/清單", "迭代提問：追問深入細節", "分步驟：複雜任務拆解成小步"],
+                  "notes": "現場示範：寫一封投訴信 vs. 用正確方式提問的對比"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-1-3-b",
+              "title": "課堂作業：我的第一個 AI 助手",
+              "type": "assignment",
+              "duration": "45 分鐘",
+              "status": "published",
+              "description": "用 ChatGPT 完成 3 個實際工作場景：寫 Email、做資料摘要、頭腦風暴。截圖上傳至學習平台",
+              "pptSlides": [],
+              "resources": []
+            }
+          ]
+        },
+        {
+          "id": "mod-2-b",
+          "week": 2,
+          "title": "AI 工具生態",
+          "description": "認識主流 AI 工具並實際上手，找到最適合自己的工具組合",
+          "lessons": [
+            {
+              "id": "les-2-1-b",
+              "title": "Claude vs ChatGPT vs Gemini 完整比較",
+              "type": "video",
+              "duration": "21:40",
+              "videoUrl": "https://www.youtube.com/embed/WXuK6gekU1Y",
+              "videoId": "WXuK6gekU1Y",
+              "thumbnail": "https://img.youtube.com/vi/WXuK6gekU1Y/maxresdefault.jpg",
+              "status": "published",
+              "views": 1456,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "三大 AI 平台比較",
+                  "content": "Claude、ChatGPT、Gemini 各有強項，選擇取決於使用場景",
+                  "bulletPoints": ["Claude 3.5：長文本分析、編程、邏輯推理最強", "ChatGPT：插件生態最豐富、DALL-E 圖片生成", "Gemini Ultra：Google 生態整合、多模態能力"],
+                  "notes": "香港用戶推薦：Claude 做寫作分析，ChatGPT 做創意工作"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "選擇指南",
+                  "content": "根據工作需求選擇正確的 AI 工具",
+                  "bulletPoints": ["寫長報告/分析 → Claude", "設計/圖片生成 → ChatGPT + DALL-E", "搜索/即時資訊 → Gemini / Perplexity", "編程 → Claude / GitHub Copilot"],
+                  "notes": "不要只用一個工具！掌握工具組合才是 AI 達人"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "免費工具推薦清單",
+                  "content": "2026 年最值得使用的免費 AI 工具",
+                  "bulletPoints": ["Perplexity：AI 搜索引擎（免費版很夠用）", "Midjourney 替代：Leonardo AI（免費額度）", "文字轉語音：ElevenLabs（免費 10 分鐘/月）", "會議記錄：Otter.ai（免費 300 分鐘/月）"],
+                  "notes": "所有工具都提供免費試用，鼓勵學員全部試用一週"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-2-2-b",
+              "title": "AI 工具實戰：Notion AI、Canva AI、Microsoft Copilot",
+              "type": "video",
+              "duration": "19:50",
+              "videoUrl": "https://www.youtube.com/embed/oc6RV5c1yd0",
+              "videoId": "oc6RV5c1yd0",
+              "thumbnail": "https://img.youtube.com/vi/oc6RV5c1yd0/maxresdefault.jpg",
+              "status": "published",
+              "views": 987,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "辦公室 AI 工具全攻略",
+                  "content": "日常工作中最實用的 AI 輔助工具",
+                  "bulletPoints": ["Notion AI：筆記整理、會議總結、Action Items 提取", "Canva AI：10 秒生成簡報模板、圖片背景刪除", "Microsoft Copilot：Excel 數據分析、PowerPoint 生成"],
+                  "notes": "Microsoft 365 用戶可直接用 Copilot，無需額外訂閱"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "香港職場 AI 應用案例",
+                  "content": "真實香港企業使用 AI 的成功案例",
+                  "bulletPoints": ["KPMG：用 AI 審計助手節省 40% 時間", "港鐵：AI 客服處理 70% 常規投訴", "亞洲保險：AI 核保系統提升效率 60%"],
+                  "notes": "案例來源：香港生產力促進局 2025 年報告"
+                }
+              ],
+              "resources": ["https://www.productivity.hk"]
+            },
+            {
+              "id": "les-2-3-b",
+              "title": "期末項目：我的 AI 工作流程",
+              "type": "assignment",
+              "duration": "1 小時",
+              "status": "published",
+              "description": "設計一個屬於你的 AI 工作流程。選擇你日常工作中最耗時的 3 個任務，用本課學到的 AI 工具優化它們，並寫出對比報告（使用 AI 前後的時間節省）",
+              "pptSlides": [],
+              "resources": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "silver",
+      "level": "silver",
+      "title": "AI 進階應用",
+      "titleEn": "AI Advanced Applications",
+      "color": "#C0C0C0",
+      "price": 2980,
+      "totalStudents": 623,
+      "description": "掌握 Prompt Engineering、AI 自動化工作流、API 基礎，將 AI 深度融入專業工作",
+      "duration": "6 週",
+      "totalLessons": 9,
+      "rating": 4.9,
+      "modules": [
+        {
+          "id": "mod-1-s",
+          "week": 1,
+          "title": "Prompt Engineering 核心技術",
+          "description": "掌握讓 AI 輸出最佳結果的提示工程技術",
+          "lessons": [
+            {
+              "id": "les-1-1-s",
+              "title": "Prompt Engineering 系統方法論",
+              "type": "video",
+              "duration": "26:20",
+              "videoUrl": "https://www.youtube.com/embed/H4YK_7MAqkc",
+              "videoId": "H4YK_7MAqkc",
+              "thumbnail": "https://img.youtube.com/vi/H4YK_7MAqkc/maxresdefault.jpg",
+              "status": "published",
+              "views": 834,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼 Prompt Engineering 重要？",
+                  "content": "相同的問題，不同的提問方式，輸出質量相差可達 10 倍",
+                  "bulletPoints": ["壞 Prompt：『幫我寫報告』", "好 Prompt：CONTEXT + ROLE + FORMAT + CONSTRAINT", "最佳 Prompt：加入 Few-shot 示例"],
+                  "notes": "現場對比演示：同一問題，三種不同 Prompt 的輸出質量差異"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "Chain of Thought（CoT）技術",
+                  "content": "讓 AI 逐步推理，解決複雜問題",
+                  "bulletPoints": ["傳統方式：直接要答案（容易出錯）", "CoT 方式：『讓我們一步步思考...』", "Zero-shot CoT：加上『Let's think step by step』", "Few-shot CoT：提供推理示例"],
+                  "notes": "數學和邏輯問題中 CoT 可將準確率提升 50%+"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "Tree of Thought（ToT）進階技術",
+                  "content": "讓 AI 探索多個推理路徑，選出最優解",
+                  "bulletPoints": ["ToT 適合：複雜決策、創意寫作、策略規劃", "三步驟：思考、評估、選擇", "實現方式：多次 API 調用 + 評分機制"],
+                  "notes": "ToT 計算成本較高，適合重要決策場景"
+                },
+                {
+                  "slideNum": 4,
+                  "title": "實用 Prompt 模板庫",
+                  "content": "12 個高頻工作場景的最優 Prompt 模板",
+                  "bulletPoints": ["市場分析報告模板", "技術文檔撰寫模板", "競品分析框架模板", "董事會演示稿模板"],
+                  "notes": "所有模板收錄在課程資源包，學員可直接複製使用"
+                }
+              ],
+              "resources": ["https://github.com/skillai-hk/prompt-templates"]
+            },
+            {
+              "id": "les-1-2-s",
+              "title": "ReAct 框架：讓 AI 思考與行動",
+              "type": "video",
+              "duration": "22:45",
+              "videoUrl": "https://www.youtube.com/embed/Lf_Vo80nAkI",
+              "videoId": "Lf_Vo80nAkI",
+              "thumbnail": "https://img.youtube.com/vi/Lf_Vo80nAkI/maxresdefault.jpg",
+              "status": "published",
+              "views": 621,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "什麼是 ReAct？",
+                  "content": "Reasoning + Acting = ReAct，讓 LLM 交替進行推理和行動",
+                  "bulletPoints": ["Thought：AI 的內部推理過程", "Action：執行工具調用或搜索", "Observation：獲取結果並繼續推理"],
+                  "notes": "ReAct 是 AI Agent 的核心理論基礎"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "ReAct 實際應用案例",
+                  "content": "香港企業如何用 ReAct 框架解決實際問題",
+                  "bulletPoints": ["客服 Agent：查詢訂單 → 分析問題 → 提出解決方案", "研究 Agent：搜索資料 → 整理要點 → 生成報告", "數據 Agent：讀取 Excel → 分析趨勢 → 生成洞察"],
+                  "notes": "現場 Demo：搭建一個簡單的研究 Agent"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-1-3-s",
+              "title": "Prompt 工程師認證作業",
+              "type": "assignment",
+              "duration": "1.5 小時",
+              "status": "published",
+              "description": "完成 5 個高難度 Prompt 挑戰，每個挑戰需要使用不同技術（CoT、ToT、Few-shot、ReAct）。提交你的 Prompt 和 AI 輸出截圖",
+              "pptSlides": [],
+              "resources": []
+            }
+          ]
+        },
+        {
+          "id": "mod-2-s",
+          "week": 3,
+          "title": "AI 自動化工作流",
+          "description": "用 Make、Zapier、n8n 建立無代碼 AI 自動化流程",
+          "lessons": [
+            {
+              "id": "les-2-1-s",
+              "title": "無代碼 AI 自動化：Make.com 完全教學",
+              "type": "video",
+              "duration": "29:55",
+              "videoUrl": "https://www.youtube.com/embed/1MwSoB0gnM4",
+              "videoId": "1MwSoB0gnM4",
+              "thumbnail": "https://img.youtube.com/vi/1MwSoB0gnM4/maxresdefault.jpg",
+              "status": "published",
+              "views": 756,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼要 AI 自動化？",
+                  "content": "重複性工作讓你的大腦浪費在低價值任務上",
+                  "bulletPoints": ["平均知識工作者每天 2.5 小時做重複任務", "AI 自動化可處理：Email 分類、報告生成、數據收集", "ROI：一次設置，永久節省"],
+                  "notes": "香港案例：某律師行用 AI 自動化合同摘要，每週節省 15 小時"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "Make.com vs Zapier vs n8n",
+                  "content": "三大自動化平台對比",
+                  "bulletPoints": ["Make.com：視覺化最強，免費額度最多（推薦）", "Zapier：最成熟，集成最多（6000+ apps）", "n8n：開源，自托管，零費用"],
+                  "notes": "初學者從 Make.com 開始，進階者考慮 n8n 自托管"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "5 個必做自動化場景",
+                  "content": "立即可以用的 AI 自動化工作流",
+                  "bulletPoints": ["WhatsApp 客服 → AI 分析 → 自動回覆", "Gmail 收件 → AI 分類 → Notion 整理", "每日新聞 → AI 摘要 → Email 通知", "會議錄音 → AI 轉錄 → Slack 分享"],
+                  "notes": "現場搭建 Demo：WhatsApp → AI → Notion 完整流程"
+                }
+              ],
+              "resources": ["https://make.com", "https://n8n.io"]
+            },
+            {
+              "id": "les-2-2-s",
+              "title": "n8n 開源自動化：自托管完整指南",
+              "type": "video",
+              "duration": "31:20",
+              "videoUrl": "https://www.youtube.com/embed/oc6RV5c1yd0",
+              "videoId": "oc6RV5c1yd0",
+              "thumbnail": "https://img.youtube.com/vi/oc6RV5c1yd0/maxresdefault.jpg",
+              "status": "published",
+              "views": 498,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼選 n8n 自托管？",
+                  "content": "零費用、數據私有、無限集成",
+                  "bulletPoints": ["完全免費：開源 + 自托管無限使用", "數據安全：所有數據在你自己的服務器", "無限 Workflow：Make 免費版限制較多", "完全自定義：可添加自定義節點"],
+                  "notes": "部署成本：Hetzner VPS 約 EUR 4/月，划算"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "n8n 部署步驟",
+                  "content": "10 分鐘部署 n8n 到雲端服務器",
+                  "bulletPoints": ["選擇 VPS：Hetzner / DigitalOcean / Vultr", "安裝 Docker：一行命令完成", "配置 n8n：環境變數設置", "HTTPS 配置：免費 SSL 憑證（Let's Encrypt）"],
+                  "notes": "完整配置文件在 GitHub 資源庫"
+                }
+              ],
+              "resources": ["https://docs.n8n.io/hosting/"]
+            }
+          ]
+        },
+        {
+          "id": "mod-3-s",
+          "week": 5,
+          "title": "AI API 入門",
+          "description": "初次接觸代碼，用 Python 調用 AI API，開啟技術大門",
+          "lessons": [
+            {
+              "id": "les-3-1-s",
+              "title": "Python 零基礎快速入門（為 AI 而學）",
+              "type": "video",
+              "duration": "34:10",
+              "videoUrl": "https://www.youtube.com/embed/kqtD5dpn9C8",
+              "videoId": "kqtD5dpn9C8",
+              "thumbnail": "https://img.youtube.com/vi/kqtD5dpn9C8/maxresdefault.jpg",
+              "status": "published",
+              "views": 712,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼學 Python？",
+                  "content": "Python 是 AI 開發的首選語言，語法簡單，生態最完整",
+                  "bulletPoints": ["AI/ML 庫：TensorFlow、PyTorch、Transformers", "自動化：Selenium、BeautifulSoup", "數據分析：Pandas、NumPy", "API 調用：Requests、HTTPX"],
+                  "notes": "目標：用最少時間學夠用的 Python，不需要精通全部"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "10 行 Python 調用 ChatGPT",
+                  "content": "從安裝到第一次 API 調用",
+                  "bulletPoints": ["pip install openai", "設置 API Key（環境變數）", "建立 client = OpenAI()", "調用 chat.completions.create()", "打印 response.choices[0].message.content"],
+                  "notes": "重點：永遠不要在代碼中直接寫 API Key！使用 .env 文件"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "常見錯誤和解決方法",
+                  "content": "初學者最常遇到的 5 個問題",
+                  "bulletPoints": ["ModuleNotFoundError：pip install 解決", "API Key Invalid：重新複製確認沒有空格", "Rate Limit：加入 sleep() 或升級方案", "JSON Parse Error：用 try/except 處理", "Connection Error：VPN 或網路問題"],
+                  "notes": "保持耐心！所有程式員都遇過這些問題"
+                }
+              ],
+              "resources": ["https://colab.research.google.com", "https://platform.openai.com/docs"]
+            },
+            {
+              "id": "les-3-2-s",
+              "title": "OpenAI + Claude + Gemini API 實戰對比",
+              "type": "video",
+              "duration": "27:30",
+              "videoUrl": "https://www.youtube.com/embed/9EmfGEeQKJk",
+              "videoId": "9EmfGEeQKJk",
+              "thumbnail": "https://img.youtube.com/vi/9EmfGEeQKJk/maxresdefault.jpg",
+              "status": "published",
+              "views": 534,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "三大 API 對比",
+                  "content": "選擇最適合你的 LLM API",
+                  "bulletPoints": ["OpenAI：最成熟，文檔最完整，價格適中", "Anthropic Claude：長上下文最強（200K tokens），安全性高", "Google Gemini：免費額度最多，Flash 版本極速"],
+                  "notes": "企業項目推薦 Claude API，個人項目 Gemini Flash 性價比最高"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "API 費用計算",
+                  "content": "如何控制 LLM API 費用",
+                  "bulletPoints": ["Token 是什麼：約 4 個英文字符 = 1 token", "Input vs Output：Output token 貴 3-5 倍", "Cost 計算：GPT-4o Input $2.5/1M tokens", "節省技巧：壓縮 Prompt、緩存常見結果"],
+                  "notes": "現場計算：一個典型客服 Bot 每月費用估算"
+                }
+              ],
+              "resources": ["https://openai.com/pricing", "https://www.anthropic.com/pricing"]
+            },
+            {
+              "id": "les-3-3-s",
+              "title": "Silver 畢業項目：AI 自動化業務報告",
+              "type": "assignment",
+              "duration": "3 小時",
+              "status": "published",
+              "description": "使用 Python + AI API 建立一個自動生成業務週報的系統。從 Google Sheets 讀取數據，用 AI 分析趨勢，自動發送 Email 報告。提交代碼和運行截圖",
+              "pptSlides": [],
+              "resources": ["https://github.com/skillai-hk/silver-project-template"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gold",
+      "level": "gold",
+      "title": "AI 工程師實戰",
+      "titleEn": "AI Engineer Practical",
+      "color": "#FFD700",
+      "price": 4980,
+      "totalStudents": 445,
+      "description": "深入 LLM 原理、RAG 系統、AI Agent 開發，建立生產級 AI 應用",
+      "duration": "8 週",
+      "totalLessons": 12,
+      "rating": 4.9,
+      "modules": [
+        {
+          "id": "mod-1-g",
+          "week": 1,
+          "title": "LLM 進階原理",
+          "description": "深入理解大型語言模型的工作原理和局限性",
+          "lessons": [
+            {
+              "id": "les-1-1-g",
+              "title": "Transformer 架構深度解析",
+              "type": "video",
+              "duration": "38:20",
+              "videoUrl": "https://www.youtube.com/embed/zxQyTK8quyY",
+              "videoId": "zxQyTK8quyY",
+              "thumbnail": "https://img.youtube.com/vi/zxQyTK8quyY/maxresdefault.jpg",
+              "status": "published",
+              "views": 678,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼要了解 Transformer？",
+                  "content": "了解底層原理讓你更好地使用和優化 LLM",
+                  "bulletPoints": ["知道 Hallucination 的根本原因", "理解 Context Window 的限制和突破", "掌握 Temperature、Top-p 等參數的真正含義", "設計更好的 Prompt 和 System Prompt"],
+                  "notes": "不需要數學公式，用直覺理解架構"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "Attention 機制：AI 的「注意力」",
+                  "content": "Self-Attention 讓模型理解詞語之間的關係",
+                  "bulletPoints": ["每個 Token 都看所有其他 Token", "Q、K、V 矩陣：查詢、鍵、值", "Multi-head Attention：同時關注多個層次", "Positional Encoding：位置信息的注入"],
+                  "notes": "比喻：閱讀一句話時，大腦自動知道「他」指的是哪個人"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "Context Window 的秘密",
+                  "content": "為什麼 LLM 有「記憶限制」，以及如何突破它",
+                  "bulletPoints": ["GPT-4：128K tokens ≈ 100,000 字", "Claude 3.5：200K tokens ≈ 150,000 字", "Gemini 1.5：1M tokens ≈ 750,000 字（1 小時影片）", "超過限制的解決方案：RAG、Chunking、Summarization"],
+                  "notes": "Token 計算工具：platform.openai.com/tokenizer"
+                }
+              ],
+              "resources": ["https://arxiv.org/abs/1706.03762"]
+            },
+            {
+              "id": "les-1-2-g",
+              "title": "Hallucination 診斷與防治",
+              "type": "video",
+              "duration": "24:50",
+              "videoUrl": "https://www.youtube.com/embed/cfqtFvWOfg0",
+              "videoId": "cfqtFvWOfg0",
+              "thumbnail": "https://img.youtube.com/vi/cfqtFvWOfg0/maxresdefault.jpg",
+              "status": "published",
+              "views": 523,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "什麼是 LLM Hallucination？",
+                  "content": "AI 自信地輸出錯誤信息，這是 LLM 最危險的缺陷",
+                  "bulletPoints": ["事實性幻覺：引用不存在的研究論文", "時間性幻覺：以為現在是訓練截止日期", "邏輯性幻覺：計算錯誤卻表現得很確定", "香港案例：某律師用 AI 寫狀紙引用假案例"],
+                  "notes": "2023 年真實案例：美國律師因引用 AI 虛假案例被法院處罰"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "7 種防治 Hallucination 的方法",
+                  "content": "系統性減少 AI 幻覺的工程方法",
+                  "bulletPoints": ["方法 1：RAG（接地氣）- 給 AI 真實文件", "方法 2：Self-Consistency - 多次生成取共識", "方法 3：Citation 要求 - 強制要求引用來源", "方法 4：Temperature 調低至 0", "方法 5：CoT 推理 - 逐步驗證"],
+                  "notes": "最有效的生產級方案：RAG + Citation + 人工最終審核"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-1-3-g",
+              "title": "LLM 原理評估作業",
+              "type": "assignment",
+              "duration": "1 小時",
+              "status": "published",
+              "description": "設計一個 Hallucination 測試套件：構建 10 個能讓 LLM 產生幻覺的問題，然後用 RAG 方法修正這些幻覺。對比兩種方法的輸出",
+              "pptSlides": [],
+              "resources": []
+            }
+          ]
+        },
+        {
+          "id": "mod-2-g",
+          "week": 3,
+          "title": "RAG 系統架構",
+          "description": "建立企業級檢索增強生成系統，解決 LLM 知識更新和準確性問題",
+          "lessons": [
+            {
+              "id": "les-2-1-g",
+              "title": "RAG 系統完整架構設計",
+              "type": "video",
+              "duration": "42:30",
+              "videoUrl": "https://www.youtube.com/embed/T-D1OfcDW1M",
+              "videoId": "T-D1OfcDW1M",
+              "thumbnail": "https://img.youtube.com/vi/T-D1OfcDW1M/maxresdefault.jpg",
+              "status": "published",
+              "views": 445,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼需要 RAG？",
+                  "content": "LLM 的知識有截止日期，RAG 讓 AI 能接觸最新、最私有的數據",
+                  "bulletPoints": ["問題：GPT-4 不知道你公司的內部政策", "問題：AI 不了解昨天的市場新聞", "RAG 解決方案：實時檢索相關文件 + AI 生成答案", "優點：比 Fine-tuning 更靈活、更便宜"],
+                  "notes": "RAG vs Fine-tuning：RAG 適合知識更新頻繁的場景"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "RAG 系統五大組件",
+                  "content": "一個完整 RAG 系統的技術架構",
+                  "bulletPoints": ["文件加載（Document Loader）", "文本分割（Text Splitter）", "向量化（Embedding Model）", "向量存儲（Vector Database）", "檢索生成（Retrieval + LLM）"],
+                  "notes": "每個組件都有多種選擇，本課會逐一介紹最佳實踐"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "向量數據庫比較",
+                  "content": "選擇正確的向量存儲方案",
+                  "bulletPoints": ["Pinecone：托管服務，最易上手，按需付費", "Weaviate：開源 + 托管，功能最完整", "Chroma：輕量本地方案，開發測試首選", "pgvector：PostgreSQL 插件，現有數據庫集成"],
+                  "notes": "小項目用 Chroma，中大型企業用 Pinecone 或 Weaviate"
+                }
+              ],
+              "resources": ["https://python.langchain.com/docs/use_cases/question_answering/"]
+            },
+            {
+              "id": "les-2-2-g",
+              "title": "LangChain 實戰：構建企業知識庫",
+              "type": "video",
+              "duration": "46:15",
+              "videoUrl": "https://www.youtube.com/embed/lG7Uxts9SXs",
+              "videoId": "lG7Uxts9SXs",
+              "thumbnail": "https://img.youtube.com/vi/lG7Uxts9SXs/maxresdefault.jpg",
+              "status": "published",
+              "views": 389,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "LangChain 是什麼？",
+                  "content": "連接 LLM 與外部數據和工具的開源框架",
+                  "bulletPoints": ["版本：LangChain 0.3.x（最新穩定版）", "核心概念：Chain、Agent、Memory、Tools", "生態：LangSmith 監控、LangGraph 工作流"],
+                  "notes": "LangChain 更新很快，確保代碼使用最新 API"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "實戰：公司內部 FAQ Bot",
+                  "content": "從零開始構建一個回答公司內部問題的 AI",
+                  "bulletPoints": ["步驟 1：收集 PDF 文件（政策、手冊、合同）", "步驟 2：文本分割（chunk_size=500, overlap=50）", "步驟 3：生成 Embeddings（text-embedding-3-small）", "步驟 4：存入 Chroma 向量庫", "步驟 5：構建 RetrievalQA Chain"],
+                  "notes": "完整代碼在 GitHub，可直接在公司部署"
+                }
+              ],
+              "resources": ["https://github.com/skillai-hk/langchain-enterprise-rag"]
+            }
+          ]
+        },
+        {
+          "id": "mod-3-g",
+          "week": 5,
+          "title": "AI Agent 開發",
+          "description": "構建能自主執行多步驟任務的 AI Agent 系統",
+          "lessons": [
+            {
+              "id": "les-3-1-g",
+              "title": "AI Agent 架構設計原則",
+              "type": "video",
+              "duration": "33:40",
+              "videoUrl": "https://www.youtube.com/embed/F8NKVhkZZWI",
+              "videoId": "F8NKVhkZZWI",
+              "thumbnail": "https://img.youtube.com/vi/F8NKVhkZZWI/maxresdefault.jpg",
+              "status": "published",
+              "views": 312,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "什麼是 AI Agent？",
+                  "content": "能自主規劃、使用工具、執行多步驟任務的 AI 系統",
+                  "bulletPoints": ["感知（Perception）：接收用戶輸入和環境信號", "規劃（Planning）：分解任務，確定執行步驟", "行動（Action）：調用工具、API、執行代碼", "記憶（Memory）：短期對話 + 長期知識庫"],
+                  "notes": "Agent vs 普通 LLM：Agent 可以執行動作，不只是回答問題"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "Tool Use：給 AI「手臂」",
+                  "content": "通過函數調用讓 AI 執行真實操作",
+                  "bulletPoints": ["搜索工具：Tavily、SerpAPI、DuckDuckGo", "代碼執行：Python REPL、E2B Sandbox", "文件工具：讀寫 PDF、Excel、CSV", "API 工具：Slack、Gmail、Calendar"],
+                  "notes": "Function Calling 是 Tool Use 的底層實現機制"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "Agent 安全性考量",
+                  "content": "防止 AI Agent 執行不當操作",
+                  "bulletPoints": ["Human-in-the-loop：重要操作需人工確認", "沙盒執行：代碼在隔離環境中運行", "權限最小化：只給 Agent 完成任務所需的工具", "日誌審計：記錄所有 Agent 動作"],
+                  "notes": "生產環境必須有 Human approval 機制"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-3-2-g",
+              "title": "LangGraph：有狀態的 AI 工作流",
+              "type": "video",
+              "duration": "38:55",
+              "videoUrl": "https://www.youtube.com/embed/nmMBq5eHFQQ",
+              "videoId": "nmMBq5eHFQQ",
+              "thumbnail": "https://img.youtube.com/vi/nmMBq5eHFQQ/maxresdefault.jpg",
+              "status": "published",
+              "views": 267,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼需要 LangGraph？",
+                  "content": "複雜 Agent 需要狀態管理和循環執行能力",
+                  "bulletPoints": ["LangChain 不適合複雜循環邏輯", "LangGraph：圖形化的狀態機", "支援：條件分支、循環、並行執行", "人工干預點：隨時暫停等待人類審核"],
+                  "notes": "LangGraph 是 2025 年最流行的 Agent 框架之一"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "LangGraph 核心概念",
+                  "content": "State、Node、Edge 三要素",
+                  "bulletPoints": ["State：Agent 的共享內存（TypedDict）", "Node：執行函數（LLM 調用、工具調用）", "Edge：狀態轉移條件", "Checkpointer：保存中間狀態，支援恢復"],
+                  "notes": "類比：LangGraph 就像 CI/CD Pipeline 的 AI 版本"
+                }
+              ],
+              "resources": ["https://github.com/langchain-ai/langgraph"]
+            }
+          ]
+        },
+        {
+          "id": "mod-4-g",
+          "week": 7,
+          "title": "商業 AI 應用落地",
+          "description": "將 AI 技術轉化為真實商業價值，香港市場案例分析",
+          "lessons": [
+            {
+              "id": "les-4-1-g",
+              "title": "香港企業 AI 落地案例深度分析",
+              "type": "video",
+              "duration": "28:45",
+              "videoUrl": "https://www.youtube.com/embed/xyc1jmJM8GE",
+              "videoId": "xyc1jmJM8GE",
+              "thumbnail": "https://img.youtube.com/vi/xyc1jmJM8GE/maxresdefault.jpg",
+              "status": "published",
+              "views": 198,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "香港 AI 落地現狀",
+                  "content": "2026 年香港企業 AI 採用率已達 67%（香港生產力促進局數據）",
+                  "bulletPoints": ["金融服務：風控、KYC 自動化、智能投顧", "零售業：個性化推薦、庫存優化", "法律：合同審查、法律研究", "物流：路線優化、需求預測"],
+                  "notes": "香港 AI 生態系統：CyberPort + 科學園 = 超過 500 家 AI 公司"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "成功落地的 3 個關鍵因素",
+                  "content": "為什麼有些 AI 項目成功，有些失敗？",
+                  "bulletPoints": ["明確的 ROI 指標：節省時間/成本或增加收入", "數據質量優先：垃圾進，垃圾出", "變革管理：員工培訓和心態轉變", "漸進式部署：從小試點到全面推廣"],
+                  "notes": "常見失敗原因：沒有業務問題，只是追潮流"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-4-2-g",
+              "title": "Gold 畢業項目：完整 RAG + Agent 系統",
+              "type": "assignment",
+              "duration": "6 小時",
+              "status": "published",
+              "description": "構建一個完整的企業 AI 助手：整合 RAG 知識庫 + Agent 工具使用 + 用戶對話界面。必須包含：文件上傳功能、向量搜索、AI 回答生成、引用來源顯示。技術棧：LangChain + Chroma + Streamlit/Gradio",
+              "pptSlides": [],
+              "resources": ["https://github.com/skillai-hk/gold-project-template"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "platinum",
+      "level": "platinum",
+      "title": "AI 架構師",
+      "titleEn": "AI Architect",
+      "color": "#E5E4E2",
+      "price": 7980,
+      "totalStudents": 234,
+      "description": "掌握 Fine-tuning、多模態 AI、企業級部署和 AI 系統設計，成為 AI 架構師",
+      "duration": "10 週",
+      "totalLessons": 14,
+      "rating": 4.9,
+      "modules": [
+        {
+          "id": "mod-1-p",
+          "week": 1,
+          "title": "Fine-tuning 大型語言模型",
+          "description": "從數據準備到模型訓練，掌握 LLM 微調全流程",
+          "lessons": [
+            {
+              "id": "les-1-1-p",
+              "title": "Fine-tuning vs RAG vs Prompt Engineering：如何選擇？",
+              "type": "video",
+              "duration": "29:30",
+              "videoUrl": "https://www.youtube.com/embed/pxhkDaKzBaY",
+              "videoId": "pxhkDaKzBaY",
+              "thumbnail": "https://img.youtube.com/vi/pxhkDaKzBaY/maxresdefault.jpg",
+              "status": "published",
+              "views": 312,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "三種技術的適用場景",
+                  "content": "根據業務需求選擇正確的 AI 優化方法",
+                  "bulletPoints": ["Prompt Engineering：快速、零成本，適合一般任務", "RAG：動態知識、低延遲更新，適合知識庫", "Fine-tuning：固定風格、高頻模式，適合垂直領域"],
+                  "notes": "決策樹：先試 Prompt，不夠再 RAG，最後才考慮 Fine-tuning"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "Fine-tuning 的真正優勢",
+                  "content": "什麼時候值得承擔 Fine-tuning 的成本？",
+                  "bulletPoints": ["品牌聲音統一：讓 AI 100% 模仿你的寫作風格", "專業術語：醫療、法律、金融領域術語理解", "格式一致：特定輸出格式（JSON、XML）", "性能提升：特定任務比 GPT-4 更準確（成本更低）"],
+                  "notes": "現實測試：Fine-tuned GPT-3.5 在特定任務上超越 GPT-4"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "Fine-tuning 成本估算",
+                  "content": "OpenAI Fine-tuning 費用計算",
+                  "bulletPoints": ["訓練：$8 / 1M tokens（GPT-4o mini）", "示例數量：建議 50-100 個高質量示例", "總費用估算：50 個示例 ≈ $2-5", "推理費用：Fine-tuned 模型比基礎模型貴約 2x"],
+                  "notes": "建議：先用 GPT-4o mini Fine-tune，驗證效果後再考慮升級"
+                }
+              ],
+              "resources": ["https://platform.openai.com/docs/guides/fine-tuning"]
+            },
+            {
+              "id": "les-1-2-p",
+              "title": "數據準備：高質量訓練集構建",
+              "type": "video",
+              "duration": "34:20",
+              "videoUrl": "https://www.youtube.com/embed/eC6Hd1hFvos",
+              "videoId": "eC6Hd1hFvos",
+              "thumbnail": "https://img.youtube.com/vi/eC6Hd1hFvos/maxresdefault.jpg",
+              "status": "published",
+              "views": 245,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "訓練數據的黃金標準",
+                  "content": "Fine-tuning 的質量 90% 取決於數據質量",
+                  "bulletPoints": ["格式：JSONL（JSON Lines）", "結構：messages 數組包含 role 和 content", "數量：建議最少 50 個示例，最優 200+", "質量勝於數量：10 個完美示例 > 100 個一般示例"],
+                  "notes": "常見錯誤：複製現有對話記錄直接用，沒有人工審核"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "數據清洗和標準化",
+                  "content": "確保訓練數據的一致性和質量",
+                  "bulletPoints": ["移除 PII（個人身份信息）：姓名、電話、地址", "統一格式：繁體/簡體、英文大小寫", "平衡分佈：不同類型任務均勻分配", "錯誤示例：加入反例讓模型學會拒絕"],
+                  "notes": "香港企業注意：訓練數據需符合 PDPO（個人資料保護條例）"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-1-3-p",
+              "title": "LoRA 和 QLoRA：高效微調技術",
+              "type": "video",
+              "duration": "37:45",
+              "videoUrl": "https://www.youtube.com/embed/us5NNXomv3E",
+              "videoId": "us5NNXomv3E",
+              "thumbnail": "https://img.youtube.com/vi/us5NNXomv3E/maxresdefault.jpg",
+              "status": "published",
+              "views": 198,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼需要 LoRA？",
+                  "content": "全量 Fine-tuning 成本巨大，LoRA 讓普通人也能訓練大模型",
+                  "bulletPoints": ["全量微調 LLaMA 70B：需要 8x A100 GPU（約 $10K/天）", "LoRA：只訓練低秩矩陣，節省 97% 計算量", "QLoRA：4-bit 量化 + LoRA，在 24GB GPU 上訓練 70B 模型", "效果接近全量微調的 95%"],
+                  "notes": "工具推薦：Unsloth 讓 LoRA 訓練快 2-5 倍"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "開源模型 Fine-tuning 實戰",
+                  "content": "在 Google Colab 免費訓練你的第一個微調模型",
+                  "bulletPoints": ["模型選擇：LLaMA 3.2 3B（最省資源）", "框架：Hugging Face Transformers + TRL", "訓練平台：Google Colab Pro（A100 GPU）", "費用：約 $10-20 完成一次完整微調"],
+                  "notes": "完整 Notebook 在課程資源庫，一鍵運行"
+                }
+              ],
+              "resources": ["https://github.com/unslothai/unsloth"]
+            }
+          ]
+        },
+        {
+          "id": "mod-2-p",
+          "week": 4,
+          "title": "多模態 AI 應用",
+          "description": "視覺、語音、文本融合的多模態 AI 系統開發",
+          "lessons": [
+            {
+              "id": "les-2-1-p",
+              "title": "GPT-4V 和 Claude Vision：視覺 AI 實戰",
+              "type": "video",
+              "duration": "31:20",
+              "videoUrl": "https://www.youtube.com/embed/TqnFjOIUYWk",
+              "videoId": "TqnFjOIUYWk",
+              "thumbnail": "https://img.youtube.com/vi/TqnFjOIUYWk/maxresdefault.jpg",
+              "status": "published",
+              "views": 167,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "視覺 AI 的商業價值",
+                  "content": "圖像理解 AI 正在革命化文件處理和質量控制",
+                  "bulletPoints": ["文件 OCR + 理解：收據、合同、表格自動化處理", "產品質量檢測：工廠流水線異常檢測", "醫療影像：X 光、CT 掃描輔助診斷", "圖表分析：PDF 圖表自動解讀"],
+                  "notes": "香港用例：稅務局考慮用 AI 自動處理報稅表格"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "視覺 API 實戰：三種傳圖方式",
+                  "content": "用 3 種方式傳遞圖片給 LLM",
+                  "bulletPoints": ["方式 1：Base64 編碼（本地圖片）", "方式 2：URL 鏈接（公網圖片）", "方式 3：文件上傳 API（Assistants API）", "批量處理：asyncio 並發處理大量圖片"],
+                  "notes": "注意：圖片 token 計費，512x512 圖片約 170 tokens"
+                }
+              ],
+              "resources": ["https://platform.openai.com/docs/guides/vision"]
+            },
+            {
+              "id": "les-2-2-p",
+              "title": "語音 AI：Whisper + TTS 完整系統",
+              "type": "video",
+              "duration": "27:15",
+              "videoUrl": "https://www.youtube.com/embed/2NIbfm5tGgE",
+              "videoId": "2NIbfm5tGgE",
+              "thumbnail": "https://img.youtube.com/vi/2NIbfm5tGgE/maxresdefault.jpg",
+              "status": "published",
+              "views": 143,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "Whisper：世界最佳開源語音識別",
+                  "content": "OpenAI Whisper 支持 99 種語言，包括廣東話",
+                  "bulletPoints": ["準確率：超越 Google Speech-to-Text（粵語場景）", "部署方式：API（快速）或本地部署（免費）", "faster-whisper：比原版快 4 倍，適合實時轉錄", "用途：會議記錄、客服通話分析、播客字幕"],
+                  "notes": "廣東話識別：推薦 large-v3 模型，準確率達 95%+"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "TTS 語音合成技術選型",
+                  "content": "文字轉語音的主流方案對比",
+                  "bulletPoints": ["OpenAI TTS：最自然（6 種聲音，支持粵語）", "ElevenLabs：最像真人，支持聲音克隆", "Azure TTS：企業級，400+ 聲音，SSML 支持", "Coqui TTS：開源免費，可本地部署"],
+                  "notes": "香港企業客服推薦：Azure TTS 粵語版，商業授權明確"
+                }
+              ],
+              "resources": ["https://github.com/openai/whisper", "https://github.com/SYSTRAN/faster-whisper"]
+            }
+          ]
+        },
+        {
+          "id": "mod-3-p",
+          "week": 7,
+          "title": "企業 AI 部署",
+          "description": "生產環境 AI 系統架構、監控、安全和合規",
+          "lessons": [
+            {
+              "id": "les-3-1-p",
+              "title": "生產環境 AI 系統架構設計",
+              "type": "video",
+              "duration": "44:30",
+              "videoUrl": "https://www.youtube.com/embed/5C_HPTJg5ek",
+              "videoId": "5C_HPTJg5ek",
+              "thumbnail": "https://img.youtube.com/vi/5C_HPTJg5ek/maxresdefault.jpg",
+              "status": "published",
+              "views": 134,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "生產 AI 系統的 5 個核心挑戰",
+                  "content": "從 POC 到生產，這些問題你必須解決",
+                  "bulletPoints": ["可靠性：LLM API 偶爾超時，需要 Fallback 方案", "成本控制：Token 費用隨用量爆炸增長", "延遲：P99 < 3 秒的 SLA 要求", "安全性：Prompt Injection 攻擊防護", "合規：PDPO、GDPR 數據保護要求"],
+                  "notes": "香港法規：醫療和金融 AI 需符合特定監管要求（HKMA、SFC）"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "高可用 LLM 架構模式",
+                  "content": "構建 99.9% SLA 的 AI 服務",
+                  "bulletPoints": ["多 LLM 路由：Primary OpenAI → Fallback Anthropic", "緩存層：Redis 緩存重複查詢（節省 60% 費用）", "速率限制：令牌桶算法防止費用爆炸", "異步處理：長任務用 Queue 異步執行", "健康檢查：LLM 服務可用性監控"],
+                  "notes": "LiteLLM：一個 Python 庫統一管理多個 LLM 提供商"
+                }
+              ],
+              "resources": ["https://github.com/BerriAI/litellm"]
+            },
+            {
+              "id": "les-3-2-p",
+              "title": "LLM 可觀測性：Langfuse 監控系統",
+              "type": "video",
+              "duration": "26:40",
+              "videoUrl": "https://www.youtube.com/embed/oV2ZmUGMQcE",
+              "videoId": "oV2ZmUGMQcE",
+              "thumbnail": "https://img.youtube.com/vi/oV2ZmUGMQcE/maxresdefault.jpg",
+              "status": "published",
+              "views": 112,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼 LLM 需要特殊監控？",
+                  "content": "傳統 APM 工具不能理解 LLM 的輸出質量",
+                  "bulletPoints": ["Token 成本追蹤：每次調用的費用明細", "延遲分析：Prompt 到 Completion 的時間", "輸出質量評估：自動評分系統", "Prompt 版本管理：A/B 測試不同 Prompt"],
+                  "notes": "推薦工具：Langfuse（開源，可自托管）"
+                }
+              ],
+              "resources": ["https://langfuse.com/docs"]
+            }
+          ]
+        },
+        {
+          "id": "mod-4-p",
+          "week": 9,
+          "title": "AI 系統設計",
+          "description": "大規模 AI 系統設計模式，為 AI 產品做技術決策",
+          "lessons": [
+            {
+              "id": "les-4-1-p",
+              "title": "AI 系統設計：從 POC 到大規模生產",
+              "type": "video",
+              "duration": "39:50",
+              "videoUrl": "https://www.youtube.com/embed/bULBOqhzRvA",
+              "videoId": "bULBOqhzRvA",
+              "thumbnail": "https://img.youtube.com/vi/bULBOqhzRvA/maxresdefault.jpg",
+              "status": "published",
+              "views": 98,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "大規模 LLM 服務設計",
+                  "content": "設計能支撐百萬用戶的 AI 系統架構",
+                  "bulletPoints": ["估算：1B 用戶，P50 10 tokens/s，需要多少 GPU？", "架構：Load Balancer → API Gateway → LLM Cluster", "優化：KV Cache、Continuous Batching、Flash Attention", "冷熱分層：熱門查詢緩存，長尾查詢實時生成"],
+                  "notes": "答題框架：需求澄清 → 高層設計 → 深入組件 → 瓶頸分析"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-4-2-p",
+              "title": "Platinum 畢業項目：企業 AI 系統藍圖",
+              "type": "assignment",
+              "duration": "8 小時",
+              "status": "published",
+              "description": "為你所在的行業設計一個完整的企業 AI 系統方案：包括技術架構圖、數據流程、安全合規方案、成本估算和 ROI 分析。以 PPT 形式呈現，最終進行 10 分鐘的 Demo Day 展示",
+              "pptSlides": [],
+              "resources": ["https://github.com/skillai-hk/platinum-project-template"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "openclaw",
+      "level": "openclaw",
+      "title": "AI 創業家",
+      "titleEn": "AI Entrepreneur",
+      "color": "#8B5CF6",
+      "price": 9980,
+      "totalStudents": 89,
+      "description": "掌握 AI Agent 框架、CrewAI、AutoGen，生產級部署和 AI 創業實戰，成為 AI 創業家",
+      "duration": "12 週",
+      "totalLessons": 16,
+      "rating": 5.0,
+      "modules": [
+        {
+          "id": "mod-1-oc",
+          "week": 1,
+          "title": "AI Agent 框架深度解析",
+          "description": "掌握 2026 年最主流的 AI Agent 開發框架",
+          "lessons": [
+            {
+              "id": "les-1-1-oc",
+              "title": "AI Agent 框架全景：2026 年最佳選擇",
+              "type": "video",
+              "duration": "33:20",
+              "videoUrl": "https://www.youtube.com/embed/sal78ACtGTc",
+              "videoId": "sal78ACtGTc",
+              "thumbnail": "https://img.youtube.com/vi/sal78ACtGTc/maxresdefault.jpg",
+              "status": "published",
+              "views": 245,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "2026 年 AI Agent 框架生態",
+                  "content": "百花齊放的 Agent 框架，如何選擇？",
+                  "bulletPoints": ["CrewAI：多 Agent 協作，角色分工明確，最易上手", "AutoGen：微軟出品，對話式 Agent，代碼執行強", "LangGraph：LangChain 官方，狀態機，最靈活", "OpenAI Swarm：輕量級，官方支持，生產就緒"],
+                  "notes": "選擇指南：簡單任務用 CrewAI，複雜工作流用 LangGraph"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "Agent 框架評估矩陣",
+                  "content": "從 5 個維度評估各框架",
+                  "bulletPoints": ["學習曲線：CrewAI < AutoGen < LangGraph", "靈活性：LangGraph > AutoGen > CrewAI", "社區支持：LangGraph > CrewAI > AutoGen", "生產就緒：LangGraph > AutoGen > CrewAI"],
+                  "notes": "給 OpenClaw 學員：掌握 CrewAI + LangGraph 就夠 95% 場景"
+                }
+              ],
+              "resources": ["https://github.com/crewAIInc/crewAI", "https://github.com/microsoft/autogen"]
+            },
+            {
+              "id": "les-1-2-oc",
+              "title": "MCP Protocol 完全指南",
+              "type": "video",
+              "duration": "28:40",
+              "videoUrl": "https://www.youtube.com/embed/kA5P0BRVo4Q",
+              "videoId": "kA5P0BRVo4Q",
+              "thumbnail": "https://img.youtube.com/vi/kA5P0BRVo4Q/maxresdefault.jpg",
+              "status": "published",
+              "views": 189,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "什麼是 MCP（Model Context Protocol）？",
+                  "content": "Anthropic 推出的 AI 工具標準化協議，已成為業界標準",
+                  "bulletPoints": ["MCP 的目標：讓 AI 統一連接任何外部工具", "架構：Host（Claude）→ Client → MCP Server → 資源", "優勢：標準化接口，一次開發，多 AI 平台可用", "現狀：已有 500+ MCP Servers（GitHub、Slack、DB）"],
+                  "notes": "MCP 在 2025 年已被 OpenAI 和 Google 採用為標準"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "構建你的第一個 MCP Server",
+                  "content": "30 分鐘開發一個 MCP Server",
+                  "bulletPoints": ["環境：Node.js 或 Python SDK", "核心概念：Tools、Resources、Prompts", "步驟：定義 Tool Schema → 實現 Handler → 測試", "部署：本地 stdio 或 HTTP/SSE 遠程服務"],
+                  "notes": "演示：構建一個查詢香港股票價格的 MCP Server"
+                }
+              ],
+              "resources": ["https://modelcontextprotocol.io/docs", "https://github.com/modelcontextprotocol/servers"]
+            },
+            {
+              "id": "les-1-3-oc",
+              "title": "Agent 框架評估作業",
+              "type": "assignment",
+              "duration": "2 小時",
+              "status": "published",
+              "description": "用 CrewAI 和 LangGraph 分別構建同一個任務（競品分析 Agent），對比兩個框架的開發體驗、代碼複雜度和運行效果。提交對比報告和代碼",
+              "pptSlides": [],
+              "resources": []
+            }
+          ]
+        },
+        {
+          "id": "mod-2-oc",
+          "week": 3,
+          "title": "CrewAI 多 Agent 系統",
+          "description": "用 CrewAI 構建強大的多 Agent 協作系統",
+          "lessons": [
+            {
+              "id": "les-2-1-oc",
+              "title": "CrewAI 深度教學：角色、任務、工具",
+              "type": "video",
+              "duration": "41:30",
+              "videoUrl": "https://www.youtube.com/embed/sPzc6hMg7So",
+              "videoId": "sPzc6hMg7So",
+              "thumbnail": "https://img.youtube.com/vi/sPzc6hMg7So/maxresdefault.jpg",
+              "status": "published",
+              "views": 178,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "CrewAI 核心概念",
+                  "content": "模擬真實團隊協作的 AI 多 Agent 框架",
+                  "bulletPoints": ["Agent：具有 role、goal、backstory 的 AI 成員", "Task：具體要完成的工作，分配給特定 Agent", "Crew：Agent 的組合，協調執行 Tasks", "Process：Sequential（順序）或 Hierarchical（分層）"],
+                  "notes": "比喻：CrewAI 就像管理一個 AI 員工團隊"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "構建研究分析 Crew",
+                  "content": "4 個 Agent 協作完成深度研究報告",
+                  "bulletPoints": ["研究員 Agent：網絡搜索和數據收集", "分析師 Agent：整理和分析研究結果", "撰稿人 Agent：生成專業報告", "審核員 Agent：最終質量把關"],
+                  "notes": "生產時間：人工 8 小時 → CrewAI 15 分鐘"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "CrewAI 工具集成",
+                  "content": "給 Agent 配備強大的工具箱",
+                  "bulletPoints": ["Web 搜索：SerperDevTool、TavilySearchTool", "文件處理：PDFSearchTool、DirectoryReadTool", "代碼執行：CodeInterpreterTool", "自定義工具：@tool 裝飾器快速添加"],
+                  "notes": "工具選擇原則：只給 Agent 完成任務所需的最少工具"
+                }
+              ],
+              "resources": ["https://docs.crewai.com/"]
+            },
+            {
+              "id": "les-2-2-oc",
+              "title": "CrewAI Flow：事件驅動工作流",
+              "type": "video",
+              "duration": "32:15",
+              "videoUrl": "https://www.youtube.com/embed/YRqMOWuPEfE",
+              "videoId": "YRqMOWuPEfE",
+              "thumbnail": "https://img.youtube.com/vi/YRqMOWuPEfE/maxresdefault.jpg",
+              "status": "published",
+              "views": 134,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "CrewAI Flow 介紹",
+                  "content": "事件驅動的工作流，讓 Agent 更靈活地協作",
+                  "bulletPoints": ["@start()：工作流入口點", "@listen()：監聽事件觸發", "@router()：條件分支決策", "State：Flow 間共享的狀態數據"],
+                  "notes": "Flow 適合複雜業務流程，比 Crew 更靈活"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "真實案例：自動化投資研究系統",
+                  "content": "每天自動收集、分析、發送股票研究報告",
+                  "bulletPoints": ["觸發：每天 9:00 AM 自動啟動", "流程：新聞收集 → AI 分析 → 風險評估 → 報告生成 → 郵件發送", "成本：每天約 $0.5 API 費用", "替代：投行研究員日薪 $3000+"],
+                  "notes": "Demo 項目代碼在 GitHub，可直接部署"
+                }
+              ],
+              "resources": ["https://docs.crewai.com/concepts/flows"]
+            }
+          ]
+        },
+        {
+          "id": "mod-3-oc",
+          "week": 5,
+          "title": "AutoGen 微軟 Agent 框架",
+          "description": "微軟 AutoGen 框架深度解析，構建企業級對話式 Agent",
+          "lessons": [
+            {
+              "id": "les-3-1-oc",
+              "title": "AutoGen 0.4：全新架構解析",
+              "type": "video",
+              "duration": "36:20",
+              "videoUrl": "https://www.youtube.com/embed/J6drQKx0OlE",
+              "videoId": "J6drQKx0OlE",
+              "thumbnail": "https://img.youtube.com/vi/J6drQKx0OlE/maxresdefault.jpg",
+              "status": "published",
+              "views": 123,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "AutoGen 0.4 新特性",
+                  "content": "微軟重寫 AutoGen，更模塊化更強大",
+                  "bulletPoints": ["AgentChat：高層次 Agent 協作 API", "Core：低層次 Actor 模型，最靈活", "AutoGen Studio：視覺化 Agent 設計器", "MagenticOne：微軟最強多 Agent 系統"],
+                  "notes": "AutoGen 0.4 與 0.2 不完全兼容，注意版本"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "AutoGen 代碼執行能力",
+                  "content": "AutoGen 最大優勢：讓 AI 寫代碼並自動執行",
+                  "bulletPoints": ["CodeExecutorAgent：自動執行 Python 代碼", "沙盒環境：Docker 隔離執行", "迭代修復：代碼出錯自動修改重試", "數據分析：上傳 Excel → AI 分析 → 生成圖表"],
+                  "notes": "安全提醒：生產環境必須使用 Docker 沙盒，禁止直接執行"
+                }
+              ],
+              "resources": ["https://github.com/microsoft/autogen", "https://microsoft.github.io/autogen/"]
+            },
+            {
+              "id": "les-3-2-oc",
+              "title": "AutoGen 企業應用：AI 代碼審查系統",
+              "type": "video",
+              "duration": "29:45",
+              "videoUrl": "https://www.youtube.com/embed/8LCG2_OVOiU",
+              "videoId": "8LCG2_OVOiU",
+              "thumbnail": "https://img.youtube.com/vi/8LCG2_OVOiU/maxresdefault.jpg",
+              "status": "published",
+              "views": 98,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "自動化代碼審查系統",
+                  "content": "用 AutoGen 構建 24/7 的 AI 代碼審查員",
+                  "bulletPoints": ["GitHub Webhook → AutoGen → 分析 PR", "安全掃描：SQL 注入、XSS、SSRF 漏洞", "性能分析：N+1 查詢、慢查詢識別", "代碼風格：ESLint 規則自動修復建議"],
+                  "notes": "效果：發現真實項目中 73% 的常見安全漏洞"
+                }
+              ],
+              "resources": []
+            }
+          ]
+        },
+        {
+          "id": "mod-4-oc",
+          "week": 8,
+          "title": "生產級 AI 系統部署",
+          "description": "將 AI Agent 系統部署到生產環境，Kubernetes 和 Cloud 最佳實踐",
+          "lessons": [
+            {
+              "id": "les-4-1-oc",
+              "title": "Docker + Kubernetes：AI 服務容器化部署",
+              "type": "video",
+              "duration": "43:10",
+              "videoUrl": "https://www.youtube.com/embed/s_o8dwzRlu4",
+              "videoId": "s_o8dwzRlu4",
+              "thumbnail": "https://img.youtube.com/vi/s_o8dwzRlu4/maxresdefault.jpg",
+              "status": "published",
+              "views": 89,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "為什麼 AI 服務需要 Kubernetes？",
+                  "content": "LLM 服務的特殊伸縮挑戰",
+                  "bulletPoints": ["負載不均：日間高峰 vs 夜間低谷（差距 10x）", "GPU 資源：昂貴的 GPU 需要高效利用", "故障恢復：LLM API 超時需要自動重啟", "版本管理：Blue-Green 部署無縫更新"],
+                  "notes": "香港雲端選擇：AWS HK、Azure HK（數據主權考量）"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "AI 服務 Docker 最佳實踐",
+                  "content": "構建高效的 AI 應用 Docker 鏡像",
+                  "bulletPoints": ["多階段構建：壓縮鏡像大小 70%", "非 root 用戶：安全最佳實踐", "健康檢查：/health 端點", "Secrets 管理：Kubernetes Secrets + Vault"],
+                  "notes": "Python AI 應用推薦基礎鏡像：python:3.12-slim"
+                }
+              ],
+              "resources": ["https://kubernetes.io/docs/"]
+            },
+            {
+              "id": "les-4-2-oc",
+              "title": "AI 服務成本優化：節省 70% 費用",
+              "type": "video",
+              "duration": "27:30",
+              "videoUrl": "https://www.youtube.com/embed/dLqvMB3KPHA",
+              "videoId": "dLqvMB3KPHA",
+              "thumbnail": "https://img.youtube.com/vi/dLqvMB3KPHA/maxresdefault.jpg",
+              "status": "published",
+              "views": 76,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "LLM 費用優化 7 種方法",
+                  "content": "系統性降低 AI API 費用，不損失質量",
+                  "bulletPoints": ["語義緩存：相似問題復用答案（GPTCache）", "模型路由：簡單查詢用 Flash，複雜才用 Pro", "Prompt 壓縮：LLMLingua 壓縮 Prompt 50%", "批處理：非實時任務批量處理", "輸出緩存：高頻回答 Redis 緩存"],
+                  "notes": "真實案例：某客服系統從每月 $5000 降至 $1500"
+                }
+              ],
+              "resources": ["https://github.com/microsoft/LLMLingua"]
+            }
+          ]
+        },
+        {
+          "id": "mod-5-oc",
+          "week": 10,
+          "title": "AI 創業實戰",
+          "description": "從 AI 技術到商業產品，香港 AI 創業的完整路線圖",
+          "lessons": [
+            {
+              "id": "les-5-1-oc",
+              "title": "AI SaaS 產品：從 0 到 1 的完整路線圖",
+              "type": "video",
+              "duration": "45:20",
+              "videoUrl": "https://www.youtube.com/embed/MnDudvCyD3E",
+              "videoId": "MnDudvCyD3E",
+              "thumbnail": "https://img.youtube.com/vi/MnDudvCyD3E/maxresdefault.jpg",
+              "status": "published",
+              "views": 198,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "AI 創業的黃金時機",
+                  "content": "2026 年是 AI 應用層創業的最佳時機",
+                  "bulletPoints": ["基礎設施已成熟：OpenAI、Anthropic 提供穩定 API", "成本大幅下降：GPT-4o 比 2023 年便宜 95%", "市場需求巨大：企業 AI 採用率只有 30%", "競爭格局：大公司做平台，機會在垂直應用"],
+                  "notes": "香港優勢：連接中西方市場，金融科技聚集地，CyberPort 資源"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "香港 AI 創業生態",
+                  "content": "善用香港的創業支援資源",
+                  "bulletPoints": ["CyberPort：AI 創業孵化，資金支持最高 HK$200 萬", "科學園：HKSTP InnoHK 研究資金", "數碼港創意微型基金：最高 HK$10 萬（快速申請）", "政府資助：科技券計劃（SME 可申請）"],
+                  "notes": "親身經驗：如何在 3 個月內完成 CyberPort 申請"
+                },
+                {
+                  "slideNum": 3,
+                  "title": "AI SaaS 商業模式",
+                  "content": "最適合香港市場的 AI 產品收費模式",
+                  "bulletPoints": ["按座位：每個用戶每月固定費用（最常見）", "按用量：按 API 調用次數計費（適合 B2B）", "成果導向：節省多少費用抽成（最有說服力）", "混合模式：基本費 + 超量費"],
+                  "notes": "香港企業客戶偏好：年付折扣 + 發票報帳"
+                }
+              ],
+              "resources": ["https://www.cyberport.hk/en/entrepreneurship/incubation-programme/"]
+            },
+            {
+              "id": "les-5-2-oc",
+              "title": "技術棧選型：快速構建 AI MVP",
+              "type": "video",
+              "duration": "31:45",
+              "videoUrl": "https://www.youtube.com/embed/rCeEVMTm7-8",
+              "videoId": "rCeEVMTm7-8",
+              "thumbnail": "https://img.youtube.com/vi/rCeEVMTm7-8/maxresdefault.jpg",
+              "status": "published",
+              "views": 156,
+              "pptSlides": [
+                {
+                  "slideNum": 1,
+                  "title": "AI 創業 Tech Stack 推薦",
+                  "content": "2026 年最快速交付的 AI 產品技術棧",
+                  "bulletPoints": ["前端：Next.js 16 + Tailwind + Vercel（最快部署）", "後端：FastAPI + Python（AI 生態最完整）", "數據庫：Supabase（PostgreSQL + pgvector，全托管）", "AI：LangGraph + Claude API + Langfuse 監控"],
+                  "notes": "目標：2 週 MVP，1 個月 Beta，3 個月收費版本"
+                },
+                {
+                  "slideNum": 2,
+                  "title": "MVP 功能優先級",
+                  "content": "砍需求的藝術：什麼功能 Day 1 必須有？",
+                  "bulletPoints": ["核心 AI 功能：用戶願意付費的那一個功能", "用戶認證：簡單的 Email 登錄（NextAuth）", "計費系統：Stripe 訂閱（第一週就要有）", "反饋機制：讓用戶告訴你什麼不好"],
+                  "notes": "錯誤：先做完美，再找用戶。正確：先找用戶，再做完美"
+                }
+              ],
+              "resources": []
+            },
+            {
+              "id": "les-5-3-oc",
+              "title": "OpenClaw 畢業 Demo Day",
+              "type": "assignment",
+              "duration": "持續 12 週",
+              "status": "published",
+              "description": "構建並展示你的 AI 產品 MVP。要求：真實可用的 AI 功能、至少 3 個真實用戶反饋、清晰的商業模式說明、技術架構展示。Demo Day 當天面向投資人和業界嘉賓展示，優秀項目獲得 CyberPort 推薦信",
+              "pptSlides": [],
+              "resources": ["https://github.com/skillai-hk/openclaw-project-guidelines"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

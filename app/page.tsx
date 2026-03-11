@@ -440,6 +440,7 @@ export default function HomePage() {
   const [tab, setTab] = useState<Tab>('resources');
   const [mounted, setMounted] = useState(false);
   const heroRef = useRef(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
@@ -457,7 +458,7 @@ export default function HomePage() {
           <a href="/" className="hover:opacity-80 transition"><Logo size="md" /></a>
           <div className="hidden md:flex items-center gap-1">
             {TABS.map((t) => (
-              <button key={t.id} onClick={() => { setTab(t.id); document.getElementById('tabs')?.scrollIntoView({ behavior: 'smooth' }); }}
+              <button key={t.id} onClick={() => { setTab(t.id); tabsRef.current?.scrollIntoView({ behavior: 'smooth' }); }}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${tab === t.id ? 'text-[#4169E1] bg-blue-50' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'}`}>
                 {t.emoji} {t.label}
               </button>
@@ -502,7 +503,7 @@ export default function HomePage() {
               className="flex justify-center gap-3 flex-wrap">
               {TABS.map((t) => (
                 <motion.button key={t.id} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}
-                  onClick={() => { setTab(t.id); document.getElementById('tabs')?.scrollIntoView({ behavior: 'smooth' }); }}
+                  onClick={() => { setTab(t.id); tabsRef.current?.scrollIntoView({ behavior: 'smooth' }); }}
                   className="bg-white/90 backdrop-blur border border-gray-200 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-semibold shadow-sm hover:border-[#4169E1] hover:text-[#4169E1] hover:shadow-blue-100/40 hover:shadow-md transition-all">
                   {t.emoji} {t.label}
                 </motion.button>
@@ -527,7 +528,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ STICKY TAB BAR ═══ */}
-      <div id="tabs" className="sticky top-16 z-40 bg-white/80 backdrop-blur-2xl border-b border-gray-100/60 shadow-sm">
+      <div id="tabs" ref={tabsRef} className="sticky top-16 z-40 bg-white/80 backdrop-blur-2xl border-b border-gray-100/60 shadow-sm">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex gap-1 overflow-x-auto scrollbar-thin py-2">
             {TABS.map((t) => (

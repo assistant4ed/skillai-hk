@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import Logo from '../../components/Logo';
 
@@ -245,6 +245,7 @@ function QuizResult({ result, onReset }: { result: string; onReset: () => void }
 export default function CoursesPage() {
   const [quizResult, setQuizResult] = useState<string | null>(null);
   const [showQuiz, setShowQuiz] = useState(false);
+  const quizRef = useRef<HTMLElement>(null);
 
   return (
     <div className="bg-[#FAFBFF] text-[#1A1A2E] min-h-screen">
@@ -258,7 +259,7 @@ export default function CoursesPage() {
             <a href="/courses" className="text-[#4169E1] font-bold">課程</a>
             <a href="/friends" className="hover:text-[#4169E1] transition">文章</a>
           </div>
-          <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={() => { setShowQuiz(true); setQuizResult(null); document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' }); }}
+          <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={() => { setShowQuiz(true); setQuizResult(null); quizRef.current?.scrollIntoView({ behavior: 'smooth' }); }}
             className="bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
             技能測試
           </motion.button>
@@ -280,7 +281,7 @@ export default function CoursesPage() {
               不確定選哪個？先做 30 秒技能測試，找到最適合你的課程。
             </p>
             <motion.button whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}
-              onClick={() => { setShowQuiz(true); setQuizResult(null); setTimeout(() => document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
+              onClick={() => { setShowQuiz(true); setQuizResult(null); setTimeout(() => quizRef.current?.scrollIntoView({ behavior: 'smooth' }), 100); }}
               className="bg-[#4169E1] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
               🧪 30 秒技能測試 — 找到你的課程
             </motion.button>
@@ -289,7 +290,7 @@ export default function CoursesPage() {
       </section>
 
       {/* Quiz Section */}
-      <section id="quiz" className="py-12">
+      <section id="quiz" ref={quizRef} className="py-12">
         <div className="max-w-6xl mx-auto px-6">
           <AnimatePresence>
             {showQuiz && (

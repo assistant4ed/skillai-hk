@@ -1,0 +1,190 @@
+{
+  "overview": {
+    "totalStudents": 2847,
+    "activeStudents": 1923,
+    "inactiveStudents": 621,
+    "pendingStudents": 189,
+    "refundedStudents": 114,
+    "totalRevenue": 8234560,
+    "monthlyRevenue": 892340,
+    "weeklyRevenue": 234560,
+    "courseCompletionRate": 0.73,
+    "avgRating": 4.8,
+    "avgProgressAllCourses": 0.62,
+    "totalVideosPublished": 57,
+    "totalLessonsCompleted": 48392,
+    "npsScore": 72
+  },
+  "revenueByMonth": [
+    { "month": "2025-04", "revenue": 312450, "newStudents": 89, "churnedStudents": 12 },
+    { "month": "2025-05", "revenue": 389200, "newStudents": 112, "churnedStudents": 18 },
+    { "month": "2025-06", "revenue": 421800, "newStudents": 128, "churnedStudents": 22 },
+    { "month": "2025-07", "revenue": 456300, "newStudents": 134, "churnedStudents": 19 },
+    { "month": "2025-08", "revenue": 512900, "newStudents": 156, "churnedStudents": 25 },
+    { "month": "2025-09", "revenue": 589400, "newStudents": 178, "churnedStudents": 31 },
+    { "month": "2025-10", "revenue": 634700, "newStudents": 193, "churnedStudents": 28 },
+    { "month": "2025-11", "revenue": 712300, "newStudents": 218, "churnedStudents": 34 },
+    { "month": "2025-12", "revenue": 823900, "newStudents": 256, "churnedStudents": 41 },
+    { "month": "2026-01", "revenue": 867400, "newStudents": 267, "churnedStudents": 38 },
+    { "month": "2026-02", "revenue": 821110, "newStudents": 241, "churnedStudents": 45 },
+    { "month": "2026-03", "revenue": 892340, "newStudents": 285, "churnedStudents": 39 }
+  ],
+  "enrollmentsByLevel": {
+    "bronze": 890,
+    "silver": 623,
+    "gold": 445,
+    "platinum": 234,
+    "openclaw": 89
+  },
+  "revenueByLevel": {
+    "bronze": 1762200,
+    "silver": 1856540,
+    "gold": 2220100,
+    "platinum": 1867320,
+    "openclaw": 528400
+  },
+  "topSources": [
+    { "source": "WhatsApp", "count": 1089, "percentage": 0.383, "conversionRate": 0.68 },
+    { "source": "Instagram", "count": 654, "percentage": 0.230, "conversionRate": 0.52 },
+    { "source": "Referral", "count": 521, "percentage": 0.183, "conversionRate": 0.81 },
+    { "source": "Google", "count": 378, "percentage": 0.133, "conversionRate": 0.44 },
+    { "source": "LinkedIn", "count": 205, "percentage": 0.072, "conversionRate": 0.61 }
+  ],
+  "topCompanies": [
+    { "company": "HSBC", "students": 87, "revenue": 423600 },
+    { "company": "Hang Seng Bank", "students": 64, "revenue": 312800 },
+    { "company": "Standard Chartered", "students": 58, "revenue": 283240 },
+    { "company": "PwC HK", "students": 52, "revenue": 239760 },
+    { "company": "KPMG HK", "students": 49, "revenue": 226380 },
+    { "company": "Cathay Pacific", "students": 43, "revenue": 198620 },
+    { "company": "AIA HK", "students": 39, "revenue": 179940 },
+    { "company": "Freelance", "students": 312, "revenue": 614880 }
+  ],
+  "recentActivity": [
+    {
+      "id": "ACT-001",
+      "type": "enrollment",
+      "studentId": "STU-015",
+      "studentName": "趙子龍",
+      "action": "完成 Gold 課程第 11 課",
+      "timestamp": "2026-03-10T14:32:00+08:00",
+      "metadata": { "courseId": "gold", "lessonId": "les-11-2", "score": 95 }
+    },
+    {
+      "id": "ACT-002",
+      "type": "payment",
+      "studentId": "STU-005",
+      "studentName": "劉思穎",
+      "action": "新付款收到",
+      "timestamp": "2026-03-10T13:15:00+08:00",
+      "metadata": { "amount": 9980, "method": "Credit Card", "course": "openclaw" }
+    },
+    {
+      "id": "ACT-003",
+      "type": "completion",
+      "studentId": "STU-013",
+      "studentName": "鄧浩然",
+      "action": "完成 OpenClaw 第 14 課",
+      "timestamp": "2026-03-10T11:48:00+08:00",
+      "metadata": { "courseId": "openclaw", "lessonId": "les-14-1", "completionTime": "38 mins" }
+    },
+    {
+      "id": "ACT-004",
+      "type": "enrollment",
+      "studentId": "STU-012",
+      "studentName": "許雅婷",
+      "action": "新學員報名 Bronze 課程",
+      "timestamp": "2026-03-09T16:20:00+08:00",
+      "metadata": { "courseId": "bronze", "source": "Instagram" }
+    },
+    {
+      "id": "ACT-005",
+      "type": "message",
+      "studentId": "STU-001",
+      "studentName": "陳大文",
+      "action": "發送問題：LLM Fine-tuning 數據格式",
+      "timestamp": "2026-03-09T15:05:00+08:00",
+      "metadata": { "channel": "WhatsApp", "urgency": "normal" }
+    },
+    {
+      "id": "ACT-006",
+      "type": "refund",
+      "studentId": "STU-014",
+      "studentName": "馮嘉敏",
+      "action": "退款申請已處理",
+      "timestamp": "2026-03-09T10:30:00+08:00",
+      "metadata": { "amount": 2980, "reason": "個人原因", "courseId": "silver" }
+    },
+    {
+      "id": "ACT-007",
+      "type": "upgrade",
+      "studentId": "STU-009",
+      "studentName": "林志強",
+      "action": "詢問 OpenClaw 升級",
+      "timestamp": "2026-03-08T09:15:00+08:00",
+      "metadata": { "fromLevel": "platinum", "toLevel": "openclaw", "status": "pending" }
+    },
+    {
+      "id": "ACT-008",
+      "type": "completion",
+      "studentId": "STU-007",
+      "studentName": "鄭家豪",
+      "action": "完成 Gold 模塊 3 全部課程",
+      "timestamp": "2026-03-07T20:45:00+08:00",
+      "metadata": { "courseId": "gold", "moduleId": "mod-3", "score": 88 }
+    },
+    {
+      "id": "ACT-009",
+      "type": "video_published",
+      "studentId": null,
+      "studentName": null,
+      "action": "新影片發佈：Prompt Engineering 進階技巧",
+      "timestamp": "2026-03-06T10:00:00+08:00",
+      "metadata": { "videoId": "VID-006", "courseId": "silver", "duration": "22 分鐘" }
+    },
+    {
+      "id": "ACT-010",
+      "type": "enrollment",
+      "studentId": "STU-004",
+      "studentName": "張志偉",
+      "action": "新學員報名 Bronze 課程",
+      "timestamp": "2026-03-01T11:30:00+08:00",
+      "metadata": { "courseId": "bronze", "source": "Google" }
+    }
+  ],
+  "weeklyEngagement": [
+    { "day": "周一", "activeUsers": 423, "lessonsCompleted": 891, "avgSessionMinutes": 28 },
+    { "day": "周二", "activeUsers": 398, "lessonsCompleted": 834, "avgSessionMinutes": 31 },
+    { "day": "周三", "activeUsers": 445, "lessonsCompleted": 923, "avgSessionMinutes": 29 },
+    { "day": "周四", "activeUsers": 412, "lessonsCompleted": 867, "avgSessionMinutes": 27 },
+    { "day": "周五", "activeUsers": 389, "lessonsCompleted": 812, "avgSessionMinutes": 25 },
+    { "day": "周六", "activeUsers": 312, "lessonsCompleted": 634, "avgSessionMinutes": 45 },
+    { "day": "周日", "activeUsers": 278, "lessonsCompleted": 589, "avgSessionMinutes": 52 }
+  ],
+  "topPerformingLessons": [
+    { "lessonId": "les-1-2", "title": "ChatGPT 實戰入門", "views": 2341, "completionRate": 0.94, "rating": 4.9 },
+    { "lessonId": "les-2-1-s", "title": "Prompt Engineering 核心技巧", "views": 1892, "completionRate": 0.91, "rating": 4.8 },
+    { "lessonId": "les-1-1-g", "title": "LLM 工作原理深度解析", "views": 1456, "completionRate": 0.87, "rating": 4.9 },
+    { "lessonId": "les-3-1-g", "title": "RAG 系統架構設計", "views": 1234, "completionRate": 0.82, "rating": 4.8 },
+    { "lessonId": "les-1-1-p", "title": "Fine-tuning 完整流程", "views": 987, "completionRate": 0.78, "rating": 4.7 }
+  ],
+  "conversionFunnel": {
+    "websiteVisitors": 45230,
+    "leadCaptures": 8934,
+    "trialSignups": 3421,
+    "paidConversions": 2847,
+    "repeatPurchases": 1456,
+    "conversionRate": 0.063
+  },
+  "supportMetrics": {
+    "openTickets": 23,
+    "avgResponseTimeHours": 2.4,
+    "satisfactionScore": 4.7,
+    "ticketsByType": {
+      "technical": 8,
+      "billing": 5,
+      "content": 7,
+      "other": 3
+    }
+  }
+}

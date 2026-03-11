@@ -636,16 +636,10 @@ export default function HomePage() {
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-2xl border-b border-gray-100/60 shadow-sm shadow-gray-100/20">
         <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
           <a href="/" className="hover:opacity-80 transition"><Logo size="md" /></a>
-          <div className="hidden md:flex items-center gap-1">
-            {TABS.map((t) => (
-              <button key={t.id} onClick={() => { setTab(t.id); tabsRef.current?.scrollIntoView({ behavior: 'smooth' }); }}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${tab === t.id ? 'text-[#4169E1] bg-blue-50' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'}`}>
-                {t.emoji} {t.label}
-              </button>
-            ))}
-            <span className="w-px h-5 bg-gray-200 mx-2" />
-            <a href="/courses" className="px-3 py-1.5 text-sm font-medium text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all">課程</a>
-            <a href="/friends" className="px-3 py-1.5 text-sm font-medium text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-lg transition-all">文章</a>
+          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
+            <a href="/" className="text-[#4169E1] font-bold">資源</a>
+            <a href="/courses" className="hover:text-[#4169E1] transition">課程</a>
+            <a href="/friends" className="hover:text-[#4169E1] transition">更多資源</a>
           </div>
           <motion.a href="/courses" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
             className="bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
@@ -778,6 +772,15 @@ export default function HomePage() {
             </>
           )}
 
+          {tab === 'resources' && (
+            <div className="mt-12 text-center">
+              <motion.a href="/friends" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 bg-[#4169E1] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
+                探索 100+ 更多資源 →
+              </motion.a>
+            </div>
+          )}
+
           {tab === 'openclaw' && <OpenClawTutorial />}
           {tab === 'claudecode' && <ClaudeCodeTutorial />}
           {tab === 'images' && <ImagesTutorial />}
@@ -813,7 +816,7 @@ export default function HomePage() {
               <h4 className="text-white font-bold text-sm mb-4">SkillAI</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="/courses" className="hover:text-white transition">課程</a></li>
-                <li><a href="/friends" className="hover:text-white transition">文章</a></li>
+                <li><a href="/friends" className="hover:text-white transition">更多資源</a></li>
                 <li><a href="/privacy" className="hover:text-white transition">私隱政策</a></li>
                 <li><a href="/terms" className="hover:text-white transition">服務條款</a></li>
                 <li><a href="mailto:assistant4ed@gmail.com" className="hover:text-white transition">assistant4ed@gmail.com</a></li>

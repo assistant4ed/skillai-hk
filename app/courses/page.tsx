@@ -257,7 +257,7 @@ export default function CoursesPage() {
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
             <a href="/" className="hover:text-[#4169E1] transition">資源</a>
             <a href="/courses" className="text-[#4169E1] font-bold">課程</a>
-            <a href="/friends" className="hover:text-[#4169E1] transition">文章</a>
+            <a href="/friends" className="hover:text-[#4169E1] transition">更多資源</a>
           </div>
           <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={() => { setShowQuiz(true); setQuizResult(null); quizRef.current?.scrollIntoView({ behavior: 'smooth' }); }}
             className="bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">

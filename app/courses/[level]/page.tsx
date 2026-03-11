@@ -1339,7 +1339,7 @@ export default function CourseDetail({ params }: CourseDetailProps) {
               課程
             </Link>
             <Link href="/friends" className="hover:text-[#4169E1] transition">
-              文章
+              更多資源
             </Link>
           </div>
           <motion.a
@@ -1455,19 +1455,11 @@ export default function CourseDetail({ params }: CourseDetailProps) {
                   style={{ background: color }}
                 />
 
-                {/* Price */}
+                {/* Price — hidden for now */}
                 <div className="flex items-baseline gap-2 mb-1">
-                  <span
-                    className="text-3xl font-black"
-                    style={{ color }}
-                  >
-                    {course.price}
+                  <span className="text-2xl font-bold text-gray-400">
+                    即將推出
                   </span>
-                  {course.originalPrice && (
-                    <span className="text-sm text-gray-300 line-through">
-                      {course.originalPrice}
-                    </span>
-                  )}
                 </div>
                 <p className="text-xs text-gray-400 mb-4">
                   {course.duration} 課程 / 包含所有材料

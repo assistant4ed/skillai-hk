@@ -636,20 +636,21 @@ export default function HomePage() {
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-2xl border-b border-gray-100/60 shadow-sm shadow-gray-100/20">
         <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
           <a href="/" className="hover:opacity-80 transition"><Logo size="md" /></a>
-          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
+          <div className="flex items-center gap-3 md:gap-6 text-xs md:text-sm font-medium text-gray-400">
             <a href="/" className="text-[#4169E1] font-bold">資源</a>
             <a href="/courses" className="hover:text-[#4169E1] transition">課程</a>
             <a href="/friends" className="hover:text-[#4169E1] transition">更多資源</a>
           </div>
-          <motion.a href="/courses" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-            className="bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
-            免費試堂
+          <motion.a href="/friends" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+            className="hidden md:inline-flex bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
+            免費資源
           </motion.a>
         </div>
       </nav>
 
       {/* ═══ HERO with 3D + scroll parallax ═══ */}
-      <section ref={heroRef} className="relative pt-20 pb-6 min-h-[75vh] flex items-center overflow-hidden">
+      <main id="main-content">
+      <section ref={heroRef} className="relative pt-20 pb-6 min-h-[45vh] md:min-h-[75vh] flex items-center overflow-hidden">
         <HeroBg3D />
         <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/70 to-[#FAFBFF] pointer-events-none" />
 
@@ -788,44 +789,18 @@ export default function HomePage() {
         </div>
       </section>
 
+      </main>
+
       {/* ═══ FOOTER ═══ */}
-      <footer className="bg-[#0F172A] text-gray-400 py-12">
+      <footer className="bg-[#0F172A] text-gray-400 py-10">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8 mb-10">
-            <div>
-              <Logo size="sm" />
-              <p className="text-sm text-gray-500 mt-3 leading-relaxed">精選開源 AI 資源，<br/>助你快速上手 AI 開發。</p>
-            </div>
-            <div>
-              <h4 className="text-white font-bold text-sm mb-4">開源工具</h4>
-              <ul className="space-y-2 text-sm">
-                {TOOLS.slice(0, 5).map(t => (
-                  <li key={t.title}><a href={t.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">{t.title} ↗</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold text-sm mb-4">框架與基建</h4>
-              <ul className="space-y-2 text-sm">
-                {[...FRAMEWORKS.slice(0, 3), ...INFRA.slice(0, 2)].map(t => (
-                  <li key={t.title}><a href={t.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">{t.title} ↗</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-bold text-sm mb-4">SkillAI</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/courses" className="hover:text-white transition">課程</a></li>
-                <li><a href="/friends" className="hover:text-white transition">更多資源</a></li>
-                <li><a href="/privacy" className="hover:text-white transition">私隱政策</a></li>
-                <li><a href="/terms" className="hover:text-white transition">服務條款</a></li>
-                <li><a href="mailto:assistant4ed@gmail.com" className="hover:text-white transition">assistant4ed@gmail.com</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
             <p className="text-xs text-gray-600">&copy; 2026 SkillAI.hk &middot; DeFiner Tech Ltd</p>
-            <p className="text-xs text-gray-700">Made with ❤️ in Hong Kong</p>
+            <div className="flex gap-4 text-xs">
+              <a href="/privacy" className="hover:text-white transition">私隱政策</a>
+              <a href="/terms" className="hover:text-white transition">服務條款</a>
+              <a href="/" className="hover:text-white transition">返回首頁</a>
+            </div>
           </div>
         </div>
       </footer>

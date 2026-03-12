@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Logo from '../../components/Logo';
 import coursesData from '@/data/courses-full.json';
 
 /* ══════════════════════════════════════════════════
@@ -207,23 +208,23 @@ export default function LearnHubPage() {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      {/* ── HEADER ── */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 py-5 flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-bold text-gray-900">學習中心</h1>
-            <p className="text-sm text-gray-500 mt-0.5">選擇你的學習路徑，逐步成為 AI 達人</p>
+      {/* ── NAV ── */}
+      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-2xl border-b border-gray-100/60 shadow-sm">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+          <a href="/" className="hover:opacity-80 transition"><Logo size="md" /></a>
+          <div className="flex items-center gap-3 md:gap-6 text-xs md:text-sm font-medium text-gray-400">
+            <a href="/" className="hover:text-[#4169E1] transition">資源</a>
+            <a href="/courses" className="hover:text-[#4169E1] transition">課程</a>
+            <a href="/friends" className="hover:text-[#4169E1] transition">更多資源</a>
           </div>
-          <Link
-            href="/"
-            className="text-sm text-gray-500 hover:text-gray-800 transition-colors"
-          >
-            返回主頁
-          </Link>
+          <a href="/friends" className="hidden md:inline-flex bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
+            免費資源
+          </a>
         </div>
-      </header>
+      </nav>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <main id="main-content">
+      <div className="max-w-4xl mx-auto px-4 py-8 pt-24">
 
         {/* ── IN-PROGRESS BANNER ── */}
         {inProgressCourse && (
@@ -287,7 +288,7 @@ export default function LearnHubPage() {
           <p className="text-sm font-semibold text-gray-700 mb-1">想升級課程或有任何問題？</p>
           <p className="text-xs text-gray-500 mb-4">WhatsApp 我們即時獲得免費諮詢 · 7 天無理由退款保證</p>
           <a
-            href="https://wa.me/85257961104"
+            href="https://wa.me/85267552667"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90"
@@ -310,6 +311,21 @@ export default function LearnHubPage() {
           進度自動儲存至瀏覽器。如需跨設備同步，請登入帳號。
         </motion.p>
       </div>
+      </main>
+
+      {/* ── FOOTER ── */}
+      <footer className="bg-[#0F172A] text-gray-400 py-10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="text-xs text-gray-600">&copy; 2026 SkillAI.hk &middot; DeFiner Tech Ltd</p>
+            <div className="flex gap-4 text-xs">
+              <a href="/privacy" className="hover:text-white transition">私隱政策</a>
+              <a href="/terms" className="hover:text-white transition">服務條款</a>
+              <a href="/" className="hover:text-white transition">返回首頁</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

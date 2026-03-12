@@ -1328,7 +1328,7 @@ export default function CourseDetail({ params }: CourseDetailProps) {
           <Link href="/" className="hover:opacity-80 transition">
             <Logo size="md" />
           </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
+          <div className="flex items-center gap-3 md:gap-6 text-xs md:text-sm font-medium text-gray-400">
             <Link href="/" className="hover:text-[#4169E1] transition">
               資源
             </Link>
@@ -1343,19 +1343,18 @@ export default function CourseDetail({ params }: CourseDetailProps) {
             </Link>
           </div>
           <motion.a
-            href="https://wa.me/85257961104"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/friends"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg transition"
+            className="hidden md:inline-flex text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg transition"
             style={{ background: color, boxShadow: `0 8px 24px ${color}30` }}
           >
-            立即報名
+            免費資源
           </motion.a>
         </div>
       </nav>
 
+      <main id="main-content">
       {/* ═══ STICKY HERO ═══ */}
       <section
         ref={heroRef}
@@ -1491,7 +1490,7 @@ export default function CourseDetail({ params }: CourseDetailProps) {
                 {/* CTAs */}
                 <div className="space-y-2">
                   <motion.a
-                    href="https://wa.me/85257961104"
+                    href="https://wa.me/85267552667"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02, y: -1 }}
@@ -1505,7 +1504,7 @@ export default function CourseDetail({ params }: CourseDetailProps) {
                     立即報名
                   </motion.a>
                   <motion.a
-                    href="https://wa.me/85257961104"
+                    href="https://wa.me/85267552667"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
@@ -1732,7 +1731,7 @@ export default function CourseDetail({ params }: CourseDetailProps) {
               </p>
               <div className="flex justify-center gap-3 flex-wrap">
                 <motion.a
-                  href="https://wa.me/85257961104"
+                  href="https://wa.me/85267552667"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05, y: -2 }}
@@ -1746,7 +1745,7 @@ export default function CourseDetail({ params }: CourseDetailProps) {
                   立即報名 {course.level} 認證
                 </motion.a>
                 <motion.a
-                  href="https://wa.me/85257961104"
+                  href="https://wa.me/85267552667"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05, y: -2 }}
@@ -1763,6 +1762,8 @@ export default function CourseDetail({ params }: CourseDetailProps) {
           </SectionReveal>
         </div>
       </section>
+
+      </main>
 
       {/* ═══ FOOTER ═══ */}
       <footer className="bg-[#0F172A] text-gray-400 py-10">

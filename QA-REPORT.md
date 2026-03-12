@@ -295,6 +295,66 @@ New enrollment notifications to admin, payment receipts to students, lesson remi
 - [x] ~~PPT AI summaries~~ — **FIXED** (all 43 lessons now covered)
 - [x] ~~CRM pagination code smell~~ — **FIXED** (inlined setCurrentPage(1))
 
+## Build 46 — 2026-03-12 (Post-overhaul audit — no new issues)
+
+Major session changes audited: courses page rewritten as corporate AI training plans (Starter/Professional/Enterprise), nav button changed to "免費資源" → /friends across all pages, footer standardised (bg-[#0F172A] py-10) on all 5 pages, skip-to-content link added to layout.tsx, `<main id="main-content">` added to all pages, course detail generateMetadata added via layout.tsx, OG image dynamic route created, image optimisation enabled (AVIF/WebP, removed `unoptimized: true`), learn page nav/footer consistency fixed, empty catch blocks replaced with console.warn, image dimensions added to prevent CLS. Full audit confirmed: zero unused imports, zero `href="#"`, zero `console.log` in production code, all `target="_blank"` have `rel="noopener noreferrer"`, WhatsApp URL encoding correct, heading hierarchy valid, ARIA attributes present on FAQ accordions. Build passed: 25/25 pages, 0 TypeScript errors. Quality score: 85/100.
+
+## Build 45 — 2026-03-12 (No fixes needed)
+
+No code changes. Build passed: 25/25 pages, 0 TypeScript errors.
+
+## Build 44 — 2026-03-12 (No fixes needed)
+
+No code changes. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 43 — 2026-03-12 (No fixes needed)
+
+No code changes. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 42 — 2026-03-12 (No fixes needed)
+
+No code changes. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 41 — 2026-03-12 (No fixes needed)
+
+No code changes. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 40 — 2026-03-12 (No fixes needed)
+
+No code changes. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 39 — 2026-03-11 (No fixes needed)
+
+No code changes. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 38 — 2026-03-11 (No fixes needed)
+
+No code changes since Build 37. Build passed: 25/25 pages, 0 TypeScript errors. All remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 37 — 2026-03-11 (No fixes needed)
+
+Post-deployment audit after nav/pricing fixes. Verified: "文章" renamed to "更多資源" across all pages, duplicate nav removed from homepage, pricing hidden on both course listing and detail pages, "探索 100+ 更多資源" CTA added to homepage. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 36 — 2026-03-11 (No fixes needed)
+
+No code changes since Build 35. Build passed: 25/25 pages, 0 TypeScript errors. All remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 35 — 2026-03-11 (No fixes needed)
+
+Routine audit: no `console.log/warn/debug` in client or API code, resource URL counts verified (100 in friends, 60 on homepage), no new patterns detected. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 34 — 2026-03-11 (No fixes needed)
+
+Post-deployment audit after major content overhaul (Build 33 deployed). Verified: all `target="_blank"` links have `rel="noopener noreferrer"`, no division-by-zero in new code, no TODO/FIXME markers, no `href="#"`. Homepage now has 60 tools with sub-tab filtering, courses page hides fees with bigger fonts, friends page has 100 open-source tools (all consumer apps removed). Build passed: 25/25 pages, 0 TypeScript errors.
+
+## Build 33 — 2026-03-11 (No fixes needed)
+
+Full cycle audit: checked `key={i}` index-as-key usage (all static non-reorderable lists — acceptable), `setTimeout`/`setInterval` patterns (all short-lived UI timers with no leak risk; `saveTimerRef` uses proper `useRef` cleanup). No new actionable issues found. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
+## Build 32 — 2026-03-11 (No fixes needed)
+
+Full cycle audit: checked `window.open` usage (null-checked, uses `textContent` not `innerHTML`), `fetch` patterns (all relative URLs to internal APIs with error handling), `encodeURIComponent` usage (correct for WhatsApp share link). Code committed and deployed to Vercel. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.
+
 ## Build 31 — 2026-03-11 (No fixes needed)
 
 Full cycle audit: checked `JSON.parse` safety (all wrapped in try/catch), `useEffect` cleanup patterns (all correct), `parseInt`/`toFixed` usage (all on controlled data or guarded), empty catch blocks (intentional graceful degradation). No new actionable issues found. Build passed: 25/25 pages, 0 TypeScript errors. Remaining open issues (S-2, PM-2, PM-3) require backend infrastructure.

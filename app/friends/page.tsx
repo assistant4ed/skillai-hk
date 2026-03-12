@@ -908,9 +908,17 @@ export default function FriendsPage() {
           <Logo size="sm" showText={false} />
           <span style={{ fontSize: 16, fontWeight: 700, color: '#111' }}>SkillAI.hk</span>
         </Link>
-        <nav style={{ display: 'flex', gap: 20, fontSize: 14 }}>
+        <nav style={{ display: 'flex', gap: 20, fontSize: 14, alignItems: 'center' }}>
+          <Link href="/" style={{ color: '#666', textDecoration: 'none' }}>資源</Link>
           <Link href="/courses" style={{ color: '#666', textDecoration: 'none' }}>課程</Link>
-          <Link href="/friends" style={{ color: '#111', fontWeight: 600, textDecoration: 'none' }}>AI 資源</Link>
+          <Link href="/friends" style={{ color: '#111', fontWeight: 600, textDecoration: 'none' }}>更多資源</Link>
+          <Link href="/friends" style={{
+            background: '#4169E1', color: '#fff', padding: '8px 20px',
+            borderRadius: 12, fontWeight: 600, textDecoration: 'none',
+            fontSize: 14,
+          }}>
+            免費資源
+          </Link>
         </nav>
       </header>
 
@@ -1089,7 +1097,7 @@ export default function FriendsPage() {
       </AnimatePresence>
 
       {/* ── Resource Grid ── */}
-      <main style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px 60px' }}>
+      <main id="main-content" style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px 60px' }}>
         {searchQuery && (
           <p style={{ textAlign: 'center', color: '#888', marginBottom: 24, fontSize: 14 }}>
             搜尋「{searchQuery}」— 找到 {filteredResources.length} 個結果
@@ -1162,8 +1170,17 @@ export default function FriendsPage() {
         </Link>
       </section>
 
-      <footer style={{ textAlign: 'center', padding: '24px', fontSize: 13, color: '#999', background: '#111', borderTop: '1px solid #222' }}>
-        <span style={{ color: '#555' }}>© 2026 SkillAI.hk · DeFiner Tech Ltd</span>
+      <footer className="bg-[#0F172A] text-gray-400 py-10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="text-xs text-gray-600">&copy; 2026 SkillAI.hk &middot; DeFiner Tech Ltd</p>
+            <div className="flex gap-4 text-xs">
+              <a href="/privacy" className="hover:text-white transition">私隱政策</a>
+              <a href="/terms" className="hover:text-white transition">服務條款</a>
+              <a href="/" className="hover:text-white transition">返回首頁</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );

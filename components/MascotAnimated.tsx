@@ -81,7 +81,7 @@ export default function MascotAnimated({
 
       {/* Mascot */}
       <motion.div {...animProps} className="relative z-0">
-        <Image src="/mascot.jpg" alt="SkillAI Mascot" width={s} height={s}
+        <Image src="/mascot.jpg" alt="SkillAI mascot character wearing glasses and a branded shirt, representing the AI skills training platform" width={s} height={s}
           className="rounded-xl shadow-lg" style={{ width: s, height: s, objectFit: 'cover' }} />
       </motion.div>
 

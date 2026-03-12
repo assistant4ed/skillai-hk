@@ -31,7 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         };
       });
     }
-  } catch { /* fallback to static only */ }
+  } catch (err) {
+    console.warn('Failed to load article pages for sitemap:', err);
+  }
 
   // Course level pages
   const courseLevels = ['bronze', 'silver', 'gold', 'platinum', 'openclaw'];

@@ -246,7 +246,7 @@ export default function Mascot3D({ variant = 'hero', height = '400px', className
       {/* CSS fallback with mascot image + floating blocks */}
       <div className="relative">
         <div className="absolute -inset-6 bg-gradient-to-br from-[#4169E1]/15 to-[#7C3AED]/10 rounded-[2rem] blur-2xl animate-pulse" style={{ animationDuration: '3s' }} />
-        <img src="/mascot.jpg" alt="SkillAI Mascot" className="relative rounded-2xl shadow-xl w-full max-w-[240px]" style={{ animation: 'float 4s ease-in-out infinite' }} />
+        <img src="/mascot.jpg" alt="SkillAI mascot character wearing glasses and a branded shirt, representing the AI skills training platform" className="relative rounded-2xl shadow-xl w-full max-w-[240px]" style={{ animation: 'float 4s ease-in-out infinite' }} />
         {/* Floating decorative blocks */}
         <div className="absolute -top-4 -left-4 w-8 h-8 bg-[#FF6B35] rounded-lg shadow-lg flex items-center justify-center text-white font-bold text-xs" style={{ animation: 'float 3s ease-in-out infinite' }}>AI</div>
         <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-[#10B981] rounded-md shadow-lg" style={{ animation: 'float 3.5s ease-in-out infinite 0.5s' }} />

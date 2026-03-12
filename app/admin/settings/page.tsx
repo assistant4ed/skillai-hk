@@ -17,7 +17,7 @@ export default function SettingsPage() {
   const [saved, setSaved] = useState(false);
   const [aiModel, setAiModel] = useState('claude-opus-4-6');
   const [maxTokens, setMaxTokens] = useState('500');
-  const [whatsappNumber, setWhatsappNumber] = useState('+85257961104');
+  const [whatsappNumber, setWhatsappNumber] = useState('+85267552667');
   const [platformName, setPlatformName] = useState('SkillAI.hk');
   const [notifyEnrollment, setNotifyEnrollment] = useState(true);
   const [notifyPayment, setNotifyPayment] = useState(true);
@@ -38,7 +38,9 @@ export default function SettingsPage() {
         if (s.notifyCompletion !== undefined) setNotifyCompletion(s.notifyCompletion === 'true');
         if (s.notifyAiError !== undefined) setNotifyAiError(s.notifyAiError === 'true');
       }
-    } catch { /* ignore corrupt storage */ }
+    } catch (err) {
+      console.warn('Failed to parse settings from localStorage:', err);
+    }
   }, []);
 
   const handleSave = () => {
@@ -56,7 +58,9 @@ export default function SettingsPage() {
           notifyAiError: String(notifyAiError),
         }),
       );
-    } catch { /* storage unavailable */ }
+    } catch (err) {
+      console.warn('Failed to save settings to localStorage:', err);
+    }
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };

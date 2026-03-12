@@ -6,235 +6,258 @@ import Link from 'next/link';
 import Logo from '../../components/Logo';
 
 /* ══════════════════════════════════════════════════
-   QUIZ DATA
+   CORPORATE PLAN DATA
    ══════════════════════════════════════════════════ */
 
-interface QuizOption { label: string; emoji: string; points: number }
-interface QuizQuestion { id: number; question: string; sub: string; options: QuizOption[] }
-
-const QUESTIONS: QuizQuestion[] = [
-  {
-    id: 1, question: '你用過 AI 工具嗎？', sub: '例如 ChatGPT、Claude、Midjourney',
-    options: [
-      { label: '完全沒用過', emoji: '🌱', points: 0 },
-      { label: '偶爾用 ChatGPT 聊天', emoji: '💬', points: 1 },
-      { label: '每天工作都在用', emoji: '⚡', points: 2 },
-      { label: '我會寫 Prompt 和串接 API', emoji: '🔧', points: 3 },
-    ],
-  },
-  {
-    id: 2, question: '你會寫程式嗎？', sub: '任何語言都算',
-    options: [
-      { label: '完全不會', emoji: '📝', points: 0 },
-      { label: '學過一點但不熟', emoji: '📖', points: 1 },
-      { label: '可以獨立寫簡單程式', emoji: '💻', points: 2 },
-      { label: '專業開發者', emoji: '🧑‍💻', points: 3 },
-    ],
-  },
-  {
-    id: 3, question: '你最想達成什麼目標？', sub: '選最接近的一個',
-    options: [
-      { label: '用 AI 提升工作效率', emoji: '🚀', points: 0 },
-      { label: '學會用 AI 做數據分析和自動化', emoji: '📊', points: 1 },
-      { label: '開發 AI 應用或 Agent 系統', emoji: '🤖', points: 2 },
-      { label: '用 AI 技術創業', emoji: '💎', points: 4 },
-    ],
-  },
-  {
-    id: 4, question: '你知道什麼是 RAG 嗎？', sub: 'Retrieval-Augmented Generation',
-    options: [
-      { label: '第一次聽到', emoji: '❓', points: 0 },
-      { label: '聽過但不太懂', emoji: '🤔', points: 1 },
-      { label: '知道原理但沒做過', emoji: '📚', points: 2 },
-      { label: '已經部署過 RAG 系統', emoji: '✅', points: 3 },
-    ],
-  },
-  {
-    id: 5, question: '你對 OpenClaw 有興趣嗎？', sub: '2026 最熱門 AI 助手框架',
-    options: [
-      { label: '沒聽過', emoji: '🆕', points: 0 },
-      { label: '有興趣想學', emoji: '👀', points: 5 },
-      { label: '已經在用，想深入學', emoji: '🦞', points: 6 },
-      { label: '我更想學其他技術', emoji: '➡️', points: 0 },
-    ],
-  },
-];
-
-function getRecommendation(score: number, openclawInterest: boolean): string {
-  if (openclawInterest) return 'openclaw';
-  if (score >= 10) return 'platinum';
-  if (score >= 7) return 'gold';
-  if (score >= 4) return 'silver';
-  return 'bronze';
+interface PlanFeature {
+  text: string;
+  included: boolean;
 }
 
-/* ══════════════════════════════════════════════════
-   COURSE DATA
-   ══════════════════════════════════════════════════ */
+interface CorporatePlan {
+  id: string;
+  tier: string;
+  title: string;
+  subtitle: string;
+  icon: string;
+  color: string;
+  bg: string;
+  border: string;
+  price: string;
+  priceNote: string;
+  popular?: boolean;
+  features: PlanFeature[];
+  deliverables: string[];
+  idealFor: string;
+}
 
-const COURSES = [
+const PLANS: CorporatePlan[] = [
   {
-    id: 'bronze', level: 'Bronze', title: 'AI 效率實戰班', tag: '零基礎友善',
-    price: 'HK$2,999', weeks: '4 週', icon: '🏅',
-    color: '#CD7F32', bg: '#FDF4E8', border: '#E8D5B7',
-    desc: '用 Claude + n8n 建立真正的自動化工作流。每堂課都有即時可用的產出。',
-    skills: ['Claude 系統 Prompt 設計', 'n8n 自動化工作流', 'AI 數據分析報告', '多工具串接'],
-    outcomes: ['郵件自動分類回覆系統', 'KPI 自動化報告', '個人 AI 工作流', 'AI 效率認證'],
-    fit: '非技術背景、想用 AI 實際提升工作效率的職場人士',
+    id: 'starter',
+    tier: 'Starter',
+    title: 'AI 入門培訓',
+    subtitle: '讓全公司認識 AI，快速提升效率',
+    icon: '🚀',
+    color: '#4169E1',
+    bg: '#EBF0FF',
+    border: '#93B4FF',
+    price: '聯絡我們報價',
+    priceNote: '5-30 人團隊',
+    features: [
+      { text: 'AI 基礎概念與應用場景介紹', included: true },
+      { text: 'ChatGPT / Claude 實戰工作坊', included: true },
+      { text: 'Prompt Engineering 基礎訓練', included: true },
+      { text: '4 小時互動式培訓（可分 2 節）', included: true },
+      { text: '培訓教材與 Prompt 模板庫', included: true },
+      { text: '30 天線上支援', included: true },
+      { text: '自訂 AI 工作流設計', included: false },
+      { text: 'API 串接與自動化部署', included: false },
+      { text: '專屬客戶經理', included: false },
+    ],
+    deliverables: ['AI 應用即時產出', 'Prompt 模板套件', 'AI 效率評估報告', '參加者認證'],
+    idealFor: '想讓團隊快速上手 AI 工具、提升日常工作效率的中小企業',
   },
   {
-    id: 'silver', level: 'Silver', title: 'AI 應用開發班', tag: 'Claude Code + Cursor',
-    price: 'HK$7,999', weeks: '8 週', icon: '🥈',
-    color: '#6B7280', bg: '#F3F4F6', border: '#D1D5DB',
-    desc: '用 Claude Code + Cursor 從零開發 AI 應用。用 AI 寫代碼，跳過傳統學習曲線。',
-    skills: ['Claude Code 開發', 'Cursor AI 編程', 'Next.js + Supabase', 'Vercel 部署'],
-    outcomes: ['AI 研究助手 Agent', '全端 AI 筆記應用', 'Slack AI Bot', '開發者認證'],
-    fit: '想從零學開發、用 AI 工具快速建產品的轉型者',
+    id: 'professional',
+    tier: 'Professional',
+    title: 'AI 深度應用班',
+    subtitle: '部門級 AI 整合，打造智能工作流',
+    icon: '⚡',
+    color: '#D97706',
+    bg: '#FEF3C7',
+    border: '#FCD34D',
+    price: '聯絡我們報價',
+    priceNote: '10-50 人團隊',
+    popular: true,
+    features: [
+      { text: 'AI 基礎概念與應用場景介紹', included: true },
+      { text: 'ChatGPT / Claude 實戰工作坊', included: true },
+      { text: 'Prompt Engineering 進階訓練', included: true },
+      { text: '12 小時深度培訓（分 4-6 節）', included: true },
+      { text: '培訓教材與 Prompt 模板庫', included: true },
+      { text: '90 天線上支援', included: true },
+      { text: '自訂 AI 工作流設計', included: true },
+      { text: 'n8n / Make 自動化實戰', included: true },
+      { text: '專屬客戶經理', included: false },
+    ],
+    deliverables: ['部門 AI 工作流藍圖', '自動化流程 x3', 'AI 效率評估報告', 'ROI 分析報告', '專業認證'],
+    idealFor: '想在市場部、客服部、HR 等部門深度整合 AI 的成長型企業',
   },
   {
-    id: 'gold', level: 'Gold', title: 'AI 系統架構師班', tag: 'RAG + Agent + MCP',
-    price: 'HK$15,999', weeks: '12 週', icon: '🥇', popular: true,
-    color: '#D97706', bg: '#FEF3C7', border: '#FCD34D',
-    desc: '深入 RAG、多 Agent 編排、MCP Server 和生產級部署。設計企業級 AI 系統。',
-    skills: ['RAG 知識庫系統', 'MCP Server 開發', '多 Agent 編排', '生產級部署監控'],
-    outcomes: ['企業 RAG 知識庫', '多 Agent 研究平台', '生產級 AI SaaS', '架構師認證'],
-    fit: '有開發經驗、想成為 AI 系統架構師的工程師',
-  },
-  {
-    id: 'openclaw', level: 'OpenClaw', title: 'OpenClaw 全方位課程', tag: '🔥 2026 最熱門',
-    price: 'HK$9,999', weeks: '10 週', icon: '🦞', featured: true,
-    color: '#4169E1', bg: '#EBF0FF', border: '#93B4FF',
-    desc: '從安裝到企業部署。Skill 開發、多 Agent 編排、多平台整合一次學完。',
-    skills: ['自定義 Skill 開發', '多平台部署（WA/TG/DC）', '多 Agent 編排', '企業級安全監控'],
-    outcomes: ['多平台 AI 客服', '業務 Skill 套件', '企業 Agent 集群', 'OpenClaw 認證'],
-    fit: '想掌握 OpenClaw 框架的開發者和技術愛好者',
-  },
-  {
-    id: 'platinum', level: 'Platinum', title: 'AI 創業實戰班', tag: '從想法到上線產品',
-    price: 'HK$29,999', weeks: '16 週', icon: '💎',
-    color: '#7C3AED', bg: '#EDE9FE', border: '#C4B5FD',
-    desc: '16 週把 AI 產品想法變成上線的 SaaS。涵蓋開發、付款、增長到投資人路演。',
-    skills: ['AI SaaS 全端開發', 'Stripe 付款整合', 'SEO + 增長引擎', '融資與 Pitch Deck'],
-    outcomes: ['AI SaaS 產品上線', '投資人 Pitch Deck', '增長實驗報告', '創業領袖認證'],
-    fit: '有技術基礎、想用 AI 技術棧創業的創業者',
+    id: 'enterprise',
+    tier: 'Enterprise',
+    title: 'AI 全方位轉型',
+    subtitle: '企業級 AI 策略顧問 + 技術實施',
+    icon: '🏢',
+    color: '#7C3AED',
+    bg: '#EDE9FE',
+    border: '#C4B5FD',
+    price: '度身定制',
+    priceNote: '50+ 人企業',
+    features: [
+      { text: 'AI 基礎概念與應用場景介紹', included: true },
+      { text: 'ChatGPT / Claude 實戰工作坊', included: true },
+      { text: 'Prompt Engineering 進階訓練', included: true },
+      { text: '40+ 小時定制培訓計劃', included: true },
+      { text: '培訓教材與 Prompt 模板庫', included: true },
+      { text: '12 個月持續支援', included: true },
+      { text: '自訂 AI 工作流設計', included: true },
+      { text: 'API 串接與自動化部署', included: true },
+      { text: '專屬客戶經理', included: true },
+    ],
+    deliverables: ['AI 轉型路線圖', '全公司工作流改造', '自訂 AI Agent 開發', 'KPI 追蹤儀表板', '管理層月度報告', '企業認證'],
+    idealFor: '需要全面 AI 數位轉型策略、涵蓋多部門的大型企業',
   },
 ];
 
-const RESULT_MAP: Record<string, { emoji: string; title: string; desc: string; color: string }> = {
-  bronze: { emoji: '🏅', title: 'Bronze — AI 效率實戰班', desc: '4 週用 Claude + n8n 建立自動化工作流，即時提升效率。', color: '#CD7F32' },
-  silver: { emoji: '🥈', title: 'Silver — AI 應用開發班', desc: '8 週用 Claude Code + Cursor 從零開發真正的 AI 應用。', color: '#6B7280' },
-  gold: { emoji: '🥇', title: 'Gold — AI 系統架構師班', desc: '12 週掌握 RAG、Agent 編排和生產級系統設計。', color: '#D97706' },
-  openclaw: { emoji: '🦞', title: 'OpenClaw — 全方位課程', desc: '10 週從安裝到企業部署，成為 OpenClaw 專家。', color: '#4169E1' },
-  platinum: { emoji: '💎', title: 'Platinum — AI 創業實戰班', desc: '16 週把 AI 想法變成上線的 SaaS 產品。', color: '#7C3AED' },
-};
+/* ══════════════════════════════════════════════════
+   TRAINING MODULES
+   ══════════════════════════════════════════════════ */
+
+interface TrainingModule {
+  icon: string;
+  title: string;
+  desc: string;
+  topics: string[];
+  level: string;
+}
+
+const MODULES: TrainingModule[] = [
+  {
+    icon: '🎯',
+    title: 'AI 效率提升',
+    desc: '用 AI 工具大幅提升日常工作效率',
+    topics: ['ChatGPT / Claude 進階運用', 'AI 郵件與文件自動處理', 'AI 數據分析即時報告', '會議記錄自動整理'],
+    level: 'Starter+',
+  },
+  {
+    icon: '🔧',
+    title: 'Prompt 工程',
+    desc: '掌握 AI 對話的核心技術',
+    topics: ['系統 Prompt 設計框架', 'Few-shot & Chain-of-Thought', '行業專屬 Prompt 模板', 'Prompt 測試與迭代'],
+    level: 'Starter+',
+  },
+  {
+    icon: '🤖',
+    title: '自動化工作流',
+    desc: '用 n8n / Make 打造無代碼自動化',
+    topics: ['n8n 拖拽式工作流設計', 'AI 觸發條件設定', '多系統數據串接', '排程與監控'],
+    level: 'Professional+',
+  },
+  {
+    icon: '💻',
+    title: 'AI 應用開發',
+    desc: '用 Claude Code + Cursor 快速開發',
+    topics: ['Claude Code AI 編程', 'Cursor 智能開發環境', 'Next.js + Supabase 全端', 'Vercel 雲端部署'],
+    level: 'Professional+',
+  },
+  {
+    icon: '🧠',
+    title: 'RAG 知識庫',
+    desc: '建立企業內部 AI 知識系統',
+    topics: ['向量資料庫設計', '文檔切片與 Embedding', '企業知識圖譜建構', '安全權限與合規'],
+    level: 'Enterprise',
+  },
+  {
+    icon: '🏗️',
+    title: 'AI Agent 系統',
+    desc: '多 Agent 編排與企業級部署',
+    topics: ['MCP Server 開發', '多 Agent 協作架構', 'OpenClaw 框架整合', '生產級監控與安全'],
+    level: 'Enterprise',
+  },
+];
+
+/* ══════════════════════════════════════════════════
+   STATS
+   ══════════════════════════════════════════════════ */
+
+const STATS = [
+  { value: '50+', label: '企業客戶' },
+  { value: '2,000+', label: '培訓學員' },
+  { value: '96%', label: '滿意度' },
+  { value: '3x', label: '平均效率提升' },
+];
+
+/* ══════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════ */
+
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+const FAQ: FaqItem[] = [
+  {
+    q: '培訓可以安排在公司內進行嗎？',
+    a: '可以。我們提供上門培訓服務，也支援線上直播形式。Enterprise 計劃更包含混合式培訓方案。',
+  },
+  {
+    q: '團隊沒有技術背景，適合參加嗎？',
+    a: '完全適合。Starter 計劃專為非技術背景團隊設計，從零開始教授 AI 應用，無需任何程式經驗。',
+  },
+  {
+    q: '培訓內容可以按行業定制嗎？',
+    a: '可以。Professional 和 Enterprise 計劃均支援按行業（金融、零售、法律、教育等）定制培訓內容和案例。',
+  },
+  {
+    q: '有什麼後續支援？',
+    a: '所有計劃均包含培訓後線上支援期。Enterprise 計劃更提供 12 個月持續顧問服務，確保 AI 落地成功。',
+  },
+  {
+    q: '如何評估培訓效果？',
+    a: '我們提供培訓前後的 AI 效率評估報告，量化團隊能力提升。Enterprise 計劃包含月度 KPI 追蹤。',
+  },
+  {
+    q: '一個團隊最少需要多少人？',
+    a: 'Starter 計劃最少 5 人，Professional 計劃最少 10 人。少於 5 人也可安排，歡迎聯繫我們討論。',
+  },
+];
 
 /* ══════════════════════════════════════════════════
    COMPONENTS
    ══════════════════════════════════════════════════ */
 
-function QuizCard({ onComplete }: { onComplete: (result: string) => void }) {
-  const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
-
-  const handleSelect = (points: number) => {
-    const next = [...answers, points];
-    setAnswers(next);
-
-    if (step < QUESTIONS.length - 1) {
-      setStep(step + 1);
-    } else {
-      const total = next.reduce((a, b) => a + b, 0);
-      const openclawInterest = next[4] >= 5;
-      onComplete(getRecommendation(total, openclawInterest));
-    }
-  };
-
-  const q = QUESTIONS[step];
-  const progress = ((step + 1) / QUESTIONS.length) * 100;
+function FaqAccordion({ items }: { items: FaqItem[] }) {
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <div className="bg-white rounded-3xl border border-gray-100 shadow-xl shadow-blue-50/50 p-8 max-w-lg mx-auto">
-      {/* Progress */}
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-xs font-bold text-gray-400">問題 {step + 1} / {QUESTIONS.length}</span>
-        <span className="text-xs text-gray-300">{Math.round(progress)}%</span>
-      </div>
-      <div className="h-1.5 bg-gray-100 rounded-full mb-8 overflow-hidden">
-        <motion.div className="h-full bg-[#4169E1] rounded-full" animate={{ width: `${progress}%` }} transition={{ duration: 0.3 }} />
-      </div>
-
-      <AnimatePresence mode="wait">
-        <motion.div key={step} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.3 }}>
-          <h3 className="text-2xl font-black mb-1 text-[#1A1A2E]">{q.question}</h3>
-          <p className="text-sm text-gray-400 mb-6">{q.sub}</p>
-
-          <div className="space-y-3">
-            {q.options.map((opt, i) => (
-              <motion.button key={i} whileHover={{ scale: 1.02, x: 4 }} whileTap={{ scale: 0.98 }}
-                onClick={() => handleSelect(opt.points)}
-                className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-gray-100 hover:border-[#4169E1] hover:bg-blue-50/50 transition-all text-left group">
-                <span className="text-2xl">{opt.emoji}</span>
-                <span className="text-base font-semibold text-gray-700 group-hover:text-[#4169E1] transition-colors">{opt.label}</span>
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      {step > 0 && (
-        <button onClick={() => { setStep(step - 1); setAnswers(answers.slice(0, -1)); }}
-          className="mt-4 text-sm text-gray-400 hover:text-gray-600 transition">
-          ← 上一題
-        </button>
-      )}
-    </div>
-  );
-}
-
-function QuizResult({ result, onReset }: { result: string; onReset: () => void }) {
-  const r = RESULT_MAP[result];
-  const course = COURSES.find(c => c.id === result);
-
-  return (
-    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
-      className="bg-white rounded-3xl border-2 shadow-xl shadow-blue-50/50 p-8 max-w-lg mx-auto text-center"
-      style={{ borderColor: r.color }}>
-      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2, type: 'spring' }}
-        className="text-7xl mb-4">{r.emoji}</motion.div>
-      <h3 className="text-2xl font-black mb-2" style={{ color: r.color }}>推薦你報讀</h3>
-      <p className="text-xl font-bold text-[#1A1A2E] mb-2">{r.title}</p>
-      <p className="text-sm text-gray-500 mb-6">{r.desc}</p>
-
-      {course && (
-        <div className="text-left bg-gray-50 rounded-2xl p-5 mb-6">
-          <div className="flex items-baseline justify-between mb-3">
-            <span className="text-lg font-bold text-gray-400">即將推出</span>
-            <span className="text-sm text-gray-400">{course.weeks}</span>
-          </div>
-          <ul className="space-y-1.5">
-            {course.skills.map((s, i) => (
-              <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
-                <span style={{ color: r.color }}>✓</span>{s}
-              </li>
-            ))}
-          </ul>
+    <div className="space-y-3">
+      {items.map((item, i) => (
+        <div key={i} className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+          <button
+            onClick={() => setOpen(open === i ? null : i)}
+            className="w-full flex items-center justify-between p-5 text-left group"
+            aria-expanded={open === i}
+          >
+            <span className="text-base font-semibold text-[#1A1A2E] group-hover:text-[#4169E1] transition pr-4">
+              {item.q}
+            </span>
+            <motion.span
+              animate={{ rotate: open === i ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-gray-400 flex-shrink-0"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </motion.span>
+          </button>
+          <AnimatePresence>
+            {open === i && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <p className="px-5 pb-5 text-sm text-gray-500 leading-relaxed">{item.a}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      )}
-
-      <div className="flex gap-3">
-        <Link href={`/courses/${result}`} className="flex-1">
-          <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-            className="w-full py-3 rounded-xl text-white font-bold text-sm shadow-lg transition"
-            style={{ background: r.color }}>
-            查看課程詳情 →
-          </motion.button>
-        </Link>
-        <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={onReset}
-          className="px-5 py-3 rounded-xl border-2 border-gray-200 text-gray-500 font-semibold text-sm hover:border-gray-300 transition">
-          重新測試
-        </motion.button>
-      </div>
-    </motion.div>
+      ))}
+    </div>
   );
 }
 
@@ -243,9 +266,8 @@ function QuizResult({ result, onReset }: { result: string; onReset: () => void }
    ══════════════════════════════════════════════════ */
 
 export default function CoursesPage() {
-  const [quizResult, setQuizResult] = useState<string | null>(null);
-  const [showQuiz, setShowQuiz] = useState(false);
-  const quizRef = useRef<HTMLElement>(null);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const plansRef = useRef<HTMLElement>(null);
 
   return (
     <div className="bg-[#FAFBFF] text-[#1A1A2E] min-h-screen">
@@ -254,137 +276,160 @@ export default function CoursesPage() {
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-2xl border-b border-gray-100/60 shadow-sm">
         <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
           <a href="/" className="hover:opacity-80 transition"><Logo size="md" /></a>
-          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
+          <div className="flex items-center gap-3 md:gap-6 text-xs md:text-sm font-medium text-gray-400">
             <a href="/" className="hover:text-[#4169E1] transition">資源</a>
             <a href="/courses" className="text-[#4169E1] font-bold">課程</a>
             <a href="/friends" className="hover:text-[#4169E1] transition">更多資源</a>
           </div>
-          <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={() => { setShowQuiz(true); setQuizResult(null); quizRef.current?.scrollIntoView({ behavior: 'smooth' }); }}
-            className="bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
-            技能測試
-          </motion.button>
+          <motion.a href="/friends" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+            className="hidden md:inline-flex bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
+            免費資源
+          </motion.a>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="pt-28 pb-12">
+      <main id="main-content">
+      <section className="pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="inline-flex items-center gap-2 bg-[#4169E1]/10 text-[#4169E1] px-4 py-1.5 rounded-full text-xs font-bold mb-5 border border-[#4169E1]/20">
-              🎓 5 個級別 · 4-16 週 · 零基礎到創業
+              🏢 企業 AI 培訓方案 · 度身定制 · 即時見效
             </span>
             <h1 className="text-5xl md:text-6xl font-black mb-4">
-              AI 技能認證
-              <span className="bg-gradient-to-r from-[#4169E1] to-[#7C3AED] bg-clip-text text-transparent"> 課程</span>
+              企業 AI
+              <span className="bg-gradient-to-r from-[#4169E1] to-[#7C3AED] bg-clip-text text-transparent"> 培訓方案</span>
             </h1>
-            <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-8">
-              不確定選哪個？先做 30 秒技能測試，找到最適合你的課程。
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8">
+              為你的團隊量身打造 AI 培訓計劃。從基礎入門到全面數位轉型，助企業掌握 AI 競爭優勢。
             </p>
-            <motion.button whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}
-              onClick={() => { setShowQuiz(true); setQuizResult(null); setTimeout(() => quizRef.current?.scrollIntoView({ behavior: 'smooth' }), 100); }}
-              className="bg-[#4169E1] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
-              🧪 30 秒技能測試 — 找到你的課程
-            </motion.button>
+            <div className="flex justify-center gap-3 flex-wrap">
+              <motion.button whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}
+                onClick={() => plansRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-[#4169E1] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
+                查看培訓方案 ↓
+              </motion.button>
+              <motion.a href="https://wa.me/85267552667" target="_blank" rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}
+                className="bg-[#25D366] text-white px-8 py-3.5 rounded-xl font-bold text-sm shadow-lg shadow-green-200/40 transition">
+                💬 WhatsApp 諮詢
+              </motion.a>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Quiz Section */}
-      <section id="quiz" ref={quizRef} className="py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <AnimatePresence>
-            {showQuiz && (
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-                className="mb-16">
-                <div className="text-center mb-8">
-                  <h2 className="text-2xl font-black mb-2">📋 技能自測卡</h2>
-                  <p className="text-sm text-gray-400">回答 5 個問題，找到最適合你的課程</p>
-                </div>
-
-                {quizResult ? (
-                  <QuizResult result={quizResult} onReset={() => setQuizResult(null)} />
-                ) : (
-                  <QuizCard onComplete={setQuizResult} />
-                )}
+      {/* Stats */}
+      <section className="pb-12">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {STATS.map((s, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                className="bg-white rounded-2xl border border-gray-100 p-5 text-center shadow-sm">
+                <div className="text-3xl font-black text-[#4169E1] mb-1">{s.value}</div>
+                <div className="text-sm text-gray-400">{s.label}</div>
               </motion.div>
-            )}
-          </AnimatePresence>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* All Courses */}
-      <section className="py-12">
+      {/* Plans */}
+      <section ref={plansRef} className="py-16">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-black mb-2">所有課程</h2>
-            <p className="text-sm text-gray-400">由 DeFiner Tech Ltd 營運 · 包含終身內容更新和社群支援</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-3">選擇適合的培訓方案</h2>
+            <p className="text-gray-400 text-base max-w-xl mx-auto">
+              三個級別，覆蓋從 AI 入門到企業全面轉型。所有方案均可按行業和需求定制。
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {COURSES.map((c, i) => (
-              <motion.div key={c.id} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+          <div className="grid md:grid-cols-3 gap-6">
+            {PLANS.map((plan, i) => (
+              <motion.div key={plan.id} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                 className="relative group">
-                {c.popular && <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-[10px] font-bold px-3 py-0.5 rounded-full shadow-sm z-10" style={{ background: c.color }}>⭐ 最受歡迎</div>}
-                {c.featured && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4169E1] text-white text-[10px] font-bold px-3 py-0.5 rounded-full shadow-sm z-10">🔥 新課程</div>}
+                {plan.popular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm z-10"
+                    style={{ background: plan.color }}>
+                    ⭐ 最受歡迎
+                  </div>
+                )}
 
                 <div className={`bg-white rounded-2xl overflow-hidden border-2 hover:shadow-xl transition-all group-hover:-translate-y-1 h-full flex flex-col
-                  ${quizResult === c.id ? 'ring-4 shadow-xl' : ''}`}
-                  style={{ borderColor: quizResult === c.id ? c.color : '#f3f4f6', boxShadow: quizResult === c.id ? `0 0 0 4px ${c.color}33` : undefined }}>
+                  ${selectedPlan === plan.id ? 'ring-4 shadow-xl' : ''}`}
+                  style={{
+                    borderColor: selectedPlan === plan.id ? plan.color : '#f3f4f6',
+                    boxShadow: selectedPlan === plan.id ? `0 0 0 4px ${plan.color}33` : undefined,
+                  }}>
 
-                  <div className="h-1.5" style={{ background: c.color }} />
+                  <div className="h-1.5" style={{ background: plan.color }} />
 
                   <div className="p-6 flex-1 flex flex-col">
                     {/* Header */}
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl">{c.icon}</span>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: c.bg, color: c.color }}>{c.level}</span>
-                      {quizResult === c.id && <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-50 text-green-600 ml-auto">✓ 推薦</span>}
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-3xl">{plan.icon}</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                        style={{ background: plan.bg, color: plan.color }}>
+                        {plan.tier}
+                      </span>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-0.5">{c.title}</h3>
-                    <p className="text-sm text-gray-400 mb-3">{c.tag}</p>
-                    <p className="text-base text-gray-500 mb-4 leading-relaxed flex-1">{c.desc}</p>
+                    <h3 className="text-xl font-bold mb-1">{plan.title}</h3>
+                    <p className="text-sm text-gray-400 mb-4">{plan.subtitle}</p>
 
                     {/* Price */}
-                    <div className="flex items-baseline gap-1.5 mb-4">
-                      <span className="text-lg font-bold text-gray-400">即將推出</span>
-                      <span className="text-xs text-gray-300">/ {c.weeks}</span>
+                    <div className="mb-5 p-4 rounded-xl" style={{ background: plan.bg }}>
+                      <div className="text-lg font-bold" style={{ color: plan.color }}>{plan.price}</div>
+                      <div className="text-xs text-gray-400 mt-0.5">{plan.priceNote}</div>
                     </div>
 
-                    {/* Skills */}
-                    <ul className="space-y-1.5 mb-4">
-                      {c.skills.map((s, j) => (
-                        <li key={j} className="flex items-center gap-1.5 text-sm text-gray-600">
-                          <span style={{ color: c.color }}>✓</span>{s}
+                    {/* Features */}
+                    <ul className="space-y-2 mb-5 flex-1">
+                      {plan.features.map((f, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm">
+                          {f.included ? (
+                            <svg className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: plan.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          ) : (
+                            <svg className="w-4 h-4 mt-0.5 text-gray-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          )}
+                          <span className={f.included ? 'text-gray-600' : 'text-gray-300'}>{f.text}</span>
                         </li>
                       ))}
                     </ul>
 
-                    {/* Fit */}
-                    <div className="bg-gray-50 rounded-xl p-3 mb-4">
-                      <p className="text-xs text-gray-500"><span className="font-bold text-gray-600">適合：</span>{c.fit}</p>
+                    {/* Deliverables */}
+                    <div className="bg-gray-50 rounded-xl p-4 mb-5">
+                      <p className="text-xs font-bold text-gray-500 mb-2">交付成果</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {plan.deliverables.map((d, j) => (
+                          <span key={j} className="text-[11px] px-2 py-0.5 rounded-full border border-gray-200 text-gray-500">
+                            {d}
+                          </span>
+                        ))}
+                      </div>
                     </div>
 
-                    {/* Outcomes */}
-                    <div className="grid grid-cols-2 gap-1.5 mb-5">
-                      {c.outcomes.map((o, j) => (
-                        <div key={j} className="flex items-center gap-1 text-xs text-gray-500">
-                          <svg className="w-3 h-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          {o}
-                        </div>
-                      ))}
-                    </div>
+                    {/* Ideal For */}
+                    <p className="text-xs text-gray-400 mb-5">
+                      <span className="font-bold text-gray-500">適合：</span>{plan.idealFor}
+                    </p>
 
                     {/* CTA */}
-                    <Link href={`/courses/${c.id}`}>
-                      <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
-                        className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all hover:brightness-95"
-                        style={{ background: c.bg, color: c.color }}>
-                        查看詳細大綱 →
-                      </motion.button>
-                    </Link>
+                    <motion.a
+                      href={`https://wa.me/85267552667?text=${encodeURIComponent(`你好！我想了解「${plan.title}」企業培訓方案`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="w-full py-3 rounded-xl text-sm font-bold text-center block transition-all hover:brightness-95 text-white"
+                      style={{ background: plan.color }}
+                    >
+                      立即諮詢 →
+                    </motion.a>
                   </div>
                 </div>
               </motion.div>
@@ -393,14 +438,120 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Training Modules */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-3">培訓模組一覽</h2>
+            <p className="text-gray-400 text-base max-w-xl mx-auto">
+              可按企業需求自由組合模組，打造最適合的培訓計劃
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {MODULES.map((m, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                className="bg-[#FAFBFF] rounded-2xl border border-gray-100 p-6 hover:shadow-lg transition-all hover:-translate-y-0.5">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl">{m.icon}</span>
+                  <div>
+                    <h3 className="text-lg font-bold">{m.title}</h3>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#4169E1]">{m.level}</span>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-400 mb-3">{m.desc}</p>
+                <ul className="space-y-1.5">
+                  {m.topics.map((t, j) => (
+                    <li key={j} className="flex items-center gap-1.5 text-sm text-gray-600">
+                      <span className="text-[#4169E1]">•</span>{t}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-3">合作流程</h2>
+            <p className="text-gray-400 text-base">從需求分析到培訓落地，全程專人跟進</p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { step: '01', title: '需求分析', desc: '深入了解企業現況、目標和團隊背景，制定定制方案', icon: '📋' },
+              { step: '02', title: '方案設計', desc: '根據行業特性和團隊需求，設計培訓課程和時間表', icon: '🎨' },
+              { step: '03', title: '培訓實施', desc: '專業講師上門或線上授課，結合實戰案例和互動練習', icon: '🎓' },
+              { step: '04', title: '效果評估', desc: '培訓後效果追蹤，提供數據化評估報告和改善建議', icon: '📊' },
+              { step: '05', title: '持續支援', desc: '培訓後線上答疑、資源更新，確保 AI 工具持續落地', icon: '🤝' },
+            ].map((item, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="flex items-start gap-4 bg-white rounded-2xl border border-gray-100 p-5 hover:shadow-md transition">
+                <span className="text-3xl">{item.icon}</span>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-bold text-[#4169E1] bg-blue-50 px-2 py-0.5 rounded-full">Step {item.step}</span>
+                    <h3 className="text-lg font-bold">{item.title}</h3>
+                  </div>
+                  <p className="text-sm text-gray-400">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Individual Courses Link */}
+      <section className="py-12">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-8 border border-blue-100 text-center">
+            <h3 className="text-xl font-bold mb-2">個人學員？</h3>
+            <p className="text-sm text-gray-400 mb-5">
+              我們也提供個人 AI 技能課程，從零基礎到專業開發者。
+            </p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              {[
+                { id: 'bronze', label: 'AI 效率實戰班', icon: '🏅' },
+                { id: 'silver', label: 'AI 應用開發班', icon: '🥈' },
+                { id: 'gold', label: 'AI 系統架構師班', icon: '🥇' },
+                { id: 'openclaw', label: 'OpenClaw 課程', icon: '🦞' },
+                { id: 'platinum', label: 'AI 創業實戰班', icon: '💎' },
+              ].map(c => (
+                <Link key={c.id} href={`/courses/${c.id}`}>
+                  <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
+                    className="inline-flex items-center gap-1.5 bg-white px-4 py-2 rounded-xl border border-gray-200 text-sm font-medium text-gray-600 hover:border-[#4169E1] hover:text-[#4169E1] transition cursor-pointer shadow-sm">
+                    {c.icon} {c.label}
+                  </motion.span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-black mb-3">常見問題</h2>
+            <p className="text-gray-400 text-base">關於企業 AI 培訓的常見疑問</p>
+          </div>
+          <FaqAccordion items={FAQ} />
+        </div>
+      </section>
+
+      {/* Final CTA */}
       <section className="py-16">
         <div className="max-w-2xl mx-auto px-6 text-center">
           <div className="bg-gradient-to-r from-[#4169E1]/5 to-[#7C3AED]/5 rounded-3xl p-10 border border-blue-100">
-            <h2 className="text-2xl md:text-3xl font-black mb-3">還是不確定？</h2>
-            <p className="text-gray-400 mb-6">WhatsApp 我們，免費一對一課程諮詢</p>
+            <h2 className="text-2xl md:text-3xl font-black mb-3">準備好提升團隊 AI 能力？</h2>
+            <p className="text-gray-400 mb-6">免費諮詢，了解最適合你企業的 AI 培訓方案</p>
             <div className="flex justify-center gap-3 flex-wrap">
-              <motion.a href="https://wa.me/85257961104" target="_blank" rel="noopener noreferrer"
+              <motion.a href="https://wa.me/85267552667" target="_blank" rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
                 className="bg-[#25D366] text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-green-200/40 transition">
                 💬 WhatsApp 諮詢
@@ -414,6 +565,8 @@ export default function CoursesPage() {
           </div>
         </div>
       </section>
+
+      </main>
 
       {/* Footer */}
       <footer className="bg-[#0F172A] text-gray-400 py-10">

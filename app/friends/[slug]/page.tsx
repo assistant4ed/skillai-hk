@@ -102,6 +102,8 @@ function Block({ block, articleId, blockIndex }: { block: ContentBlock; articleI
           <img
             src={block.src || getStockImage(articleId, blockIndex)}
             alt={block.alt || block.caption || 'AI illustration'}
+            width={800}
+            height={450}
             loading="lazy"
             style={{ maxWidth: '100%', height: 'auto', borderRadius: 12, boxShadow: '0 2px 16px rgba(0,0,0,0.08)' }}
           />
@@ -257,6 +259,8 @@ export default function ArticlePage() {
         <img
           src={article.heroImage || getStockImage(article.id)}
           alt={article.title}
+          width={1200}
+          height={240}
           style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }}
         />
         <div style={{

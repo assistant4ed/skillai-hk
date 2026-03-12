@@ -97,7 +97,7 @@ export default function PrivacyPage() {
             <div className="bg-[#F8FAFF] rounded-xl p-4 border border-gray-100 mt-2">
               <p><strong>DeFiner Tech Ltd</strong></p>
               <p>電郵：<a href="mailto:assistant4ed@gmail.com" className="text-[#4169E1]">assistant4ed@gmail.com</a></p>
-              <p>WhatsApp：<a href="https://wa.me/85257961104" className="text-[#4169E1]">+852 5796 1104</a></p>
+              <p>WhatsApp：<a href="https://wa.me/85267552667" className="text-[#4169E1]">+852 6755 2667</a></p>
             </div>
           </section>
         </div>

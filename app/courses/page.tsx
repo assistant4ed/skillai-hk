@@ -279,10 +279,9 @@ export default function CoursesPage() {
           <div className="flex items-center gap-3 md:gap-6 text-xs md:text-sm font-medium text-gray-400">
             <a href="/" className="hover:text-[#4169E1] transition">資源</a>
             <a href="/courses" className="text-[#4169E1] font-bold">課程</a>
-            <a href="/friends" className="hover:text-[#4169E1] transition">更多資源</a>
           </div>
           <motion.a href="/friends" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-            className="hidden md:inline-flex bg-[#4169E1] text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
+            className="bg-[#4169E1] text-white px-4 py-1.5 md:px-5 md:py-2 rounded-xl text-xs md:text-sm font-semibold shadow-lg shadow-blue-200/50 hover:bg-[#3358C8] transition">
             免費資源
           </motion.a>
         </div>

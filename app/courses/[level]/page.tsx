@@ -1338,15 +1338,12 @@ export default function CourseDetail({ params }: CourseDetailProps) {
             >
               課程
             </Link>
-            <Link href="/friends" className="hover:text-[#4169E1] transition">
-              更多資源
-            </Link>
           </div>
           <motion.a
             href="/friends"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="hidden md:inline-flex text-white px-5 py-2 rounded-xl text-sm font-semibold shadow-lg transition"
+            className="text-white px-4 py-1.5 md:px-5 md:py-2 rounded-xl text-xs md:text-sm font-semibold shadow-lg transition"
             style={{ background: color, boxShadow: `0 8px 24px ${color}30` }}
           >
             免費資源

@@ -911,11 +911,10 @@ export default function FriendsPage() {
         <nav style={{ display: 'flex', gap: 20, fontSize: 14, alignItems: 'center' }}>
           <Link href="/" style={{ color: '#666', textDecoration: 'none' }}>資源</Link>
           <Link href="/courses" style={{ color: '#666', textDecoration: 'none' }}>課程</Link>
-          <Link href="/friends" style={{ color: '#111', fontWeight: 600, textDecoration: 'none' }}>更多資源</Link>
           <Link href="/friends" style={{
-            background: '#4169E1', color: '#fff', padding: '8px 20px',
+            background: '#4169E1', color: '#fff', padding: '6px 16px',
             borderRadius: 12, fontWeight: 600, textDecoration: 'none',
-            fontSize: 14,
+            fontSize: 13,
           }}>
             免費資源
           </Link>
